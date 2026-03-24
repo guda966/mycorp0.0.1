@@ -370,7 +370,7 @@ export default function Home() {
       </section>
 
       {/* ── 4. SERVICES ── */}
-      <section className="py-24 bg-slate-50 bg-grid-pattern relative border-b border-border">
+      <section className="py-24 bg-slate-50 relative border-b border-border">
         <div className="container mx-auto px-4 md:px-6">
           <motion.div {...fadeUp} className="text-center max-w-3xl mx-auto mb-16">
             <span className="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold tracking-widest uppercase mb-4">What We Do</span>
