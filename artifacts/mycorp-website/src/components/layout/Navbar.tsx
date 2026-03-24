@@ -53,12 +53,15 @@ export function Navbar() {
       )}
     >
       <div className="container mx-auto px-4 md:px-6 flex items-center justify-between">
-        <Link href="/" className="flex items-center group">
+        <Link href="/" className="flex flex-col items-start group">
           <img
             src={`${import.meta.env.BASE_URL}logo.png`}
             alt="MyCorp Solutions"
-            className="h-10 md:h-12 w-auto object-contain group-hover:opacity-90 transition-opacity"
+            className="h-16 md:h-[72px] w-auto object-contain mix-blend-multiply group-hover:opacity-85 transition-opacity"
           />
+          <span className="text-[9px] text-primary/70 font-semibold tracking-[0.2em] uppercase hidden sm:block -mt-2 pl-1">
+            Empowering Talent &amp; Technology
+          </span>
         </Link>
 
         {/* Desktop Nav */}
