@@ -3,7 +3,7 @@ import { Link } from "wouter";
 import { motion, useInView } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { servicesData } from "@/data/servicesData";
-import { ArrowRight, CheckCircle2, Quote } from "lucide-react";
+import { ArrowRight, CheckCircle2, Quote, Clock, Shield, Globe, Users } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 const fadeUp = {
@@ -21,11 +21,18 @@ const globalStats = [
 ];
 
 const whyUs = [
-  { title: "15+ Years of Expertise", desc: "Deep domain knowledge built across thousands of enterprise engagements worldwide." },
-  { title: "US & India Delivery", desc: "NJ and Hyderabad hubs give you timezone-friendly, cost-efficient dual-shore coverage." },
-  { title: "ISO 27001 & HIPAA Certified", desc: "Security and compliance are built into every engagement — not bolted on afterward." },
-  { title: "Dedicated Account Teams", desc: "One point of contact who knows your business as well as you do." },
+  { icon: Clock, title: "48-hr Turnaround", desc: "Candidates, proposals & kick-offs in under 48 hours." },
+  { icon: Globe, title: "US & India Delivery", desc: "NJ + Hyderabad hubs. Dual-shore. Cost-efficient." },
+  { icon: Shield, title: "ISO 27001 · HIPAA · SOC 2", desc: "Security & compliance built in — not bolted on." },
+  { icon: Users, title: "Dedicated Account Team", desc: "One contact who knows your business inside out." },
 ];
+
+const modelBadge: Record<string, string> = {
+  "staffing-outsourcing": "Contract · C2H · Direct Hire",
+  "it-hiring": "RPO · Project · Executive Search",
+  "it-projects": "Fixed Price · T&M",
+  "medical-billing": "% Net Collections",
+};
 
 export default function Services() {
   const statsRef = useRef(null);
@@ -49,9 +56,14 @@ export default function Services() {
               {t("services_hero_line1")}<br />
               <span className="text-cyan-400">{t("services_hero_line2")}</span>
             </h1>
-            <p className="text-lg text-slate-300 max-w-2xl mx-auto">
-              {t("services_hero_sub")}
-            </p>
+            {/* Pill tags instead of paragraph */}
+            <div className="flex flex-wrap gap-3 justify-center mt-6">
+              {["IT Staffing", "Recruitment Outsourcing", "Software Delivery", "Medical Billing & RCM"].map((tag) => (
+                <span key={tag} className="px-4 py-1.5 rounded-full bg-white/10 border border-white/20 text-white/80 text-sm font-medium">
+                  {tag}
+                </span>
+              ))}
+            </div>
           </motion.div>
         </div>
       </section>
@@ -81,7 +93,7 @@ export default function Services() {
         <div className="container mx-auto px-4 md:px-6">
           <motion.div {...fadeUp} className="text-center mb-14">
             <h2 className="text-3xl md:text-4xl font-display font-bold mb-3">Our Services</h2>
-            <p className="text-muted-foreground max-w-lg mx-auto">Choose a service to explore how MyCorp can help your business.</p>
+            <p className="text-muted-foreground max-w-lg mx-auto">Four service lines. One trusted partner.</p>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-7 max-w-5xl mx-auto">
@@ -108,34 +120,47 @@ export default function Services() {
                     >
                       {/* Gradient header */}
                       <div className={`bg-gradient-to-br ${service.gradient} p-8 relative overflow-hidden`}>
-                        {/* Orbs — scale & drift on card hover via CSS group */}
                         <div className="absolute -right-6 -top-6 w-32 h-32 bg-white/10 rounded-full transition-transform duration-500 group-hover:scale-125 group-hover:-translate-x-2 group-hover:translate-y-2" />
                         <div className="absolute -right-2 -bottom-8 w-20 h-20 bg-white/5 rounded-full transition-transform duration-500 group-hover:scale-150 group-hover:-translate-x-3" />
-                        {/* Icon box — lifts & rotates on card hover */}
-                        <div className="w-14 h-14 bg-white/20 rounded-2xl flex items-center justify-center mb-4 border border-white/30 transition-all duration-300 group-hover:scale-110 group-hover:rotate-6 group-hover:bg-white/30">
-                          <Icon className="w-7 h-7 text-white" />
+                        <div className="flex items-start justify-between mb-4">
+                          <div className="w-14 h-14 bg-white/20 rounded-2xl flex items-center justify-center border border-white/30 transition-all duration-300 group-hover:scale-110 group-hover:rotate-6 group-hover:bg-white/30">
+                            <Icon className="w-7 h-7 text-white" />
+                          </div>
+                          {/* Engagement model badge */}
+                          <span className="text-[10px] font-semibold bg-white/15 border border-white/25 text-white/90 px-2.5 py-1 rounded-full shrink-0 ml-3">
+                            {modelBadge[service.slug]}
+                          </span>
                         </div>
-                        <h3 className="text-2xl font-display font-bold text-white mb-2">{service.title}</h3>
-                        <p className="text-white/80 text-sm leading-relaxed">{service.tagline}</p>
+                        <h3 className="text-2xl font-display font-bold text-white mb-1">{service.title}</h3>
+                        <p className="text-white/75 text-sm">{service.tagline}</p>
                       </div>
-                      {/* Body */}
+
+                      {/* Body — bullet key deliverables, no paragraph */}
                       <div className="p-7">
-                        <p className="text-muted-foreground text-sm leading-relaxed mb-5">{service.description}</p>
-                        <div className="flex flex-wrap gap-2 mb-6">
-                          {service.specialties.slice(0, 4).map((s, j) => (
+                        <ul className="space-y-2.5 mb-6">
+                          {service.benefits.slice(0, 3).map((b, j) => (
+                            <li key={j} className="flex items-center gap-2.5 text-sm">
+                              <CheckCircle2 className="w-4 h-4 text-primary shrink-0" />
+                              <span className="font-medium text-slate-700">{b.title}</span>
+                            </li>
+                          ))}
+                        </ul>
+
+                        {/* Specialty chips */}
+                        <div className="flex flex-wrap gap-1.5 mb-6">
+                          {service.specialties.slice(0, 3).map((s, j) => (
                             <span
                               key={j}
-                              className="text-xs px-3 py-1 bg-slate-100 text-slate-600 rounded-full border border-slate-200 transition-all duration-200 hover:bg-indigo-50 hover:border-indigo-300 hover:text-indigo-700 hover:scale-105"
+                              className="text-xs px-2.5 py-1 bg-slate-100 text-slate-500 rounded-full border border-slate-200 transition-all duration-200 hover:bg-indigo-50 hover:border-indigo-300 hover:text-indigo-700"
                             >
                               {s}
                             </span>
                           ))}
-                          {service.specialties.length > 4 && (
-                            <span className="text-xs px-3 py-1 bg-slate-100 text-slate-400 rounded-full border border-slate-200">
-                              +{service.specialties.length - 4} more
-                            </span>
-                          )}
+                          <span className="text-xs px-2.5 py-1 bg-slate-100 text-slate-400 rounded-full border border-slate-200">
+                            +{service.specialties.length - 3} more
+                          </span>
                         </div>
+
                         <div className="flex items-center gap-2 text-primary font-semibold text-sm">
                           <span className="group-hover:underline underline-offset-2 transition-all">Explore Service</span>
                           <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-2" />
@@ -150,19 +175,19 @@ export default function Services() {
         </div>
       </section>
 
-      {/* ── TESTIMONIAL PULLQUOTE ── */}
+      {/* ── TESTIMONIAL ── */}
       <section className="py-20 bg-white border-y border-border">
         <div className="container mx-auto px-4 md:px-6 max-w-3xl text-center">
           <motion.div {...fadeUp}>
             <Quote className="w-10 h-10 text-primary/20 mx-auto mb-6" />
             <blockquote className="text-2xl md:text-3xl font-display font-medium text-foreground leading-snug mb-8">
-              "{servicesData[2].testimonial.quote}"
+              "{servicesData[0].testimonial.quote}"
             </blockquote>
             <div className="flex items-center justify-center gap-4">
-              <img src={servicesData[2].testimonial.avatar} alt={servicesData[2].testimonial.name} className="w-12 h-12 rounded-full object-cover ring-2 ring-border" />
+              <img src={servicesData[0].testimonial.avatar} alt={servicesData[0].testimonial.name} className="w-12 h-12 rounded-full object-cover ring-2 ring-border" />
               <div className="text-left">
-                <p className="font-bold text-foreground">{servicesData[2].testimonial.name}</p>
-                <p className="text-muted-foreground text-sm">{servicesData[2].testimonial.role}, {servicesData[2].testimonial.company}</p>
+                <p className="font-bold text-foreground">{servicesData[0].testimonial.name}</p>
+                <p className="text-muted-foreground text-sm">{servicesData[0].testimonial.role}, {servicesData[0].testimonial.company}</p>
               </div>
             </div>
           </motion.div>
@@ -174,17 +199,23 @@ export default function Services() {
         <div className="container mx-auto px-4 md:px-6">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <motion.div {...fadeUp}>
-              <h2 className="text-3xl md:text-4xl font-display font-bold mb-5">Why MyCorp Solutions?</h2>
-              <p className="text-muted-foreground text-lg leading-relaxed mb-8">
-                We don't just provide services — we become an extension of your team. Our people embed in your workflows, align to your goals, and stay accountable to outcomes.
-              </p>
+              <h2 className="text-3xl md:text-4xl font-display font-bold mb-8">Why MyCorp Solutions?</h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {whyUs.map((item, i) => (
-                  <div key={i} className="p-5 rounded-xl bg-white border border-border">
-                    <CheckCircle2 className="w-5 h-5 text-primary mb-2" />
-                    <h3 className="font-bold text-foreground mb-1 text-sm">{item.title}</h3>
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, scale: 0.96 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.4, delay: i * 0.08 }}
+                    className="p-5 rounded-xl bg-white border border-border hover:border-primary/30 hover:shadow-md transition-all duration-300 group"
+                  >
+                    <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center mb-3 group-hover:bg-primary/20 transition-colors">
+                      <item.icon className="w-4.5 h-4.5 text-primary w-5 h-5" />
+                    </div>
+                    <h3 className="font-bold text-foreground text-sm mb-1">{item.title}</h3>
                     <p className="text-muted-foreground text-xs leading-relaxed">{item.desc}</p>
-                  </div>
+                  </motion.div>
                 ))}
               </div>
             </motion.div>
@@ -209,7 +240,7 @@ export default function Services() {
           <motion.div {...fadeUp}>
             <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">Not Sure Where to Start?</h2>
             <p className="text-slate-300 text-lg mb-8 max-w-xl mx-auto">
-              Let's talk. We'll identify the right service mix and build a custom plan for your business — at no cost.
+              Let's talk. We'll identify the right service mix and build a custom plan — at no cost.
             </p>
             <Link href="/contact">
               <Button size="lg" className="rounded-full px-10 shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all">
