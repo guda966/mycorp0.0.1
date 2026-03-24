@@ -269,14 +269,16 @@ export default function About() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
-            className="relative mb-12 px-4"
+            className="relative mb-12 px-5"
           >
             {/* Track line background */}
-            <div className="absolute top-5 left-0 right-0 h-[2px] bg-white/10 mx-8" />
-            {/* Animated progress fill */}
-            <div
-              className="absolute top-5 left-0 h-[2px] bg-gradient-to-r from-primary to-accent transition-all duration-700 mx-8"
-              style={{ width: `${(activeTimeline / (milestones.length - 1)) * 100}%` }}
+            <div className="absolute top-5 left-5 right-5 h-[2px] bg-white/10" />
+            {/* Animated progress fill — scaleX from left, GPU-accelerated */}
+            <motion.div
+              className="absolute top-5 left-5 right-5 h-[2px] bg-gradient-to-r from-primary via-blue-400 to-accent origin-left"
+              animate={{ scaleX: activeTimeline / (milestones.length - 1) }}
+              initial={{ scaleX: 0 }}
+              transition={{ duration: 0.65, ease: "easeInOut" }}
             />
 
             {/* Milestone nodes */}
@@ -292,15 +294,27 @@ export default function About() {
                     className="flex flex-col items-center gap-3 group focus:outline-none"
                   >
                     {/* Node dot */}
-                    <div className={`relative w-10 h-10 rounded-full border-2 flex items-center justify-center transition-all duration-300 z-10
-                      ${isActive
-                        ? "bg-primary border-primary scale-125 shadow-[0_0_20px_rgba(59,130,246,0.6)]"
-                        : isPast
-                          ? "bg-primary/40 border-primary/60"
-                          : "bg-white/5 border-white/20 group-hover:border-primary/60 group-hover:bg-primary/20"
-                      }`}>
+                    <motion.div
+                      animate={isActive ? { scale: 1.28, boxShadow: "0 0 22px rgba(59,130,246,0.7)" } : { scale: 1, boxShadow: "none" }}
+                      transition={{ duration: 0.3 }}
+                      className={`relative w-10 h-10 rounded-full border-2 flex items-center justify-center z-10
+                        ${isActive
+                          ? "bg-primary border-primary"
+                          : isPast
+                            ? "bg-primary/40 border-primary/60"
+                            : "bg-white/5 border-white/20 group-hover:border-primary/60 group-hover:bg-primary/20"
+                        }`}
+                    >
                       <Icon className={`w-4 h-4 transition-colors ${isActive ? "text-white" : isPast ? "text-primary/80" : "text-white/40 group-hover:text-white/70"}`} />
-                    </div>
+                      {/* Ripple ring for active node */}
+                      {isActive && (
+                        <motion.span
+                          className="absolute inset-0 rounded-full border border-primary"
+                          animate={{ scale: [1, 1.7], opacity: [0.6, 0] }}
+                          transition={{ duration: 1.2, repeat: Infinity, ease: "easeOut" }}
+                        />
+                      )}
+                    </motion.div>
                     {/* Year label */}
                     <span className={`text-xs font-bold transition-colors ${isActive ? "text-white" : isPast ? "text-slate-400" : "text-slate-600 group-hover:text-slate-400"}`}>
                       {m.year}

@@ -94,14 +94,25 @@ export default function Services() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.45, delay: i * 0.1 }}
+                  whileHover={{ y: -10, transition: { type: "spring", stiffness: 320, damping: 20 } }}
+                  className="h-full"
                 >
                   <Link href={`/services/${service.slug}`} className="group block h-full">
-                    <div className="h-full bg-white rounded-2xl border border-border overflow-hidden hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
+                    <motion.div
+                      className="h-full bg-white rounded-2xl border border-border overflow-hidden"
+                      whileHover={{
+                        boxShadow: "0 24px 60px -10px rgba(0,0,0,0.18), 0 8px 24px -6px rgba(0,0,0,0.1)",
+                        borderColor: "rgba(99,102,241,0.25)",
+                        transition: { duration: 0.25 }
+                      }}
+                    >
                       {/* Gradient header */}
                       <div className={`bg-gradient-to-br ${service.gradient} p-8 relative overflow-hidden`}>
-                        <div className="absolute -right-6 -top-6 w-32 h-32 bg-white/10 rounded-full" />
-                        <div className="absolute -right-2 -bottom-8 w-20 h-20 bg-white/5 rounded-full" />
-                        <div className="w-14 h-14 bg-white/20 rounded-2xl flex items-center justify-center mb-4 border border-white/30">
+                        {/* Orbs — scale & drift on card hover via CSS group */}
+                        <div className="absolute -right-6 -top-6 w-32 h-32 bg-white/10 rounded-full transition-transform duration-500 group-hover:scale-125 group-hover:-translate-x-2 group-hover:translate-y-2" />
+                        <div className="absolute -right-2 -bottom-8 w-20 h-20 bg-white/5 rounded-full transition-transform duration-500 group-hover:scale-150 group-hover:-translate-x-3" />
+                        {/* Icon box — lifts & rotates on card hover */}
+                        <div className="w-14 h-14 bg-white/20 rounded-2xl flex items-center justify-center mb-4 border border-white/30 transition-all duration-300 group-hover:scale-110 group-hover:rotate-6 group-hover:bg-white/30">
                           <Icon className="w-7 h-7 text-white" />
                         </div>
                         <h3 className="text-2xl font-display font-bold text-white mb-2">{service.title}</h3>
@@ -112,7 +123,12 @@ export default function Services() {
                         <p className="text-muted-foreground text-sm leading-relaxed mb-5">{service.description}</p>
                         <div className="flex flex-wrap gap-2 mb-6">
                           {service.specialties.slice(0, 4).map((s, j) => (
-                            <span key={j} className="text-xs px-3 py-1 bg-slate-100 text-slate-600 rounded-full border border-slate-200">{s}</span>
+                            <span
+                              key={j}
+                              className="text-xs px-3 py-1 bg-slate-100 text-slate-600 rounded-full border border-slate-200 transition-all duration-200 hover:bg-indigo-50 hover:border-indigo-300 hover:text-indigo-700 hover:scale-105"
+                            >
+                              {s}
+                            </span>
                           ))}
                           {service.specialties.length > 4 && (
                             <span className="text-xs px-3 py-1 bg-slate-100 text-slate-400 rounded-full border border-slate-200">
@@ -120,11 +136,12 @@ export default function Services() {
                             </span>
                           )}
                         </div>
-                        <div className="flex items-center gap-2 text-primary font-semibold text-sm group-hover:gap-3 transition-all">
-                          Explore Service <ArrowRight className="w-4 h-4" />
+                        <div className="flex items-center gap-2 text-primary font-semibold text-sm">
+                          <span className="group-hover:underline underline-offset-2 transition-all">Explore Service</span>
+                          <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-2" />
                         </div>
                       </div>
-                    </div>
+                    </motion.div>
                   </Link>
                 </motion.div>
               );
