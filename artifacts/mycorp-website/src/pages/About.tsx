@@ -4,9 +4,9 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 import {
-  Target, Eye, Heart, Award, CheckCircle2, Users, Globe2,
+  Target, Eye, Heart, Award, Users, Globe2,
   Lightbulb, ShieldCheck, Zap, Handshake, ArrowRight,
-  MapPin, Calendar, TrendingUp, Star, Linkedin, Play,
+  Calendar, TrendingUp, Star, Linkedin, Play,
   TreePine, GraduationCap, HandHeart, Leaf, Quote
 } from "lucide-react";
 
@@ -41,11 +41,6 @@ const leaders = [
   { name: "Sarah Jenkins", role: "Chief Executive Officer", bio: "20+ years in IT services. Former VP at Fortune 100 consulting firm. Drives MyCorp's global growth strategy.", img: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=400&h=400", linkedin: "#", expertise: ["Global Strategy", "IT Services", "M&A"] },
   { name: "Rajesh Kumar", role: "Chief Operating Officer", bio: "Led delivery operations for 500+ enterprise accounts. Based in Hyderabad, oversees our India center.", img: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=400&h=400", linkedin: "#", expertise: ["Delivery Excellence", "Offshore Operations", "RCM"] },
   { name: "Michael Chen", role: "Chief Technology Officer", bio: "Ex-AWS architect. Leads our software engineering practice and AI transformation initiatives.", img: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=400&h=400", linkedin: "#", expertise: ["Cloud Architecture", "AI/ML", "DevOps"] },
-];
-
-const offices = [
-  { city: "New Jersey", country: "USA 🇺🇸", address: "100 Enterprise Way, Suite 400, NJ 08001", type: "US Headquarters", color: "from-blue-600 to-blue-800", stats: ["250+ Professionals", "Client Management", "Sales & Strategy"] },
-  { city: "Hyderabad", country: "India 🇮🇳", address: "Tech Park, Hitec City, Hyderabad, TS 500081", type: "India Delivery Center", color: "from-orange-500 to-red-600", stats: ["950+ Professionals", "24/7 Support", "Software & RCM"] },
 ];
 
 const employeeTestimonials = [
@@ -456,48 +451,6 @@ export default function About() {
                         <p className="text-accent text-xs">{t.role}</p>
                         <p className="text-slate-500 text-xs">{t.tenure} at MyCorp</p>
                       </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── OFFICE LOCATIONS ── */}
-      <section className="py-24 bg-slate-50">
-        <div className="container mx-auto px-4 md:px-6">
-          <motion.div {...fadeUp} className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">Global Presence. Local Expertise.</h2>
-            <p className="text-muted-foreground max-w-xl mx-auto">Two strategic delivery centers built to serve clients across every timezone.</p>
-          </motion.div>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {offices.map((office, i) => (
-              <motion.div key={i} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: i * 0.2 }}>
-                <Card className="border-0 overflow-hidden shadow-xl hover:shadow-2xl transition-shadow">
-                  <div className={`bg-gradient-to-r ${office.color} p-6`}>
-                    <div className="flex justify-between items-start">
-                      <div>
-                        <p className="text-white/70 text-sm font-medium mb-1">{office.type}</p>
-                        <h3 className="text-3xl font-bold text-white font-display">{office.city}</h3>
-                        <p className="text-white/80 mt-1">{office.country}</p>
-                      </div>
-                      <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center">
-                        <MapPin className="w-6 h-6 text-white" />
-                      </div>
-                    </div>
-                  </div>
-                  <CardContent className="p-6 bg-white">
-                    <p className="text-muted-foreground text-sm mb-5 flex items-start gap-2">
-                      <MapPin className="w-4 h-4 shrink-0 mt-0.5 text-slate-400" />{office.address}
-                    </p>
-                    <div className="flex flex-wrap gap-2">
-                      {office.stats.map((s, j) => (
-                        <span key={j} className="px-3 py-1 rounded-full bg-primary/5 text-primary text-xs font-medium flex items-center gap-1">
-                          <CheckCircle2 className="w-3 h-3" />{s}
-                        </span>
-                      ))}
                     </div>
                   </CardContent>
                 </Card>
