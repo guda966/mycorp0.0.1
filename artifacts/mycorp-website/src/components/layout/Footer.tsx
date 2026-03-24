@@ -1,5 +1,5 @@
 import { Link } from "wouter";
-import { Building2, Mail, MapPin, Phone, Linkedin, Twitter, Facebook } from "lucide-react";
+import { Mail, MapPin, Phone, Linkedin, Twitter, Facebook } from "lucide-react";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -10,13 +10,12 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           {/* Brand Col */}
           <div className="space-y-6">
-            <Link href="/" className="flex items-center gap-2 inline-block">
-              <div className="bg-primary text-white p-1.5 rounded-lg">
-                <Building2 className="w-6 h-6" />
-              </div>
-              <span className="font-display font-bold text-2xl tracking-tight text-white">
-                MyCorp<span className="text-primary">.</span>
-              </span>
+            <Link href="/" className="inline-block">
+              <img
+                src={`${import.meta.env.BASE_URL}logo.png`}
+                alt="MyCorp Solutions"
+                className="h-12 w-auto object-contain brightness-0 invert"
+              />
             </Link>
             <p className="text-slate-400 text-sm leading-relaxed max-w-xs">
               Empowering Business. Enabling Growth. Your trusted global partner in IT staffing, software solutions, and healthcare RCM.
