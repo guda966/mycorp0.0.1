@@ -49,7 +49,7 @@ export default function Services() {
               Enterprise Services Built for <span className="text-cyan-400">Real Results</span>
             </h1>
             <p className="text-lg text-slate-300 max-w-2xl mx-auto">
-              Five practice areas. One trusted partner. Talent, technology, and healthcare solutions built around your goals.
+              Six service lines. One trusted partner. Talent, technology, and healthcare solutions built around your goals.
             </p>
           </motion.div>
         </div>
@@ -93,7 +93,7 @@ export default function Services() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.45, delay: i * 0.08 }}
-                  className={i === 4 ? "md:col-span-2 lg:col-span-1" : ""}
+                  className=""
                 >
                   <Link href={`/services/${service.slug}`} className="group block h-full">
                     <div className="h-full bg-white rounded-2xl border border-border overflow-hidden hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300">
