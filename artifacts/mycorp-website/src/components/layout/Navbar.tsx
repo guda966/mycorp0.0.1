@@ -1,10 +1,11 @@
 import { Link, useLocation } from "wouter";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Building2 } from "lucide-react";
+import { Menu, X, Building2, ChevronDown, ChevronRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
+import { servicesData } from "@/data/servicesData";
 
 function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -14,21 +15,33 @@ export function Navbar() {
   const [location] = useLocation();
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [servicesOpen, setServicesOpen] = useState(false);
+  const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
-    };
+    const handleScroll = () => setIsScrolled(window.scrollY > 10);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const navLinks = [
-    { name: "Home", path: "/" },
-    { name: "About Us", path: "/about" },
-    { name: "Services", path: "/services" },
-    { name: "Careers", path: "/careers" },
-  ];
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
+        setServicesOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  // Close mobile menu on route change
+  useEffect(() => {
+    setMobileMenuOpen(false);
+    setServicesOpen(false);
+  }, [location]);
+
+  const isServicesActive = location === "/services" || location.startsWith("/services/");
 
   return (
     <header
@@ -51,24 +64,107 @@ export function Navbar() {
 
         {/* Desktop Nav */}
         <nav className="hidden md:flex items-center gap-8">
-          {navLinks.map((link) => (
-            <Link
-              key={link.name}
-              href={link.path}
+          {/* Home */}
+          <Link
+            href="/"
+            className={cn(
+              "text-sm font-medium transition-colors hover:text-primary relative py-1",
+              location === "/" ? "text-primary" : "text-muted-foreground"
+            )}
+          >
+            Home
+            {location === "/" && (
+              <motion.div layoutId="navbar-indicator" className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary rounded-full" />
+            )}
+          </Link>
+
+          {/* About */}
+          <Link
+            href="/about"
+            className={cn(
+              "text-sm font-medium transition-colors hover:text-primary relative py-1",
+              location === "/about" ? "text-primary" : "text-muted-foreground"
+            )}
+          >
+            About Us
+            {location === "/about" && (
+              <motion.div layoutId="navbar-indicator" className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary rounded-full" />
+            )}
+          </Link>
+
+          {/* Services Dropdown */}
+          <div ref={dropdownRef} className="relative">
+            <button
+              onClick={() => setServicesOpen(!servicesOpen)}
+              onMouseEnter={() => setServicesOpen(true)}
               className={cn(
-                "text-sm font-medium transition-colors hover:text-primary relative py-1",
-                location === link.path ? "text-primary" : "text-muted-foreground"
+                "text-sm font-medium transition-colors hover:text-primary relative py-1 flex items-center gap-1",
+                isServicesActive ? "text-primary" : "text-muted-foreground"
               )}
             >
-              {link.name}
-              {location === link.path && (
-                <motion.div
-                  layoutId="navbar-indicator"
-                  className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary rounded-full"
-                />
+              Services
+              <ChevronDown className={cn("w-3.5 h-3.5 transition-transform duration-200", servicesOpen && "rotate-180")} />
+              {isServicesActive && (
+                <motion.div layoutId="navbar-indicator" className="absolute bottom-0 left-0 right-8 h-0.5 bg-primary rounded-full" />
               )}
-            </Link>
-          ))}
+            </button>
+
+            <AnimatePresence>
+              {servicesOpen && (
+                <motion.div
+                  initial={{ opacity: 0, y: 8, scale: 0.97 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={{ opacity: 0, y: 8, scale: 0.97 }}
+                  transition={{ duration: 0.18 }}
+                  onMouseLeave={() => setServicesOpen(false)}
+                  className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-72 bg-white rounded-2xl shadow-2xl border border-border overflow-hidden z-50"
+                >
+                  <div className="p-2">
+                    <Link
+                      href="/services"
+                      onClick={() => setServicesOpen(false)}
+                      className="flex items-center justify-between px-4 py-3 rounded-xl hover:bg-slate-50 text-sm font-semibold text-foreground group"
+                    >
+                      All Services
+                      <ChevronRight className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
+                    </Link>
+                    <div className="border-t border-border mx-2 my-1" />
+                    {servicesData.map((service) => {
+                      const Icon = service.icon;
+                      return (
+                        <Link
+                          key={service.slug}
+                          href={`/services/${service.slug}`}
+                          onClick={() => setServicesOpen(false)}
+                          className="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-50 group transition-colors"
+                        >
+                          <div className={`w-8 h-8 rounded-lg bg-gradient-to-br ${service.gradient} flex items-center justify-center shrink-0`}>
+                            <Icon className="w-4 h-4 text-white" />
+                          </div>
+                          <span className="text-sm font-medium text-foreground group-hover:text-primary transition-colors">{service.title}</span>
+                        </Link>
+                      );
+                    })}
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+
+          {/* Careers */}
+          <Link
+            href="/careers"
+            className={cn(
+              "text-sm font-medium transition-colors hover:text-primary relative py-1",
+              location === "/careers" ? "text-primary" : "text-muted-foreground"
+            )}
+          >
+            Careers
+            {location === "/careers" && (
+              <motion.div layoutId="navbar-indicator" className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary rounded-full" />
+            )}
+          </Link>
+
           <Link href="/contact">
             <Button className="rounded-full px-6 shadow-md hover:shadow-lg transition-all hover:-translate-y-0.5">
               Get Started
@@ -94,20 +190,80 @@ export function Navbar() {
             exit={{ opacity: 0, height: 0 }}
             className="md:hidden bg-white border-b border-border overflow-hidden"
           >
-            <div className="flex flex-col px-4 py-6 gap-4">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.name}
-                  href={link.path}
-                  onClick={() => setMobileMenuOpen(false)}
+            <div className="flex flex-col px-4 py-6 gap-1">
+              <Link
+                href="/"
+                onClick={() => setMobileMenuOpen(false)}
+                className={cn("text-base font-medium px-3 py-2.5 rounded-xl", location === "/" ? "bg-primary/5 text-primary" : "text-foreground")}
+              >
+                Home
+              </Link>
+              <Link
+                href="/about"
+                onClick={() => setMobileMenuOpen(false)}
+                className={cn("text-base font-medium px-3 py-2.5 rounded-xl", location === "/about" ? "bg-primary/5 text-primary" : "text-foreground")}
+              >
+                About Us
+              </Link>
+
+              {/* Mobile Services Accordion */}
+              <div>
+                <button
+                  onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
                   className={cn(
-                    "text-lg font-medium p-2 rounded-lg",
-                    location === link.path ? "bg-primary/5 text-primary" : "text-foreground"
+                    "w-full flex items-center justify-between text-base font-medium px-3 py-2.5 rounded-xl",
+                    isServicesActive ? "bg-primary/5 text-primary" : "text-foreground"
                   )}
                 >
-                  {link.name}
-                </Link>
-              ))}
+                  Services
+                  <ChevronDown className={cn("w-4 h-4 transition-transform", mobileServicesOpen && "rotate-180")} />
+                </button>
+                <AnimatePresence>
+                  {mobileServicesOpen && (
+                    <motion.div
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: "auto" }}
+                      exit={{ opacity: 0, height: 0 }}
+                      className="overflow-hidden"
+                    >
+                      <div className="pl-4 pt-1 flex flex-col gap-1">
+                        <Link
+                          href="/services"
+                          onClick={() => setMobileMenuOpen(false)}
+                          className="text-sm font-semibold px-3 py-2 rounded-lg text-primary hover:bg-primary/5"
+                        >
+                          All Services →
+                        </Link>
+                        {servicesData.map((service) => {
+                          const Icon = service.icon;
+                          return (
+                            <Link
+                              key={service.slug}
+                              href={`/services/${service.slug}`}
+                              onClick={() => setMobileMenuOpen(false)}
+                              className="flex items-center gap-3 px-3 py-2 rounded-lg text-sm text-foreground hover:bg-slate-50"
+                            >
+                              <div className={`w-6 h-6 rounded-md bg-gradient-to-br ${service.gradient} flex items-center justify-center shrink-0`}>
+                                <Icon className="w-3.5 h-3.5 text-white" />
+                              </div>
+                              {service.title}
+                            </Link>
+                          );
+                        })}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+
+              <Link
+                href="/careers"
+                onClick={() => setMobileMenuOpen(false)}
+                className={cn("text-base font-medium px-3 py-2.5 rounded-xl", location === "/careers" ? "bg-primary/5 text-primary" : "text-foreground")}
+              >
+                Careers
+              </Link>
+
               <Link href="/contact" onClick={() => setMobileMenuOpen(false)}>
                 <Button className="w-full mt-4 rounded-xl">Get Started</Button>
               </Link>

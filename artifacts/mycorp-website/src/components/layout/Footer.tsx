@@ -56,18 +56,18 @@ export function Footer() {
             <h4 className="font-display font-semibold text-lg mb-6">Our Services</h4>
             <ul className="space-y-3">
               {[
-                'IT Staffing & Recruitment',
-                'Software Development',
-                'Managed Services',
-                'Talent Acquisition',
-                'Medical Billing'
+                { label: 'IT Staffing & Recruitment', slug: 'staffing' },
+                { label: 'IT Solutions & Software Dev', slug: 'solutions' },
+                { label: 'IT Support & Managed Services', slug: 'managed-services' },
+                { label: 'IT Hiring & RPO', slug: 'rpo' },
+                { label: 'Medical Billing & RCM', slug: 'medical-billing' },
               ].map((item) => (
-                <li key={item}>
-                  <Link 
-                    href="/services"
+                <li key={item.slug}>
+                  <Link
+                    href={`/services/${item.slug}`}
                     className="text-slate-400 hover:text-white hover:translate-x-1 inline-block transition-all text-sm"
                   >
-                    {item}
+                    {item.label}
                   </Link>
                 </li>
               ))}
