@@ -214,12 +214,12 @@ export default function Home() {
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
           >
             {[
-              { icon: Users, title: "IT Staffing & Recruitment", desc: "Top-tier talent acquisition for contract and full-time technical roles." },
-              { icon: Code, title: "Software Development", desc: "Custom enterprise applications, API integrations, and cloud solutions." },
-              { icon: Server, title: "Managed Services", desc: "24/7 IT support, network monitoring, and infrastructure management." },
-              { icon: Target, title: "IT Hiring Solutions", desc: "RPO and executive search to build your dream engineering team." },
-              { icon: Stethoscope, title: "Medical Billing", desc: "End-to-end RCM, coding, and claims management for healthcare." },
-              { icon: Globe2, title: "Global Consulting", desc: "Strategic IT roadmaps and digital transformation consulting." },
+              { icon: Users, title: "IT Staffing & Recruitment", desc: "Top-tier talent acquisition for contract and full-time technical roles.", slug: "it-staffing" },
+              { icon: Code, title: "Software Development", desc: "Custom enterprise applications, API integrations, and cloud solutions.", slug: "software-development" },
+              { icon: Server, title: "Managed Services", desc: "24/7 IT support, network monitoring, and infrastructure management.", slug: "managed-services" },
+              { icon: Target, title: "IT Hiring Solutions", desc: "RPO and executive search to build your dream engineering team.", slug: "it-hiring" },
+              { icon: Stethoscope, title: "Medical Billing", desc: "End-to-end RCM, coding, and claims management for healthcare.", slug: "medical-billing" },
+              { icon: Globe2, title: "Global Consulting", desc: "Strategic IT roadmaps and digital transformation consulting.", slug: "global-consulting" },
             ].map((service, i) => (
               <motion.div key={i} variants={fadeIn}>
                 <Card className="h-full border-border/50 shadow-sm hover:shadow-xl hover:border-primary/20 transition-all duration-300 group bg-white">
@@ -229,7 +229,7 @@ export default function Home() {
                     </div>
                     <h3 className="text-xl font-bold mb-3">{service.title}</h3>
                     <p className="text-muted-foreground mb-6 line-clamp-2">{service.desc}</p>
-                    <Link href="/services" className="inline-flex items-center text-primary font-semibold hover:underline">
+                    <Link href={`/services/${service.slug}`} className="inline-flex items-center text-primary font-semibold hover:underline">
                       Learn more <ArrowRight className="w-4 h-4 ml-1" />
                     </Link>
                   </CardContent>
