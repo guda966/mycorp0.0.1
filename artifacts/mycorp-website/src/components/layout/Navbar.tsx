@@ -1,7 +1,7 @@
 import { Link, useLocation } from "wouter";
 import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
-import { Menu, X, ChevronDown, ChevronRight } from "lucide-react";
+import { Menu, X, Building2, ChevronDown, ChevronRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
@@ -53,14 +53,12 @@ export function Navbar() {
       )}
     >
       <div className="container mx-auto px-4 md:px-6 flex items-center justify-between">
-        <Link href="/" className="flex flex-col items-start group">
-          <img
-            src={`${import.meta.env.BASE_URL}logo.png`}
-            alt="MyCorp Solutions"
-            className="h-16 md:h-[72px] w-auto object-contain mix-blend-multiply group-hover:opacity-85 transition-opacity"
-          />
-          <span className="text-[9px] text-primary/70 font-semibold tracking-[0.2em] uppercase hidden sm:block -mt-2 pl-1">
-            Empowering Talent &amp; Technology
+        <Link href="/" className="flex items-center gap-2 group">
+          <div className="bg-primary text-white p-1.5 rounded-lg group-hover:scale-105 transition-transform">
+            <Building2 className="w-6 h-6" />
+          </div>
+          <span className="font-display font-bold text-xl md:text-2xl tracking-tight text-foreground">
+            MyCorp<span className="text-primary">.</span>
           </span>
         </Link>
 
