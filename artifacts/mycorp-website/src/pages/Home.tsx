@@ -9,13 +9,13 @@ import {
 } from "lucide-react";
 import { useState, useEffect } from "react";
 
-const partners = [
-  { name: "Microsoft", color: "#00a4ef", bg: "#f0f7ff", abbr: "MS" },
-  { name: "Amazon AWS", color: "#FF9900", bg: "#fffbf2", abbr: "AWS" },
-  { name: "Google Cloud", color: "#4285F4", bg: "#f0f4ff", abbr: "GCP" },
-  { name: "Salesforce", color: "#00A1E0", bg: "#f0faff", abbr: "SF" },
-  { name: "ServiceNow", color: "#62D84E", bg: "#f2fff0", abbr: "SN" },
-  { name: "Oracle", color: "#C74634", bg: "#fff2f0", abbr: "ORC" },
+const clientIndustries = [
+  { name: "Healthcare", icon: "🏥", color: "text-rose-600", bg: "bg-rose-50", border: "border-rose-100" },
+  { name: "Finance & Banking", icon: "🏦", color: "text-blue-600", bg: "bg-blue-50", border: "border-blue-100" },
+  { name: "Retail & E-Commerce", icon: "🛍️", color: "text-amber-600", bg: "bg-amber-50", border: "border-amber-100" },
+  { name: "Manufacturing", icon: "🏭", color: "text-slate-600", bg: "bg-slate-50", border: "border-slate-200" },
+  { name: "Government", icon: "🏛️", color: "text-indigo-600", bg: "bg-indigo-50", border: "border-indigo-100" },
+  { name: "Education", icon: "🎓", color: "text-green-600", bg: "bg-green-50", border: "border-green-100" },
 ];
 
 const certifications = [
@@ -167,7 +167,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* TECHNOLOGY PARTNERS */}
+      {/* CLIENTS WE SERVE */}
       <section className="py-14 bg-white border-b border-border">
         <div className="container mx-auto px-4 md:px-6">
           <motion.p
@@ -176,10 +176,10 @@ export default function Home() {
             viewport={{ once: true }}
             className="text-center text-xs font-semibold tracking-widest text-muted-foreground uppercase mb-8"
           >
-            Official Technology Partners
+            Clients We Serve
           </motion.p>
           <div className="grid grid-cols-3 md:grid-cols-6 gap-4">
-            {partners.map((p, i) => (
+            {clientIndustries.map((ind, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 10 }}
@@ -187,12 +187,9 @@ export default function Home() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: i * 0.07 }}
               >
-                <div
-                  style={{ background: p.bg }}
-                  className="flex flex-col items-center justify-center text-center p-4 rounded-2xl border border-slate-100 hover:shadow-md hover:-translate-y-1 transition-all duration-300 h-20"
-                >
-                  <div className="text-lg font-black tracking-tight mb-0.5" style={{ color: p.color }}>{p.abbr}</div>
-                  <p className="text-[11px] text-muted-foreground font-medium leading-tight">{p.name}</p>
+                <div className={`flex flex-col items-center justify-center text-center p-4 rounded-2xl border ${ind.border} ${ind.bg} hover:shadow-md hover:-translate-y-1 transition-all duration-300 h-20 group`}>
+                  <span className="text-2xl mb-1 group-hover:scale-110 transition-transform">{ind.icon}</span>
+                  <p className={`text-[11px] font-semibold leading-tight ${ind.color}`}>{ind.name}</p>
                 </div>
               </motion.div>
             ))}

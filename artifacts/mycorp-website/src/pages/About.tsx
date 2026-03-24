@@ -43,27 +43,9 @@ const leaders = [
   { name: "Michael Chen", role: "Chief Technology Officer", bio: "Ex-AWS architect. Leads our software engineering practice and AI transformation initiatives.", img: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=400&h=400", linkedin: "#", expertise: ["Cloud Architecture", "AI/ML", "DevOps"] },
 ];
 
-const certifications = [
-  { name: "ISO 27001", desc: "Information Security" },
-  { name: "HIPAA", desc: "Healthcare Compliance" },
-  { name: "SOC 2 Type II", desc: "Security & Availability" },
-  { name: "AAPC Certified", desc: "Medical Coding" },
-  { name: "AWS Partner", desc: "Cloud Solutions" },
-  { name: "Microsoft Gold", desc: "Technology Partner" },
-];
-
 const offices = [
   { city: "New Jersey", country: "USA 🇺🇸", address: "100 Enterprise Way, Suite 400, NJ 08001", type: "US Headquarters", color: "from-blue-600 to-blue-800", stats: ["250+ Professionals", "Client Management", "Sales & Strategy"] },
   { city: "Hyderabad", country: "India 🇮🇳", address: "Tech Park, Hitec City, Hyderabad, TS 500081", type: "India Delivery Center", color: "from-orange-500 to-red-600", stats: ["950+ Professionals", "24/7 Support", "Software & RCM"] },
-];
-
-const partners = [
-  { name: "Microsoft", color: "#00a4ef", bg: "#f3f9ff", abbr: "MS" },
-  { name: "Amazon AWS", color: "#FF9900", bg: "#fffbf0", abbr: "AWS" },
-  { name: "Google Cloud", color: "#4285F4", bg: "#f0f4ff", abbr: "GCP" },
-  { name: "Salesforce", color: "#00A1E0", bg: "#f0faff", abbr: "SF" },
-  { name: "ServiceNow", color: "#62D84E", bg: "#f2fff0", abbr: "SN" },
-  { name: "Oracle", color: "#C74634", bg: "#fff2f0", abbr: "ORC" },
 ];
 
 const employeeTestimonials = [
@@ -554,49 +536,6 @@ export default function About() {
                     </div>
                   </CardContent>
                 </Card>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── PARTNER LOGOS ── */}
-      <section className="py-20 bg-slate-50 border-t border-border">
-        <div className="container mx-auto px-4 md:px-6">
-          <motion.div {...fadeUp} className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">Technology Partners</h2>
-            <p className="text-muted-foreground max-w-xl mx-auto">We hold official partner status with the world's leading technology platforms.</p>
-          </motion.div>
-          <div className="grid grid-cols-3 md:grid-cols-6 gap-4">
-            {partners.map((p, i) => (
-              <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4, delay: i * 0.08 }}>
-                <div style={{ background: p.bg }} className="flex flex-col items-center justify-center text-center p-5 rounded-2xl border border-slate-200 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group h-24">
-                  <div className="text-xl font-black tracking-tight mb-1" style={{ color: p.color }}>{p.abbr}</div>
-                  <p className="text-xs text-muted-foreground font-medium">{p.name}</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── CERTIFICATIONS ── */}
-      <section className="py-20 bg-white border-t border-border">
-        <div className="container mx-auto px-4 md:px-6">
-          <motion.div {...fadeUp} className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">Certifications & Compliance</h2>
-            <p className="text-muted-foreground max-w-xl mx-auto">Industry-recognized standards that validate our commitment to quality, security, and compliance.</p>
-          </motion.div>
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
-            {certifications.map((cert, i) => (
-              <motion.div key={i} initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.4, delay: i * 0.08 }}>
-                <div className="flex flex-col items-center text-center p-6 rounded-2xl border border-border hover:border-primary/30 hover:shadow-lg transition-all duration-300 group bg-white">
-                  <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-3 group-hover:bg-primary transition-colors">
-                    <Award className="w-6 h-6 text-primary group-hover:text-white transition-colors" />
-                  </div>
-                  <p className="font-bold text-sm text-foreground">{cert.name}</p>
-                  <p className="text-muted-foreground text-xs mt-1">{cert.desc}</p>
-                </div>
               </motion.div>
             ))}
           </div>
