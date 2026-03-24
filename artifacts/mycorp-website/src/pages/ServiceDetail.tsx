@@ -5,7 +5,6 @@ import { Button } from "@/components/ui/button";
 import { servicesData } from "@/data/servicesData";
 import { ArrowRight, ArrowLeft, CheckCircle2, ChevronRight, ChevronDown, Quote, ChevronLeft, Building2 } from "lucide-react";
 import NotFound from "@/pages/not-found";
-import { useLanguage } from "@/contexts/LanguageContext";
 
 const fadeUp = {
   initial: { opacity: 0, y: 24 },
@@ -143,7 +142,6 @@ function TestimonialCarousel({ testimonials, gradient }: { testimonials: typeof 
 
 export default function ServiceDetail() {
   const params = useParams<{ slug: string }>();
-  const { t } = useLanguage();
   const service = servicesData.find((s) => s.slug === params.slug);
 
   if (!service) return <NotFound />;
@@ -201,7 +199,7 @@ export default function ServiceDetail() {
         <div className="container mx-auto px-4 md:px-6">
           <div className="grid lg:grid-cols-2 gap-14 items-center">
             <motion.div {...fadeUp}>
-              <h2 className="text-3xl md:text-4xl font-display font-bold mb-6">{t("detail_about")}</h2>
+              <h2 className="text-3xl md:text-4xl font-display font-bold mb-6">About This Service</h2>
               <div className="space-y-4 mb-8">
                 {service.benefits.map((benefit, i) => (
                   <div key={i} className="flex gap-3 items-start p-4 rounded-xl border border-border bg-slate-50 hover:border-primary/30 hover:bg-white transition-all duration-200">
@@ -240,7 +238,7 @@ export default function ServiceDetail() {
       <section className="py-20 bg-slate-50 border-y border-border">
         <div className="container mx-auto px-4 md:px-6">
           <motion.div {...fadeUp} className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-display font-bold mb-3">{t("detail_how_we_work")}</h2>
+            <h2 className="text-3xl md:text-4xl font-display font-bold mb-3">How We Work</h2>
           </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 relative">
             <div className="hidden lg:block absolute top-10 left-[12.5%] right-[12.5%] h-0.5 bg-gradient-to-r from-border via-primary/30 to-border z-0" />
@@ -268,7 +266,7 @@ export default function ServiceDetail() {
       <section className="py-14 bg-[#0B1120] overflow-hidden">
         <div className="container mx-auto px-4 md:px-6 mb-8">
           <motion.div {...fadeUp} className="text-center">
-            <h2 className="text-2xl md:text-3xl font-display font-bold text-white mb-1">{t("detail_industries")}</h2>
+            <h2 className="text-2xl md:text-3xl font-display font-bold text-white mb-1">Industries We Serve</h2>
             <p className="text-slate-400 text-sm">Sectors we've served across the US and India</p>
           </motion.div>
         </div>
@@ -298,7 +296,7 @@ export default function ServiceDetail() {
       <section className="py-20 bg-white border-b border-border">
         <div className="container mx-auto px-4 md:px-6">
           <motion.div {...fadeUp} className="mb-8">
-            <h2 className="text-2xl md:text-3xl font-display font-bold mb-1">{t("detail_specialties")}</h2>
+            <h2 className="text-2xl md:text-3xl font-display font-bold mb-1">Specialties & Expertise</h2>
             <p className="text-muted-foreground text-sm">What we deliver within this service</p>
           </motion.div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
@@ -366,8 +364,8 @@ export default function ServiceDetail() {
       <section className="py-16 bg-white border-b border-border">
         <div className="container mx-auto px-4 md:px-6">
           <motion.div {...fadeUp} className="text-center mb-10">
-            <h2 className="text-2xl md:text-3xl font-display font-bold mb-2">{t("detail_related")}</h2>
-            <p className="text-muted-foreground text-sm">{t("detail_related_sub")}</p>
+            <h2 className="text-2xl md:text-3xl font-display font-bold mb-2">Explore Other Services</h2>
+            <p className="text-muted-foreground text-sm">See how MyCorp can help across more areas of your business.</p>
           </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5 max-w-5xl mx-auto">
             {relatedServices.map((rel, i) => {
@@ -401,9 +399,9 @@ export default function ServiceDetail() {
       <section className="py-16 bg-slate-50 border-b border-border">
         <div className="container mx-auto px-4 md:px-6 text-center">
           <motion.div {...fadeUp}>
-            <h2 className="text-2xl md:text-3xl font-display font-bold mb-3">{t("detail_cta_title")}</h2>
+            <h2 className="text-2xl md:text-3xl font-display font-bold mb-3">Ready to get started?</h2>
             <p className="text-muted-foreground mb-7 max-w-lg mx-auto">
-              {t("detail_cta_body")}
+              Talk to our team — we'll build a plan that fits your timeline and budget.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <Link href="/contact">
@@ -425,7 +423,7 @@ export default function ServiceDetail() {
       <section className="py-20 bg-white border-b border-border">
         <div className="container mx-auto px-4 md:px-6 max-w-3xl">
           <motion.div {...fadeUp} className="text-center mb-10">
-            <h2 className="text-3xl md:text-4xl font-display font-bold mb-3">{t("detail_faq")}</h2>
+            <h2 className="text-3xl md:text-4xl font-display font-bold mb-3">Frequently Asked Questions</h2>
           </motion.div>
           <motion.div {...fadeUp} className="space-y-3">
             {service.faqs.map((faq, i) => (
@@ -446,7 +444,7 @@ export default function ServiceDetail() {
                     <ArrowLeft className="w-4 h-4" />
                   </div>
                   <div className="hidden sm:block">
-                    <p className="text-xs text-muted-foreground mb-0.5">{t("detail_prev")}</p>
+                    <p className="text-xs text-muted-foreground mb-0.5">Previous</p>
                     <p className="font-semibold text-sm">{prevService.title}</p>
                   </div>
                 </Link>
@@ -459,7 +457,7 @@ export default function ServiceDetail() {
               {nextService ? (
                 <Link href={`/services/${nextService.slug}`} className="group flex items-center gap-3 text-right hover:text-primary transition-colors">
                   <div className="hidden sm:block">
-                    <p className="text-xs text-muted-foreground mb-0.5">{t("detail_next")}</p>
+                    <p className="text-xs text-muted-foreground mb-0.5">Next</p>
                     <p className="font-semibold text-sm">{nextService.title}</p>
                   </div>
                   <div className="w-10 h-10 rounded-full border border-border group-hover:border-primary group-hover:bg-primary/5 flex items-center justify-center transition-colors">

@@ -8,7 +8,6 @@ import {
   Quote, CheckCircle2, Star, TrendingUp, Award, MapPin
 } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
-import { useLanguage } from "@/contexts/LanguageContext";
 
 /* ─── Typing Animation ─────────────────────────────── */
 const TYPED_PHRASES = [
@@ -258,8 +257,6 @@ const googleReviews = [
 
 /* ─── MAIN COMPONENT ───────────────────────────────── */
 export default function Home() {
-  const { t } = useLanguage();
-
   return (
     <div className="w-full">
 
@@ -277,7 +274,7 @@ export default function Home() {
             <motion.div initial={{ opacity: 0, x: -16 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5 }}>
               <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 border border-white/20 text-white/80 text-xs font-semibold tracking-widest uppercase mb-8">
                 <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                {t("home_hero_badge")}
+                Your Trusted Partner in IT & Healthcare
               </span>
             </motion.div>
 
@@ -300,7 +297,7 @@ export default function Home() {
               transition={{ duration: 0.6, delay: 0.22 }}
               className="text-lg md:text-xl text-slate-300 mb-10 max-w-xl leading-relaxed"
             >
-              {t("home_hero_sub")}
+              We deliver innovative IT staffing, software solutions, and healthcare revenue cycle management to help global enterprises scale efficiently.
             </motion.p>
 
             {/* CTAs */}
@@ -312,12 +309,12 @@ export default function Home() {
             >
               <Link href="/contact">
                 <Button size="lg" className="rounded-full px-8 h-14 text-base shadow-xl shadow-primary/25 hover:shadow-primary/40 hover:-translate-y-0.5 transition-all">
-                  {t("cta_free_consultation")} <ArrowRight className="ml-2 w-4 h-4" />
+                  Get a Free Consultation <ArrowRight className="ml-2 w-4 h-4" />
                 </Button>
               </Link>
               <Link href="/services">
                 <Button size="lg" variant="outline" className="rounded-full px-8 h-14 text-base bg-white/5 text-white border-white/20 hover:bg-white/15 hover:text-white">
-                  {t("cta_explore_services")}
+                  Explore Services
                 </Button>
               </Link>
             </motion.div>
@@ -377,8 +374,8 @@ export default function Home() {
         <div className="container mx-auto px-4 md:px-6">
           <motion.div {...fadeUp} className="text-center max-w-3xl mx-auto mb-16">
             <span className="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold tracking-widest uppercase mb-4">What We Do</span>
-            <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-4">{t("home_services_title")}</h2>
-            <p className="text-muted-foreground">{t("home_services_sub")}</p>
+            <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-4">Comprehensive Solutions for Modern Business</h2>
+            <p className="text-muted-foreground">End-to-end services tailored to bridge the gap between talent and technology.</p>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">

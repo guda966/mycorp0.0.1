@@ -1,13 +1,12 @@
 import { Link, useLocation } from "wouter";
 import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Building2, ChevronDown, ChevronRight, Sun, Moon, Languages } from "lucide-react";
+import { Menu, X, Building2, ChevronDown, ChevronRight, Sun, Moon } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 import { servicesData } from "@/data/servicesData";
 import { useTheme } from "@/contexts/ThemeContext";
-import { useLanguage } from "@/contexts/LanguageContext";
 
 function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -21,7 +20,6 @@ export function Navbar() {
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const { theme, toggleTheme } = useTheme();
-  const { language, toggleLanguage, t } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 10);
@@ -74,7 +72,7 @@ export function Navbar() {
               location === "/" ? "text-primary" : "text-muted-foreground"
             )}
           >
-            {t("nav_home")}
+            Home
             {location === "/" && (
               <motion.div layoutId="navbar-indicator" className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary rounded-full" />
             )}
@@ -87,7 +85,7 @@ export function Navbar() {
               location === "/about" ? "text-primary" : "text-muted-foreground"
             )}
           >
-            {t("nav_about")}
+            About Us
             {location === "/about" && (
               <motion.div layoutId="navbar-indicator" className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary rounded-full" />
             )}
@@ -103,7 +101,7 @@ export function Navbar() {
                 isServicesActive ? "text-primary" : "text-muted-foreground"
               )}
             >
-              {t("nav_services")}
+              Services
               <ChevronDown className={cn("w-3.5 h-3.5 transition-transform duration-200", servicesOpen && "rotate-180")} />
               {isServicesActive && (
                 <motion.div layoutId="navbar-indicator" className="absolute bottom-0 left-0 right-8 h-0.5 bg-primary rounded-full" />
@@ -126,7 +124,7 @@ export function Navbar() {
                       onClick={() => setServicesOpen(false)}
                       className="flex items-center justify-between px-4 py-3 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-700 text-sm font-semibold text-foreground group"
                     >
-                      {t("nav_all_services")}
+                      All Services
                       <ChevronRight className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
                     </Link>
                     <div className="border-t border-border mx-2 my-1" />
@@ -159,15 +157,14 @@ export function Navbar() {
               location === "/careers" ? "text-primary" : "text-muted-foreground"
             )}
           >
-            {t("nav_careers")}
+            Careers
             {location === "/careers" && (
               <motion.div layoutId="navbar-indicator" className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary rounded-full" />
             )}
           </Link>
 
-          {/* ── Toggles ── */}
+          {/* Theme toggle only */}
           <div className="flex items-center gap-1.5 pl-1">
-            {/* Theme toggle */}
             <button
               onClick={toggleTheme}
               title={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
@@ -177,21 +174,11 @@ export function Navbar() {
                 ? <Sun className="w-4 h-4" />
                 : <Moon className="w-4 h-4" />}
             </button>
-
-            {/* Language toggle */}
-            <button
-              onClick={toggleLanguage}
-              title={language === "en" ? "Switch to Telugu" : "Switch to English"}
-              className="h-8 px-2.5 rounded-full flex items-center gap-1 text-xs font-semibold text-muted-foreground hover:text-foreground hover:bg-slate-100 dark:hover:bg-slate-800 border border-border transition-colors"
-            >
-              <Languages className="w-3.5 h-3.5" />
-              {language === "en" ? "తె" : "EN"}
-            </button>
           </div>
 
           <Link href="/contact">
             <Button className="rounded-full px-6 shadow-md hover:shadow-lg transition-all hover:-translate-y-0.5">
-              {t("nav_get_started")}
+              Get Started
             </Button>
           </Link>
         </nav>
@@ -203,12 +190,6 @@ export function Navbar() {
             className="w-8 h-8 rounded-full flex items-center justify-center text-muted-foreground hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
           >
             {theme === "dark" ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
-          </button>
-          <button
-            onClick={toggleLanguage}
-            className="h-7 px-2 rounded-full flex items-center text-xs font-semibold text-muted-foreground border border-border hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
-          >
-            {language === "en" ? "తె" : "EN"}
           </button>
           <button
             className="p-2 text-foreground"
@@ -234,14 +215,14 @@ export function Navbar() {
                 onClick={() => setMobileMenuOpen(false)}
                 className={cn("text-base font-medium px-3 py-2.5 rounded-xl", location === "/" ? "bg-primary/5 text-primary" : "text-foreground")}
               >
-                {t("nav_home")}
+                Home
               </Link>
               <Link
                 href="/about"
                 onClick={() => setMobileMenuOpen(false)}
                 className={cn("text-base font-medium px-3 py-2.5 rounded-xl", location === "/about" ? "bg-primary/5 text-primary" : "text-foreground")}
               >
-                {t("nav_about")}
+                About Us
               </Link>
 
               <div>
@@ -252,7 +233,7 @@ export function Navbar() {
                     isServicesActive ? "bg-primary/5 text-primary" : "text-foreground"
                   )}
                 >
-                  {t("nav_services")}
+                  Services
                   <ChevronDown className={cn("w-4 h-4 transition-transform", mobileServicesOpen && "rotate-180")} />
                 </button>
                 <AnimatePresence>
@@ -269,7 +250,7 @@ export function Navbar() {
                           onClick={() => setMobileMenuOpen(false)}
                           className="text-sm font-semibold px-3 py-2 rounded-lg text-primary hover:bg-primary/5"
                         >
-                          {t("nav_all_services")} →
+                          All Services →
                         </Link>
                         {servicesData.map((service) => {
                           const Icon = service.icon;
@@ -298,11 +279,11 @@ export function Navbar() {
                 onClick={() => setMobileMenuOpen(false)}
                 className={cn("text-base font-medium px-3 py-2.5 rounded-xl", location === "/careers" ? "bg-primary/5 text-primary" : "text-foreground")}
               >
-                {t("nav_careers")}
+                Careers
               </Link>
 
               <Link href="/contact" onClick={() => setMobileMenuOpen(false)}>
-                <Button className="w-full mt-4 rounded-xl">{t("nav_get_started")}</Button>
+                <Button className="w-full mt-4 rounded-xl">Get Started</Button>
               </Link>
             </div>
           </motion.div>

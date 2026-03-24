@@ -4,7 +4,6 @@ import { motion, useInView } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { servicesData } from "@/data/servicesData";
 import { ArrowRight, CheckCircle2, Quote, Clock, Shield, Globe, Users } from "lucide-react";
-import { useLanguage } from "@/contexts/LanguageContext";
 
 const fadeUp = {
   initial: { opacity: 0, y: 24 },
@@ -37,8 +36,6 @@ const modelBadge: Record<string, string> = {
 export default function Services() {
   const statsRef = useRef(null);
   const statsInView = useInView(statsRef, { once: true });
-  const { t } = useLanguage();
-
   return (
     <div className="w-full">
       {/* ── HERO ── */}
@@ -50,11 +47,11 @@ export default function Services() {
         <div className="container relative z-10 mx-auto px-4 md:px-6 text-center">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
             <span className="inline-block bg-white/10 border border-white/20 text-white text-xs font-semibold tracking-widest uppercase px-4 py-2 rounded-full mb-6">
-              {t("services_badge")}
+              What We Do
             </span>
             <h1 className="text-4xl md:text-6xl font-display font-bold mb-5 max-w-3xl mx-auto leading-tight">
-              {t("services_hero_line1")}<br />
-              <span className="text-cyan-400">{t("services_hero_line2")}</span>
+              Four Service Lines.<br />
+              <span className="text-cyan-400">One Trusted Partner.</span>
             </h1>
             {/* Pill tags instead of paragraph */}
             <div className="flex flex-wrap gap-3 justify-center mt-6">

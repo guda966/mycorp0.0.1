@@ -1,10 +1,8 @@
 import { Link } from "wouter";
 import { Building2, Mail, MapPin, Phone, Linkedin, Twitter, Facebook } from "lucide-react";
-import { useLanguage } from "@/contexts/LanguageContext";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
-  const { t } = useLanguage();
 
   return (
     <footer className="bg-[#0B1120] text-white pt-20 pb-10 border-t border-white/10">
@@ -21,7 +19,7 @@ export function Footer() {
               </span>
             </Link>
             <p className="text-slate-400 text-sm leading-relaxed max-w-xs">
-              {t("footer_tagline")}
+              Empowering Business. Enabling Growth. Your trusted partner in IT staffing, software delivery, and healthcare RCM — based in Hyderabad, India.
             </p>
             <div className="flex items-center gap-4">
               <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary hover:text-white transition-colors">
@@ -41,11 +39,11 @@ export function Footer() {
             <h4 className="font-display font-semibold text-lg mb-6">Quick Links</h4>
             <ul className="space-y-3">
               {[
-                { label: t("nav_home"), href: "/" },
-                { label: t("nav_about"), href: "/about" },
-                { label: t("nav_services"), href: "/services" },
-                { label: t("nav_careers"), href: "/careers" },
-                { label: t("footer_contact"), href: "/contact" },
+                { label: "Home", href: "/" },
+                { label: "About Us", href: "/about" },
+                { label: "Services", href: "/services" },
+                { label: "Careers", href: "/careers" },
+                { label: "Contact", href: "/contact" },
               ].map((item) => (
                 <li key={item.href}>
                   <Link
@@ -61,13 +59,13 @@ export function Footer() {
 
           {/* Services */}
           <div>
-            <h4 className="font-display font-semibold text-lg mb-6">{t("footer_services")}</h4>
+            <h4 className="font-display font-semibold text-lg mb-6">Our Services</h4>
             <ul className="space-y-3">
               {[
-                { label: 'Staffing & Outsourcing', slug: 'staffing-outsourcing' },
-                { label: 'IT Hiring Support', slug: 'it-hiring' },
-                { label: 'IT Projects', slug: 'it-projects' },
-                { label: 'Medical Billing & Coding', slug: 'medical-billing' },
+                { label: "Staffing & Outsourcing", slug: "staffing-outsourcing" },
+                { label: "IT Hiring Support", slug: "it-hiring" },
+                { label: "IT Projects", slug: "it-projects" },
+                { label: "Medical Billing & Coding", slug: "medical-billing" },
               ].map((item) => (
                 <li key={item.slug}>
                   <Link
@@ -83,19 +81,15 @@ export function Footer() {
 
           {/* Contact */}
           <div>
-            <h4 className="font-display font-semibold text-lg mb-6">{t("footer_contact")}</h4>
+            <h4 className="font-display font-semibold text-lg mb-6">Contact</h4>
             <ul className="space-y-4">
               <li className="flex items-start gap-3 text-sm text-slate-400">
                 <MapPin className="w-5 h-5 text-primary shrink-0 mt-0.5" />
-                <span>100 Enterprise Way, Suite 400<br/>New Jersey, NJ 08001, USA</span>
-              </li>
-              <li className="flex items-start gap-3 text-sm text-slate-400">
-                <MapPin className="w-5 h-5 text-primary shrink-0 mt-0.5" />
-                <span>Tech Park, Hitec City<br/>Hyderabad, TS 500081, India</span>
+                <span>Tech Park, HITEC City<br />Hyderabad, Telangana 500 081, India</span>
               </li>
               <li className="flex items-center gap-3 text-sm text-slate-400">
                 <Phone className="w-5 h-5 text-primary shrink-0" />
-                <span>+1 (800) 555-0199</span>
+                <span>+91 (40) 6800-0199</span>
               </li>
               <li className="flex items-center gap-3 text-sm text-slate-400">
                 <Mail className="w-5 h-5 text-primary shrink-0" />
@@ -107,7 +101,7 @@ export function Footer() {
 
         <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-slate-500 text-sm">
-            © {currentYear} MyCorp Solutions. {t("footer_rights")}
+            © {currentYear} MyCorp Solutions. All rights reserved.
           </p>
           <div className="flex gap-6 text-sm text-slate-500">
             <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
