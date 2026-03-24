@@ -275,64 +275,121 @@ export default function About() {
         </div>
       </section>
 
-      {/* ── AUTO-PLAY MILESTONE TIMELINE ── */}
-      <section className="py-24 bg-white overflow-hidden">
+      {/* ── MILESTONE TIMELINE ── */}
+      <section className="py-24 bg-[#0B1120] overflow-hidden">
         <div className="container mx-auto px-4 md:px-6">
           <motion.div {...fadeUp} className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">Our Journey</h2>
-            <p className="text-muted-foreground max-w-xl mx-auto">15 years of milestones that shaped who we are today.</p>
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/20 text-accent text-xs font-semibold mb-4">
+              <Calendar className="w-3 h-3" /> 2010 — 2024
+            </div>
+            <h2 className="text-3xl md:text-4xl font-display font-bold text-white mb-4">Our Journey</h2>
+            <p className="text-slate-400 max-w-xl mx-auto">15 years of milestones that shaped who we are today.</p>
           </motion.div>
 
-          <div className="flex flex-wrap justify-center gap-2 mb-12">
-            {milestones.map((m, i) => (
-              <button key={i} onClick={() => { setActiveTimeline(i); setPaused(true); }}
-                className={`px-4 py-2 rounded-full text-sm font-semibold transition-all duration-200 ${
-                  activeTimeline === i ? "bg-primary text-white shadow-lg scale-105" : "bg-slate-50 text-muted-foreground border border-border hover:border-primary hover:text-primary"
-                }`}>
-                {m.year}
-              </button>
-            ))}
-          </div>
+          {/* Horizontal Timeline Track */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+            className="relative mb-12 px-4"
+          >
+            {/* Track line background */}
+            <div className="absolute top-5 left-0 right-0 h-[2px] bg-white/10 mx-8" />
+            {/* Animated progress fill */}
+            <div
+              className="absolute top-5 left-0 h-[2px] bg-gradient-to-r from-primary to-accent transition-all duration-700 mx-8"
+              style={{ width: `${(activeTimeline / (milestones.length - 1)) * 100}%` }}
+            />
 
-          <motion.div key={activeTimeline} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }} className="max-w-3xl mx-auto">
-            <Card className="border-0 shadow-2xl overflow-hidden">
-              <div className="bg-primary p-8 text-white">
-                <div className="flex items-center gap-4 mb-4">
-                  <div className="w-14 h-14 bg-white/20 rounded-2xl flex items-center justify-center">
-                    {(() => { const Icon = milestones[activeTimeline].icon; return <Icon className="w-7 h-7 text-white" />; })()}
-                  </div>
-                  <div>
-                    <div className="text-5xl font-bold font-display">{milestones[activeTimeline].year}</div>
-                    <div className="text-blue-200 text-sm flex items-center gap-1 mt-1">
-                      <Calendar className="w-4 h-4" /> Company Milestone
+            {/* Milestone nodes */}
+            <div className="relative flex justify-between items-start">
+              {milestones.map((m, i) => {
+                const Icon = m.icon;
+                const isActive = i === activeTimeline;
+                const isPast = i < activeTimeline;
+                return (
+                  <button
+                    key={i}
+                    onClick={() => { setActiveTimeline(i); setPaused(true); }}
+                    className="flex flex-col items-center gap-3 group focus:outline-none"
+                  >
+                    {/* Node dot */}
+                    <div className={`relative w-10 h-10 rounded-full border-2 flex items-center justify-center transition-all duration-300 z-10
+                      ${isActive
+                        ? "bg-primary border-primary scale-125 shadow-[0_0_20px_rgba(59,130,246,0.6)]"
+                        : isPast
+                          ? "bg-primary/40 border-primary/60"
+                          : "bg-white/5 border-white/20 group-hover:border-primary/60 group-hover:bg-primary/20"
+                      }`}>
+                      <Icon className={`w-4 h-4 transition-colors ${isActive ? "text-white" : isPast ? "text-primary/80" : "text-white/40 group-hover:text-white/70"}`} />
                     </div>
-                  </div>
+                    {/* Year label */}
+                    <span className={`text-xs font-bold transition-colors ${isActive ? "text-white" : isPast ? "text-slate-400" : "text-slate-600 group-hover:text-slate-400"}`}>
+                      {m.year}
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
+          </motion.div>
+
+          {/* Active milestone detail card */}
+          <motion.div
+            key={activeTimeline}
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4 }}
+            className="max-w-3xl mx-auto"
+          >
+            <div className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm overflow-hidden">
+              {/* Card header */}
+              <div className="flex items-start gap-5 p-8 border-b border-white/10">
+                <div className="w-14 h-14 rounded-2xl bg-primary/20 border border-primary/30 flex items-center justify-center shrink-0">
+                  {(() => { const Icon = milestones[activeTimeline].icon; return <Icon className="w-7 h-7 text-primary" />; })()}
                 </div>
-                <h3 className="text-2xl font-bold">{milestones[activeTimeline].title}</h3>
+                <div>
+                  <div className="flex items-center gap-3 mb-1">
+                    <span className="text-4xl font-display font-black text-white">{milestones[activeTimeline].year}</span>
+                    <span className="px-2 py-0.5 rounded-full bg-accent/20 text-accent text-xs font-semibold">Milestone {activeTimeline + 1}/{milestones.length}</span>
+                  </div>
+                  <h3 className="text-xl font-bold text-white">{milestones[activeTimeline].title}</h3>
+                </div>
               </div>
-              <CardContent className="p-8">
-                <p className="text-lg text-muted-foreground leading-relaxed">{milestones[activeTimeline].desc}</p>
-                <div className="flex gap-4 mt-8">
-                  <button onClick={() => { setActiveTimeline(Math.max(0, activeTimeline - 1)); setPaused(true); }} disabled={activeTimeline === 0}
-                    className="flex-1 py-2 rounded-lg border border-border text-sm font-medium disabled:opacity-30 hover:bg-slate-50 transition-colors">
+              {/* Card body */}
+              <div className="p-8">
+                <p className="text-slate-300 text-lg leading-relaxed">{milestones[activeTimeline].desc}</p>
+
+                {/* Nav controls */}
+                <div className="flex items-center justify-between mt-8 pt-6 border-t border-white/10">
+                  <button
+                    onClick={() => { setActiveTimeline(Math.max(0, activeTimeline - 1)); setPaused(true); }}
+                    disabled={activeTimeline === 0}
+                    className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium text-slate-400 hover:text-white disabled:opacity-20 transition-colors"
+                  >
                     ← Previous
                   </button>
-                  <button onClick={() => { setPaused(!paused); }}
-                    className={`px-6 py-2 rounded-lg text-sm font-medium transition-colors ${paused ? "bg-accent text-white hover:bg-accent/90" : "bg-slate-100 text-muted-foreground hover:bg-slate-200"}`}>
+
+                  <button
+                    onClick={() => setPaused(!paused)}
+                    className={`px-5 py-2 rounded-full text-xs font-semibold transition-all border ${
+                      paused
+                        ? "border-accent/40 text-accent hover:bg-accent/10"
+                        : "border-white/20 text-slate-400 hover:text-white hover:border-white/40"
+                    }`}
+                  >
                     {paused ? "▶ Auto-play" : "⏸ Pause"}
                   </button>
-                  <button onClick={() => { setActiveTimeline(Math.min(milestones.length - 1, activeTimeline + 1)); setPaused(true); }} disabled={activeTimeline === milestones.length - 1}
-                    className="flex-1 py-2 rounded-lg bg-primary text-white text-sm font-medium disabled:opacity-30 hover:bg-primary/90 transition-colors">
+
+                  <button
+                    onClick={() => { setActiveTimeline(Math.min(milestones.length - 1, activeTimeline + 1)); setPaused(true); }}
+                    disabled={activeTimeline === milestones.length - 1}
+                    className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium text-slate-400 hover:text-white disabled:opacity-20 transition-colors"
+                  >
                     Next →
                   </button>
                 </div>
-              </CardContent>
-            </Card>
-            <div className="flex justify-center gap-2 mt-6">
-              {milestones.map((_, i) => (
-                <button key={i} onClick={() => { setActiveTimeline(i); setPaused(true); }}
-                  className={`h-2 rounded-full transition-all duration-300 ${i === activeTimeline ? "w-8 bg-primary" : "w-2 bg-slate-300"}`} />
-              ))}
+              </div>
             </div>
           </motion.div>
         </div>
