@@ -108,6 +108,14 @@ export function Footer() {
             <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
           </div>
         </div>
+        <div className="pt-4 text-center">
+          <p className="text-slate-600 text-xs">
+            Developed with ❤️ and maintained by{" "}
+            <a href="https://www.leoaxis.com" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-white transition-colors underline underline-offset-2">
+              Leoaxis Technologies Pvt Ltd
+            </a>
+          </p>
+        </div>
       </div>
     </footer>
   );
