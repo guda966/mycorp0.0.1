@@ -14,6 +14,8 @@ export interface ServiceData {
   specialties: string[];
   process: { step: string; title: string; desc: string }[];
   stats: { value: string; label: string }[];
+  testimonial: { quote: string; name: string; role: string; company: string; avatar: string };
+  industries: string[];
 }
 
 export const servicesData: ServiceData[] = [
@@ -40,7 +42,15 @@ export const servicesData: ServiceData[] = [
       { step: "03", title: "Interview & Selection", desc: "You interview only the shortlist — typically 3 candidates per role — saving your team's time." },
       { step: "04", title: "Onboarding Support", desc: "We stay engaged through the first 90 days to ensure a seamless transition for contractor and client alike." },
     ],
-    stats: [{ value: "40%", label: "Reduction in Time-to-Hire" }, { value: "5,000+", label: "Placements Made" }, { value: "92%", label: "Candidate Retention Rate" }],
+    stats: [{ value: "40%", label: "Faster Time-to-Hire" }, { value: "5,000+", label: "Placements Made" }, { value: "92%", label: "Candidate Retention" }],
+    testimonial: {
+      quote: "MyCorp placed 3 senior engineers on our team within 2 weeks. The quality of candidates was exceptional — better than any agency we've used before.",
+      name: "David Kim",
+      role: "VP Engineering",
+      company: "FinTech Ventures",
+      avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=100&h=100",
+    },
+    industries: ["Financial Services", "Healthcare", "E-Commerce", "SaaS", "Manufacturing", "Government"],
   },
   {
     slug: "solutions",
@@ -65,7 +75,15 @@ export const servicesData: ServiceData[] = [
       { step: "03", title: "Agile Development", desc: "Bi-weekly sprints with working demos keep delivery transparent and feedback loops tight." },
       { step: "04", title: "Launch & Scale", desc: "We handle deployment, monitoring setup, and knowledge transfer so your team owns the product." },
     ],
-    stats: [{ value: "200+", label: "Projects Delivered" }, { value: "99.8%", label: "On-time Delivery Rate" }, { value: "15+", label: "Tech Frameworks" }],
+    stats: [{ value: "200+", label: "Projects Delivered" }, { value: "99.8%", label: "On-time Delivery" }, { value: "15+", label: "Tech Frameworks" }],
+    testimonial: {
+      quote: "Their team rebuilt our core platform in 6 months. The architecture is clean, scalable, and the codebase handoff was seamless. Genuinely impressive.",
+      name: "Sarah Chen",
+      role: "CTO",
+      company: "RetailEdge Inc.",
+      avatar: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=100&h=100",
+    },
+    industries: ["Retail & E-Commerce", "Healthcare IT", "Logistics", "EdTech", "FinTech", "Insurance"],
   },
   {
     slug: "managed-services",
@@ -90,7 +108,15 @@ export const servicesData: ServiceData[] = [
       { step: "03", title: "Active Management", desc: "Our NOC team monitors 24/7, handles incidents, and proactively applies patches and updates." },
       { step: "04", title: "Monthly Reviews", desc: "Detailed reports and strategic recommendations are delivered to your leadership each month." },
     ],
-    stats: [{ value: "99.99%", label: "Guaranteed Uptime SLA" }, { value: "<15 min", label: "Average P1 Response Time" }, { value: "350+", label: "Environments Managed" }],
+    stats: [{ value: "99.99%", label: "Guaranteed Uptime SLA" }, { value: "<15 min", label: "P1 Response Time" }, { value: "350+", label: "Environments Managed" }],
+    testimonial: {
+      quote: "Their managed services team saved us 40% in infrastructure costs while improving uptime to 99.99%. Response times are incredible — we never worry about downtime anymore.",
+      name: "Michael Torres",
+      role: "IT Director",
+      company: "Global Logistics Co.",
+      avatar: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=100&h=100",
+    },
+    industries: ["Banking & Finance", "Retail", "Manufacturing", "Telecom", "Media", "Government"],
   },
   {
     slug: "rpo",
@@ -115,7 +141,15 @@ export const servicesData: ServiceData[] = [
       { step: "03", title: "Pipeline Development", desc: "Active sourcing, talent marketing, and referral programs build a continuous candidate flow." },
       { step: "04", title: "Reporting & Optimization", desc: "Weekly dashboards and quarterly business reviews keep the program continuously improving." },
     ],
-    stats: [{ value: "35%", label: "Average Reduction in Cost-Per-Hire" }, { value: "1,200+", label: "Executive Placements" }, { value: "50+", label: "Enterprise RPO Partners" }],
+    stats: [{ value: "35%", label: "Lower Cost-Per-Hire" }, { value: "1,200+", label: "Executive Placements" }, { value: "50+", label: "RPO Partners" }],
+    testimonial: {
+      quote: "MyCorp's RPO team became a true extension of our HR department. They understand our culture and consistently deliver candidates who are the right fit — not just on paper.",
+      name: "Priya Nair",
+      role: "Chief People Officer",
+      company: "TechScale Group",
+      avatar: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=100&h=100",
+    },
+    industries: ["Tech Startups", "Enterprise IT", "Consulting", "Healthcare", "Financial Services", "Media"],
   },
   {
     slug: "medical-billing",
@@ -140,6 +174,14 @@ export const servicesData: ServiceData[] = [
       { step: "03", title: "Billing & Follow-Up", desc: "Claims are submitted daily; our AR team pursues every dollar with systematic follow-up." },
       { step: "04", title: "Reporting & Review", desc: "Monthly financial reports and strategic reviews help optimize your payer contracts and collections." },
     ],
-    stats: [{ value: "30%", label: "Reduction in Claim Denials" }, { value: "$50M+", label: "Revenue Recovered Annually" }, { value: "100%", label: "HIPAA Compliant" }],
+    stats: [{ value: "30%", label: "Fewer Claim Denials" }, { value: "$50M+", label: "Revenue Recovered" }, { value: "100%", label: "HIPAA Compliant" }],
+    testimonial: {
+      quote: "We recovered $2.3M in denied claims in the first quarter alone. MyCorp's RCM team is thorough, transparent, and genuinely invested in our financial health.",
+      name: "Dr. Anita Reddy",
+      role: "Practice Administrator",
+      company: "Reddy Medical Group",
+      avatar: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&q=80&w=100&h=100",
+    },
+    industries: ["Hospitals & Health Systems", "Physician Groups", "Outpatient Clinics", "Dental Practices", "Behavioral Health", "Urgent Care"],
   },
 ];
