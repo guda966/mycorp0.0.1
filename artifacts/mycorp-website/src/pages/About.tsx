@@ -1,31 +1,18 @@
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 import {
   Target, Eye, Heart, Award, CheckCircle2, Users, Globe2,
   Lightbulb, ShieldCheck, Zap, Handshake, ArrowRight,
-  MapPin, Calendar, TrendingUp, Star, Linkedin
+  MapPin, Calendar, TrendingUp, Star, Linkedin, Play,
+  TreePine, GraduationCap, HandHeart, Leaf, Quote
 } from "lucide-react";
 
 const fadeUp = {
   initial: { opacity: 0, y: 30 },
   whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true },
-  transition: { duration: 0.6 },
-};
-
-const fadeLeft = {
-  initial: { opacity: 0, x: -30 },
-  whileInView: { opacity: 1, x: 0 },
-  viewport: { once: true },
-  transition: { duration: 0.6 },
-};
-
-const fadeRight = {
-  initial: { opacity: 0, x: 30 },
-  whileInView: { opacity: 1, x: 0 },
   viewport: { once: true },
   transition: { duration: 0.6 },
 };
@@ -42,69 +29,18 @@ const milestones = [
 ];
 
 const values = [
-  {
-    icon: ShieldCheck,
-    title: "Integrity",
-    color: "from-blue-500 to-blue-600",
-    desc: "We operate with full transparency and ethical standards in every client engagement, contract, and delivery.",
-  },
-  {
-    icon: Lightbulb,
-    title: "Innovation",
-    color: "from-amber-500 to-orange-500",
-    desc: "We continuously evolve our processes, adopt emerging technologies, and challenge conventional thinking.",
-  },
-  {
-    icon: Award,
-    title: "Excellence",
-    color: "from-purple-500 to-purple-600",
-    desc: "We hold ourselves to the highest standards — from code quality to billing accuracy to talent matching.",
-  },
-  {
-    icon: Handshake,
-    title: "Partnership",
-    color: "from-green-500 to-emerald-600",
-    desc: "We embed ourselves as true partners in our clients' growth, not just vendors fulfilling a contract.",
-  },
-  {
-    icon: Zap,
-    title: "Agility",
-    color: "from-cyan-500 to-teal-500",
-    desc: "We adapt swiftly to market shifts, client needs, and technological changes without missing a beat.",
-  },
-  {
-    icon: Globe2,
-    title: "Global Mindset",
-    color: "from-rose-500 to-pink-500",
-    desc: "Our dual-shore model brings global scale with local accountability across every timezone.",
-  },
+  { icon: ShieldCheck, title: "Integrity", color: "from-blue-500 to-blue-600", desc: "We operate with full transparency and ethical standards in every client engagement, contract, and delivery." },
+  { icon: Lightbulb, title: "Innovation", color: "from-amber-500 to-orange-500", desc: "We continuously evolve our processes, adopt emerging technologies, and challenge conventional thinking." },
+  { icon: Award, title: "Excellence", color: "from-purple-500 to-purple-600", desc: "We hold ourselves to the highest standards — from code quality to billing accuracy to talent matching." },
+  { icon: Handshake, title: "Partnership", color: "from-green-500 to-emerald-600", desc: "We embed ourselves as true partners in our clients' growth, not just vendors fulfilling a contract." },
+  { icon: Zap, title: "Agility", color: "from-cyan-500 to-teal-500", desc: "We adapt swiftly to market shifts, client needs, and technological changes without missing a beat." },
+  { icon: Globe2, title: "Global Mindset", color: "from-rose-500 to-pink-500", desc: "Our dual-shore model brings global scale with local accountability across every timezone." },
 ];
 
 const leaders = [
-  {
-    name: "Sarah Jenkins",
-    role: "Chief Executive Officer",
-    bio: "20+ years in IT services. Former VP at Fortune 100 consulting firm. Drives MyCorp's global growth strategy.",
-    img: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=400&h=400",
-    linkedin: "#",
-    expertise: ["Global Strategy", "IT Services", "M&A"],
-  },
-  {
-    name: "Rajesh Kumar",
-    role: "Chief Operating Officer",
-    bio: "Led delivery operations for 500+ enterprise accounts. Based in Hyderabad, oversees our India center.",
-    img: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=400&h=400",
-    linkedin: "#",
-    expertise: ["Delivery Excellence", "Offshore Operations", "RCM"],
-  },
-  {
-    name: "Michael Chen",
-    role: "Chief Technology Officer",
-    bio: "Ex-AWS architect. Leads our software engineering practice and AI transformation initiatives.",
-    img: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=400&h=400",
-    linkedin: "#",
-    expertise: ["Cloud Architecture", "AI/ML", "DevOps"],
-  },
+  { name: "Sarah Jenkins", role: "Chief Executive Officer", bio: "20+ years in IT services. Former VP at Fortune 100 consulting firm. Drives MyCorp's global growth strategy.", img: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=400&h=400", linkedin: "#", expertise: ["Global Strategy", "IT Services", "M&A"] },
+  { name: "Rajesh Kumar", role: "Chief Operating Officer", bio: "Led delivery operations for 500+ enterprise accounts. Based in Hyderabad, oversees our India center.", img: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=400&h=400", linkedin: "#", expertise: ["Delivery Excellence", "Offshore Operations", "RCM"] },
+  { name: "Michael Chen", role: "Chief Technology Officer", bio: "Ex-AWS architect. Leads our software engineering practice and AI transformation initiatives.", img: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=400&h=400", linkedin: "#", expertise: ["Cloud Architecture", "AI/ML", "DevOps"] },
 ];
 
 const certifications = [
@@ -117,23 +53,101 @@ const certifications = [
 ];
 
 const offices = [
-  {
-    city: "New Jersey",
-    country: "USA 🇺🇸",
-    address: "100 Enterprise Way, Suite 400, NJ 08001",
-    type: "US Headquarters",
-    color: "from-blue-600 to-blue-800",
-    stats: ["250+ Professionals", "Client Management", "Sales & Strategy"],
-  },
-  {
-    city: "Hyderabad",
-    country: "India 🇮🇳",
-    address: "Tech Park, Hitec City, Hyderabad, TS 500081",
-    type: "India Delivery Center",
-    color: "from-orange-500 to-red-600",
-    stats: ["950+ Professionals", "24/7 Support", "Software & RCM"],
-  },
+  { city: "New Jersey", country: "USA 🇺🇸", address: "100 Enterprise Way, Suite 400, NJ 08001", type: "US Headquarters", color: "from-blue-600 to-blue-800", stats: ["250+ Professionals", "Client Management", "Sales & Strategy"] },
+  { city: "Hyderabad", country: "India 🇮🇳", address: "Tech Park, Hitec City, Hyderabad, TS 500081", type: "India Delivery Center", color: "from-orange-500 to-red-600", stats: ["950+ Professionals", "24/7 Support", "Software & RCM"] },
 ];
+
+const partners = [
+  { name: "Microsoft", color: "#00a4ef", bg: "#f3f9ff", abbr: "MS" },
+  { name: "Amazon AWS", color: "#FF9900", bg: "#fffbf0", abbr: "AWS" },
+  { name: "Google Cloud", color: "#4285F4", bg: "#f0f4ff", abbr: "GCP" },
+  { name: "Salesforce", color: "#00A1E0", bg: "#f0faff", abbr: "SF" },
+  { name: "ServiceNow", color: "#62D84E", bg: "#f2fff0", abbr: "SN" },
+  { name: "Oracle", color: "#C74634", bg: "#fff2f0", abbr: "ORC" },
+];
+
+const employeeTestimonials = [
+  { quote: "Working at MyCorp has given me the opportunity to lead complex cloud migrations for Fortune 500 clients. The culture of learning and growth here is unmatched.", name: "Priya Sharma", role: "Cloud Architect", tenure: "4 years", img: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=200&h=200" },
+  { quote: "I joined as a junior recruiter and now lead the entire US staffing division. MyCorp invests in people — that's what sets it apart from every other firm I've worked at.", name: "James Okafor", role: "VP — US Staffing", tenure: "6 years", img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=200&h=200" },
+  { quote: "The RCM team here is phenomenal. We've recovered millions in denied claims for our clients while constantly refining our processes. Every day is a new challenge.", name: "Anita Reddy", role: "Senior RCM Specialist", tenure: "3 years", img: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&q=80&w=200&h=200" },
+];
+
+const culturePhotos = [
+  { src: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=600&h=400", alt: "Team collaboration", span: "col-span-2" },
+  { src: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=400&h=400", alt: "Modern office", span: "" },
+  { src: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=400&h=400", alt: "Team meeting", span: "" },
+  { src: "https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?auto=format&fit=crop&q=80&w=600&h=400", alt: "Office event", span: "col-span-2" },
+];
+
+const csrItems = [
+  { icon: GraduationCap, color: "from-blue-500 to-blue-600", title: "Tech Scholarships", value: "120+", desc: "Annual scholarships for underrepresented students in STEM across the US and India." },
+  { icon: TreePine, color: "from-green-500 to-emerald-600", title: "Carbon Neutral", value: "2025", desc: "Committed to achieving net-zero carbon emissions across all our global offices by 2025." },
+  { icon: HandHeart, color: "from-rose-500 to-pink-600", title: "Community Hours", value: "5,000+", desc: "Annual volunteer hours contributed by our team to local communities in NJ and Hyderabad." },
+  { icon: Leaf, color: "from-teal-500 to-cyan-600", title: "Green IT", value: "100%", desc: "All data center operations powered by renewable energy sources, reducing our environmental impact." },
+];
+
+function AnimatedStat({ target, suffix = "", duration = 2000 }: { target: number; suffix?: string; duration?: number }) {
+  const [count, setCount] = useState(0);
+  const ref = useRef<HTMLDivElement>(null);
+  const started = useRef(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !started.current) {
+          started.current = true;
+          const start = performance.now();
+          const tick = (now: number) => {
+            const elapsed = now - start;
+            const progress = Math.min(elapsed / duration, 1);
+            const eased = 1 - Math.pow(1 - progress, 3);
+            setCount(Math.floor(eased * target));
+            if (progress < 1) requestAnimationFrame(tick);
+            else setCount(target);
+          };
+          requestAnimationFrame(tick);
+        }
+      },
+      { threshold: 0.3 }
+    );
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, [target, duration]);
+
+  return <div ref={ref} className="text-4xl font-bold text-white font-display">{count.toLocaleString()}{suffix}</div>;
+}
+
+function VideoEmbed() {
+  const [playing, setPlaying] = useState(false);
+  return (
+    <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-video bg-[#0B1120] group cursor-pointer" onClick={() => setPlaying(true)}>
+      {playing ? (
+        <iframe
+          className="w-full h-full"
+          src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1"
+          title="MyCorp Company Overview"
+          allow="autoplay; fullscreen"
+        />
+      ) : (
+        <>
+          <img
+            src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?auto=format&fit=crop&q=80&w=1200&h=675"
+            alt="Company Overview Video"
+            className="w-full h-full object-cover opacity-60 group-hover:opacity-70 transition-opacity"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+          <div className="absolute inset-0 flex flex-col items-center justify-center gap-4">
+            <div className="w-20 h-20 rounded-full bg-white/90 flex items-center justify-center shadow-2xl group-hover:scale-110 transition-transform">
+              <Play className="w-8 h-8 text-primary fill-primary ml-1" />
+            </div>
+            <p className="text-white font-semibold text-lg">Watch Our Company Story</p>
+            <p className="text-white/70 text-sm">3 min overview</p>
+          </div>
+        </>
+      )}
+    </div>
+  );
+}
 
 export default function About() {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -142,6 +156,15 @@ export default function About() {
   const heroOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
 
   const [activeTimeline, setActiveTimeline] = useState(0);
+  const [paused, setPaused] = useState(false);
+
+  useEffect(() => {
+    if (paused) return;
+    const timer = setInterval(() => {
+      setActiveTimeline((prev) => (prev + 1) % milestones.length);
+    }, 3500);
+    return () => clearInterval(timer);
+  }, [paused]);
 
   return (
     <div className="w-full overflow-x-hidden">
@@ -152,59 +175,38 @@ export default function About() {
           <div className="absolute inset-0 bg-gradient-to-br from-primary/30 via-transparent to-accent/20" />
           <div className="absolute top-0 left-0 w-96 h-96 bg-primary/20 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
           <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-accent/10 rounded-full blur-3xl translate-x-1/4 translate-y-1/4" />
-          <div
-            className="absolute inset-0 opacity-5"
-            style={{ backgroundImage: "radial-gradient(circle, white 1px, transparent 1px)", backgroundSize: "40px 40px" }}
-          />
+          <div className="absolute inset-0 opacity-5" style={{ backgroundImage: "radial-gradient(circle, white 1px, transparent 1px)", backgroundSize: "40px 40px" }} />
         </motion.div>
 
         <motion.div style={{ opacity: heroOpacity }} className="container relative z-10 mx-auto px-4 md:px-6 py-24">
           <div className="max-w-4xl">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 text-sm font-medium text-white mb-8"
-            >
+            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 text-sm font-medium text-white mb-8">
               <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
               Our Story Since 2010
             </motion.div>
 
-            <motion.h1
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.1 }}
-              className="text-5xl md:text-7xl font-display font-bold text-white leading-tight mb-6"
-            >
+            <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.1 }}
+              className="text-5xl md:text-7xl font-display font-bold text-white leading-tight mb-6">
               Built on Trust.{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-accent">
-                Driven by Results.
-              </span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-accent">Driven by Results.</span>
             </motion.h1>
 
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.2 }}
-              className="text-xl text-slate-300 mb-10 max-w-3xl leading-relaxed"
-            >
+            <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.2 }}
+              className="text-xl text-slate-300 mb-10 max-w-3xl leading-relaxed">
               MyCorp Solutions has grown from a boutique IT staffing firm into a global force — delivering talent, technology, and healthcare solutions to enterprises across 50+ countries.
             </motion.p>
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.3 }}
-              className="flex flex-wrap gap-8"
-            >
+            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.3 }}
+              className="flex flex-wrap gap-10">
               {[
-                { value: "15+", label: "Years in Business" },
-                { value: "1,200+", label: "Global Team" },
-                { value: "500+", label: "Enterprise Clients" },
-                { value: "50+", label: "Countries Served" },
+                { target: 15, suffix: "+", label: "Years in Business" },
+                { target: 1200, suffix: "+", label: "Global Team" },
+                { target: 500, suffix: "+", label: "Enterprise Clients" },
+                { target: 50, suffix: "+", label: "Countries Served" },
               ].map((stat, i) => (
                 <div key={i} className="text-center">
-                  <div className="text-4xl font-bold text-white font-display">{stat.value}</div>
+                  <AnimatedStat target={stat.target} suffix={stat.suffix} />
                   <div className="text-slate-400 text-sm mt-1">{stat.label}</div>
                 </div>
               ))}
@@ -225,27 +227,11 @@ export default function About() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              {
-                icon: Target, color: "bg-primary", borderColor: "border-primary",
-                title: "Our Mission",
-                desc: "To deliver innovative IT and healthcare solutions that empower businesses to scale, operate efficiently, and achieve sustainable growth across every market we serve.",
-              },
-              {
-                icon: Eye, color: "bg-accent", borderColor: "border-accent",
-                title: "Our Vision",
-                desc: "To be the most trusted global partner for enterprise IT staffing, custom software development, and healthcare revenue cycle management by 2030.",
-              },
-              {
-                icon: Heart, color: "bg-rose-500", borderColor: "border-rose-500",
-                title: "Our Values",
-                desc: "Integrity in all dealings. Innovation in our solutions. Excellence in delivery. True Partnership with clients. Agility in execution — every single day.",
-              },
+              { icon: Target, color: "bg-primary", borderColor: "border-primary", title: "Our Mission", desc: "To deliver innovative IT and healthcare solutions that empower businesses to scale, operate efficiently, and achieve sustainable growth across every market we serve." },
+              { icon: Eye, color: "bg-accent", borderColor: "border-accent", title: "Our Vision", desc: "To be the most trusted global partner for enterprise IT staffing, custom software development, and healthcare revenue cycle management by 2030." },
+              { icon: Heart, color: "bg-rose-500", borderColor: "border-rose-500", title: "Our Values", desc: "Integrity in all dealings. Innovation in our solutions. Excellence in delivery. True Partnership with clients. Agility in execution — every single day." },
             ].map((item, i) => (
-              <motion.div
-                key={i}
-                {...fadeUp}
-                transition={{ duration: 0.6, delay: i * 0.15 }}
-              >
+              <motion.div key={i} {...fadeUp} transition={{ duration: 0.6, delay: i * 0.15 }}>
                 <Card className={`h-full border-t-4 ${item.borderColor} shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1`}>
                   <CardContent className="p-10 text-center">
                     <div className={`w-16 h-16 ${item.color} rounded-2xl flex items-center justify-center mx-auto mb-6 text-white shadow-lg`}>
@@ -261,39 +247,54 @@ export default function About() {
         </div>
       </section>
 
-      {/* ── INTERACTIVE MILESTONE TIMELINE ── */}
-      <section className="py-24 bg-slate-50 overflow-hidden">
+      {/* ── COMPANY VIDEO ── */}
+      <section className="py-20 bg-slate-50">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <motion.div {...fadeUp}>
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold mb-4">
+                <Play className="w-3 h-3 fill-primary" /> Company Overview
+              </div>
+              <h2 className="text-3xl md:text-4xl font-display font-bold mb-5">See MyCorp in Action</h2>
+              <p className="text-muted-foreground text-lg leading-relaxed mb-6">
+                From our New Jersey headquarters to our Hyderabad delivery center — see how 1,200+ professionals across two continents come together every day to deliver exceptional outcomes for our clients.
+              </p>
+              <ul className="space-y-3">
+                {["A day in our Hyderabad delivery center", "How we onboard IT talent in under 48 hours", "Our medical billing quality assurance process"].map((item, i) => (
+                  <li key={i} className="flex items-center gap-3 text-sm text-muted-foreground">
+                    <CheckCircle2 className="w-4 h-4 text-primary shrink-0" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+            <motion.div initial={{ opacity: 0, scale: 0.97 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
+              <VideoEmbed />
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── AUTO-PLAY MILESTONE TIMELINE ── */}
+      <section className="py-24 bg-white overflow-hidden">
         <div className="container mx-auto px-4 md:px-6">
           <motion.div {...fadeUp} className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">Our Journey</h2>
             <p className="text-muted-foreground max-w-xl mx-auto">15 years of milestones that shaped who we are today.</p>
           </motion.div>
 
-          {/* Timeline Tabs */}
           <div className="flex flex-wrap justify-center gap-2 mb-12">
             {milestones.map((m, i) => (
-              <button
-                key={i}
-                onClick={() => setActiveTimeline(i)}
+              <button key={i} onClick={() => { setActiveTimeline(i); setPaused(true); }}
                 className={`px-4 py-2 rounded-full text-sm font-semibold transition-all duration-200 ${
-                  activeTimeline === i
-                    ? "bg-primary text-white shadow-lg scale-105"
-                    : "bg-white text-muted-foreground border border-border hover:border-primary hover:text-primary"
-                }`}
-              >
+                  activeTimeline === i ? "bg-primary text-white shadow-lg scale-105" : "bg-slate-50 text-muted-foreground border border-border hover:border-primary hover:text-primary"
+                }`}>
                 {m.year}
               </button>
             ))}
           </div>
 
-          {/* Active Milestone Display */}
-          <motion.div
-            key={activeTimeline}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4 }}
-            className="max-w-3xl mx-auto"
-          >
+          <motion.div key={activeTimeline} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }} className="max-w-3xl mx-auto">
             <Card className="border-0 shadow-2xl overflow-hidden">
               <div className="bg-primary p-8 text-white">
                 <div className="flex items-center gap-4 mb-4">
@@ -303,8 +304,7 @@ export default function About() {
                   <div>
                     <div className="text-5xl font-bold font-display">{milestones[activeTimeline].year}</div>
                     <div className="text-blue-200 text-sm flex items-center gap-1 mt-1">
-                      <Calendar className="w-4 h-4" />
-                      Company Milestone
+                      <Calendar className="w-4 h-4" /> Company Milestone
                     </div>
                   </div>
                 </div>
@@ -312,36 +312,26 @@ export default function About() {
               </div>
               <CardContent className="p-8">
                 <p className="text-lg text-muted-foreground leading-relaxed">{milestones[activeTimeline].desc}</p>
-
                 <div className="flex gap-4 mt-8">
-                  <button
-                    onClick={() => setActiveTimeline(Math.max(0, activeTimeline - 1))}
-                    disabled={activeTimeline === 0}
-                    className="flex-1 py-2 rounded-lg border border-border text-sm font-medium disabled:opacity-30 hover:bg-slate-50 transition-colors"
-                  >
+                  <button onClick={() => { setActiveTimeline(Math.max(0, activeTimeline - 1)); setPaused(true); }} disabled={activeTimeline === 0}
+                    className="flex-1 py-2 rounded-lg border border-border text-sm font-medium disabled:opacity-30 hover:bg-slate-50 transition-colors">
                     ← Previous
                   </button>
-                  <button
-                    onClick={() => setActiveTimeline(Math.min(milestones.length - 1, activeTimeline + 1))}
-                    disabled={activeTimeline === milestones.length - 1}
-                    className="flex-1 py-2 rounded-lg bg-primary text-white text-sm font-medium disabled:opacity-30 hover:bg-primary/90 transition-colors"
-                  >
+                  <button onClick={() => { setPaused(!paused); }}
+                    className={`px-6 py-2 rounded-lg text-sm font-medium transition-colors ${paused ? "bg-accent text-white hover:bg-accent/90" : "bg-slate-100 text-muted-foreground hover:bg-slate-200"}`}>
+                    {paused ? "▶ Auto-play" : "⏸ Pause"}
+                  </button>
+                  <button onClick={() => { setActiveTimeline(Math.min(milestones.length - 1, activeTimeline + 1)); setPaused(true); }} disabled={activeTimeline === milestones.length - 1}
+                    className="flex-1 py-2 rounded-lg bg-primary text-white text-sm font-medium disabled:opacity-30 hover:bg-primary/90 transition-colors">
                     Next →
                   </button>
                 </div>
               </CardContent>
             </Card>
-
-            {/* Progress dots */}
             <div className="flex justify-center gap-2 mt-6">
               {milestones.map((_, i) => (
-                <button
-                  key={i}
-                  onClick={() => setActiveTimeline(i)}
-                  className={`h-2 rounded-full transition-all duration-300 ${
-                    i === activeTimeline ? "w-8 bg-primary" : "w-2 bg-slate-300"
-                  }`}
-                />
+                <button key={i} onClick={() => { setActiveTimeline(i); setPaused(true); }}
+                  className={`h-2 rounded-full transition-all duration-300 ${i === activeTimeline ? "w-8 bg-primary" : "w-2 bg-slate-300"}`} />
               ))}
             </div>
           </motion.div>
@@ -349,22 +339,15 @@ export default function About() {
       </section>
 
       {/* ── CORE VALUES GRID ── */}
-      <section className="py-24 bg-white">
+      <section className="py-24 bg-slate-50">
         <div className="container mx-auto px-4 md:px-6">
           <motion.div {...fadeUp} className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">Our Core Values</h2>
             <p className="text-muted-foreground max-w-xl mx-auto">The six pillars that define our culture, guide our work, and build lasting client relationships.</p>
           </motion.div>
-
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {values.map((v, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-              >
+              <motion.div key={i} initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: i * 0.1 }}>
                 <Card className="group h-full border-border/50 hover:border-primary/20 hover:shadow-xl transition-all duration-300">
                   <CardContent className="p-8">
                     <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${v.color} flex items-center justify-center mb-5 text-white group-hover:scale-110 transition-transform`}>
@@ -380,24 +363,80 @@ export default function About() {
         </div>
       </section>
 
-      {/* ── OFFICE LOCATIONS ── */}
+      {/* ── CULTURE PHOTO GRID ── */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-4 md:px-6">
+          <motion.div {...fadeUp} className="text-center mb-14">
+            <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">Life at MyCorp</h2>
+            <p className="text-muted-foreground max-w-xl mx-auto">A glimpse into the people, spaces, and moments that make MyCorp a great place to work and build a career.</p>
+          </motion.div>
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }}
+            className="grid grid-cols-3 gap-4 h-[460px]">
+            <div className="col-span-2 rounded-2xl overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=800&h=500" alt="Team collaboration" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+            </div>
+            <div className="flex flex-col gap-4">
+              <div className="rounded-2xl overflow-hidden flex-1">
+                <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=400&h=300" alt="Modern office" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+              </div>
+              <div className="rounded-2xl overflow-hidden flex-1">
+                <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=400&h=300" alt="Team meeting" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+              </div>
+            </div>
+          </motion.div>
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7, delay: 0.2 }}
+            className="grid grid-cols-3 gap-4 h-[240px] mt-4">
+            <div className="rounded-2xl overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&q=80&w=400&h=300" alt="Office fun" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+            </div>
+            <div className="col-span-2 rounded-2xl overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?auto=format&fit=crop&q=80&w=800&h=300" alt="Team event" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ── EMPLOYEE TESTIMONIALS ── */}
       <section className="py-24 bg-[#0B1120] text-white">
         <div className="container mx-auto px-4 md:px-6">
           <motion.div {...fadeUp} className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">Global Presence. Local Expertise.</h2>
-            <p className="text-slate-400 max-w-xl mx-auto">Two strategic delivery centers built to serve clients across every timezone.</p>
+            <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">What Our Team Says</h2>
+            <p className="text-slate-400 max-w-xl mx-auto">Real voices from the people who make MyCorp exceptional every day.</p>
           </motion.div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {employeeTestimonials.map((t, i) => (
+              <motion.div key={i} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: i * 0.15 }}>
+                <Card className="h-full bg-white/5 border-white/10 hover:bg-white/10 transition-colors">
+                  <CardContent className="p-8">
+                    <Quote className="w-8 h-8 text-accent mb-5 opacity-60" />
+                    <p className="text-slate-200 leading-relaxed mb-8 italic">"{t.quote}"</p>
+                    <div className="flex items-center gap-4">
+                      <img src={t.img} alt={t.name} className="w-12 h-12 rounded-full object-cover border-2 border-white/20" />
+                      <div>
+                        <p className="font-bold text-white text-sm">{t.name}</p>
+                        <p className="text-accent text-xs">{t.role}</p>
+                        <p className="text-slate-500 text-xs">{t.tenure} at MyCorp</p>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
 
+      {/* ── OFFICE LOCATIONS ── */}
+      <section className="py-24 bg-slate-50">
+        <div className="container mx-auto px-4 md:px-6">
+          <motion.div {...fadeUp} className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">Global Presence. Local Expertise.</h2>
+            <p className="text-muted-foreground max-w-xl mx-auto">Two strategic delivery centers built to serve clients across every timezone.</p>
+          </motion.div>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {offices.map((office, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: i * 0.2 }}
-              >
-                <Card className="border-0 overflow-hidden bg-white/5 hover:bg-white/10 transition-colors backdrop-blur-sm">
+              <motion.div key={i} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: i * 0.2 }}>
+                <Card className="border-0 overflow-hidden shadow-xl hover:shadow-2xl transition-shadow">
                   <div className={`bg-gradient-to-r ${office.color} p-6`}>
                     <div className="flex justify-between items-start">
                       <div>
@@ -410,16 +449,14 @@ export default function About() {
                       </div>
                     </div>
                   </div>
-                  <CardContent className="p-6">
-                    <p className="text-slate-400 text-sm mb-5 flex items-start gap-2">
-                      <MapPin className="w-4 h-4 shrink-0 mt-0.5 text-slate-500" />
-                      {office.address}
+                  <CardContent className="p-6 bg-white">
+                    <p className="text-muted-foreground text-sm mb-5 flex items-start gap-2">
+                      <MapPin className="w-4 h-4 shrink-0 mt-0.5 text-slate-400" />{office.address}
                     </p>
                     <div className="flex flex-wrap gap-2">
                       {office.stats.map((s, j) => (
-                        <span key={j} className="px-3 py-1 rounded-full bg-white/10 text-slate-300 text-xs font-medium flex items-center gap-1">
-                          <CheckCircle2 className="w-3 h-3 text-accent" />
-                          {s}
+                        <span key={j} className="px-3 py-1 rounded-full bg-primary/5 text-primary text-xs font-medium flex items-center gap-1">
+                          <CheckCircle2 className="w-3 h-3" />{s}
                         </span>
                       ))}
                     </div>
@@ -428,45 +465,24 @@ export default function About() {
               </motion.div>
             ))}
           </div>
-
-          <motion.div {...fadeUp} className="mt-12 text-center">
-            <p className="text-slate-400 text-lg">
-              Together, our offices cover <span className="text-white font-semibold">24/7 operations</span>, serving clients in{" "}
-              <span className="text-accent font-semibold">50+ countries</span> with seamless follow-the-sun delivery.
-            </p>
-          </motion.div>
         </div>
       </section>
 
       {/* ── LEADERSHIP ── */}
-      <section className="py-24 bg-slate-50">
+      <section className="py-24 bg-white">
         <div className="container mx-auto px-4 md:px-6">
           <motion.div {...fadeUp} className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">Leadership Team</h2>
             <p className="text-muted-foreground max-w-xl mx-auto">Guided by veterans who've built, scaled, and transformed enterprise technology organizations.</p>
           </motion.div>
-
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {leaders.map((leader, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: i * 0.15 }}
-              >
+              <motion.div key={i} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: i * 0.15 }}>
                 <Card className="group h-full border-border/50 hover:border-primary/20 hover:shadow-2xl transition-all duration-300 overflow-hidden">
                   <div className="relative overflow-hidden bg-gradient-to-br from-slate-100 to-slate-200 h-56">
-                    <img
-                      src={leader.img}
-                      alt={leader.name}
-                      className="w-full h-full object-cover object-top grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500"
-                    />
+                    <img src={leader.img} alt={leader.name} className="w-full h-full object-cover object-top grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500" />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-                    <a
-                      href={leader.linkedin}
-                      className="absolute bottom-4 right-4 w-9 h-9 rounded-full bg-[#0077B5] flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity shadow-lg"
-                    >
+                    <a href={leader.linkedin} className="absolute bottom-4 right-4 w-9 h-9 rounded-full bg-[#0077B5] flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity shadow-lg">
                       <Linkedin className="w-4 h-4 text-white" />
                     </a>
                   </div>
@@ -476,13 +492,31 @@ export default function About() {
                     <p className="text-muted-foreground text-sm leading-relaxed mb-4">{leader.bio}</p>
                     <div className="flex flex-wrap gap-2">
                       {leader.expertise.map((tag, j) => (
-                        <span key={j} className="px-2 py-1 bg-primary/5 text-primary rounded-md text-xs font-medium">
-                          {tag}
-                        </span>
+                        <span key={j} className="px-2 py-1 bg-primary/5 text-primary rounded-md text-xs font-medium">{tag}</span>
                       ))}
                     </div>
                   </CardContent>
                 </Card>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── PARTNER LOGOS ── */}
+      <section className="py-20 bg-slate-50 border-t border-border">
+        <div className="container mx-auto px-4 md:px-6">
+          <motion.div {...fadeUp} className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">Technology Partners</h2>
+            <p className="text-muted-foreground max-w-xl mx-auto">We hold official partner status with the world's leading technology platforms.</p>
+          </motion.div>
+          <div className="grid grid-cols-3 md:grid-cols-6 gap-4">
+            {partners.map((p, i) => (
+              <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4, delay: i * 0.08 }}>
+                <div style={{ background: p.bg }} className="flex flex-col items-center justify-center text-center p-5 rounded-2xl border border-slate-200 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group h-24">
+                  <div className="text-xl font-black tracking-tight mb-1" style={{ color: p.color }}>{p.abbr}</div>
+                  <p className="text-xs text-muted-foreground font-medium">{p.name}</p>
+                </div>
               </motion.div>
             ))}
           </div>
@@ -493,19 +527,12 @@ export default function About() {
       <section className="py-20 bg-white border-t border-border">
         <div className="container mx-auto px-4 md:px-6">
           <motion.div {...fadeUp} className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">Certifications & Partnerships</h2>
+            <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">Certifications & Compliance</h2>
             <p className="text-muted-foreground max-w-xl mx-auto">Industry-recognized standards that validate our commitment to quality, security, and compliance.</p>
           </motion.div>
-
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
             {certifications.map((cert, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: i * 0.08 }}
-              >
+              <motion.div key={i} initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.4, delay: i * 0.08 }}>
                 <div className="flex flex-col items-center text-center p-6 rounded-2xl border border-border hover:border-primary/30 hover:shadow-lg transition-all duration-300 group bg-white">
                   <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-3 group-hover:bg-primary transition-colors">
                     <Award className="w-6 h-6 text-primary group-hover:text-white transition-colors" />
@@ -513,6 +540,35 @@ export default function About() {
                   <p className="font-bold text-sm text-foreground">{cert.name}</p>
                   <p className="text-muted-foreground text-xs mt-1">{cert.desc}</p>
                 </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── CSR / COMMUNITY ── */}
+      <section className="py-24 bg-gradient-to-br from-slate-900 to-[#0B1120] text-white">
+        <div className="container mx-auto px-4 md:px-6">
+          <motion.div {...fadeUp} className="text-center mb-16">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-green-500/20 border border-green-500/30 text-green-400 text-xs font-semibold mb-4">
+              <Leaf className="w-3 h-3" /> Corporate Social Responsibility
+            </div>
+            <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">Giving Back. Growing Together.</h2>
+            <p className="text-slate-400 max-w-xl mx-auto">Beyond business, MyCorp is committed to making a lasting positive impact in the communities we serve.</p>
+          </motion.div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {csrItems.map((item, i) => (
+              <motion.div key={i} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: i * 0.12 }}>
+                <Card className="bg-white/5 border-white/10 hover:bg-white/10 transition-colors h-full">
+                  <CardContent className="p-8 text-center">
+                    <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${item.color} flex items-center justify-center mx-auto mb-5`}>
+                      <item.icon className="w-7 h-7 text-white" />
+                    </div>
+                    <div className="text-3xl font-bold text-white font-display mb-2">{item.value}</div>
+                    <h3 className="font-bold text-white mb-3">{item.title}</h3>
+                    <p className="text-slate-400 text-sm leading-relaxed">{item.desc}</p>
+                  </CardContent>
+                </Card>
               </motion.div>
             ))}
           </div>
