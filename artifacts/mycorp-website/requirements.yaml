@@ -1,0 +1,22 @@
+packages:
+  "framer-motion": "For premium page transitions, scroll reveals, and animations"
+  "react-hook-form": "For managing state in career application and contact forms"
+  "@hookform/resolvers": "For integrating Zod validation with react-hook-form"
+  "zod": "For strong type validation on form inputs"
+  "clsx": "Utility for conditionally joining classNames"
+  "tailwind-merge": "Utility to merge tailwind classes safely"
+
+images:
+  - path: "artifacts/mycorp-website/public/images/hero-abstract.png"
+    description: "Abstract modern enterprise technology background, deep navy blue with subtle glowing cyan geometric lines and data nodes, highly professional, clean"
+    aspect_ratio: "21:9"
+  - path: "artifacts/mycorp-website/public/images/globe-network.png"
+    description: "A stylized 3D globe showing global network connections in navy blue and teal on a clean white background, corporate style"
+    aspect_ratio: "16:9"
+  - path: "artifacts/mycorp-website/public/images/office-culture.png"
+    description: "Modern bright corporate office environment, abstract, soft lighting, professional, blurred background"
+    aspect_ratio: "21:9"
+
+notes:
+  - This is a purely frontend application. Form submissions will be mocked with toast notifications.
+  - Using wouter for routing.
