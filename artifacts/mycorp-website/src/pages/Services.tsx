@@ -181,13 +181,13 @@ export default function Services() {
           <motion.div {...fadeUp}>
             <Quote className="w-10 h-10 text-primary/20 mx-auto mb-6" />
             <blockquote className="text-2xl md:text-3xl font-display font-medium text-foreground leading-snug mb-8">
-              "{servicesData[0].testimonial.quote}"
+              "{servicesData[0].testimonials[0].quote}"
             </blockquote>
             <div className="flex items-center justify-center gap-4">
-              <img src={servicesData[0].testimonial.avatar} alt={servicesData[0].testimonial.name} className="w-12 h-12 rounded-full object-cover ring-2 ring-border" />
+              <img src={servicesData[0].testimonials[0].avatar} alt={servicesData[0].testimonials[0].name} className="w-12 h-12 rounded-full object-cover ring-2 ring-border" />
               <div className="text-left">
-                <p className="font-bold text-foreground">{servicesData[0].testimonial.name}</p>
-                <p className="text-muted-foreground text-sm">{servicesData[0].testimonial.role}, {servicesData[0].testimonial.company}</p>
+                <p className="font-bold text-foreground">{servicesData[0].testimonials[0].name}</p>
+                <p className="text-muted-foreground text-sm">{servicesData[0].testimonials[0].role}, {servicesData[0].testimonials[0].company}</p>
               </div>
             </div>
           </motion.div>

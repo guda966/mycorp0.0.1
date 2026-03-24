@@ -3,7 +3,7 @@ import { useParams, Link } from "wouter";
 import { motion, useInView } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { servicesData } from "@/data/servicesData";
-import { ArrowRight, ArrowLeft, CheckCircle2, ChevronRight, ChevronDown, Quote } from "lucide-react";
+import { ArrowRight, ArrowLeft, CheckCircle2, ChevronRight, ChevronDown, Quote, ChevronLeft, Building2 } from "lucide-react";
 import NotFound from "@/pages/not-found";
 import { useLanguage } from "@/contexts/LanguageContext";
 
@@ -50,7 +50,7 @@ function AnimatedStat({ value, label, gradient }: { value: string; label: string
   );
 }
 
-function FaqItem({ q, a, gradient }: { q: string; a: string; gradient: string }) {
+function FaqItem({ q, a }: { q: string; a: string }) {
   const [open, setOpen] = useState(false);
   return (
     <div className="border border-border rounded-xl overflow-hidden">
@@ -70,6 +70,77 @@ function FaqItem({ q, a, gradient }: { q: string; a: string; gradient: string })
   );
 }
 
+function TestimonialCarousel({ testimonials, gradient }: { testimonials: typeof servicesData[0]["testimonials"]; gradient: string }) {
+  const [idx, setIdx] = useState(0);
+  const [dir, setDir] = useState(1);
+
+  useEffect(() => {
+    const t = setInterval(() => {
+      setDir(1);
+      setIdx((i) => (i + 1) % testimonials.length);
+    }, 5000);
+    return () => clearInterval(t);
+  }, [testimonials.length]);
+
+  const go = (next: number) => {
+    setDir(next > idx ? 1 : -1);
+    setIdx(next);
+  };
+
+  const cur = testimonials[idx];
+
+  return (
+    <div className="relative">
+      {/* Card */}
+      <motion.div
+        key={idx}
+        initial={{ opacity: 0, x: dir * 40 }}
+        animate={{ opacity: 1, x: 0 }}
+        exit={{ opacity: 0, x: -dir * 40 }}
+        transition={{ duration: 0.4 }}
+        className="bg-white/10 backdrop-blur-sm border border-white/15 rounded-2xl p-8 md:p-10 max-w-3xl mx-auto"
+      >
+        <Quote className="w-8 h-8 text-white/25 mb-5" />
+        <blockquote className="text-xl md:text-2xl font-display font-medium text-white leading-snug mb-8">
+          "{cur.quote}"
+        </blockquote>
+        <div className="flex items-center gap-4">
+          <img src={cur.avatar} alt={cur.name} className="w-12 h-12 rounded-full object-cover ring-2 ring-white/30" />
+          <div>
+            <p className="font-bold text-white">{cur.name}</p>
+            <p className="text-white/60 text-sm">{cur.role}, {cur.company}</p>
+          </div>
+        </div>
+      </motion.div>
+
+      {/* Controls */}
+      <div className="flex items-center justify-center gap-4 mt-8">
+        <button
+          onClick={() => go((idx - 1 + testimonials.length) % testimonials.length)}
+          className="w-9 h-9 rounded-full border border-white/20 flex items-center justify-center text-white/60 hover:text-white hover:border-white/50 transition-all"
+        >
+          <ChevronLeft className="w-4 h-4" />
+        </button>
+        <div className="flex gap-2">
+          {testimonials.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => go(i)}
+              className={`transition-all duration-300 rounded-full ${i === idx ? "w-7 h-2.5 bg-white" : "w-2.5 h-2.5 bg-white/30 hover:bg-white/50"}`}
+            />
+          ))}
+        </div>
+        <button
+          onClick={() => go((idx + 1) % testimonials.length)}
+          className="w-9 h-9 rounded-full border border-white/20 flex items-center justify-center text-white/60 hover:text-white hover:border-white/50 transition-all"
+        >
+          <ChevronRight className="w-4 h-4" />
+        </button>
+      </div>
+    </div>
+  );
+}
+
 export default function ServiceDetail() {
   const params = useParams<{ slug: string }>();
   const { t } = useLanguage();
@@ -82,6 +153,10 @@ export default function ServiceDetail() {
   const prevService = currentIndex > 0 ? servicesData[currentIndex - 1] : null;
   const nextService = currentIndex < servicesData.length - 1 ? servicesData[currentIndex + 1] : null;
   const relatedServices = servicesData.filter((s) => s.slug !== service.slug);
+
+  // Duplicate items for seamless marquee loops
+  const industriesLoop = [...service.industries, ...service.industries, ...service.industries, ...service.industries];
+  const clientsLoop = [...service.clients, ...service.clients, ...service.clients];
 
   return (
     <div className="w-full">
@@ -127,7 +202,6 @@ export default function ServiceDetail() {
           <div className="grid lg:grid-cols-2 gap-14 items-center">
             <motion.div {...fadeUp}>
               <h2 className="text-3xl md:text-4xl font-display font-bold mb-6">{t("detail_about")}</h2>
-              {/* Benefit bullets — no paragraph, direct value */}
               <div className="space-y-4 mb-8">
                 {service.benefits.map((benefit, i) => (
                   <div key={i} className="flex gap-3 items-start p-4 rounded-xl border border-border bg-slate-50 hover:border-primary/30 hover:bg-white transition-all duration-200">
@@ -169,7 +243,6 @@ export default function ServiceDetail() {
             <h2 className="text-3xl md:text-4xl font-display font-bold mb-3">{t("detail_how_we_work")}</h2>
           </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 relative">
-            {/* Connecting line */}
             <div className="hidden lg:block absolute top-10 left-[12.5%] right-[12.5%] h-0.5 bg-gradient-to-r from-border via-primary/30 to-border z-0" />
             {service.process.map((step, i) => (
               <motion.div
@@ -191,69 +264,101 @@ export default function ServiceDetail() {
         </div>
       </section>
 
-      {/* ── INDUSTRIES + SPECIALTIES ── */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="grid lg:grid-cols-2 gap-14">
-            <motion.div {...fadeUp}>
-              <h2 className="text-2xl md:text-3xl font-display font-bold mb-5">{t("detail_industries")}</h2>
-              <div className="flex flex-wrap gap-3">
-                {service.industries.map((ind, i) => (
-                  <span key={i} className={`px-4 py-2 rounded-full text-sm font-semibold bg-gradient-to-r ${service.gradient} text-white shadow-sm`}>
-                    {ind}
-                  </span>
-                ))}
-              </div>
-            </motion.div>
-            <motion.div {...fadeUp}>
-              <h2 className="text-2xl md:text-3xl font-display font-bold mb-5">{t("detail_specialties")}</h2>
-              <div className="grid grid-cols-2 gap-2.5">
-                {service.specialties.map((spec, i) => (
-                  <div key={i} className="flex items-center gap-2.5 p-3 rounded-lg border border-border bg-slate-50 text-sm">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-primary shrink-0" />
-                    <span className="text-slate-700 font-medium">{spec}</span>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
+      {/* ── INDUSTRIES WE SERVE — scrolling marquee strip ── */}
+      <section className="py-14 bg-[#0B1120] overflow-hidden">
+        <div className="container mx-auto px-4 md:px-6 mb-8">
+          <motion.div {...fadeUp} className="text-center">
+            <h2 className="text-2xl md:text-3xl font-display font-bold text-white mb-1">{t("detail_industries")}</h2>
+            <p className="text-slate-400 text-sm">Sectors we've served across the US and India</p>
+          </motion.div>
+        </div>
+        {/* Top row — left */}
+        <div className="relative w-full overflow-hidden pause-on-hover mb-3">
+          <div className="flex gap-4 animate-marquee w-max">
+            {industriesLoop.map((ind, i) => (
+              <span key={i} className={`whitespace-nowrap px-5 py-2.5 rounded-full text-sm font-semibold bg-gradient-to-r ${service.gradient} text-white shadow-md border border-white/10 shrink-0`}>
+                {ind}
+              </span>
+            ))}
+          </div>
+        </div>
+        {/* Bottom row — reverse (offset) */}
+        <div className="relative w-full overflow-hidden pause-on-hover">
+          <div className="flex gap-4 animate-marquee-reverse w-max">
+            {[...industriesLoop].reverse().map((ind, i) => (
+              <span key={i} className="whitespace-nowrap px-5 py-2.5 rounded-full text-sm font-semibold bg-white/10 text-white/80 border border-white/15 shrink-0">
+                {ind}
+              </span>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* ── FAQ ── */}
-      <section className="py-20 bg-slate-50 border-y border-border">
-        <div className="container mx-auto px-4 md:px-6 max-w-3xl">
-          <motion.div {...fadeUp} className="text-center mb-10">
-            <h2 className="text-3xl md:text-4xl font-display font-bold mb-3">{t("detail_faq")}</h2>
+      {/* ── SPECIALTIES ── */}
+      <section className="py-20 bg-white border-b border-border">
+        <div className="container mx-auto px-4 md:px-6">
+          <motion.div {...fadeUp} className="mb-8">
+            <h2 className="text-2xl md:text-3xl font-display font-bold mb-1">{t("detail_specialties")}</h2>
+            <p className="text-muted-foreground text-sm">What we deliver within this service</p>
           </motion.div>
-          <motion.div {...fadeUp} className="space-y-3">
-            {service.faqs.map((faq, i) => (
-              <FaqItem key={i} q={faq.q} a={faq.a} gradient={service.gradient} />
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+            {service.specialties.map((spec, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.3, delay: i * 0.05 }}
+                className="flex items-center gap-2.5 p-3.5 rounded-xl border border-border bg-slate-50 hover:border-primary/30 hover:bg-white hover:shadow-sm transition-all duration-200"
+              >
+                <CheckCircle2 className="w-4 h-4 text-primary shrink-0" />
+                <span className="text-slate-700 font-medium text-sm">{spec}</span>
+              </motion.div>
             ))}
-          </motion.div>
+          </div>
         </div>
       </section>
 
-      {/* ── TESTIMONIAL ── */}
-      <section className={`py-20 bg-gradient-to-br ${service.gradient}`}>
-        <div className="container mx-auto px-4 md:px-6 max-w-3xl text-center">
-          <motion.div {...fadeUp}>
-            <Quote className="w-10 h-10 text-white/30 mx-auto mb-6" />
-            <blockquote className="text-xl md:text-2xl font-display font-medium text-white leading-snug mb-8">
-              "{service.testimonial.quote}"
-            </blockquote>
-            <div className="flex items-center justify-center gap-4">
-              <img
-                src={service.testimonial.avatar}
-                alt={service.testimonial.name}
-                className="w-12 h-12 rounded-full object-cover ring-2 ring-white/40"
-              />
-              <div className="text-left">
-                <p className="font-bold text-white">{service.testimonial.name}</p>
-                <p className="text-white/70 text-sm">{service.testimonial.role}, {service.testimonial.company}</p>
-              </div>
-            </div>
+      {/* ── CLIENTS — scrolling marquee ── */}
+      <section className="py-14 bg-slate-50 border-b border-border overflow-hidden">
+        <div className="container mx-auto px-4 md:px-6 mb-8">
+          <motion.div {...fadeUp} className="flex items-center gap-3">
+            <Building2 className="w-5 h-5 text-primary" />
+            <h2 className="text-xl md:text-2xl font-display font-bold">Trusted by Leading Organizations</h2>
           </motion.div>
+        </div>
+        {/* Single scrolling row of client name chips */}
+        <div className="relative w-full overflow-hidden pause-on-hover">
+          {/* Fade edges */}
+          <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-slate-50 to-transparent z-10 pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-slate-50 to-transparent z-10 pointer-events-none" />
+          <div className="flex gap-5 animate-marquee w-max">
+            {clientsLoop.map((client, i) => (
+              <div key={i} className="flex items-center gap-2.5 shrink-0 bg-white border border-border rounded-xl px-5 py-3 shadow-sm hover:shadow-md hover:border-primary/20 transition-all duration-200">
+                <div className={`w-2 h-2 rounded-full bg-gradient-to-br ${service.gradient}`} />
+                <span className="text-sm font-semibold text-slate-700 whitespace-nowrap">{client}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── TESTIMONIALS — dark rotating carousel ── */}
+      <section className="py-20 bg-[#0B1120] relative overflow-hidden">
+        {/* Subtle grid */}
+        <div className="absolute inset-0 opacity-5" style={{ backgroundImage: "radial-gradient(circle, white 1px, transparent 1px)", backgroundSize: "36px 36px" }} />
+        {/* Gradient orbs */}
+        <div className={`absolute top-0 left-1/4 w-80 h-80 rounded-full blur-3xl opacity-20 bg-gradient-to-br ${service.gradient}`} />
+        <div className={`absolute bottom-0 right-1/4 w-80 h-80 rounded-full blur-3xl opacity-15 bg-gradient-to-br ${service.gradient}`} />
+
+        <div className="container relative z-10 mx-auto px-4 md:px-6">
+          <motion.div {...fadeUp} className="text-center mb-12">
+            <span className="inline-block px-3 py-1 rounded-full bg-white/10 border border-white/15 text-white/70 text-xs font-semibold tracking-widest uppercase mb-4">
+              Client Stories
+            </span>
+            <h2 className="text-2xl md:text-3xl font-display font-bold text-white">What Our Clients Say</h2>
+          </motion.div>
+          <TestimonialCarousel testimonials={service.testimonials} gradient={service.gradient} />
         </div>
       </section>
 
@@ -293,7 +398,7 @@ export default function ServiceDetail() {
       </section>
 
       {/* ── BOTTOM CTA ── */}
-      <section className="py-16 bg-slate-50">
+      <section className="py-16 bg-slate-50 border-b border-border">
         <div className="container mx-auto px-4 md:px-6 text-center">
           <motion.div {...fadeUp}>
             <h2 className="text-2xl md:text-3xl font-display font-bold mb-3">{t("detail_cta_title")}</h2>
@@ -316,9 +421,23 @@ export default function ServiceDetail() {
         </div>
       </section>
 
+      {/* ── FAQ — end of page ── */}
+      <section className="py-20 bg-white border-b border-border">
+        <div className="container mx-auto px-4 md:px-6 max-w-3xl">
+          <motion.div {...fadeUp} className="text-center mb-10">
+            <h2 className="text-3xl md:text-4xl font-display font-bold mb-3">{t("detail_faq")}</h2>
+          </motion.div>
+          <motion.div {...fadeUp} className="space-y-3">
+            {service.faqs.map((faq, i) => (
+              <FaqItem key={i} q={faq.q} a={faq.a} />
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
       {/* ── PREV / NEXT ── */}
       {(prevService || nextService) && (
-        <section className="py-8 bg-white border-t border-border">
+        <section className="py-8 bg-slate-50 border-t border-border">
           <div className="container mx-auto px-4 md:px-6">
             <div className="flex justify-between items-center gap-4">
               {prevService ? (
