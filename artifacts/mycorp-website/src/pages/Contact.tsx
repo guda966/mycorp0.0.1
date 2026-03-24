@@ -112,10 +112,10 @@ export default function Contact() {
                         <SelectValue placeholder="Select a service" />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="staffing">IT Staffing & Recruitment</SelectItem>
-                        <SelectItem value="software">Software Development</SelectItem>
-                        <SelectItem value="managed">Managed IT Services</SelectItem>
-                        <SelectItem value="medical">Medical Billing & RCM</SelectItem>
+                        <SelectItem value="staffing">Staffing & Outsourcing</SelectItem>
+                        <SelectItem value="hiring">IT Hiring Support</SelectItem>
+                        <SelectItem value="projects">IT Projects</SelectItem>
+                        <SelectItem value="medical">Medical Billing & Coding</SelectItem>
                         <SelectItem value="other">Other / General Inquiry</SelectItem>
                       </SelectContent>
                     </Select>

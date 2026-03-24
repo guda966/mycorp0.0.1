@@ -211,15 +211,13 @@ export default function Home() {
 
           <motion.div 
             variants={staggerContainer}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+            className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto"
           >
             {[
-              { icon: Users, title: "IT Staffing & Recruitment", desc: "Top-tier talent acquisition for contract and full-time technical roles.", slug: "it-staffing" },
-              { icon: Code, title: "Software Development", desc: "Custom enterprise applications, API integrations, and cloud solutions.", slug: "software-development" },
-              { icon: Server, title: "Managed Services", desc: "24/7 IT support, network monitoring, and infrastructure management.", slug: "managed-services" },
-              { icon: Target, title: "IT Hiring Solutions", desc: "RPO and executive search to build your dream engineering team.", slug: "it-hiring" },
-              { icon: Stethoscope, title: "Medical Billing", desc: "End-to-end RCM, coding, and claims management for healthcare.", slug: "medical-billing" },
-              { icon: Globe2, title: "Global Consulting", desc: "Strategic IT roadmaps and digital transformation consulting.", slug: "global-consulting" },
+              { icon: Users, title: "Staffing & Outsourcing", desc: "Contract, direct hire, and offshore delivery teams across the US and India — placed in 48 hours.", slug: "staffing-outsourcing" },
+              { icon: Target, title: "IT Hiring Support", desc: "Embedded RPO and executive search that works inside your ATS and represents your employer brand.", slug: "it-hiring" },
+              { icon: Code, title: "IT Projects", desc: "Websites, custom web apps, enterprise platforms, and APIs delivered on time and on budget.", slug: "it-projects" },
+              { icon: Stethoscope, title: "Medical Billing & Coding", desc: "AAPC-certified RCM — reduce denials, recover AR faster, and stay 100% HIPAA compliant.", slug: "medical-billing" },
             ].map((service, i) => (
               <motion.div key={i} variants={fadeIn}>
                 <Card className="h-full border-border/50 shadow-sm hover:shadow-xl hover:border-primary/20 transition-all duration-300 group bg-white">
