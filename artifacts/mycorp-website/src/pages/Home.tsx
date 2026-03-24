@@ -4,9 +4,33 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Link } from "wouter";
 import { 
   ArrowRight, Code, Users, Server, Stethoscope, 
-  Target, Globe2, Clock, Zap, Building2, Quote, ShieldCheck
+  Target, Globe2, Clock, Zap, Building2, Quote, ShieldCheck,
+  Award, MapPin, CheckCircle2
 } from "lucide-react";
 import { useState, useEffect } from "react";
+
+const partners = [
+  { name: "Microsoft", color: "#00a4ef", bg: "#f0f7ff", abbr: "MS" },
+  { name: "Amazon AWS", color: "#FF9900", bg: "#fffbf2", abbr: "AWS" },
+  { name: "Google Cloud", color: "#4285F4", bg: "#f0f4ff", abbr: "GCP" },
+  { name: "Salesforce", color: "#00A1E0", bg: "#f0faff", abbr: "SF" },
+  { name: "ServiceNow", color: "#62D84E", bg: "#f2fff0", abbr: "SN" },
+  { name: "Oracle", color: "#C74634", bg: "#fff2f0", abbr: "ORC" },
+];
+
+const certifications = [
+  { name: "ISO 27001", desc: "Information Security" },
+  { name: "HIPAA", desc: "Healthcare Compliance" },
+  { name: "SOC 2 Type II", desc: "Security & Availability" },
+  { name: "AAPC Certified", desc: "Medical Coding" },
+  { name: "AWS Partner", desc: "Cloud Solutions" },
+  { name: "Microsoft Gold", desc: "Technology Partner" },
+];
+
+const offices = [
+  { city: "New Jersey", country: "USA 🇺🇸", address: "100 Enterprise Way, Suite 400, NJ 08001", type: "US Headquarters", color: "from-blue-600 to-blue-800", stats: ["250+ Professionals", "Client Management", "Sales & Strategy"] },
+  { city: "Hyderabad", country: "India 🇮🇳", address: "Tech Park, Hitec City, Hyderabad, TS 500081", type: "India Delivery Center", color: "from-orange-500 to-red-600", stats: ["950+ Professionals", "24/7 Support", "Software & RCM"] },
+];
 
 function GoogleIcon({ className }: { className?: string }) {
   return (
@@ -143,6 +167,39 @@ export default function Home() {
         </div>
       </section>
 
+      {/* TECHNOLOGY PARTNERS */}
+      <section className="py-14 bg-white border-b border-border">
+        <div className="container mx-auto px-4 md:px-6">
+          <motion.p
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="text-center text-xs font-semibold tracking-widest text-muted-foreground uppercase mb-8"
+          >
+            Official Technology Partners
+          </motion.p>
+          <div className="grid grid-cols-3 md:grid-cols-6 gap-4">
+            {partners.map((p, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: i * 0.07 }}
+              >
+                <div
+                  style={{ background: p.bg }}
+                  className="flex flex-col items-center justify-center text-center p-4 rounded-2xl border border-slate-100 hover:shadow-md hover:-translate-y-1 transition-all duration-300 h-20"
+                >
+                  <div className="text-lg font-black tracking-tight mb-0.5" style={{ color: p.color }}>{p.abbr}</div>
+                  <p className="text-[11px] text-muted-foreground font-medium leading-tight">{p.name}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* FEATURED SERVICES */}
       <section className="py-24 bg-slate-50 bg-grid-pattern relative">
         <div className="container mx-auto px-4 md:px-6">
@@ -232,6 +289,74 @@ export default function Home() {
               />
             </motion.div>
           </div>
+        </div>
+      </section>
+
+      {/* GLOBAL PRESENCE */}
+      <section className="py-24 bg-slate-50 border-t border-border">
+        <div className="container mx-auto px-4 md:px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-14"
+          >
+            <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">Global Presence. Local Expertise.</h2>
+            <p className="text-muted-foreground max-w-xl mx-auto">Two strategic delivery centers working in sync, 24/7, across every timezone.</p>
+          </motion.div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {offices.map((office, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: i * 0.15 }}
+              >
+                <Card className="border-0 overflow-hidden shadow-lg hover:shadow-2xl transition-shadow">
+                  <div className={`bg-gradient-to-r ${office.color} p-6`}>
+                    <div className="flex justify-between items-start">
+                      <div>
+                        <p className="text-white/70 text-sm font-medium mb-1">{office.type}</p>
+                        <h3 className="text-3xl font-bold text-white font-display">{office.city}</h3>
+                        <p className="text-white/80 mt-1">{office.country}</p>
+                      </div>
+                      <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center">
+                        <MapPin className="w-6 h-6 text-white" />
+                      </div>
+                    </div>
+                  </div>
+                  <CardContent className="p-6 bg-white">
+                    <p className="text-muted-foreground text-sm mb-5 flex items-start gap-2">
+                      <MapPin className="w-4 h-4 shrink-0 mt-0.5 text-slate-400" />
+                      {office.address}
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      {office.stats.map((s, j) => (
+                        <span key={j} className="px-3 py-1 rounded-full bg-primary/5 text-primary text-xs font-medium flex items-center gap-1">
+                          <CheckCircle2 className="w-3 h-3" />{s}
+                        </span>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="mt-8 text-center"
+          >
+            <Link href="/about">
+              <span className="inline-flex items-center gap-2 text-primary font-semibold hover:underline text-sm">
+                Learn more about our offices <ArrowRight className="w-4 h-4" />
+              </span>
+            </Link>
+          </motion.div>
         </div>
       </section>
 
@@ -395,6 +520,39 @@ export default function Home() {
               View all reviews on Google
             </a>
           </motion.div>
+        </div>
+      </section>
+
+      {/* CERTIFICATIONS STRIP */}
+      <section className="py-16 bg-white border-t border-border">
+        <div className="container mx-auto px-4 md:px-6">
+          <motion.p
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="text-center text-xs font-semibold tracking-widest text-muted-foreground uppercase mb-10"
+          >
+            Certified. Compliant. Trusted.
+          </motion.p>
+          <div className="grid grid-cols-3 md:grid-cols-6 gap-4">
+            {certifications.map((cert, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: i * 0.07 }}
+              >
+                <div className="flex flex-col items-center text-center p-5 rounded-2xl border border-border hover:border-primary/30 hover:shadow-md transition-all duration-300 group bg-white h-24 justify-center">
+                  <div className="w-9 h-9 bg-primary/10 rounded-lg flex items-center justify-center mb-2 group-hover:bg-primary transition-colors">
+                    <Award className="w-5 h-5 text-primary group-hover:text-white transition-colors" />
+                  </div>
+                  <p className="font-bold text-xs text-foreground">{cert.name}</p>
+                  <p className="text-muted-foreground text-[10px] mt-0.5 leading-tight">{cert.desc}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 
