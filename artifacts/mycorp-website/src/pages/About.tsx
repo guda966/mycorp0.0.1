@@ -4,7 +4,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 import {
-  Target, Eye, Heart, Award, Users, Globe2,
+  Target, Eye, Heart, Award, CheckCircle2, Users, Globe2,
   Lightbulb, ShieldCheck, Zap, Handshake, ArrowRight,
   Calendar, TrendingUp, Star, Linkedin, Play,
   TreePine, GraduationCap, HandHeart, Leaf, Quote
