@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { servicesData } from "@/data/servicesData";
 import { ArrowRight, ArrowLeft, CheckCircle2, ChevronRight, ChevronDown, Quote } from "lucide-react";
 import NotFound from "@/pages/not-found";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const fadeUp = {
   initial: { opacity: 0, y: 24 },
@@ -71,6 +72,7 @@ function FaqItem({ q, a, gradient }: { q: string; a: string; gradient: string })
 
 export default function ServiceDetail() {
   const params = useParams<{ slug: string }>();
+  const { t } = useLanguage();
   const service = servicesData.find((s) => s.slug === params.slug);
 
   if (!service) return <NotFound />;
@@ -124,7 +126,7 @@ export default function ServiceDetail() {
         <div className="container mx-auto px-4 md:px-6">
           <div className="grid lg:grid-cols-2 gap-14 items-center">
             <motion.div {...fadeUp}>
-              <h2 className="text-3xl md:text-4xl font-display font-bold mb-5">About This Service</h2>
+              <h2 className="text-3xl md:text-4xl font-display font-bold mb-5">{t("detail_about")}</h2>
               <p className="text-lg text-muted-foreground leading-relaxed mb-8">{service.longDescription}</p>
               <div className="space-y-3 mb-8">
                 {service.benefits.map((benefit, i) => (
@@ -164,8 +166,8 @@ export default function ServiceDetail() {
       <section className="py-20 bg-slate-50 border-y border-border">
         <div className="container mx-auto px-4 md:px-6">
           <motion.div {...fadeUp} className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-display font-bold mb-3">How We Work</h2>
-            <p className="text-muted-foreground max-w-lg mx-auto">A clear, repeatable process that delivers results from day one.</p>
+            <h2 className="text-3xl md:text-4xl font-display font-bold mb-3">{t("detail_how_we_work")}</h2>
+            <p className="text-muted-foreground max-w-lg mx-auto">{t("detail_how_sub")}</p>
           </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 relative">
             {/* Connecting line */}
@@ -195,8 +197,8 @@ export default function ServiceDetail() {
         <div className="container mx-auto px-4 md:px-6">
           <div className="grid lg:grid-cols-2 gap-14">
             <motion.div {...fadeUp}>
-              <h2 className="text-2xl md:text-3xl font-display font-bold mb-3">Industries We Serve</h2>
-              <p className="text-muted-foreground text-sm mb-6">Proven experience across a diverse range of sectors and business environments.</p>
+              <h2 className="text-2xl md:text-3xl font-display font-bold mb-3">{t("detail_industries")}</h2>
+              <p className="text-muted-foreground text-sm mb-6">{t("detail_industries_sub")}</p>
               <div className="flex flex-wrap gap-3">
                 {service.industries.map((ind, i) => (
                   <span key={i} className={`px-4 py-2 rounded-full text-sm font-semibold bg-gradient-to-r ${service.gradient} text-white shadow-sm`}>
@@ -206,8 +208,8 @@ export default function ServiceDetail() {
               </div>
             </motion.div>
             <motion.div {...fadeUp}>
-              <h2 className="text-2xl md:text-3xl font-display font-bold mb-3">Specialties & Expertise</h2>
-              <p className="text-muted-foreground text-sm mb-6">Practitioner-level depth across every area of this service.</p>
+              <h2 className="text-2xl md:text-3xl font-display font-bold mb-3">{t("detail_specialties")}</h2>
+              <p className="text-muted-foreground text-sm mb-6">{t("detail_specialties_sub")}</p>
               <div className="grid grid-cols-2 gap-2.5">
                 {service.specialties.map((spec, i) => (
                   <div key={i} className="flex items-center gap-2.5 p-3 rounded-lg border border-border bg-slate-50 text-sm">
@@ -225,7 +227,7 @@ export default function ServiceDetail() {
       <section className="py-20 bg-slate-50 border-y border-border">
         <div className="container mx-auto px-4 md:px-6 max-w-3xl">
           <motion.div {...fadeUp} className="text-center mb-10">
-            <h2 className="text-3xl md:text-4xl font-display font-bold mb-3">Frequently Asked Questions</h2>
+            <h2 className="text-3xl md:text-4xl font-display font-bold mb-3">{t("detail_faq")}</h2>
             <p className="text-muted-foreground">Common questions about {service.title} at MyCorp Solutions.</p>
           </motion.div>
           <motion.div {...fadeUp} className="space-y-3">
@@ -263,8 +265,8 @@ export default function ServiceDetail() {
       <section className="py-16 bg-white border-b border-border">
         <div className="container mx-auto px-4 md:px-6">
           <motion.div {...fadeUp} className="text-center mb-10">
-            <h2 className="text-2xl md:text-3xl font-display font-bold mb-2">Explore Other Services</h2>
-            <p className="text-muted-foreground text-sm">See how MyCorp can help across more areas of your business.</p>
+            <h2 className="text-2xl md:text-3xl font-display font-bold mb-2">{t("detail_related")}</h2>
+            <p className="text-muted-foreground text-sm">{t("detail_related_sub")}</p>
           </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
             {relatedServices.map((rel, i) => {
@@ -298,9 +300,9 @@ export default function ServiceDetail() {
       <section className="py-16 bg-slate-50">
         <div className="container mx-auto px-4 md:px-6 text-center">
           <motion.div {...fadeUp}>
-            <h2 className="text-2xl md:text-3xl font-display font-bold mb-3">Ready to get started?</h2>
+            <h2 className="text-2xl md:text-3xl font-display font-bold mb-3">{t("detail_cta_title")}</h2>
             <p className="text-muted-foreground mb-7 max-w-lg mx-auto">
-              Talk to our team about {service.title} — we'll build a plan that fits your timeline and budget.
+              {t("detail_cta_body")}
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <Link href="/contact">
@@ -329,7 +331,7 @@ export default function ServiceDetail() {
                     <ArrowLeft className="w-4 h-4" />
                   </div>
                   <div className="hidden sm:block">
-                    <p className="text-xs text-muted-foreground mb-0.5">Previous</p>
+                    <p className="text-xs text-muted-foreground mb-0.5">{t("detail_prev")}</p>
                     <p className="font-semibold text-sm">{prevService.title}</p>
                   </div>
                 </Link>
@@ -342,7 +344,7 @@ export default function ServiceDetail() {
               {nextService ? (
                 <Link href={`/services/${nextService.slug}`} className="group flex items-center gap-3 text-right hover:text-primary transition-colors">
                   <div className="hidden sm:block">
-                    <p className="text-xs text-muted-foreground mb-0.5">Next</p>
+                    <p className="text-xs text-muted-foreground mb-0.5">{t("detail_next")}</p>
                     <p className="font-semibold text-sm">{nextService.title}</p>
                   </div>
                   <div className="w-10 h-10 rounded-full border border-border group-hover:border-primary group-hover:bg-primary/5 flex items-center justify-center transition-colors">

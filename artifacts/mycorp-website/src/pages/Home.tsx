@@ -8,6 +8,7 @@ import {
   Award, MapPin, CheckCircle2
 } from "lucide-react";
 import { useState, useEffect } from "react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const clientIndustries = [
   { name: "Healthcare", icon: "🏥", color: "text-rose-600", bg: "bg-rose-50", border: "border-rose-100" },
@@ -88,6 +89,8 @@ function StatCounter({ end, suffix = "", text }: { end: number, suffix?: string,
 }
 
 export default function Home() {
+  const { t } = useLanguage();
+
   return (
     <div className="w-full">
       {/* HERO SECTION */}
@@ -110,7 +113,7 @@ export default function Home() {
               className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/20 text-sm font-medium mb-6"
             >
               <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
-              Your Trusted Partner in IT & Healthcare
+              {t("home_hero_badge")}
             </motion.div>
             
             <motion.h1 
@@ -119,9 +122,9 @@ export default function Home() {
               transition={{ duration: 0.6, delay: 0.1 }}
               className="text-5xl md:text-7xl font-display font-bold leading-tight mb-6"
             >
-              Empowering Business. <br/>
+              {t("home_hero_line1")} <br/>
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-accent">
-                Enabling Growth.
+                {t("home_hero_line2")}
               </span>
             </motion.h1>
             
@@ -131,7 +134,7 @@ export default function Home() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-lg md:text-xl text-slate-300 mb-10 max-w-2xl leading-relaxed"
             >
-              We deliver innovative IT staffing, software solutions, and healthcare revenue cycle management to help global enterprises scale efficiently.
+              {t("home_hero_sub")}
             </motion.p>
             
             <motion.div 
@@ -142,12 +145,12 @@ export default function Home() {
             >
               <Link href="/contact">
                 <Button size="lg" className="rounded-full px-8 h-14 text-base shadow-lg shadow-primary/20">
-                  Get a Free Consultation
+                  {t("cta_free_consultation")}
                 </Button>
               </Link>
               <Link href="/services">
                 <Button size="lg" variant="outline" className="rounded-full px-8 h-14 text-base bg-white/5 text-white border-white/20 hover:bg-white/10 hover:text-white">
-                  Explore Services <ArrowRight className="ml-2 w-4 h-4" />
+                  {t("cta_explore_services")} <ArrowRight className="ml-2 w-4 h-4" />
                 </Button>
               </Link>
             </motion.div>
@@ -202,10 +205,10 @@ export default function Home() {
         <div className="container mx-auto px-4 md:px-6">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-4">
-              Comprehensive Solutions for Modern Business
+              {t("home_services_title")}
             </h2>
             <p className="text-muted-foreground text-lg">
-              End-to-end services tailored to bridge the gap between talent and technology.
+              {t("home_services_sub")}
             </p>
           </div>
 

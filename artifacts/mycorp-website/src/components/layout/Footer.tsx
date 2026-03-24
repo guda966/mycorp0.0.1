@@ -1,8 +1,10 @@
 import { Link } from "wouter";
 import { Building2, Mail, MapPin, Phone, Linkedin, Twitter, Facebook } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
+  const { t } = useLanguage();
 
   return (
     <footer className="bg-[#0B1120] text-white pt-20 pb-10 border-t border-white/10">
@@ -19,7 +21,7 @@ export function Footer() {
               </span>
             </Link>
             <p className="text-slate-400 text-sm leading-relaxed max-w-xs">
-              Empowering Business. Enabling Growth. Your trusted global partner in IT staffing, software solutions, and healthcare RCM.
+              {t("footer_tagline")}
             </p>
             <div className="flex items-center gap-4">
               <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary hover:text-white transition-colors">
@@ -38,13 +40,19 @@ export function Footer() {
           <div>
             <h4 className="font-display font-semibold text-lg mb-6">Quick Links</h4>
             <ul className="space-y-3">
-              {['Home', 'About Us', 'Services', 'Careers', 'Contact'].map((item) => (
-                <li key={item}>
-                  <Link 
-                    href={item === 'Home' ? '/' : `/${item.toLowerCase().replace(' ', '-')}`}
+              {[
+                { label: t("nav_home"), href: "/" },
+                { label: t("nav_about"), href: "/about" },
+                { label: t("nav_services"), href: "/services" },
+                { label: t("nav_careers"), href: "/careers" },
+                { label: t("footer_contact"), href: "/contact" },
+              ].map((item) => (
+                <li key={item.href}>
+                  <Link
+                    href={item.href}
                     className="text-slate-400 hover:text-white hover:translate-x-1 inline-block transition-all text-sm"
                   >
-                    {item}
+                    {item.label}
                   </Link>
                 </li>
               ))}
@@ -53,7 +61,7 @@ export function Footer() {
 
           {/* Services */}
           <div>
-            <h4 className="font-display font-semibold text-lg mb-6">Our Services</h4>
+            <h4 className="font-display font-semibold text-lg mb-6">{t("footer_services")}</h4>
             <ul className="space-y-3">
               {[
                 { label: 'Staffing & Outsourcing', slug: 'staffing-outsourcing' },
@@ -75,7 +83,7 @@ export function Footer() {
 
           {/* Contact */}
           <div>
-            <h4 className="font-display font-semibold text-lg mb-6">Contact Us</h4>
+            <h4 className="font-display font-semibold text-lg mb-6">{t("footer_contact")}</h4>
             <ul className="space-y-4">
               <li className="flex items-start gap-3 text-sm text-slate-400">
                 <MapPin className="w-5 h-5 text-primary shrink-0 mt-0.5" />
@@ -99,7 +107,7 @@ export function Footer() {
 
         <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-slate-500 text-sm">
-            © {currentYear} MyCorp Solutions. All rights reserved.
+            © {currentYear} MyCorp Solutions. {t("footer_rights")}
           </p>
           <div className="flex gap-6 text-sm text-slate-500">
             <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
