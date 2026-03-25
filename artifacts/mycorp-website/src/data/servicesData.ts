@@ -51,7 +51,7 @@ export const servicesData: ServiceData[] = [
     ],
     stats: [
       { value: "40%", label: "Faster Time-to-Fill" },
-      { value: "5,000+", label: "Placements Completed" },
+      { value: "500+", label: "Placements Completed" },
       { value: "92%", label: "Retention Rate" },
     ],
     testimonials: [
@@ -108,7 +108,7 @@ export const servicesData: ServiceData[] = [
     ],
     stats: [
       { value: "35%", label: "Lower Cost-Per-Hire" },
-      { value: "1,200+", label: "Roles Filled via RPO" },
+      { value: "300+", label: "Roles Filled via RPO" },
       { value: "3x", label: "Faster Offer Acceptance" },
     ],
     testimonials: [

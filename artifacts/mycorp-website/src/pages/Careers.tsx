@@ -19,7 +19,7 @@ const fadeUp = {
 };
 
 const stats = [
-  { value: "50+", label: "Team Members" },
+  { value: "300+", label: "Team Members" },
   { value: "4", label: "Service Verticals" },
   { value: "5+", label: "Years of Excellence" },
   { value: "Hyd", label: "Based in HITEC City" },

@@ -415,10 +415,10 @@ export default function Home() {
       <section className="bg-primary py-14 -mt-8 relative z-20 mx-4 md:mx-12 rounded-3xl shadow-2xl">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-            <StatCounter end={200} suffix="+" label="Happy Clients" />
+            <StatCounter end={50} suffix="+" label="Happy Clients" />
             <StatCounter end={95} suffix="%" label="Retention Rate" />
             <StatCounter end={5} suffix="+" label="Years of Excellence" />
-            <StatCounter end={5000} suffix="+" label="Placements Made" />
+            <StatCounter end={500} suffix="+" label="Placements Made" />
           </div>
         </div>
       </section>
@@ -565,7 +565,7 @@ export default function Home() {
                     <CheckCircle2 className="w-5 h-5 text-emerald-600" />
                   </div>
                   <div>
-                    <p className="font-bold text-sm text-foreground">5,000+ Placements</p>
+                    <p className="font-bold text-sm text-foreground">500+ Placements</p>
                     <p className="text-xs text-muted-foreground">Across US & India markets</p>
                   </div>
                 </div>
@@ -643,7 +643,7 @@ export default function Home() {
               ))}
               <span className="text-xl font-bold text-slate-800 ml-1">4.9</span>
             </div>
-            <p className="text-slate-500 text-sm">Based on 200+ verified Google Reviews</p>
+            <p className="text-slate-500 text-sm">Based on 50+ verified Google Reviews</p>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -742,7 +742,7 @@ export default function Home() {
               Your Next Breakthrough Hire or Project Starts Here.
             </h2>
             <p className="text-blue-100 text-lg mb-10 max-w-xl mx-auto leading-relaxed">
-              Join 200+ organizations that trust MyCorp Solutions for IT staffing, software delivery, and healthcare RCM excellence.
+              Join 50+ organizations that trust MyCorp Solutions for IT staffing, software delivery, and healthcare RCM excellence.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a href="mailto:mycorpsolutionsteam@gmail.com?subject=Consultation%20Request">

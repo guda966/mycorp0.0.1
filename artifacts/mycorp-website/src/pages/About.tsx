@@ -19,10 +19,10 @@ const fadeUp = {
 
 const milestones = [
   { year: "2020", title: "Founded", desc: "G.V Krishna Reddy founded MyCorp Solutions in Hyderabad, HITEC City — with a bold vision to build a world-class IT services company from India.", icon: Star },
-  { year: "2021", title: "First Enterprise Clients", desc: "Onboarded our first 50 enterprise clients across US and India markets. IT staffing and recruitment practice gained strong momentum.", icon: Users },
+  { year: "2021", title: "First Enterprise Clients", desc: "Onboarded our first enterprise clients across US and India markets. IT staffing and recruitment practice gained strong momentum.", icon: Users },
   { year: "2022", title: "Healthcare Division", desc: "Launched our Healthcare Projects division — Medical Billing, RCM, and healthcare IT delivery — serving clinics and health systems.", icon: Heart },
   { year: "2023", title: "IT Projects Practice", desc: "Expanded into full-service IT project delivery — websites, custom applications, enterprise platforms, and digital transformation.", icon: Lightbulb },
-  { year: "2024", title: "Scale & Growth", desc: "Crossed 200+ active clients, 5,000+ successful placements, and scaled our Hyderabad delivery centre to 300+ professionals.", icon: TrendingUp },
+  { year: "2024", title: "Scale & Growth", desc: "Crossed 50+ active clients, 500+ successful placements, and scaled our Hyderabad delivery centre to 300+ professionals.", icon: TrendingUp },
   { year: "2025", title: "AI & Innovation", desc: "Launched AI-powered recruitment tools and cloud transformation consulting, positioning MyCorp at the forefront of intelligent IT services.", icon: Zap },
 ];
 
@@ -198,8 +198,8 @@ export default function About() {
               {[
                 { target: 5, suffix: "+", label: "Years in Business" },
                 { target: 300, suffix: "+", label: "Team Members" },
-                { target: 200, suffix: "+", label: "Enterprise Clients" },
-                { target: 5000, suffix: "+", label: "Placements Made" },
+                { target: 50, suffix: "+", label: "Enterprise Clients" },
+                { target: 500, suffix: "+", label: "Placements Made" },
               ].map((stat, i) => (
                 <div key={i} className="text-center">
                   <AnimatedStat target={stat.target} suffix={stat.suffix} />

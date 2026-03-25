@@ -14,8 +14,8 @@ const fadeUp = {
 
 const globalStats = [
   { value: "5+", label: "Years in Business" },
-  { value: "200+", label: "Enterprise Clients" },
-  { value: "5,000+", label: "Placements Made" },
+  { value: "50+", label: "Enterprise Clients" },
+  { value: "500+", label: "Placements Made" },
   { value: "300+", label: "Team Members" },
 ];
 
@@ -223,7 +223,7 @@ export default function Services() {
                 className="rounded-2xl shadow-2xl w-full object-cover aspect-[4/3]"
               />
               <div className="absolute -bottom-5 -left-5 bg-white rounded-xl shadow-lg p-4 border border-border">
-                <p className="text-2xl font-display font-bold text-primary">1,200+</p>
+                <p className="text-2xl font-display font-bold text-primary">50+</p>
                 <p className="text-muted-foreground text-xs mt-0.5">Enterprise Clients Served</p>
               </div>
             </motion.div>
