@@ -10,8 +10,8 @@ export function MycorpLogo({ className = "" }: MycorpLogoProps) {
         display: "inline-flex",
         alignItems: "center",
         justifyContent: "center",
-        width: 210,
-        height: 72,
+        width: 170,
+        height: 56,
         overflow: "hidden",
         flexShrink: 0,
       }}
@@ -19,7 +19,7 @@ export function MycorpLogo({ className = "" }: MycorpLogoProps) {
       <img
         src="/mycorp-logo.png"
         alt="MyCorp Solutions"
-        style={{ height: 320, width: "auto", flexShrink: 0 }}
+        style={{ height: 110, width: "auto", flexShrink: 0 }}
         draggable={false}
       />
     </span>
