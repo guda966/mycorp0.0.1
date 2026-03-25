@@ -230,21 +230,98 @@ const whyUs = [
 
 const testimonials = [
   {
-    text: "MyCorp transformed our hiring process. We filled 30 critical IT roles in under 45 days with exceptional candidates.",
-    author: "VP Engineering", company: "Fortune 500 Healthcare", rating: 5,
+    text: "MyCorp transformed our hiring process. We filled 30 critical IT roles in under 45 days — quality candidates, zero hassle.",
+    name: "Rahul Nair", role: "VP Engineering", company: "Healtheon India", rating: 5,
     avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=80&h=80",
   },
   {
-    text: "The medical billing team recovered $2M in denied claims within our first quarter. Truly exceptional expertise.",
-    author: "CFO", company: "Multi-Specialty Clinic, NJ", rating: 5,
+    text: "Their healthcare billing team is exceptional. HIPAA-compliant, highly transparent, and genuinely invested in our revenue outcomes.",
+    name: "Dr. Kavitha Rao", role: "CFO", company: "Apex Multi-Specialty Clinic", rating: 5,
     avatar: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=80&h=80",
   },
   {
-    text: "They delivered our enterprise customer portal in 5 months — on time, on budget, and with outstanding code quality.",
-    author: "CTO", company: "RetailEdge Inc.", rating: 5,
+    text: "They delivered our enterprise portal in 5 months — on time, on budget, and the codebase handoff was completely seamless.",
+    name: "Aditya Sharma", role: "CTO", company: "RetailEdge India", rating: 5,
     avatar: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=80&h=80",
   },
+  {
+    text: "Best IT staffing partner we've worked with. Pre-vetted candidates, 48-hour turnaround, and zero compromise on quality.",
+    name: "Vikram Mehta", role: "Head of Technology", company: "FinServ Technologies", rating: 5,
+    avatar: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=80&h=80",
+  },
+  {
+    text: "Our offshore team in Hyderabad became an extension of our own squad. Seamless collaboration, outstanding results, zero friction.",
+    name: "Sneha Iyer", role: "Product Director", company: "CloudSoft India", rating: 5,
+    avatar: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&q=80&w=80&h=80",
+  },
 ];
+
+function TestimonialDeck({ items }: { items: typeof testimonials }) {
+  const [active, setActive] = useState(0);
+  useEffect(() => {
+    const t = setInterval(() => setActive(a => (a + 1) % items.length), 4500);
+    return () => clearInterval(t);
+  }, [items.length]);
+
+  const go = (dir: number) => setActive(a => (a + dir + items.length) % items.length);
+
+  return (
+    <div className="relative flex flex-col items-center">
+      <div className="relative w-full flex items-center justify-center" style={{ height: 320 }}>
+        {items.map((t, i) => {
+          const diff = ((i - active) % items.length + items.length) % items.length;
+          const isFront = diff === 0;
+          const isRight = diff === 1;
+          const isLeft = diff === items.length - 1;
+          const x = isFront ? 0 : isRight ? "38%" : isLeft ? "-38%" : 0;
+          const scale = isFront ? 1 : 0.85;
+          const opacity = isFront ? 1 : isRight || isLeft ? 0.55 : 0;
+          const zIndex = isFront ? 20 : isRight || isLeft ? 10 : 0;
+          return (
+            <motion.div
+              key={i}
+              style={{ zIndex, position: "absolute", width: "100%", maxWidth: 480 }}
+              animate={{ x, scale, opacity }}
+              transition={{ duration: 0.55, ease: "easeInOut" }}
+              onClick={() => !isFront && setActive(i)}
+              className={!isFront ? "cursor-pointer" : ""}
+            >
+              <Card className="bg-white/8 border-white/12 text-white">
+                <CardContent className="p-7">
+                  <div className="flex gap-1 mb-4">
+                    {Array.from({ length: t.rating }).map((_, j) => (
+                      <Star key={j} className="w-4 h-4 text-amber-400 fill-amber-400" />
+                    ))}
+                  </div>
+                  <Quote className="w-6 h-6 text-white/20 mb-3" />
+                  <p className="text-white/85 leading-relaxed mb-6 text-sm">"{t.text}"</p>
+                  <div className="flex items-center gap-3 border-t border-white/10 pt-5">
+                    <img src={t.avatar} alt={t.name} className="w-10 h-10 rounded-full object-cover ring-2 ring-white/20" />
+                    <div>
+                      <p className="font-bold text-white text-sm">{t.name}</p>
+                      <p className="text-slate-400 text-xs">{t.role} · {t.company}</p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </motion.div>
+          );
+        })}
+      </div>
+
+      {/* Controls */}
+      <div className="flex items-center gap-5 mt-6">
+        <button onClick={() => go(-1)} className="w-9 h-9 rounded-full border border-white/20 text-white/70 hover:border-white/60 hover:text-white transition-colors flex items-center justify-center text-lg">‹</button>
+        <div className="flex gap-2">
+          {items.map((_, i) => (
+            <button key={i} onClick={() => setActive(i)} className={`h-2 rounded-full transition-all duration-300 ${i === active ? "w-6 bg-cyan-400" : "w-2 bg-white/30"}`} />
+          ))}
+        </div>
+        <button onClick={() => go(1)} className="w-9 h-9 rounded-full border border-white/20 text-white/70 hover:border-white/60 hover:text-white transition-colors flex items-center justify-center text-lg">›</button>
+      </div>
+    </div>
+  );
+}
 
 const googleReviews = [
   { name: "Kiran M.", avatar: "K", color: "#4285F4", rating: 5, date: "2 weeks ago", text: "MyCorp placed 3 senior engineers in 2 weeks. The quality was exceptional — better than any agency we've used. Highly recommend!" },
@@ -543,36 +620,7 @@ export default function Home() {
             <p className="text-slate-400">Don't just take our word for it.</p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {testimonials.map((t, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.12 }}
-              >
-                <Card className="h-full bg-white/8 border-white/12 text-white hover:bg-white/12 hover:-translate-y-1 transition-all duration-300">
-                  <CardContent className="p-7">
-                    <div className="flex gap-1 mb-5">
-                      {Array.from({ length: t.rating }).map((_, j) => (
-                        <Star key={j} className="w-4 h-4 text-amber-400 fill-amber-400" />
-                      ))}
-                    </div>
-                    <Quote className="w-7 h-7 text-white/20 mb-4" />
-                    <p className="text-white/85 leading-relaxed mb-7 text-sm">"{t.text}"</p>
-                    <div className="flex items-center gap-3 border-t border-white/10 pt-5">
-                      <img src={t.avatar} alt={t.author} className="w-10 h-10 rounded-full object-cover ring-2 ring-white/20" />
-                      <div>
-                        <p className="font-bold text-white text-sm">{t.author}</p>
-                        <p className="text-slate-400 text-xs">{t.company}</p>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
+          <TestimonialDeck items={testimonials} />
         </div>
       </section>
 

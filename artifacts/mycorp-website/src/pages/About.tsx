@@ -127,6 +127,66 @@ function VideoEmbed() {
   );
 }
 
+function TeamDeck({ items }: { items: typeof employeeTestimonials }) {
+  const [active, setActive] = useState(0);
+  useEffect(() => {
+    const t = setInterval(() => setActive(a => (a + 1) % items.length), 4500);
+    return () => clearInterval(t);
+  }, [items.length]);
+
+  const go = (dir: number) => setActive(a => (a + dir + items.length) % items.length);
+
+  return (
+    <div className="flex flex-col items-center">
+      <div className="relative w-full flex items-center justify-center" style={{ height: 300 }}>
+        {items.map((t, i) => {
+          const diff = ((i - active) % items.length + items.length) % items.length;
+          const isFront = diff === 0;
+          const isRight = diff === 1;
+          const isLeft = diff === items.length - 1;
+          const x = isFront ? 0 : isRight ? "38%" : isLeft ? "-38%" : 0;
+          const scale = isFront ? 1 : 0.85;
+          const opacity = isFront ? 1 : isRight || isLeft ? 0.5 : 0;
+          const zIndex = isFront ? 20 : isRight || isLeft ? 10 : 0;
+          return (
+            <motion.div
+              key={i}
+              style={{ zIndex, position: "absolute", width: "100%", maxWidth: 480 }}
+              animate={{ x, scale, opacity }}
+              transition={{ duration: 0.55, ease: "easeInOut" }}
+              onClick={() => !isFront && setActive(i)}
+              className={!isFront ? "cursor-pointer" : ""}
+            >
+              <div className="bg-white/5 border border-white/10 rounded-xl p-8">
+                <Quote className="w-7 h-7 text-cyan-400 mb-4 opacity-60" />
+                <p className="text-slate-200 leading-relaxed mb-7 italic text-sm">"{t.quote}"</p>
+                <div className="flex items-center gap-4">
+                  <img src={t.img} alt={t.name} className="w-12 h-12 rounded-full object-cover border-2 border-white/20" />
+                  <div>
+                    <p className="font-bold text-white text-sm">{t.name}</p>
+                    <p className="text-cyan-400 text-xs">{t.role}</p>
+                    <p className="text-slate-500 text-xs">{t.tenure} at MyCorp</p>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          );
+        })}
+      </div>
+
+      <div className="flex items-center gap-5 mt-4">
+        <button onClick={() => go(-1)} className="w-9 h-9 rounded-full border border-white/20 text-white/70 hover:border-white/60 hover:text-white transition-colors flex items-center justify-center text-lg">‹</button>
+        <div className="flex gap-2">
+          {items.map((_, i) => (
+            <button key={i} onClick={() => setActive(i)} className={`h-2 rounded-full transition-all duration-300 ${i === active ? "w-6 bg-cyan-400" : "w-2 bg-white/30"}`} />
+          ))}
+        </div>
+        <button onClick={() => go(1)} className="w-9 h-9 rounded-full border border-white/20 text-white/70 hover:border-white/60 hover:text-white transition-colors flex items-center justify-center text-lg">›</button>
+      </div>
+    </div>
+  );
+}
+
 export default function About() {
   const heroRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
@@ -487,32 +547,13 @@ export default function About() {
       </section>
 
       {/* ── EMPLOYEE TESTIMONIALS ── */}
-      <section className="py-24 bg-[#0B1120] text-white">
+      <section className="py-24 bg-[#0B1120] text-white overflow-hidden">
         <div className="container mx-auto px-4 md:px-6">
-          <motion.div {...fadeUp} className="text-center mb-16">
+          <motion.div {...fadeUp} className="text-center mb-14">
             <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">What Our Team Says</h2>
             <p className="text-slate-400 max-w-xl mx-auto">Real voices from the people who make MyCorp exceptional every day.</p>
           </motion.div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {employeeTestimonials.map((t, i) => (
-              <motion.div key={i} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: i * 0.15 }}>
-                <Card className="h-full bg-white/5 border-white/10 hover:bg-white/10 transition-colors">
-                  <CardContent className="p-8">
-                    <Quote className="w-8 h-8 text-accent mb-5 opacity-60" />
-                    <p className="text-slate-200 leading-relaxed mb-8 italic">"{t.quote}"</p>
-                    <div className="flex items-center gap-4">
-                      <img src={t.img} alt={t.name} className="w-12 h-12 rounded-full object-cover border-2 border-white/20" />
-                      <div>
-                        <p className="font-bold text-white text-sm">{t.name}</p>
-                        <p className="text-accent text-xs">{t.role}</p>
-                        <p className="text-slate-500 text-xs">{t.tenure} at MyCorp</p>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
+          <TeamDeck items={employeeTestimonials} />
         </div>
       </section>
 
