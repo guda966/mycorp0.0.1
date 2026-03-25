@@ -239,11 +239,11 @@ export default function Services() {
             <p className="text-slate-300 text-lg mb-8 max-w-xl mx-auto">
               Let's talk. We'll identify the right service mix and build a custom plan — at no cost.
             </p>
-            <Link href="/contact">
+            <a href="mailto:mycorpsolutionsteam@gmail.com?subject=Consultation%20Request">
               <Button size="lg" className="rounded-full px-10 shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all">
                 Schedule a Free Consultation <ArrowRight className="ml-2 w-4 h-4" />
               </Button>
-            </Link>
+            </a>
           </motion.div>
         </div>
       </section>

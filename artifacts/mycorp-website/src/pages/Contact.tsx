@@ -271,7 +271,7 @@ export default function Contact() {
                     </div>
                     <div>
                       <p className="font-bold mb-0.5 text-sm">Email</p>
-                      <p className="text-slate-300 text-sm">contact@mycorpsolutions.com</p>
+                      <a href="mailto:mycorpsolutionsteam@gmail.com" className="text-slate-300 text-sm hover:text-cyan-400 transition-colors">mycorpsolutionsteam@gmail.com</a>
                       <p className="text-slate-400 text-xs">We reply within 24 hours</p>
                     </div>
                   </div>

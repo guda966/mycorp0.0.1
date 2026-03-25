@@ -382,11 +382,11 @@ export default function Home() {
               transition={{ duration: 0.6, delay: 0.32 }}
               className="flex flex-col sm:flex-row gap-4 mb-12"
             >
-              <Link href="/contact">
+              <a href="mailto:mycorpsolutionsteam@gmail.com?subject=Consultation%20Request">
                 <Button size="lg" className="rounded-full px-8 h-14 text-base shadow-xl shadow-primary/25 hover:shadow-primary/40 hover:-translate-y-0.5 transition-all">
                   Get a Free Consultation <ArrowRight className="ml-2 w-4 h-4" />
                 </Button>
-              </Link>
+              </a>
               <Link href="/services">
                 <Button size="lg" variant="outline" className="rounded-full px-8 h-14 text-base bg-white/5 text-white border-white/20 hover:bg-white/15 hover:text-white">
                   Explore Services
@@ -740,11 +740,11 @@ export default function Home() {
               Join 200+ organizations that trust MyCorp Solutions for IT staffing, software delivery, and healthcare RCM excellence.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/contact">
+              <a href="mailto:mycorpsolutionsteam@gmail.com?subject=Consultation%20Request">
                 <Button size="lg" variant="secondary" className="rounded-full px-10 h-14 text-base font-semibold shadow-xl hover:-translate-y-0.5 transition-transform">
                   Get Free Consultation <ArrowRight className="ml-2 w-4 h-4" />
                 </Button>
-              </Link>
+              </a>
               <Link href="/services">
                 <Button size="lg" variant="outline" className="rounded-full px-10 h-14 text-base text-white border-white/30 bg-white/10 hover:bg-white/20 hover:text-white">
                   Explore Services

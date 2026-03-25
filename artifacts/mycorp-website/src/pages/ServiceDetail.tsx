@@ -213,11 +213,11 @@ export default function ServiceDetail() {
                   </div>
                 ))}
               </div>
-              <Link href="/contact">
+              <a href="mailto:mycorpsolutionsteam@gmail.com?subject=Consultation%20Request">
                 <Button size="lg" className="rounded-full shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all">
                   Get a Free Consultation <ArrowRight className="ml-2 w-4 h-4" />
                 </Button>
-              </Link>
+              </a>
             </motion.div>
             <motion.div {...fadeUp} className="relative">
               <img
@@ -404,11 +404,11 @@ export default function ServiceDetail() {
               Talk to our team — we'll build a plan that fits your timeline and budget.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
-              <Link href="/contact">
+              <a href="mailto:mycorpsolutionsteam@gmail.com?subject=Consultation%20Request">
                 <Button size="lg" className="rounded-full px-8 shadow-md">
                   Request a Consultation <ArrowRight className="ml-2 w-4 h-4" />
                 </Button>
-              </Link>
+              </a>
               <Link href="/services">
                 <Button size="lg" variant="outline" className="rounded-full px-8">
                   All Services

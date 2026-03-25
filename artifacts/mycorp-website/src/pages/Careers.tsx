@@ -452,7 +452,7 @@ export default function Careers() {
                 />
               </div>
               <p className="text-xs text-muted-foreground">
-                You can also email your CV directly to <span className="text-primary font-medium">careers@mycorpsolutions.com</span>
+                You can also email your CV directly to <a href="mailto:mycorpsolutionsteam@gmail.com?subject=Job%20Application" className="text-primary font-medium hover:underline">mycorpsolutionsteam@gmail.com</a>
               </p>
               <Button type="submit" size="lg" disabled={appLoading} className="w-full rounded-full shadow-md">
                 {appLoading ? "Submitting…" : "Submit My Profile"}
