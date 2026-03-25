@@ -9,7 +9,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { useToast } from "@/hooks/use-toast";
-import { MapPin, Phone, Mail, MessageSquare, Clock, Star, Shield, Zap } from "lucide-react";
+import { MapPin, Phone, Mail, MessageSquare, Clock, Star, Shield, Zap, ExternalLink, ThumbsUp } from "lucide-react";
 
 const WHATSAPP_NUMBER = "919988661244";
 const WHATSAPP_MESSAGE = encodeURIComponent("Hi! I'd like to learn more about MyCorp Solutions services.");
@@ -247,8 +247,9 @@ export default function Contact() {
                       <p className="font-bold mb-0.5 text-sm">Headquarters</p>
                       <p className="text-slate-300 text-sm leading-relaxed">
                         MyCorp Solutions Pvt. Ltd.<br />
-                        Tech Park, HITEC City<br />
-                        Hyderabad, Telangana — 500 081<br />
+                        Mallareddy Heights, Srinivasa Nagar W Colony<br />
+                        Madhura Nagar, Hyderabad<br />
+                        Telangana — 500 038<br />
                         <span className="text-slate-400 text-xs">India</span>
                       </p>
                     </div>
@@ -328,24 +329,157 @@ export default function Contact() {
           <h2 className="text-2xl font-bold font-display text-foreground mb-1">Visit Us in Hyderabad</h2>
           <p className="text-muted-foreground text-sm flex items-center gap-2">
             <MapPin className="w-4 h-4 text-primary" />
-            Tech Park, HITEC City, Hyderabad, Telangana 500 081, India
+            Mallareddy Heights, Srinivasa Nagar W Colony, Madhura Nagar, Hyderabad, Telangana 500038, India
           </p>
         </div>
         <div className="rounded-2xl overflow-hidden shadow-xl border border-border">
-          <div className="bg-[#0B1120] text-white px-5 py-3 flex items-center gap-2">
-            <MapPin className="w-4 h-4 text-cyan-400" />
-            <span className="font-semibold text-sm">MyCorp Solutions — HITEC City, Hyderabad</span>
+          <div className="bg-[#0B1120] text-white px-5 py-3 flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <MapPin className="w-4 h-4 text-cyan-400" />
+              <span className="font-semibold text-sm">MyCorp Solutions — Madhura Nagar, Hyderabad</span>
+            </div>
+            <a
+              href="https://www.google.com/maps/search/Mallareddy+Heights,+Srinivasa+Nagar+W+Colony,+Madhura+Nagar,+Hyderabad,+Telangana+500038"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-cyan-400 hover:text-cyan-300 text-xs flex items-center gap-1 transition-colors"
+            >
+              Open in Maps <ExternalLink className="w-3 h-3" />
+            </a>
           </div>
           <iframe
             title="MyCorp Solutions Hyderabad Office"
-            src="https://maps.google.com/maps?q=Hitec+City,+Hyderabad,+Telangana,+India&output=embed&z=14"
+            src="https://maps.google.com/maps?q=Mallareddy+Heights,+Srinivasa+Nagar+W+Colony,+Madhura+Nagar,+Hyderabad,+Telangana+500038&output=embed&z=16"
             width="100%"
-            height="400"
+            height="420"
             style={{ border: 0, display: "block" }}
             allowFullScreen
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
           />
+        </div>
+      </div>
+
+      {/* ── GOOGLE REVIEWS ── */}
+      <div className="container mx-auto px-4 md:px-6 mt-16 mb-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+
+          {/* Left — rating summary */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold mb-4">
+              <Star className="w-3 h-3 fill-primary" /> Google Reviews
+            </div>
+            <h2 className="text-3xl font-display font-bold mb-3">What Our Clients Say</h2>
+            <p className="text-muted-foreground mb-8 max-w-md">
+              We've helped hundreds of companies across India and the US hire smarter, deliver faster, and grow stronger. Here's what they have to say.
+            </p>
+
+            {/* Star rating block */}
+            <div className="flex items-center gap-6 mb-8">
+              <div className="text-center">
+                <p className="text-6xl font-bold font-display text-foreground leading-none mb-1">4.9</p>
+                <div className="flex justify-center gap-0.5 mb-1">
+                  {[1,2,3,4,5].map(i => (
+                    <Star key={i} className="w-5 h-5 fill-amber-400 text-amber-400" />
+                  ))}
+                </div>
+                <p className="text-muted-foreground text-xs">Based on Google reviews</p>
+              </div>
+              <div className="flex-1 space-y-2">
+                {[["5 stars", 88], ["4 stars", 9], ["3 stars", 3]].map(([label, pct]) => (
+                  <div key={label as string} className="flex items-center gap-2">
+                    <span className="text-xs text-muted-foreground w-12 shrink-0">{label}</span>
+                    <div className="flex-1 h-2 rounded-full bg-muted overflow-hidden">
+                      <div className="h-full bg-amber-400 rounded-full" style={{ width: `${pct}%` }} />
+                    </div>
+                    <span className="text-xs text-muted-foreground w-8 text-right">{pct}%</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Leave a review CTA */}
+            <div className="p-5 rounded-2xl bg-white border border-border shadow-sm">
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 rounded-xl bg-[#4285F4]/10 flex items-center justify-center shrink-0">
+                  <svg viewBox="0 0 24 24" className="w-6 h-6" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+                    <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                    <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+                    <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+                  </svg>
+                </div>
+                <div className="flex-1">
+                  <p className="font-bold text-sm mb-1">Share Your Experience</p>
+                  <p className="text-muted-foreground text-xs mb-3">Worked with MyCorp Solutions? Your review helps others make confident decisions.</p>
+                  <a
+                    href="https://www.google.com/maps/search/MyCorp+Solutions+Madhura+Nagar+Hyderabad"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 bg-[#4285F4] hover:bg-[#3367d6] text-white text-xs font-semibold px-4 py-2 rounded-lg transition-colors"
+                  >
+                    <ThumbsUp className="w-3.5 h-3.5" /> Write a Google Review
+                  </a>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Right — review cards */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.15 }}
+            className="space-y-4"
+          >
+            {[
+              { name: "Kiran M.", initial: "K", color: "#4285F4", rating: 5, ago: "2 weeks ago", text: "MyCorp placed 3 senior engineers with us in under 2 weeks. Quality was exceptional — better than any agency we've used before. Highly recommend!" },
+              { name: "Deepak K.", initial: "D", color: "#34A853", rating: 5, ago: "1 month ago", text: "Their IT team completely transformed our infrastructure. Support is always responsive and we've had zero downtime since partnering with them." },
+              { name: "Sneha R.", initial: "S", color: "#EA4335", rating: 5, ago: "2 months ago", text: "Healthcare billing was a mess before MyCorp. Their RCM team got our collections up by 34% in just 90 days. Incredible results." },
+              { name: "Anand P.", initial: "A", color: "#FBBC05", rating: 5, ago: "3 months ago", text: "Professional, reliable, and genuinely invested in our success. G.V. Krishna Reddy and the team went above and beyond every step of the way." },
+            ].map((r, i) => (
+              <div key={i} className="bg-white border border-border rounded-xl p-5 shadow-sm">
+                <div className="flex items-start gap-3 mb-3">
+                  <div className="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold text-sm shrink-0" style={{ backgroundColor: r.color }}>
+                    {r.initial}
+                  </div>
+                  <div className="flex-1">
+                    <div className="flex items-center justify-between">
+                      <p className="font-semibold text-sm">{r.name}</p>
+                      <span className="text-muted-foreground text-xs">{r.ago}</span>
+                    </div>
+                    <div className="flex gap-0.5 mt-0.5">
+                      {Array.from({ length: r.rating }).map((_, j) => (
+                        <Star key={j} className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
+                      ))}
+                    </div>
+                  </div>
+                  <svg viewBox="0 0 24 24" className="w-5 h-5 shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+                    <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                    <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+                    <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+                  </svg>
+                </div>
+                <p className="text-sm text-muted-foreground leading-relaxed">"{r.text}"</p>
+              </div>
+            ))}
+
+            <a
+              href="https://www.google.com/maps/search/MyCorp+Solutions+Madhura+Nagar+Hyderabad"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center gap-2 w-full py-3 rounded-xl border border-border text-sm text-muted-foreground hover:text-foreground hover:border-primary/40 transition-colors"
+            >
+              View all reviews on Google <ExternalLink className="w-4 h-4" />
+            </a>
+          </motion.div>
         </div>
       </div>
 
