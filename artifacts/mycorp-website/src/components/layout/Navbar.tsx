@@ -176,11 +176,11 @@ export function Navbar() {
             </button>
           </div>
 
-          <a href="mailto:mycorpsolutionsteam@gmail.com?subject=Consultation%20Request">
+          <Link to="/contact">
             <Button className="rounded-full px-6 shadow-md hover:shadow-lg transition-all hover:-translate-y-0.5">
               Get Started
             </Button>
-          </a>
+          </Link>
         </nav>
 
         {/* Mobile right cluster */}
@@ -282,9 +282,9 @@ export function Navbar() {
                 Careers
               </Link>
 
-              <a href="mailto:mycorpsolutionsteam@gmail.com?subject=Consultation%20Request" className="block mt-4" onClick={() => setMobileMenuOpen(false)}>
+              <Link to="/contact" className="block mt-4" onClick={() => setMobileMenuOpen(false)}>
                 <Button className="w-full rounded-xl">Get Started</Button>
-              </a>
+              </Link>
             </div>
           </motion.div>
         )}
