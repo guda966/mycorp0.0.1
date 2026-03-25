@@ -11,7 +11,7 @@ import { z } from "zod";
 import { useToast } from "@/hooks/use-toast";
 import { MapPin, Phone, Mail, MessageSquare, Clock, Star, Shield, Zap } from "lucide-react";
 
-const WHATSAPP_NUMBER = "919876543210";
+const WHATSAPP_NUMBER = "919988661244";
 const WHATSAPP_MESSAGE = encodeURIComponent("Hi! I'd like to learn more about MyCorp Solutions services.");
 
 const contactSchema = z.object({
@@ -260,7 +260,7 @@ export default function Contact() {
                     </div>
                     <div>
                       <p className="font-bold mb-0.5 text-sm">Phone</p>
-                      <p className="text-slate-300 text-sm">+91 (40) 6800-0199</p>
+                      <p className="text-slate-300 text-sm">+91 99886 61244</p>
                       <p className="text-slate-400 text-xs">Mon – Sat, 9 AM – 7 PM IST</p>
                     </div>
                   </div>
