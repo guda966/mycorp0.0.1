@@ -57,9 +57,16 @@ export default function Contact() {
     defaultValues: { name: "", email: "", company: "", phone: "", service: "", message: "" },
   });
 
-  const onSubmit = async (_data: ContactFormValues) => {
-    await new Promise((res) => setTimeout(res, 1000));
-    toast({ title: "Message Sent!", description: "Our team will get back to you within 24 hours." });
+  const onSubmit = async (data: ContactFormValues) => {
+    await new Promise((res) => setTimeout(res, 800));
+
+    const subject = encodeURIComponent(`Inquiry from ${data.name} — ${data.service}`);
+    const body = encodeURIComponent(
+      `Name: ${data.name}\nCompany: ${data.company}\nEmail: ${data.email}\nPhone: ${data.phone || "Not provided"}\nService: ${data.service}\n\nMessage:\n${data.message}`
+    );
+    window.location.href = `mailto:mycorpsolutionsteam@gmail.com?subject=${subject}&body=${body}`;
+
+    toast({ title: "Opening your email client…", description: "Your inquiry is pre-filled and ready to send." });
     form.reset();
   };
 
