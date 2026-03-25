@@ -30,7 +30,7 @@ const modelBadge: Record<string, string> = {
   "staffing-outsourcing": "Contract · C2H · Direct Hire",
   "it-hiring": "RPO · Project · Executive Search",
   "it-projects": "Fixed Price · T&M",
-  "medical-billing": "% Net Collections",
+  "healthcare-projects": "IT · RCM · Billing",
 };
 
 export default function Services() {
@@ -55,7 +55,7 @@ export default function Services() {
             </h1>
             {/* Pill tags instead of paragraph */}
             <div className="flex flex-wrap gap-3 justify-center mt-6">
-              {["IT Staffing", "Recruitment Outsourcing", "Software Delivery", "Medical Billing & RCM"].map((tag) => (
+              {["IT Staffing", "Recruitment Outsourcing", "Software Delivery", "Healthcare Projects"].map((tag) => (
                 <span key={tag} className="px-4 py-1.5 rounded-full bg-white/10 border border-white/20 text-white/80 text-sm font-medium">
                   {tag}
                 </span>

@@ -66,7 +66,7 @@ const HERO_SLIDES = [
   },
   {
     img: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&q=80&w=1600",
-    label: "Medical Billing & RCM",
+    label: "Healthcare Projects & RCM",
   },
   {
     img: "https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&q=80&w=1600",
@@ -213,9 +213,9 @@ const services = [
     color: "from-violet-600 to-purple-700", tag: "Software Delivery",
   },
   {
-    icon: Stethoscope, title: "Medical Billing & Coding",
-    desc: "AAPC-certified RCM — reduce denials, accelerate AR recovery.", slug: "medical-billing",
-    color: "from-emerald-500 to-teal-700", tag: "Healthcare RCM",
+    icon: Stethoscope, title: "Healthcare Projects",
+    desc: "Healthcare IT, EHR integrations, and Medical Billing & Coding — full RCM under one roof.", slug: "healthcare-projects",
+    color: "from-emerald-500 to-teal-700", tag: "Healthcare & RCM",
   },
 ];
 

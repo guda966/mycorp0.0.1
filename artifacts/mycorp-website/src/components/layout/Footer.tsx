@@ -65,7 +65,7 @@ export function Footer() {
                 { label: "Staffing & Outsourcing", slug: "staffing-outsourcing" },
                 { label: "IT Hiring Support", slug: "it-hiring" },
                 { label: "IT Projects", slug: "it-projects" },
-                { label: "Medical Billing & Coding", slug: "medical-billing" },
+                { label: "Healthcare Projects", slug: "healthcare-projects" },
               ].map((item) => (
                 <li key={item.slug}>
                   <Link

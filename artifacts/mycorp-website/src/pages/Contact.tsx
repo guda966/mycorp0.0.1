@@ -204,7 +204,7 @@ export default function Contact() {
                         <SelectItem value="staffing">Staffing & Outsourcing</SelectItem>
                         <SelectItem value="hiring">IT Hiring Support</SelectItem>
                         <SelectItem value="projects">IT Projects</SelectItem>
-                        <SelectItem value="medical">Medical Billing & Coding</SelectItem>
+                        <SelectItem value="healthcare">Healthcare Projects</SelectItem>
                         <SelectItem value="other">Other / General Inquiry</SelectItem>
                       </SelectContent>
                     </Select>
