@@ -57,19 +57,19 @@ function TypedText() {
 /* ─── Image Slider ─────────────────────────────────── */
 const HERO_SLIDES = [
   {
-    img: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&q=80&w=1600",
+    img: "https://images.pexels.com/photos/3182812/pexels-photo-3182812.jpeg?auto=compress&cs=tinysrgb&w=1600",
     label: "Staffing & Outsourcing",
   },
   {
-    img: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&q=80&w=1600",
+    img: "https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg?auto=compress&cs=tinysrgb&w=1600",
     label: "IT Projects & Software",
   },
   {
-    img: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&q=80&w=1600",
+    img: "https://images.pexels.com/photos/7234218/pexels-photo-7234218.jpeg?auto=compress&cs=tinysrgb&w=1600",
     label: "Healthcare Projects & RCM",
   },
   {
-    img: "https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&q=80&w=1600",
+    img: "https://images.pexels.com/photos/3769021/pexels-photo-3769021.jpeg?auto=compress&cs=tinysrgb&w=1600",
     label: "IT Hiring Support",
   },
 ];
@@ -189,10 +189,18 @@ const fadeUp = {
 
 /* ─── Scrolling client marquee data ───────────────── */
 const clients = [
-  "JPMorgan Chase", "Goldman Sachs", "Deloitte", "HCA Healthcare",
-  "Cognizant", "AstraZeneca", "UnitedHealth", "Salesforce",
-  "Accenture", "Tenet Health", "FedEx", "Stripe",
-  "KPMG", "Adobe", "Ascension", "Workday",
+  { name: "Wipro", domain: "wipro.com" },
+  { name: "Infosys", domain: "infosys.com" },
+  { name: "TCS", domain: "tcs.com" },
+  { name: "HCL Technologies", domain: "hcltech.com" },
+  { name: "Tech Mahindra", domain: "techmahindra.com" },
+  { name: "Cognizant", domain: "cognizant.com" },
+  { name: "Mphasis", domain: "mphasis.com" },
+  { name: "LTIMindtree", domain: "ltimindtree.com" },
+  { name: "Apollo Hospitals", domain: "apollohospitals.com" },
+  { name: "Max Healthcare", domain: "maxhealthcare.in" },
+  { name: "Accenture", domain: "accenture.com" },
+  { name: "Hexaware", domain: "hexaware.com" },
 ];
 const clientsLoop = [...clients, ...clients];
 
@@ -424,20 +432,25 @@ export default function Home() {
       </section>
 
       {/* ── 3. TRUSTED BY — scrolling marquee ── */}
-      <section className="py-12 bg-white border-b border-border overflow-hidden">
+      <section className="py-12 bg-white dark:bg-[#0B1120] border-b border-border overflow-hidden">
         <div className="container mx-auto px-4 md:px-6 mb-7">
           <p className="text-center text-xs font-semibold tracking-widest text-muted-foreground uppercase">
             Trusted by Leading Organizations
           </p>
         </div>
         <div className="relative w-full overflow-hidden pause-on-hover">
-          <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
-          <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
+          <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-white dark:from-[#0B1120] to-transparent z-10 pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-white dark:from-[#0B1120] to-transparent z-10 pointer-events-none" />
           <div className="flex gap-6 animate-marquee w-max">
-            {clientsLoop.map((name, i) => (
-              <div key={i} className="flex items-center gap-2 shrink-0 bg-slate-50 border border-border rounded-xl px-5 py-2.5 hover:border-primary/20 hover:shadow-sm transition-all">
-                <div className="w-2 h-2 rounded-full bg-primary/40" />
-                <span className="text-sm font-semibold text-slate-600 whitespace-nowrap">{name}</span>
+            {clientsLoop.map((client, i) => (
+              <div key={i} className="flex items-center gap-3 shrink-0 bg-white dark:bg-slate-800 border border-border rounded-xl px-5 py-3 shadow-sm hover:border-primary/30 hover:shadow-md transition-all">
+                <img
+                  src={`https://www.google.com/s2/favicons?domain=${client.domain}&sz=32`}
+                  alt={client.name}
+                  className="w-5 h-5 object-contain"
+                  onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
+                />
+                <span className="text-sm font-semibold text-slate-700 dark:text-slate-200 whitespace-nowrap">{client.name}</span>
               </div>
             ))}
           </div>
@@ -549,7 +562,7 @@ export default function Home() {
             >
               <div className="absolute inset-0 bg-gradient-to-tr from-primary/15 to-violet-400/15 rounded-3xl transform translate-x-4 translate-y-4 -z-10" />
               <img
-                src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=800"
+                src="https://images.pexels.com/photos/3184287/pexels-photo-3184287.jpeg?auto=compress&cs=tinysrgb&w=800"
                 alt="MyCorp Team in Hyderabad"
                 className="rounded-3xl shadow-2xl object-cover w-full h-[480px]"
               />
@@ -716,7 +729,7 @@ export default function Home() {
             </motion.div>
             <motion.div {...fadeUp}>
               <img
-                src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=800"
+                src="https://images.pexels.com/photos/1280162/pexels-photo-1280162.jpeg?auto=compress&cs=tinysrgb&w=800"
                 alt="HITEC City Hyderabad"
                 className="rounded-2xl shadow-xl object-cover w-full h-64 md:h-80"
               />

@@ -29,8 +29,8 @@ export const servicesData: ServiceData[] = [
     gradient: "from-blue-600 to-blue-800",
     title: "Staffing & Outsourcing",
     tagline: "Scale your workforce on demand — contract, direct hire, and offshore teams.",
-    heroImage: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&q=80&w=1400",
-    secondaryImage: "https://images.unsplash.com/photo-1573497620053-ea5300f94f21?auto=format&fit=crop&q=80&w=800",
+    heroImage: "https://images.pexels.com/photos/3182812/pexels-photo-3182812.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    secondaryImage: "https://images.pexels.com/photos/5989933/pexels-photo-5989933.jpeg?auto=compress&cs=tinysrgb&w=800",
     description: "End-to-end IT staffing and outsourcing — contract, C2H, direct placement, offshore delivery teams, and preferred vendor programs across the US and India.",
     longDescription: "MyCorp Solutions connects enterprises with pre-vetted IT talent across every engagement model. Whether you need a single specialist, a project team, or a fully managed offshore delivery center, we source, screen, and place candidates fast — reducing your time-to-fill by up to 40%.",
     benefits: [
@@ -86,8 +86,8 @@ export const servicesData: ServiceData[] = [
     gradient: "from-orange-500 to-red-600",
     title: "IT Hiring Support",
     tagline: "Your embedded recruitment team — RPO, executive search, and everything in between.",
-    heroImage: "https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&q=80&w=1400",
-    secondaryImage: "https://images.unsplash.com/photo-1565688534245-05d6b5be184a?auto=format&fit=crop&q=80&w=800",
+    heroImage: "https://images.pexels.com/photos/3183165/pexels-photo-3183165.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    secondaryImage: "https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=800",
     description: "Full Recruitment Process Outsourcing — your recruiters, your ATS, your brand — scaled up or down as your hiring needs change.",
     longDescription: "When your internal HR team can't keep pace with hiring volume or lacks the specialized expertise to fill niche IT roles, MyCorp's IT Hiring Support service steps in as a seamless extension of your team.",
     benefits: [
@@ -143,8 +143,8 @@ export const servicesData: ServiceData[] = [
     gradient: "from-violet-600 to-purple-800",
     title: "IT Projects",
     tagline: "Websites, software, and enterprise platforms — delivered on time, on budget.",
-    heroImage: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&q=80&w=1400",
-    secondaryImage: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=800",
+    heroImage: "https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    secondaryImage: "https://images.pexels.com/photos/3184338/pexels-photo-3184338.jpeg?auto=compress&cs=tinysrgb&w=800",
     description: "End-to-end IT project delivery — from corporate websites and custom web apps to enterprise software, API integrations, and digital transformation.",
     longDescription: "From a polished corporate website to a complex enterprise platform, MyCorp's engineering teams deliver production-quality software on time and on budget with Agile discipline and cloud-native expertise.",
     benefits: [
@@ -200,8 +200,8 @@ export const servicesData: ServiceData[] = [
     gradient: "from-emerald-500 to-teal-700",
     title: "Healthcare Projects",
     tagline: "Healthcare IT, software, and revenue cycle — everything your practice needs under one roof.",
-    heroImage: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&q=80&w=1400",
-    secondaryImage: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&q=80&w=800",
+    heroImage: "https://images.pexels.com/photos/7234218/pexels-photo-7234218.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    secondaryImage: "https://images.pexels.com/photos/4386467/pexels-photo-4386467.jpeg?auto=compress&cs=tinysrgb&w=800",
     description: "End-to-end healthcare technology delivery — EHR integrations, patient portals, health data platforms, and full revenue cycle management including medical billing & coding.",
     longDescription: "MyCorp Solutions delivers comprehensive healthcare project services. From building healthcare applications and EHR integrations to managing complete revenue cycles — our HIPAA-certified team handles it all. Medical Billing & Coding sits at the heart of our RCM practice, backed by AAPC-certified specialists who cut denials and accelerate AR recovery.",
     benefits: [

@@ -13,10 +13,10 @@ const fadeUp = {
 };
 
 const globalStats = [
-  { value: "15+", label: "Years in Business" },
-  { value: "1,200+", label: "Enterprise Clients" },
+  { value: "5+", label: "Years in Business" },
+  { value: "200+", label: "Enterprise Clients" },
   { value: "5,000+", label: "Placements Made" },
-  { value: "99.99%", label: "Uptime SLA" },
+  { value: "300+", label: "Team Members" },
 ];
 
 const whyUs = [
@@ -218,7 +218,7 @@ export default function Services() {
             </motion.div>
             <motion.div {...fadeUp} className="relative">
               <img
-                src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=800"
+                src="https://images.pexels.com/photos/3182812/pexels-photo-3182812.jpeg?auto=compress&cs=tinysrgb&w=800"
                 alt="MyCorp team collaboration"
                 className="rounded-2xl shadow-2xl w-full object-cover aspect-[4/3]"
               />

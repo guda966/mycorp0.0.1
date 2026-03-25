@@ -51,10 +51,10 @@ const employeeTestimonials = [
 ];
 
 const culturePhotos = [
-  { src: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=600&h=400", alt: "Team collaboration", span: "col-span-2" },
-  { src: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=400&h=400", alt: "Modern office", span: "" },
-  { src: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=400&h=400", alt: "Team meeting", span: "" },
-  { src: "https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?auto=format&fit=crop&q=80&w=600&h=400", alt: "Office event", span: "col-span-2" },
+  { src: "https://images.pexels.com/photos/8761740/pexels-photo-8761740.jpeg?auto=compress&cs=tinysrgb&w=600&h=400", alt: "Team collaboration", span: "col-span-2" },
+  { src: "https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=400&h=400", alt: "Modern office", span: "" },
+  { src: "https://images.pexels.com/photos/3182755/pexels-photo-3182755.jpeg?auto=compress&cs=tinysrgb&w=400&h=400", alt: "Team meeting", span: "" },
+  { src: "https://images.pexels.com/photos/7821717/pexels-photo-7821717.jpeg?auto=compress&cs=tinysrgb&w=600&h=400", alt: "Office event", span: "col-span-2" },
 ];
 
 const csrItems = [
@@ -102,14 +102,14 @@ function VideoEmbed() {
       {playing ? (
         <iframe
           className="w-full h-full"
-          src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1"
+          src="https://www.youtube.com/embed/J2OXn7xoFGk?autoplay=1"
           title="MyCorp Company Overview"
           allow="autoplay; fullscreen"
         />
       ) : (
         <>
           <img
-            src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?auto=format&fit=crop&q=80&w=1200&h=675"
+            src="https://images.pexels.com/photos/3182812/pexels-photo-3182812.jpeg?auto=compress&cs=tinysrgb&w=1200&h=675"
             alt="Company Overview Video"
             className="w-full h-full object-cover opacity-60 group-hover:opacity-70 transition-opacity"
           />
@@ -261,11 +261,22 @@ export default function About() {
           >
             {/* Portrait */}
             <div className="shrink-0 flex flex-col items-center gap-4">
-              <img
-                src={founder.img}
-                alt={founder.name}
-                className="w-52 md:w-60 object-contain drop-shadow-lg"
-              />
+              <div className="relative w-52 md:w-60">
+                <img
+                  src={founder.img}
+                  alt={founder.name}
+                  className="w-full rounded-2xl object-cover aspect-[4/5] drop-shadow-lg"
+                  onError={(e) => {
+                    const el = e.currentTarget;
+                    el.style.display = 'none';
+                    const fallback = el.nextElementSibling as HTMLElement;
+                    if (fallback) fallback.style.display = 'flex';
+                  }}
+                />
+                <div className="hidden w-full aspect-[4/5] rounded-2xl bg-gradient-to-br from-primary/20 to-primary/40 items-center justify-center drop-shadow-lg">
+                  <span className="text-5xl font-display font-bold text-primary">GVK</span>
+                </div>
+              </div>
               <div className="text-center">
                 <p className="font-bold text-foreground text-base">{founder.name}</p>
                 <p className="text-primary text-sm font-semibold">{founder.role}</p>
@@ -520,24 +531,24 @@ export default function About() {
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }}
             className="grid grid-cols-3 gap-4 h-[460px]">
             <div className="col-span-2 rounded-2xl overflow-hidden">
-              <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=800&h=500" alt="Team collaboration" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+              <img src="https://images.pexels.com/photos/8761740/pexels-photo-8761740.jpeg?auto=compress&cs=tinysrgb&w=800&h=500" alt="Team collaboration" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
             </div>
             <div className="flex flex-col gap-4">
               <div className="rounded-2xl overflow-hidden flex-1">
-                <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=400&h=300" alt="Modern office" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+                <img src="https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=400&h=300" alt="Modern office" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
               </div>
               <div className="rounded-2xl overflow-hidden flex-1">
-                <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=400&h=300" alt="Team meeting" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+                <img src="https://images.pexels.com/photos/3182755/pexels-photo-3182755.jpeg?auto=compress&cs=tinysrgb&w=400&h=300" alt="Team meeting" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
               </div>
             </div>
           </motion.div>
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7, delay: 0.2 }}
             className="grid grid-cols-3 gap-4 h-[240px] mt-4">
             <div className="rounded-2xl overflow-hidden">
-              <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&q=80&w=400&h=300" alt="Office fun" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+              <img src="https://images.pexels.com/photos/3774903/pexels-photo-3774903.jpeg?auto=compress&cs=tinysrgb&w=400&h=300" alt="Office culture" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
             </div>
             <div className="col-span-2 rounded-2xl overflow-hidden">
-              <img src="https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?auto=format&fit=crop&q=80&w=800&h=300" alt="Team event" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+              <img src="https://images.pexels.com/photos/7821717/pexels-photo-7821717.jpeg?auto=compress&cs=tinysrgb&w=800&h=300" alt="Team event" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
             </div>
           </motion.div>
         </div>
