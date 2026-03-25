@@ -189,7 +189,7 @@ export default function About() {
             </motion.h1>
 
             <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.2 }}
-              className="text-xl text-slate-300 mb-10 max-w-3xl leading-relaxed">
+              className="text-xl text-white/90 mb-10 max-w-3xl leading-relaxed">
               Founded in 2020 in Hyderabad, HITEC City by G.V Krishna Reddy — MyCorp Solutions has grown rapidly into a trusted IT services partner delivering staffing, software, and healthcare solutions to enterprises across the US and India.
             </motion.p>
 
@@ -303,7 +303,7 @@ export default function About() {
               <Calendar className="w-3 h-3" /> 2020 — 2025
             </div>
             <h2 className="text-3xl md:text-4xl font-display font-bold text-white mb-4">Our Journey</h2>
-            <p className="text-slate-400 max-w-xl mx-auto">5 years of milestones that shaped who we are today.</p>
+            <p className="text-slate-300 max-w-xl mx-auto">5 years of milestones that shaped who we are today.</p>
           </motion.div>
 
           {/* Horizontal Timeline Track */}
@@ -459,7 +459,7 @@ export default function About() {
         <div className="container mx-auto px-4 md:px-6">
           <motion.div {...fadeUp} className="text-center mb-14">
             <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">What Our Team Says</h2>
-            <p className="text-slate-400 max-w-xl mx-auto">Real voices from the people who make MyCorp exceptional every day.</p>
+            <p className="text-slate-300 max-w-xl mx-auto">Real voices from the people who make MyCorp exceptional every day.</p>
           </motion.div>
           <TeamSlider items={employeeTestimonials} />
         </div>
@@ -474,7 +474,7 @@ export default function About() {
               <Leaf className="w-3 h-3" /> Corporate Social Responsibility
             </div>
             <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">Giving Back. Growing Together.</h2>
-            <p className="text-slate-400 max-w-xl mx-auto">Beyond business, MyCorp is committed to making a lasting positive impact in the communities we serve.</p>
+            <p className="text-slate-300 max-w-xl mx-auto">Beyond business, MyCorp is committed to making a lasting positive impact in the communities we serve.</p>
           </motion.div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {csrItems.map((item, i) => (

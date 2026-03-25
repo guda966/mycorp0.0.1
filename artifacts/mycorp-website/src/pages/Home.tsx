@@ -370,7 +370,7 @@ export default function Home() {
               initial={{ opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.22 }}
-              className="text-lg md:text-xl text-slate-300 mb-10 max-w-xl leading-relaxed"
+              className="text-lg md:text-xl text-white/90 mb-10 max-w-xl leading-relaxed"
             >
               We deliver innovative IT staffing, software solutions, and healthcare revenue cycle management to help global enterprises scale efficiently.
             </motion.p>
@@ -620,7 +620,7 @@ export default function Home() {
           <motion.div {...fadeUp} className="text-center mb-14">
             <span className="inline-block px-3 py-1 rounded-full bg-white/10 border border-white/15 text-white/60 text-xs font-semibold tracking-widest uppercase mb-4">Client Stories</span>
             <h2 className="text-3xl md:text-4xl font-display font-bold mb-3">What Our Clients Say</h2>
-            <p className="text-slate-400">Don't just take our word for it.</p>
+            <p className="text-slate-300">Don't just take our word for it.</p>
           </motion.div>
 
           <TestimonialSlider items={testimonials} />
