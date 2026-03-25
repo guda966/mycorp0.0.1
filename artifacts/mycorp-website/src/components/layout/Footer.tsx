@@ -12,7 +12,7 @@ export function Footer() {
           {/* Brand Col */}
           <div className="space-y-6">
             <Link href="/" className="inline-flex">
-              <MycorpLogo height={60} />
+              <MycorpLogo />
             </Link>
             <p className="text-slate-400 text-sm leading-relaxed max-w-xs">
               Your trusted partner in IT staffing, software delivery, and healthcare RCM — headquartered in Hyderabad, India.

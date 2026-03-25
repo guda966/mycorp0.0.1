@@ -5,6 +5,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { AppLayout } from "@/components/layout/AppLayout";
 import { ThemeProvider } from "@/contexts/ThemeContext";
+import { CursorSparkle } from "@/components/ui/CursorSparkle";
 
 import Home from "@/pages/Home";
 import About from "@/pages/About";
@@ -50,6 +51,7 @@ function App() {
             <Router />
           </WouterRouter>
           <Toaster />
+          <CursorSparkle />
         </TooltipProvider>
       </QueryClientProvider>
     </ThemeProvider>
