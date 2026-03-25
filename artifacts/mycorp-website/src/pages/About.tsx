@@ -35,11 +35,14 @@ const values = [
   { icon: Globe2, title: "Global Mindset", color: "from-rose-500 to-pink-500", desc: "Our dual-shore model brings global scale with local accountability across every timezone." },
 ];
 
-const leaders = [
-  { name: "G.V Krishna Reddy", role: "Founder & CEO", bio: "Visionary entrepreneur with deep expertise in IT services, staffing, and healthcare technology. Founded MyCorp Solutions in 2020 with a mission to build a globally trusted IT company from Hyderabad.", img: "/founder-gvkrishna-reddy.jpg", linkedin: "#", expertise: ["Leadership", "IT Strategy", "Business Growth"] },
-  { name: "Rajesh Kumar", role: "Chief Operating Officer", bio: "Seasoned operations leader overseeing delivery excellence across staffing, IT projects, and healthcare divisions. Based in Hyderabad, HITEC City.", img: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=400&h=400", linkedin: "#", expertise: ["Delivery Excellence", "Offshore Operations", "RCM"] },
-  { name: "Kavitha Iyer", role: "Head of Healthcare Practice", bio: "AAPC-certified healthcare IT and RCM specialist. Leads our medical billing, coding, and healthcare project delivery teams with 12+ years of industry experience.", img: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=400&h=400", linkedin: "#", expertise: ["Healthcare IT", "RCM", "HIPAA Compliance"] },
-];
+const founder = {
+  name: "G.V Krishna Reddy",
+  role: "Founder & CEO",
+  img: "/founder-gvkrishna-reddy.jpg",
+  linkedin: "#",
+  message: "When I founded MyCorp Solutions in 2020, I had one simple belief — that a company built on genuine relationships, deep expertise, and honest delivery can compete with anyone in the world, regardless of size. We started from Hyderabad with a small team and a big ambition: to be the IT and healthcare partner that clients actually trust. Five years on, that belief hasn't changed. Every placement we make, every project we deliver, and every revenue cycle we optimise is a direct reflection of the values I built this company on. We're just getting started.",
+  tags: ["IT Staffing", "Healthcare Technology", "Software Delivery", "Revenue Cycle Management"],
+};
 
 const employeeTestimonials = [
   { quote: "Working at MyCorp has given me the opportunity to lead cloud migration projects for enterprise clients across the US. The culture of learning and growth here is truly unmatched.", name: "Priya Sharma", role: "Cloud Architect", tenure: "3 years", img: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=200&h=200" },
@@ -472,38 +475,60 @@ export default function About() {
         </div>
       </section>
 
-      {/* ── LEADERSHIP ── */}
+      {/* ── FOUNDER'S MESSAGE ── */}
       <section className="py-24 bg-white">
         <div className="container mx-auto px-4 md:px-6">
           <motion.div {...fadeUp} className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">Leadership Team</h2>
-            <p className="text-muted-foreground max-w-xl mx-auto">Guided by veterans who've built, scaled, and transformed enterprise technology organizations.</p>
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold mb-4">
+              <Star className="w-3 h-3 fill-primary" /> From the Founder
+            </div>
+            <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">A Note from Our CEO</h2>
+            <p className="text-muted-foreground max-w-xl mx-auto">The vision, values, and conviction behind MyCorp Solutions — in his own words.</p>
           </motion.div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {leaders.map((leader, i) => (
-              <motion.div key={i} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: i * 0.15 }}>
-                <Card className="group h-full border-border/50 hover:border-primary/20 hover:shadow-2xl transition-all duration-300 overflow-hidden">
-                  <div className="relative overflow-hidden bg-gradient-to-br from-slate-100 to-slate-200 h-56">
-                    <img src={leader.img} alt={leader.name} className="w-full h-full object-cover object-top grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-                    <a href={leader.linkedin} className="absolute bottom-4 right-4 w-9 h-9 rounded-full bg-[#0077B5] flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity shadow-lg">
-                      <Linkedin className="w-4 h-4 text-white" />
+
+          <motion.div
+            initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }}
+            className="max-w-5xl mx-auto"
+          >
+            <Card className="border-border/40 shadow-2xl overflow-hidden">
+              <div className="grid grid-cols-1 md:grid-cols-5">
+                {/* Photo column */}
+                <div className="md:col-span-2 relative bg-gradient-to-br from-slate-900 to-[#0B1120] min-h-[340px]">
+                  <img
+                    src={founder.img}
+                    alt={founder.name}
+                    className="w-full h-full object-cover object-top opacity-90"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
+                  <div className="absolute bottom-0 left-0 right-0 p-6">
+                    <p className="text-white font-bold text-xl leading-tight">{founder.name}</p>
+                    <p className="text-cyan-400 font-semibold text-sm mt-1">{founder.role}</p>
+                    <a
+                      href={founder.linkedin}
+                      className="inline-flex items-center gap-2 mt-3 px-3 py-1.5 rounded-full bg-[#0077B5] text-white text-xs font-semibold hover:bg-[#005f92] transition-colors"
+                    >
+                      <Linkedin className="w-3 h-3" /> Connect on LinkedIn
                     </a>
                   </div>
-                  <CardContent className="p-6">
-                    <h3 className="text-xl font-bold text-foreground">{leader.name}</h3>
-                    <p className="text-primary font-semibold text-sm mb-3">{leader.role}</p>
-                    <p className="text-muted-foreground text-sm leading-relaxed mb-4">{leader.bio}</p>
-                    <div className="flex flex-wrap gap-2">
-                      {leader.expertise.map((tag, j) => (
-                        <span key={j} className="px-2 py-1 bg-primary/5 text-primary rounded-md text-xs font-medium">{tag}</span>
-                      ))}
-                    </div>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
+                </div>
+
+                {/* Message column */}
+                <CardContent className="md:col-span-3 p-8 md:p-12 flex flex-col justify-center">
+                  <Quote className="w-10 h-10 text-primary/20 mb-6 shrink-0" />
+                  <p className="text-foreground text-lg md:text-xl leading-relaxed font-medium italic mb-8">
+                    "{founder.message}"
+                  </p>
+                  <div className="flex flex-wrap gap-2 pt-6 border-t border-border">
+                    {founder.tags.map((tag, i) => (
+                      <span key={i} className="px-3 py-1.5 bg-primary/5 text-primary rounded-full text-xs font-semibold border border-primary/10">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </CardContent>
+              </div>
+            </Card>
+          </motion.div>
         </div>
       </section>
 
