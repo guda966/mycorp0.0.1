@@ -707,11 +707,11 @@ export default function Home() {
                 </div>
                 <p className="text-slate-300 text-sm leading-relaxed mb-6">
                   MyCorp Solutions Pvt. Ltd.<br />
-                  Tech Park, HITEC City<br />
-                  Hyderabad, Telangana — 500 081
+                  Mallareddy Heights, Srinivasa Nagar W Colony<br />
+                  Madhura Nagar, Hyderabad, Telangana — 500 038
                 </p>
                 <div className="grid grid-cols-2 gap-3">
-                  {["50+ Team Members", "4 Service Lines", "US Client Focus", "24/7 Availability"].map((s, i) => (
+                  {["300+ Team Members", "4 Service Lines", "US Client Focus", "24/7 Availability"].map((s, i) => (
                     <div key={i} className="flex items-center gap-2 text-xs text-slate-300">
                       <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" /> {s}
                     </div>

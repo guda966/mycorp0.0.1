@@ -81,7 +81,7 @@ export function Footer() {
             <ul className="space-y-4">
               <li className="flex items-start gap-3 text-sm text-slate-400">
                 <MapPin className="w-5 h-5 text-primary shrink-0 mt-0.5" />
-                <span>Tech Park, HITEC City<br />Hyderabad, Telangana 500 081, India</span>
+                <span>Mallareddy Heights, Srinivasa Nagar W Colony<br />Madhura Nagar, Hyderabad, Telangana 500 038, India</span>
               </li>
               <li className="flex items-center gap-3 text-sm text-slate-400">
                 <Phone className="w-5 h-5 text-primary shrink-0" />

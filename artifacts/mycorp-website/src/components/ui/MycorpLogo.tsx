@@ -4,16 +4,24 @@ interface MycorpLogoProps {
 
 export function MycorpLogo({ className = "" }: MycorpLogoProps) {
   return (
-    <img
-      src="/mycorp-logo.png"
-      alt="MyCorp Solutions"
+    <span
       className={className}
       style={{
-        height: 52,
-        width: "auto",
-        display: "block",
+        display: "inline-flex",
+        alignItems: "center",
+        justifyContent: "center",
+        width: 170,
+        height: 56,
+        overflow: "hidden",
+        flexShrink: 0,
       }}
-      draggable={false}
-    />
+    >
+      <img
+        src="/mycorp-logo.png"
+        alt="MyCorp Solutions"
+        style={{ height: 110, width: "auto", flexShrink: 0 }}
+        draggable={false}
+      />
+    </span>
   );
 }
