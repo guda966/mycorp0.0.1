@@ -57,19 +57,19 @@ function TypedText() {
 /* ─── Image Slider ─────────────────────────────────── */
 const HERO_SLIDES = [
   {
-    img: "https://images.pexels.com/photos/3182812/pexels-photo-3182812.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    img: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&q=80&w=1600",
     label: "Staffing & Outsourcing",
   },
   {
-    img: "https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    img: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&q=80&w=1600",
     label: "IT Projects & Software",
   },
   {
-    img: "https://images.pexels.com/photos/7234218/pexels-photo-7234218.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    img: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&q=80&w=1600",
     label: "Healthcare Projects & RCM",
   },
   {
-    img: "https://images.pexels.com/photos/3183165/pexels-photo-3183165.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    img: "https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&q=80&w=1600",
     label: "IT Hiring Support",
   },
 ];
@@ -264,7 +264,7 @@ const testimonials = [
   },
 ];
 
-function TestimonialDeck({ items }: { items: typeof testimonials }) {
+function TestimonialSlider({ items }: { items: typeof testimonials }) {
   const [active, setActive] = useState(0);
   useEffect(() => {
     const t = setInterval(() => setActive(a => (a + 1) % items.length), 4500);
@@ -272,58 +272,50 @@ function TestimonialDeck({ items }: { items: typeof testimonials }) {
   }, [items.length]);
 
   const go = (dir: number) => setActive(a => (a + dir + items.length) % items.length);
+  const t = items[active];
 
   return (
     <div className="flex flex-col items-center">
-      {/* Stacked deck — cards peek from below/behind, no side overlap */}
-      <div className="relative flex justify-center" style={{ width: "100%", maxWidth: 560, height: 330 }}>
-        {[...items].reverse().map((t, ri) => {
-          const i = items.length - 1 - ri;
-          const diff = ((i - active) % items.length + items.length) % items.length;
-          const slot = diff === 0 ? 0 : diff === 1 ? 1 : diff === 2 ? 2 : 3;
-          const yMap  = [0, 16, 28, 28];
-          const scaleMap = [1, 0.96, 0.92, 0.92];
-          const opacityMap = [1, 0.48, 0.22, 0];
-          const zMap  = [30, 20, 10, 0];
-          return (
-            <motion.div
-              key={i}
-              style={{ zIndex: zMap[slot], position: "absolute", top: 0, left: 0, right: 0 }}
-              animate={{ y: yMap[slot], scale: scaleMap[slot], opacity: opacityMap[slot] }}
-              transition={{ duration: 0.5, ease: "easeInOut" }}
-            >
-              <Card className="bg-white/8 border-white/12 text-white">
-                <CardContent className="p-7">
-                  <div className="flex gap-1 mb-4">
-                    {Array.from({ length: t.rating }).map((_, j) => (
-                      <Star key={j} className="w-4 h-4 text-amber-400 fill-amber-400" />
-                    ))}
+      <div className="w-full max-w-2xl">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={active}
+            initial={{ opacity: 0, y: 18 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -18 }}
+            transition={{ duration: 0.4, ease: "easeInOut" }}
+          >
+            <Card className="bg-white/8 border-white/12 text-white">
+              <CardContent className="p-8">
+                <div className="flex gap-1 mb-5">
+                  {Array.from({ length: t.rating }).map((_, j) => (
+                    <Star key={j} className="w-4 h-4 text-amber-400 fill-amber-400" />
+                  ))}
+                </div>
+                <Quote className="w-7 h-7 text-cyan-400/40 mb-3" />
+                <p className="text-white/90 leading-relaxed mb-7 text-base">"{t.text}"</p>
+                <div className="flex items-center gap-4 border-t border-white/10 pt-6">
+                  <img src={t.avatar} alt={t.name} className="w-12 h-12 rounded-full object-cover ring-2 ring-white/20" />
+                  <div>
+                    <p className="font-bold text-white text-sm">{t.name}</p>
+                    <p className="text-slate-400 text-xs mt-0.5">{t.role} · {t.company}</p>
                   </div>
-                  <Quote className="w-6 h-6 text-white/20 mb-3" />
-                  <p className="text-white/85 leading-relaxed mb-6 text-sm">"{t.text}"</p>
-                  <div className="flex items-center gap-3 border-t border-white/10 pt-5">
-                    <img src={t.avatar} alt={t.name} className="w-10 h-10 rounded-full object-cover ring-2 ring-white/20" />
-                    <div>
-                      <p className="font-bold text-white text-sm">{t.name}</p>
-                      <p className="text-slate-400 text-xs">{t.role} · {t.company}</p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </motion.div>
-          );
-        })}
+                </div>
+              </CardContent>
+            </Card>
+          </motion.div>
+        </AnimatePresence>
       </div>
 
       {/* Controls */}
       <div className="flex items-center gap-5 mt-8">
-        <button onClick={() => go(-1)} className="w-9 h-9 rounded-full border border-white/20 text-white/70 hover:border-white/60 hover:text-white transition-colors flex items-center justify-center text-lg">‹</button>
+        <button onClick={() => go(-1)} className="w-10 h-10 rounded-full border border-white/20 text-white/70 hover:border-white/60 hover:text-white transition-all hover:bg-white/5 flex items-center justify-center text-xl">‹</button>
         <div className="flex gap-2">
           {items.map((_, i) => (
-            <button key={i} onClick={() => setActive(i)} className={`h-2 rounded-full transition-all duration-300 ${i === active ? "w-6 bg-cyan-400" : "w-2 bg-white/30"}`} />
+            <button key={i} onClick={() => setActive(i)} className={`h-2 rounded-full transition-all duration-300 ${i === active ? "w-8 bg-cyan-400" : "w-2 bg-white/30 hover:bg-white/50"}`} />
           ))}
         </div>
-        <button onClick={() => go(1)} className="w-9 h-9 rounded-full border border-white/20 text-white/70 hover:border-white/60 hover:text-white transition-colors flex items-center justify-center text-lg">›</button>
+        <button onClick={() => go(1)} className="w-10 h-10 rounded-full border border-white/20 text-white/70 hover:border-white/60 hover:text-white transition-all hover:bg-white/5 flex items-center justify-center text-xl">›</button>
       </div>
     </div>
   );
@@ -631,7 +623,7 @@ export default function Home() {
             <p className="text-slate-400">Don't just take our word for it.</p>
           </motion.div>
 
-          <TestimonialDeck items={testimonials} />
+          <TestimonialSlider items={testimonials} />
         </div>
       </section>
 
@@ -729,7 +721,7 @@ export default function Home() {
             </motion.div>
             <motion.div {...fadeUp}>
               <img
-                src="https://images.pexels.com/photos/1280162/pexels-photo-1280162.jpeg?auto=compress&cs=tinysrgb&w=800"
+                src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=800"
                 alt="HITEC City Hyderabad"
                 className="rounded-2xl shadow-xl object-cover w-full h-64 md:h-80"
               />
