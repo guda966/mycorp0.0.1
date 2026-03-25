@@ -56,7 +56,7 @@ export function Navbar() {
     >
       <div className="container mx-auto px-4 md:px-6 flex items-center justify-between">
         <Link href="/" className="flex items-center group">
-          <MycorpLogo variant="full-stacked" size={38} className="group-hover:opacity-90 transition-opacity" />
+          <MycorpLogo variant="full" className="group-hover:opacity-90 transition-opacity" />
         </Link>
 
         {/* Desktop Nav */}
