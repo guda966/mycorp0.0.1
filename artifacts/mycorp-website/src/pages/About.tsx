@@ -18,14 +18,12 @@ const fadeUp = {
 };
 
 const milestones = [
-  { year: "2010", title: "Founded", desc: "MyCorp Solutions was founded in New Jersey with a focused IT staffing mission.", icon: Star },
-  { year: "2013", title: "India Operations", desc: "Opened our Hyderabad delivery center, enabling dual-shore capabilities.", icon: Globe2 },
-  { year: "2015", title: "Healthcare Division", desc: "Launched our Medical Billing & RCM division, serving clinics across the US.", icon: Heart },
-  { year: "2017", title: "Software Practice", desc: "Expanded into custom software development and enterprise application services.", icon: Lightbulb },
-  { year: "2019", title: "500 Clients", desc: "Crossed 500 active clients globally across IT, healthcare, and finance sectors.", icon: Users },
-  { year: "2021", title: "Managed Services", desc: "Introduced 24/7 Managed IT & NOC services with guaranteed SLA agreements.", icon: ShieldCheck },
-  { year: "2023", title: "Global Reach", desc: "Expanded operations to 50+ countries with a team of 1,200+ professionals.", icon: TrendingUp },
-  { year: "2024", title: "AI & Cloud", desc: "Launched AI-powered recruitment and cloud transformation consulting practice.", icon: Zap },
+  { year: "2020", title: "Founded", desc: "G.V Krishna Reddy founded MyCorp Solutions in Hyderabad, HITEC City — with a bold vision to build a world-class IT services company from India.", icon: Star },
+  { year: "2021", title: "First Enterprise Clients", desc: "Onboarded our first 50 enterprise clients across US and India markets. IT staffing and recruitment practice gained strong momentum.", icon: Users },
+  { year: "2022", title: "Healthcare Division", desc: "Launched our Healthcare Projects division — Medical Billing, RCM, and healthcare IT delivery — serving clinics and health systems.", icon: Heart },
+  { year: "2023", title: "IT Projects Practice", desc: "Expanded into full-service IT project delivery — websites, custom applications, enterprise platforms, and digital transformation.", icon: Lightbulb },
+  { year: "2024", title: "Scale & Growth", desc: "Crossed 200+ active clients, 5,000+ successful placements, and scaled our Hyderabad delivery centre to 300+ professionals.", icon: TrendingUp },
+  { year: "2025", title: "AI & Innovation", desc: "Launched AI-powered recruitment tools and cloud transformation consulting, positioning MyCorp at the forefront of intelligent IT services.", icon: Zap },
 ];
 
 const values = [
@@ -38,15 +36,15 @@ const values = [
 ];
 
 const leaders = [
-  { name: "Sarah Jenkins", role: "Chief Executive Officer", bio: "20+ years in IT services. Former VP at Fortune 100 consulting firm. Drives MyCorp's global growth strategy.", img: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=400&h=400", linkedin: "#", expertise: ["Global Strategy", "IT Services", "M&A"] },
-  { name: "Rajesh Kumar", role: "Chief Operating Officer", bio: "Led delivery operations for 500+ enterprise accounts. Based in Hyderabad, oversees our India center.", img: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=400&h=400", linkedin: "#", expertise: ["Delivery Excellence", "Offshore Operations", "RCM"] },
-  { name: "Michael Chen", role: "Chief Technology Officer", bio: "Ex-AWS architect. Leads our software engineering practice and AI transformation initiatives.", img: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=400&h=400", linkedin: "#", expertise: ["Cloud Architecture", "AI/ML", "DevOps"] },
+  { name: "G.V Krishna Reddy", role: "Founder & CEO", bio: "Visionary entrepreneur with deep expertise in IT services, staffing, and healthcare technology. Founded MyCorp Solutions in 2020 with a mission to build a globally trusted IT company from Hyderabad.", img: "/founder-gvkrishna-reddy.jpg", linkedin: "#", expertise: ["Leadership", "IT Strategy", "Business Growth"] },
+  { name: "Rajesh Kumar", role: "Chief Operating Officer", bio: "Seasoned operations leader overseeing delivery excellence across staffing, IT projects, and healthcare divisions. Based in Hyderabad, HITEC City.", img: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=400&h=400", linkedin: "#", expertise: ["Delivery Excellence", "Offshore Operations", "RCM"] },
+  { name: "Kavitha Iyer", role: "Head of Healthcare Practice", bio: "AAPC-certified healthcare IT and RCM specialist. Leads our medical billing, coding, and healthcare project delivery teams with 12+ years of industry experience.", img: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=400&h=400", linkedin: "#", expertise: ["Healthcare IT", "RCM", "HIPAA Compliance"] },
 ];
 
 const employeeTestimonials = [
-  { quote: "Working at MyCorp has given me the opportunity to lead complex cloud migrations for Fortune 500 clients. The culture of learning and growth here is unmatched.", name: "Priya Sharma", role: "Cloud Architect", tenure: "4 years", img: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=200&h=200" },
-  { quote: "I joined as a junior recruiter and now lead the entire US staffing division. MyCorp invests in people — that's what sets it apart from every other firm I've worked at.", name: "James Okafor", role: "VP — US Staffing", tenure: "6 years", img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=200&h=200" },
-  { quote: "The RCM team here is phenomenal. We've recovered millions in denied claims for our clients while constantly refining our processes. Every day is a new challenge.", name: "Anita Reddy", role: "Senior RCM Specialist", tenure: "3 years", img: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&q=80&w=200&h=200" },
+  { quote: "Working at MyCorp has given me the opportunity to lead cloud migration projects for enterprise clients across the US. The culture of learning and growth here is truly unmatched.", name: "Priya Sharma", role: "Cloud Architect", tenure: "3 years", img: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=200&h=200" },
+  { quote: "I joined as a junior IT recruiter and now manage key US accounts. MyCorp's leadership — especially Krishna sir — genuinely invests in people's careers.", name: "Aravind Reddy", role: "Senior Recruitment Lead", tenure: "4 years", img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=200&h=200" },
+  { quote: "The healthcare team here is phenomenal. We've helped dozens of clinics optimise their revenue cycles and I'm proud of every single result we've delivered.", name: "Sowmya Lakshmi", role: "Senior RCM Specialist", tenure: "2 years", img: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&q=80&w=200&h=200" },
 ];
 
 const culturePhotos = [
@@ -57,10 +55,10 @@ const culturePhotos = [
 ];
 
 const csrItems = [
-  { icon: GraduationCap, color: "from-blue-500 to-blue-600", title: "Tech Scholarships", value: "120+", desc: "Annual scholarships for underrepresented students in STEM across the US and India." },
-  { icon: TreePine, color: "from-green-500 to-emerald-600", title: "Carbon Neutral", value: "2025", desc: "Committed to achieving net-zero carbon emissions across all our global offices by 2025." },
-  { icon: HandHeart, color: "from-rose-500 to-pink-600", title: "Community Hours", value: "5,000+", desc: "Annual volunteer hours contributed by our team to local communities in NJ and Hyderabad." },
-  { icon: Leaf, color: "from-teal-500 to-cyan-600", title: "Green IT", value: "100%", desc: "All data center operations powered by renewable energy sources, reducing our environmental impact." },
+  { icon: GraduationCap, color: "from-blue-500 to-blue-600", title: "Tech Scholarships", value: "50+", desc: "Annual scholarships for students from underrepresented communities pursuing STEM careers in Hyderabad and beyond." },
+  { icon: TreePine, color: "from-green-500 to-emerald-600", title: "Carbon Neutral", value: "2026", desc: "Committed to achieving net-zero carbon emissions across all our operations by 2026." },
+  { icon: HandHeart, color: "from-rose-500 to-pink-600", title: "Community Hours", value: "1,000+", desc: "Annual volunteer hours contributed by our team to local communities in Hyderabad, Telangana." },
+  { icon: Leaf, color: "from-teal-500 to-cyan-600", title: "Green IT", value: "100%", desc: "All systems and workflows designed with energy efficiency and responsible digital practices at their core." },
 ];
 
 function AnimatedStat({ target, suffix = "", duration = 2000 }: { target: number; suffix?: string; duration?: number }) {
@@ -160,7 +158,7 @@ export default function About() {
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}
               className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 text-sm font-medium text-white mb-8">
               <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
-              Our Story Since 2010
+              Our Story Since 2020
             </motion.div>
 
             <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.1 }}
@@ -171,16 +169,16 @@ export default function About() {
 
             <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.2 }}
               className="text-xl text-slate-300 mb-10 max-w-3xl leading-relaxed">
-              MyCorp Solutions has grown from a boutique IT staffing firm into a global force — delivering talent, technology, and healthcare solutions to enterprises across 50+ countries.
+              Founded in 2020 in Hyderabad, HITEC City by G.V Krishna Reddy — MyCorp Solutions has grown rapidly into a trusted IT services partner delivering staffing, software, and healthcare solutions to enterprises across the US and India.
             </motion.p>
 
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.3 }}
               className="flex flex-wrap gap-10">
               {[
-                { target: 15, suffix: "+", label: "Years in Business" },
-                { target: 1200, suffix: "+", label: "Global Team" },
-                { target: 500, suffix: "+", label: "Enterprise Clients" },
-                { target: 50, suffix: "+", label: "Countries Served" },
+                { target: 5, suffix: "+", label: "Years in Business" },
+                { target: 300, suffix: "+", label: "Team Members" },
+                { target: 200, suffix: "+", label: "Enterprise Clients" },
+                { target: 5000, suffix: "+", label: "Placements Made" },
               ].map((stat, i) => (
                 <div key={i} className="text-center">
                   <AnimatedStat target={stat.target} suffix={stat.suffix} />
@@ -234,7 +232,7 @@ export default function About() {
               </div>
               <h2 className="text-3xl md:text-4xl font-display font-bold mb-5">See MyCorp in Action</h2>
               <p className="text-muted-foreground text-lg leading-relaxed mb-6">
-                From our New Jersey headquarters to our Hyderabad delivery center — see how 1,200+ professionals across two continents come together every day to deliver exceptional outcomes for our clients.
+                From our Hyderabad, HITEC City headquarters — see how 300+ professionals come together every day to deliver exceptional IT, staffing, and healthcare outcomes for our clients across the globe.
               </p>
               <ul className="space-y-3">
                 {["A day in our Hyderabad delivery center", "How we onboard IT talent in under 48 hours", "Our medical billing quality assurance process"].map((item, i) => (
@@ -257,10 +255,10 @@ export default function About() {
         <div className="container mx-auto px-4 md:px-6">
           <motion.div {...fadeUp} className="text-center mb-16">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/20 text-accent text-xs font-semibold mb-4">
-              <Calendar className="w-3 h-3" /> 2010 — 2024
+              <Calendar className="w-3 h-3" /> 2020 — 2025
             </div>
             <h2 className="text-3xl md:text-4xl font-display font-bold text-white mb-4">Our Journey</h2>
-            <p className="text-slate-400 max-w-xl mx-auto">15 years of milestones that shaped who we are today.</p>
+            <p className="text-slate-400 max-w-xl mx-auto">5 years of milestones that shaped who we are today.</p>
           </motion.div>
 
           {/* Horizontal Timeline Track */}

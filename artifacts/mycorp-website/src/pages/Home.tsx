@@ -247,12 +247,12 @@ const testimonials = [
 ];
 
 const googleReviews = [
-  { name: "Rachel M.", avatar: "R", color: "#4285F4", rating: 5, date: "2 weeks ago", text: "MyCorp placed 3 senior engineers in 2 weeks. The quality was exceptional — better than any agency we've used. Highly recommend!" },
-  { name: "David K.", avatar: "D", color: "#34A853", rating: 5, date: "1 month ago", text: "Their IT team completely transformed our infrastructure. 24/7 support means we never worry about downtime. Worth every penny." },
-  { name: "Priya S.", avatar: "P", color: "#EA4335", rating: 5, date: "3 weeks ago", text: "We switched medical billing to MyCorp and saw a 35% increase in clean claim rates. HIPAA-compliant and highly responsive." },
-  { name: "James T.", avatar: "J", color: "#FBBC04", rating: 5, date: "2 months ago", text: "Outstanding software delivery partner. Enterprise portal on time and within budget. Dual-shore model is their superpower." },
-  { name: "Angela W.", avatar: "A", color: "#9C27B0", rating: 5, date: "1 month ago", text: "RPO engagement reduced our time-to-hire by 60% and dramatically improved quality of tech hires. True professionals." },
-  { name: "Ravi N.", avatar: "R", color: "#00BCD4", rating: 5, date: "3 months ago", text: "Top-tier consulting firm. They understood our business deeply and delivered a cloud strategy that saved us millions." },
+  { name: "Kiran M.", avatar: "K", color: "#4285F4", rating: 5, date: "2 weeks ago", text: "MyCorp placed 3 senior engineers in 2 weeks. The quality was exceptional — better than any agency we've used. Highly recommend!" },
+  { name: "Deepak K.", avatar: "D", color: "#34A853", rating: 5, date: "1 month ago", text: "Their IT team completely transformed our infrastructure. Support is always responsive and we've had zero downtime since partnering with them." },
+  { name: "Priya S.", avatar: "P", color: "#EA4335", rating: 5, date: "3 weeks ago", text: "We switched healthcare billing to MyCorp and saw a 35% increase in clean claim rates. HIPAA-compliant and highly responsive." },
+  { name: "Suresh T.", avatar: "S", color: "#FBBC04", rating: 5, date: "2 months ago", text: "Outstanding software delivery partner. Enterprise portal on time and within budget. Their Hyderabad team is their superpower." },
+  { name: "Anjali W.", avatar: "A", color: "#9C27B0", rating: 5, date: "1 month ago", text: "RPO engagement reduced our time-to-hire by 60% and dramatically improved quality of tech hires. True professionals." },
+  { name: "Ravi N.", avatar: "R", color: "#00BCD4", rating: 5, date: "3 months ago", text: "Top-tier IT services firm. They understood our business deeply and delivered a custom solution that saved us significant costs." },
 ];
 
 /* ─── MAIN COMPONENT ───────────────────────────────── */

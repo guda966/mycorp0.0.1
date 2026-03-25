@@ -57,17 +57,17 @@ export const servicesData: ServiceData[] = [
     testimonials: [
       {
         quote: "MyCorp placed 3 senior cloud engineers in under 2 weeks. Every candidate was sharp, pre-vetted, and culture-fit. Best staffing experience we've ever had.",
-        name: "David Kim", role: "VP Engineering", company: "FinTech Ventures",
+        name: "Vikram Mehta", role: "VP Engineering", company: "FinServ Technologies",
         avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=100&h=100",
       },
       {
         quote: "Their offshore team in Hyderabad became an integral part of our dev squad. Seamless collaboration, outstanding talent, zero friction.",
-        name: "Monica Patel", role: "Head of Engineering", company: "CloudSoft",
+        name: "Deepa Krishnamurthy", role: "Head of Engineering", company: "CloudSoft India",
         avatar: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=100&h=100",
       },
       {
         quote: "Zero conversion fees, 90-day guarantee, and 8 permanent hires later — we wouldn't use anyone else for IT staffing.",
-        name: "James Wu", role: "CTO", company: "DataStream Analytics",
+        name: "Arjun Kapoor", role: "CTO", company: "DataStream Analytics",
         avatar: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=100&h=100",
       },
     ],
@@ -119,12 +119,12 @@ export const servicesData: ServiceData[] = [
       },
       {
         quote: "We went from posting reqs and waiting weeks to having qualified candidates in our pipeline the same day. The RPO model completely changed our velocity.",
-        name: "Ryan Torres", role: "VP Talent Acquisition", company: "ScaleUp Inc.",
+        name: "Sanjay Reddy", role: "VP Talent Acquisition", company: "ScaleUp Technologies",
         avatar: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=100&h=100",
       },
       {
         quote: "The RPO model scaled us from 10 hires per month to 60 in a single quarter — no drama, no overhead, no compromise on quality.",
-        name: "Sophia Lee", role: "COO", company: "Nexgen Tech",
+        name: "Sneha Iyer", role: "COO", company: "Nexgen Tech",
         avatar: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&q=80&w=100&h=100",
       },
     ],
@@ -171,17 +171,17 @@ export const servicesData: ServiceData[] = [
     testimonials: [
       {
         quote: "MyCorp rebuilt our customer portal from the ground up in 5 months. Clean design, exceptional performance, and the codebase handoff was completely seamless.",
-        name: "Sarah Chen", role: "CTO", company: "RetailEdge Inc.",
+        name: "Aditya Sharma", role: "CTO", company: "RetailEdge India",
         avatar: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=100&h=100",
       },
       {
         quote: "Clean code, zero missed sprints, and a handoff so thorough our team could own and maintain it from day one. Exceptional engineering discipline.",
-        name: "Marcus Thompson", role: "Head of Product", company: "LogisticsPro",
+        name: "Suresh Babu", role: "Head of Product", company: "LogisticsPro",
         avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=100&h=100",
       },
       {
         quote: "They modernized our 15-year-old ERP in phased releases with zero downtime to our operations. The most professional delivery team we've ever worked with.",
-        name: "Linda Osei", role: "CTO", company: "Premiere Retail",
+        name: "Pooja Rao", role: "CTO", company: "Premiere Retail",
         avatar: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=100&h=100",
       },
     ],
@@ -228,17 +228,17 @@ export const servicesData: ServiceData[] = [
     testimonials: [
       {
         quote: "We recovered $2.3M in denied claims in our very first quarter with MyCorp. Their RCM team is thorough, transparent, and genuinely invested in our financial outcomes.",
-        name: "Dr. Anita Reddy", role: "Practice Administrator", company: "Reddy Medical Group",
+        name: "Dr. Suresh Reddy", role: "Practice Administrator", company: "Reddy Medical Group",
         avatar: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&q=80&w=100&h=100",
       },
       {
         quote: "AR days dropped from 68 to 31 in our first 90 days. The team is thorough, responsive, and genuinely invested in our revenue — not just our invoices.",
-        name: "Dr. Samuel Park", role: "MD", company: "Family Care Partners",
+        name: "Dr. Vijay Kumar", role: "MD", company: "Family Care Clinic",
         avatar: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=100&h=100",
       },
       {
         quote: "HIPAA compliance was seamless and our billing error rate dropped to near zero. MyCorp is the gold standard for healthcare RCM.",
-        name: "Christine Bower", role: "Revenue Cycle Director", company: "Northwest Health",
+        name: "Meena Krishnan", role: "Revenue Cycle Director", company: "Vijaya Health Systems",
         avatar: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=100&h=100",
       },
     ],
