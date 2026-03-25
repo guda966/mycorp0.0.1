@@ -138,24 +138,21 @@ function TeamDeck({ items }: { items: typeof employeeTestimonials }) {
 
   return (
     <div className="flex flex-col items-center">
-      <div className="relative w-full flex items-center justify-center" style={{ height: 300 }}>
-        {items.map((t, i) => {
+      <div className="relative flex justify-center" style={{ width: "100%", maxWidth: 560, height: 310 }}>
+        {[...items].reverse().map((t, ri) => {
+          const i = items.length - 1 - ri;
           const diff = ((i - active) % items.length + items.length) % items.length;
-          const isFront = diff === 0;
-          const isRight = diff === 1;
-          const isLeft = diff === items.length - 1;
-          const x = isFront ? 0 : isRight ? "38%" : isLeft ? "-38%" : 0;
-          const scale = isFront ? 1 : 0.85;
-          const opacity = isFront ? 1 : isRight || isLeft ? 0.5 : 0;
-          const zIndex = isFront ? 20 : isRight || isLeft ? 10 : 0;
+          const slot = diff === 0 ? 0 : diff === 1 ? 1 : 2;
+          const yMap    = [0, 16, 28];
+          const scaleMap   = [1, 0.96, 0.92];
+          const opacityMap = [1, 0.45, 0.2];
+          const zMap    = [30, 20, 10];
           return (
             <motion.div
               key={i}
-              style={{ zIndex, position: "absolute", width: "100%", maxWidth: 480 }}
-              animate={{ x, scale, opacity }}
-              transition={{ duration: 0.55, ease: "easeInOut" }}
-              onClick={() => !isFront && setActive(i)}
-              className={!isFront ? "cursor-pointer" : ""}
+              style={{ zIndex: zMap[slot], position: "absolute", top: 0, left: 0, right: 0 }}
+              animate={{ y: yMap[slot], scale: scaleMap[slot], opacity: opacityMap[slot] }}
+              transition={{ duration: 0.5, ease: "easeInOut" }}
             >
               <div className="bg-white/5 border border-white/10 rounded-xl p-8">
                 <Quote className="w-7 h-7 text-cyan-400 mb-4 opacity-60" />
@@ -174,7 +171,7 @@ function TeamDeck({ items }: { items: typeof employeeTestimonials }) {
         })}
       </div>
 
-      <div className="flex items-center gap-5 mt-4">
+      <div className="flex items-center gap-5 mt-8">
         <button onClick={() => go(-1)} className="w-9 h-9 rounded-full border border-white/20 text-white/70 hover:border-white/60 hover:text-white transition-colors flex items-center justify-center text-lg">‹</button>
         <div className="flex gap-2">
           {items.map((_, i) => (
