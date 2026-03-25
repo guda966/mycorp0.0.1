@@ -183,7 +183,7 @@ export default function About() {
             </motion.div>
 
             <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.1 }}
-              className="text-5xl md:text-7xl font-display font-bold text-white leading-tight mb-6">
+              className="text-5xl md:text-7xl font-display font-extrabold text-white leading-tight mb-6">
               Built on Trust.{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-accent">Driven by Results.</span>
             </motion.h1>

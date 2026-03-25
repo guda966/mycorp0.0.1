@@ -49,7 +49,7 @@ export default function Services() {
             <span className="inline-block bg-white/10 border border-white/20 text-white text-xs font-semibold tracking-widest uppercase px-4 py-2 rounded-full mb-6">
               What We Do
             </span>
-            <h1 className="text-4xl md:text-6xl font-display font-bold mb-5 max-w-3xl mx-auto leading-tight">
+            <h1 className="text-4xl md:text-6xl font-display font-extrabold mb-5 max-w-3xl mx-auto leading-tight">
               Four Service Lines.<br />
               <span className="text-cyan-400">One Trusted Partner.</span>
             </h1>

@@ -95,7 +95,7 @@ export default function Contact() {
               initial={{ opacity: 0, y: 26 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.65, delay: 0.1 }}
-              className="text-4xl md:text-6xl font-display font-bold text-white mb-6 leading-tight"
+              className="text-4xl md:text-6xl font-display font-extrabold text-white mb-6 leading-tight"
             >
               Every Great Partnership<br className="hidden md:block" />
               <span className="bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent"> Starts Here.</span>
