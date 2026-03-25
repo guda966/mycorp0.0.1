@@ -38,10 +38,10 @@ const values = [
 const founder = {
   name: "G.V Krishna Reddy",
   role: "Founder & CEO",
-  img: "/founder-gvkrishna-reddy.jpg",
+  img: "/founder-krishna.png",
   linkedin: "#",
-  message: "When I founded MyCorp Solutions in 2020, I had one simple belief — that a company built on genuine relationships, deep expertise, and honest delivery can compete with anyone in the world, regardless of size. We started from Hyderabad with a small team and a big ambition: to be the IT and healthcare partner that clients actually trust. Five years on, that belief hasn't changed. Every placement we make, every project we deliver, and every revenue cycle we optimise is a direct reflection of the values I built this company on. We're just getting started.",
-  tags: ["IT Staffing", "Healthcare Technology", "Software Delivery", "Revenue Cycle Management"],
+  message: "We built MyCorp with one belief — that honest delivery, genuine relationships, and deep expertise win every time. From Hyderabad, we set out to be the partner clients actually trust. Five years on, that conviction drives everything we do.",
+  tags: ["Founded 2020", "Hyderabad, HITEC City", "IT & Healthcare Services"],
 };
 
 const employeeTestimonials = [
@@ -476,59 +476,51 @@ export default function About() {
       </section>
 
       {/* ── FOUNDER'S MESSAGE ── */}
-      <section className="py-24 bg-white">
+      <section className="py-24 bg-slate-50">
         <div className="container mx-auto px-4 md:px-6">
-          <motion.div {...fadeUp} className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold mb-4">
-              <Star className="w-3 h-3 fill-primary" /> From the Founder
-            </div>
-            <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">A Note from Our CEO</h2>
-            <p className="text-muted-foreground max-w-xl mx-auto">The vision, values, and conviction behind MyCorp Solutions — in his own words.</p>
-          </motion.div>
+          <div className="max-w-5xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }}
+              className="rounded-3xl overflow-hidden shadow-2xl grid grid-cols-1 md:grid-cols-2"
+            >
+              {/* Left — photo panel */}
+              <div className="relative bg-gradient-to-br from-[#0B1120] via-[#0d1f3c] to-[#0B1120] flex items-end justify-center min-h-[420px] overflow-hidden">
+                {/* Subtle glow behind the figure */}
+                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-72 h-72 bg-primary/20 rounded-full blur-3xl" />
+                <img
+                  src={founder.img}
+                  alt={founder.name}
+                  className="relative z-10 w-72 object-contain object-bottom select-none"
+                  style={{ maxHeight: "400px" }}
+                />
+              </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }}
-            className="max-w-5xl mx-auto"
-          >
-            <Card className="border-border/40 shadow-2xl overflow-hidden">
-              <div className="grid grid-cols-1 md:grid-cols-5">
-                {/* Photo column */}
-                <div className="md:col-span-2 relative bg-gradient-to-br from-slate-900 to-[#0B1120] min-h-[340px]">
-                  <img
-                    src={founder.img}
-                    alt={founder.name}
-                    className="w-full h-full object-cover object-top opacity-90"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
-                  <div className="absolute bottom-0 left-0 right-0 p-6">
-                    <p className="text-white font-bold text-xl leading-tight">{founder.name}</p>
-                    <p className="text-cyan-400 font-semibold text-sm mt-1">{founder.role}</p>
-                    <a
-                      href={founder.linkedin}
-                      className="inline-flex items-center gap-2 mt-3 px-3 py-1.5 rounded-full bg-[#0077B5] text-white text-xs font-semibold hover:bg-[#005f92] transition-colors"
-                    >
-                      <Linkedin className="w-3 h-3" /> Connect on LinkedIn
-                    </a>
-                  </div>
+              {/* Right — message panel */}
+              <div className="bg-white flex flex-col justify-center px-10 py-12">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/8 text-primary text-xs font-semibold mb-8 self-start border border-primary/15">
+                  <Star className="w-3 h-3 fill-primary" /> Founder's Message
                 </div>
 
-                {/* Message column */}
-                <CardContent className="md:col-span-3 p-8 md:p-12 flex flex-col justify-center">
-                  <Quote className="w-10 h-10 text-primary/20 mb-6 shrink-0" />
-                  <p className="text-foreground text-lg md:text-xl leading-relaxed font-medium italic mb-8">
-                    "{founder.message}"
-                  </p>
-                  <div className="flex flex-wrap gap-2 pt-6 border-t border-border">
+                <Quote className="w-8 h-8 text-primary/15 mb-4" />
+
+                <p className="text-foreground text-lg leading-relaxed mb-8">
+                  {founder.message}
+                </p>
+
+                <div className="border-t border-border pt-6">
+                  <p className="font-bold text-foreground text-lg">{founder.name}</p>
+                  <p className="text-primary font-semibold text-sm mb-4">{founder.role}, MyCorp Solutions</p>
+                  <div className="flex flex-wrap gap-2">
                     {founder.tags.map((tag, i) => (
-                      <span key={i} className="px-3 py-1.5 bg-primary/5 text-primary rounded-full text-xs font-semibold border border-primary/10">
+                      <span key={i} className="px-3 py-1 bg-slate-100 text-slate-600 rounded-full text-xs font-medium">
                         {tag}
                       </span>
                     ))}
                   </div>
-                </CardContent>
+                </div>
               </div>
-            </Card>
-          </motion.div>
+            </motion.div>
+          </div>
         </div>
       </section>
 
