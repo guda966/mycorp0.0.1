@@ -1,4 +1,4 @@
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -6,7 +6,7 @@ import { Link } from "wouter";
 import {
   Target, Eye, Heart, Award, CheckCircle2, Users, Globe2,
   Lightbulb, ShieldCheck, Zap, Handshake, ArrowRight,
-  Calendar, TrendingUp, Star, Linkedin, Play,
+  Calendar, TrendingUp, Star, Linkedin,
   TreePine, GraduationCap, HandHeart, Leaf, Quote
 } from "lucide-react";
 
@@ -95,39 +95,7 @@ function AnimatedStat({ target, suffix = "", duration = 2000 }: { target: number
   return <div ref={ref} className="text-4xl font-bold text-white font-display">{count.toLocaleString()}{suffix}</div>;
 }
 
-function VideoEmbed() {
-  const [playing, setPlaying] = useState(false);
-  return (
-    <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-video bg-[#0B1120] group cursor-pointer" onClick={() => setPlaying(true)}>
-      {playing ? (
-        <iframe
-          className="w-full h-full"
-          src="https://www.youtube.com/embed/J2OXn7xoFGk?autoplay=1"
-          title="MyCorp Company Overview"
-          allow="autoplay; fullscreen"
-        />
-      ) : (
-        <>
-          <img
-            src="https://images.pexels.com/photos/3182812/pexels-photo-3182812.jpeg?auto=compress&cs=tinysrgb&w=1200&h=675"
-            alt="Company Overview Video"
-            className="w-full h-full object-cover opacity-60 group-hover:opacity-70 transition-opacity"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
-          <div className="absolute inset-0 flex flex-col items-center justify-center gap-4">
-            <div className="w-20 h-20 rounded-full bg-white/90 flex items-center justify-center shadow-2xl group-hover:scale-110 transition-transform">
-              <Play className="w-8 h-8 text-primary fill-primary ml-1" />
-            </div>
-            <p className="text-white font-semibold text-lg">Watch Our Company Story</p>
-            <p className="text-white/70 text-sm">3 min overview</p>
-          </div>
-        </>
-      )}
-    </div>
-  );
-}
-
-function TeamDeck({ items }: { items: typeof employeeTestimonials }) {
+function TeamSlider({ items }: { items: typeof employeeTestimonials }) {
   const [active, setActive] = useState(0);
   useEffect(() => {
     const t = setInterval(() => setActive(a => (a + 1) % items.length), 4500);
@@ -135,50 +103,43 @@ function TeamDeck({ items }: { items: typeof employeeTestimonials }) {
   }, [items.length]);
 
   const go = (dir: number) => setActive(a => (a + dir + items.length) % items.length);
+  const item = items[active];
 
   return (
     <div className="flex flex-col items-center">
-      <div className="relative flex justify-center" style={{ width: "100%", maxWidth: 560, height: 310 }}>
-        {[...items].reverse().map((t, ri) => {
-          const i = items.length - 1 - ri;
-          const diff = ((i - active) % items.length + items.length) % items.length;
-          const slot = diff === 0 ? 0 : diff === 1 ? 1 : 2;
-          const yMap    = [0, 16, 28];
-          const scaleMap   = [1, 0.96, 0.92];
-          const opacityMap = [1, 0.45, 0.2];
-          const zMap    = [30, 20, 10];
-          return (
-            <motion.div
-              key={i}
-              style={{ zIndex: zMap[slot], position: "absolute", top: 0, left: 0, right: 0 }}
-              animate={{ y: yMap[slot], scale: scaleMap[slot], opacity: opacityMap[slot] }}
-              transition={{ duration: 0.5, ease: "easeInOut" }}
-            >
-              <div className="bg-white/5 border border-white/10 rounded-xl p-8">
-                <Quote className="w-7 h-7 text-cyan-400 mb-4 opacity-60" />
-                <p className="text-slate-200 leading-relaxed mb-7 italic text-sm">"{t.quote}"</p>
-                <div className="flex items-center gap-4">
-                  <img src={t.img} alt={t.name} className="w-12 h-12 rounded-full object-cover border-2 border-white/20" />
-                  <div>
-                    <p className="font-bold text-white text-sm">{t.name}</p>
-                    <p className="text-cyan-400 text-xs">{t.role}</p>
-                    <p className="text-slate-500 text-xs">{t.tenure} at MyCorp</p>
-                  </div>
+      <div className="w-full max-w-2xl">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={active}
+            initial={{ opacity: 0, y: 18 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -18 }}
+            transition={{ duration: 0.4, ease: "easeInOut" }}
+          >
+            <div className="bg-white/5 border border-white/10 rounded-xl p-8">
+              <Quote className="w-7 h-7 text-cyan-400 mb-4 opacity-60" />
+              <p className="text-slate-200 leading-relaxed mb-7 italic text-sm">"{item.quote}"</p>
+              <div className="flex items-center gap-4">
+                <img src={item.img} alt={item.name} className="w-12 h-12 rounded-full object-cover border-2 border-white/20" />
+                <div>
+                  <p className="font-bold text-white text-sm">{item.name}</p>
+                  <p className="text-cyan-400 text-xs">{item.role}</p>
+                  <p className="text-slate-500 text-xs">{item.tenure} at MyCorp</p>
                 </div>
               </div>
-            </motion.div>
-          );
-        })}
+            </div>
+          </motion.div>
+        </AnimatePresence>
       </div>
 
       <div className="flex items-center gap-5 mt-8">
-        <button onClick={() => go(-1)} className="w-9 h-9 rounded-full border border-white/20 text-white/70 hover:border-white/60 hover:text-white transition-colors flex items-center justify-center text-lg">‹</button>
+        <button onClick={() => go(-1)} className="w-10 h-10 rounded-full border border-white/20 text-white/70 hover:border-white/60 hover:text-white transition-all hover:bg-white/5 flex items-center justify-center text-xl">‹</button>
         <div className="flex gap-2">
           {items.map((_, i) => (
-            <button key={i} onClick={() => setActive(i)} className={`h-2 rounded-full transition-all duration-300 ${i === active ? "w-6 bg-cyan-400" : "w-2 bg-white/30"}`} />
+            <button key={i} onClick={() => setActive(i)} className={`h-2 rounded-full transition-all duration-300 ${i === active ? "w-8 bg-cyan-400" : "w-2 bg-white/30 hover:bg-white/50"}`} />
           ))}
         </div>
-        <button onClick={() => go(1)} className="w-9 h-9 rounded-full border border-white/20 text-white/70 hover:border-white/60 hover:text-white transition-colors flex items-center justify-center text-lg">›</button>
+        <button onClick={() => go(1)} className="w-10 h-10 rounded-full border border-white/20 text-white/70 hover:border-white/60 hover:text-white transition-all hover:bg-white/5 flex items-center justify-center text-xl">›</button>
       </div>
     </div>
   );
@@ -330,34 +291,6 @@ export default function About() {
                 </Card>
               </motion.div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── COMPANY VIDEO ── */}
-      <section className="py-20 bg-slate-50">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <motion.div {...fadeUp}>
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold mb-4">
-                <Play className="w-3 h-3 fill-primary" /> Company Overview
-              </div>
-              <h2 className="text-3xl md:text-4xl font-display font-bold mb-5">See MyCorp in Action</h2>
-              <p className="text-muted-foreground text-lg leading-relaxed mb-6">
-                From our Hyderabad, HITEC City headquarters — see how 300+ professionals come together every day to deliver exceptional IT, staffing, and healthcare outcomes for our clients across the globe.
-              </p>
-              <ul className="space-y-3">
-                {["A day in our Hyderabad delivery center", "How we onboard IT talent in under 48 hours", "Our medical billing quality assurance process"].map((item, i) => (
-                  <li key={i} className="flex items-center gap-3 text-sm text-muted-foreground">
-                    <CheckCircle2 className="w-4 h-4 text-primary shrink-0" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
-            <motion.div initial={{ opacity: 0, scale: 0.97 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
-              <VideoEmbed />
-            </motion.div>
           </div>
         </div>
       </section>
@@ -528,7 +461,7 @@ export default function About() {
             <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">What Our Team Says</h2>
             <p className="text-slate-400 max-w-xl mx-auto">Real voices from the people who make MyCorp exceptional every day.</p>
           </motion.div>
-          <TeamDeck items={employeeTestimonials} />
+          <TeamSlider items={employeeTestimonials} />
         </div>
       </section>
 
