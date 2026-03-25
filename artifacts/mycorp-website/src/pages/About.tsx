@@ -38,7 +38,7 @@ const values = [
 const founder = {
   name: "G.V Krishna Reddy",
   role: "Founder & CEO",
-  img: "/founder-krishna.png",
+  img: "/founder-portrait.jpg",
   linkedin: "#",
   message: "We built MyCorp with one belief — that honest delivery, genuine relationships, and deep expertise win every time. From Hyderabad, we set out to be the partner clients actually trust. Five years on, that conviction drives everything we do.",
   tags: ["Founded 2020", "Hyderabad, HITEC City", "IT & Healthcare Services"],
@@ -193,6 +193,47 @@ export default function About() {
         </motion.div>
 
         <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-white to-transparent z-10" />
+      </section>
+
+      {/* ── FOUNDER'S MESSAGE (top) ── */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4 md:px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }}
+            className="max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-10 md:gap-16"
+          >
+            {/* Portrait */}
+            <div className="shrink-0 flex flex-col items-center gap-4">
+              <img
+                src={founder.img}
+                alt={founder.name}
+                className="w-52 md:w-60 object-contain drop-shadow-lg"
+              />
+              <div className="text-center">
+                <p className="font-bold text-foreground text-base">{founder.name}</p>
+                <p className="text-primary text-sm font-semibold">{founder.role}</p>
+              </div>
+            </div>
+
+            {/* Message */}
+            <div className="flex-1">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/8 border border-primary/15 text-primary text-xs font-semibold mb-5">
+                <Star className="w-3 h-3 fill-primary" /> Founder's Message
+              </div>
+              <Quote className="w-7 h-7 text-primary/15 mb-3" />
+              <p className="text-foreground text-base md:text-lg leading-relaxed mb-6">
+                {founder.message}
+              </p>
+              <div className="flex flex-wrap gap-2">
+                {founder.tags.map((tag, i) => (
+                  <span key={i} className="px-3 py-1 bg-slate-100 text-slate-600 rounded-full text-xs font-medium">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+        </div>
       </section>
 
       {/* ── MISSION / VISION / VALUES CARDS ── */}
@@ -475,54 +516,6 @@ export default function About() {
         </div>
       </section>
 
-      {/* ── FOUNDER'S MESSAGE ── */}
-      <section className="py-24 bg-slate-50">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="max-w-5xl mx-auto">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }}
-              className="rounded-3xl overflow-hidden shadow-2xl grid grid-cols-1 md:grid-cols-2"
-            >
-              {/* Left — photo panel */}
-              <div className="relative bg-gradient-to-br from-[#0B1120] via-[#0d1f3c] to-[#0B1120] flex items-end justify-center min-h-[420px] overflow-hidden">
-                {/* Subtle glow behind the figure */}
-                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-72 h-72 bg-primary/20 rounded-full blur-3xl" />
-                <img
-                  src={founder.img}
-                  alt={founder.name}
-                  className="relative z-10 w-72 object-contain object-bottom select-none"
-                  style={{ maxHeight: "400px" }}
-                />
-              </div>
-
-              {/* Right — message panel */}
-              <div className="bg-white flex flex-col justify-center px-10 py-12">
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/8 text-primary text-xs font-semibold mb-8 self-start border border-primary/15">
-                  <Star className="w-3 h-3 fill-primary" /> Founder's Message
-                </div>
-
-                <Quote className="w-8 h-8 text-primary/15 mb-4" />
-
-                <p className="text-foreground text-lg leading-relaxed mb-8">
-                  {founder.message}
-                </p>
-
-                <div className="border-t border-border pt-6">
-                  <p className="font-bold text-foreground text-lg">{founder.name}</p>
-                  <p className="text-primary font-semibold text-sm mb-4">{founder.role}, MyCorp Solutions</p>
-                  <div className="flex flex-wrap gap-2">
-                    {founder.tags.map((tag, i) => (
-                      <span key={i} className="px-3 py-1 bg-slate-100 text-slate-600 rounded-full text-xs font-medium">
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
 
       {/* ── CSR / COMMUNITY ── */}
       <section className="py-24 bg-gradient-to-br from-slate-900 to-[#0B1120] text-white">
