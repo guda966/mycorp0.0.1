@@ -61,7 +61,7 @@ const HERO_SLIDES = [
     label: "Staffing & Outsourcing",
   },
   {
-    img: "https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    img: "https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=1600",
     label: "IT Projects & Software",
   },
   {
@@ -69,7 +69,7 @@ const HERO_SLIDES = [
     label: "Healthcare Projects & RCM",
   },
   {
-    img: "https://images.pexels.com/photos/3769021/pexels-photo-3769021.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    img: "https://images.pexels.com/photos/3183165/pexels-photo-3183165.jpeg?auto=compress&cs=tinysrgb&w=1600",
     label: "IT Hiring Support",
   },
 ];
@@ -292,20 +292,21 @@ function TestimonialDeck({ items }: { items: typeof testimonials }) {
               animate={{ y: yMap[slot], scale: scaleMap[slot], opacity: opacityMap[slot] }}
               transition={{ duration: 0.5, ease: "easeInOut" }}
             >
-              <Card className="bg-white/8 border-white/12 text-white">
+              <Card className="bg-white border border-blue-100 shadow-xl shadow-blue-100/40">
+                <div className="h-1 w-full rounded-t-xl bg-gradient-to-r from-primary via-violet-500 to-cyan-400" />
                 <CardContent className="p-7">
                   <div className="flex gap-1 mb-4">
                     {Array.from({ length: t.rating }).map((_, j) => (
                       <Star key={j} className="w-4 h-4 text-amber-400 fill-amber-400" />
                     ))}
                   </div>
-                  <Quote className="w-6 h-6 text-white/20 mb-3" />
-                  <p className="text-white/85 leading-relaxed mb-6 text-sm">"{t.text}"</p>
-                  <div className="flex items-center gap-3 border-t border-white/10 pt-5">
-                    <img src={t.avatar} alt={t.name} className="w-10 h-10 rounded-full object-cover ring-2 ring-white/20" />
+                  <Quote className="w-6 h-6 text-primary/20 mb-3" />
+                  <p className="text-slate-700 leading-relaxed mb-6 text-sm">"{t.text}"</p>
+                  <div className="flex items-center gap-3 border-t border-slate-100 pt-5">
+                    <img src={t.avatar} alt={t.name} className="w-10 h-10 rounded-full object-cover ring-2 ring-primary/20" />
                     <div>
-                      <p className="font-bold text-white text-sm">{t.name}</p>
-                      <p className="text-slate-400 text-xs">{t.role} · {t.company}</p>
+                      <p className="font-bold text-slate-800 text-sm">{t.name}</p>
+                      <p className="text-slate-500 text-xs">{t.role} · {t.company}</p>
                     </div>
                   </div>
                 </CardContent>
@@ -618,17 +619,17 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── 7. TESTIMONIALS (dark) ── */}
-      <section className="py-24 bg-[#0B1120] text-white relative overflow-hidden">
-        <div className="absolute inset-0 opacity-[0.05]" style={{ backgroundImage: "radial-gradient(circle, white 1px, transparent 1px)", backgroundSize: "32px 32px" }} />
-        <div className="absolute top-0 left-0 w-96 h-96 bg-blue-600/15 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-violet-600/15 rounded-full blur-3xl" />
+      {/* ── 7. TESTIMONIALS ── */}
+      <section className="py-24 relative overflow-hidden" style={{ background: "linear-gradient(135deg, #f0f7ff 0%, #ffffff 45%, #f5f0ff 100%)" }}>
+        <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: "radial-gradient(circle, #3b82f6 1px, transparent 1px)", backgroundSize: "36px 36px" }} />
+        <div className="absolute top-0 right-0 w-80 h-80 bg-blue-400/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 left-0 w-80 h-80 bg-violet-400/10 rounded-full blur-3xl" />
 
         <div className="container relative z-10 mx-auto px-4 md:px-6">
           <motion.div {...fadeUp} className="text-center mb-14">
-            <span className="inline-block px-3 py-1 rounded-full bg-white/10 border border-white/15 text-white/60 text-xs font-semibold tracking-widest uppercase mb-4">Client Stories</span>
-            <h2 className="text-3xl md:text-4xl font-display font-bold mb-3">What Our Clients Say</h2>
-            <p className="text-slate-400">Don't just take our word for it.</p>
+            <span className="inline-block px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-semibold tracking-widest uppercase mb-4">Client Stories</span>
+            <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-3">What Our Clients Say</h2>
+            <p className="text-muted-foreground">Don't just take our word for it.</p>
           </motion.div>
 
           <TestimonialDeck items={testimonials} />
