@@ -226,7 +226,7 @@ export default function About() {
                 <img
                   src={founder.img}
                   alt={founder.name}
-                  className="w-full rounded-2xl object-cover aspect-[4/5] drop-shadow-lg"
+                  className="w-full rounded-2xl object-cover object-top aspect-[3/4] drop-shadow-lg"
                   onError={(e) => {
                     const el = e.currentTarget;
                     el.style.display = 'none';
