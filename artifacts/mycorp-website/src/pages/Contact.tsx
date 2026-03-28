@@ -13,7 +13,7 @@ import { MapPin, Phone, Mail, MessageSquare, Clock, Star, Shield, Zap, ExternalL
 
 const WHATSAPP_NUMBER = "919988661244";
 const WHATSAPP_MESSAGE = encodeURIComponent("Hi! I'd like to learn more about MyCorp Solutions services.");
-
+const GOOGLE_MAPS_PLACE_URL ="https://maps.app.goo.gl/SrDJd9dkQsPwuA266";
 const contactSchema = z.object({
   name: z.string().min(2, "Name is required"),
   email: z.string().email("Valid email required"),
@@ -346,7 +346,7 @@ export default function Contact() {
               <span className="font-semibold text-sm">MyCorp Solutions — Madhura Nagar, Hyderabad</span>
             </div>
             <a
-              href="https://www.google.com/maps/search/Mallareddy+Heights,+Srinivasa+Nagar+W+Colony,+Madhura+Nagar,+Hyderabad,+Telangana+500038"
+              href={GOOGLE_MAPS_PLACE_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="text-cyan-400 hover:text-cyan-300 text-xs flex items-center gap-1 transition-colors"
@@ -356,7 +356,7 @@ export default function Contact() {
           </div>
           <iframe
             title="MyCorp Solutions Hyderabad Office"
-            src="https://maps.google.com/maps?q=Mallareddy+Heights,+Srinivasa+Nagar+W+Colony,+Madhura+Nagar,+Hyderabad,+Telangana+500038&output=embed&z=16"
+            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d30443.860713675593!2d78.3714251!3d17.4844618!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb914cbae1676b%3A0xedb2d73704a8db6c!2sMyCorp%20INC!5e0!3m2!1sen!2sin!4v1774689958055!5m2!1sen!2sin"
             width="100%"
             height="420"
             style={{ border: 0, display: "block" }}
@@ -425,7 +425,7 @@ export default function Contact() {
                   <p className="font-bold text-sm mb-1">Share Your Experience</p>
                   <p className="text-muted-foreground text-xs mb-3">Worked with MyCorp Solutions? Your review helps others make confident decisions.</p>
                   <a
-                    href="https://www.google.com/maps/search/MyCorp+Solutions+Madhura+Nagar+Hyderabad"
+                    href="https://search.google.com/local/writereview?placeid=ChIJa2fhukyRyzsRbNuoBDfXsu0"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 bg-[#4285F4] hover:bg-[#3367d6] text-white text-xs font-semibold px-4 py-2 rounded-lg transition-colors"
@@ -479,7 +479,7 @@ export default function Contact() {
             ))}
 
             <a
-              href="https://www.google.com/maps/search/MyCorp+Solutions+Madhura+Nagar+Hyderabad"
+              href={GOOGLE_MAPS_PLACE_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center justify-center gap-2 w-full py-3 rounded-xl border border-border text-sm text-muted-foreground hover:text-foreground hover:border-primary/40 transition-colors"
