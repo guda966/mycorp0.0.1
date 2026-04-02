@@ -1,5 +1,5 @@
 import { Link } from "wouter";
-import { Mail, MapPin, Phone, Linkedin, Twitter, Facebook } from "lucide-react";
+import { Mail, MapPin, Phone } from "lucide-react";
 import { MycorpLogo } from "@/components/ui/MycorpLogo";
 
 export function Footer() {
@@ -17,17 +17,6 @@ export function Footer() {
             <p className="text-slate-400 text-sm leading-relaxed max-w-xs">
               Your trusted partner in IT staffing, software delivery, and healthcare RCM — headquartered in Hyderabad, India.
             </p>
-            <div className="flex items-center gap-4">
-              <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary hover:text-white transition-colors">
-                <Linkedin className="w-4 h-4" />
-              </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary hover:text-white transition-colors">
-                <Twitter className="w-4 h-4" />
-              </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary hover:text-white transition-colors">
-                <Facebook className="w-4 h-4" />
-              </a>
-            </div>
           </div>
 
           {/* Quick Links */}
@@ -99,10 +88,6 @@ export function Footer() {
           <p className="text-slate-500 text-sm">
             © {currentYear} MyCorp Solutions. All rights reserved.
           </p>
-          <div className="flex gap-6 text-sm text-slate-500">
-            <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
-          </div>
         </div>
         <div className="pt-4 text-center">
           <p className="text-slate-600 text-xs">

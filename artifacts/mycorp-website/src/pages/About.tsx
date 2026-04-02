@@ -6,7 +6,7 @@ import { Link } from "wouter";
 import {
   Target, Eye, Heart, Award, CheckCircle2, Users, Globe2,
   Lightbulb, ShieldCheck, Zap, Handshake, ArrowRight,
-  Calendar, TrendingUp, Star, Linkedin,
+  Calendar, TrendingUp, Star,
   TreePine, GraduationCap, HandHeart, Leaf, Quote
 } from "lucide-react";
 
@@ -39,7 +39,6 @@ const founder = {
   name: "G.V Krishna Reddy",
   role: "Founder & CEO",
   img: "/founder-portrait.jpg",
-  linkedin: "#",
   message: "We built MyCorp with one belief — that honest delivery, genuine relationships, and deep expertise win every time. From Hyderabad, we set out to be the partner clients actually trust. Five years on, that conviction drives everything we do.",
   tags: ["Founded 2020", "Hyderabad, HITEC City", "IT & Healthcare Services"],
 };
@@ -210,7 +209,7 @@ export default function About() {
           </div>
         </motion.div>
 
-        <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-white to-transparent z-10" />
+        <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-white dark:from-[#0B1120] to-transparent z-10" />
       </section>
 
       {/* ── FOUNDER'S MESSAGE (top) ── */}
