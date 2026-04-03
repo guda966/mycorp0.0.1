@@ -47,7 +47,7 @@ function TypedText() {
   }, []);
 
   return (
-    <span className="bg-gradient-to-r from-cyan-400 to-violet-400 bg-clip-text text-transparent">
+    <span className="bg-gradient-to-r from-cyan-400 to-violet-400 bg-clip-text text-transparent pb-1 inline-block">
       {displayed}
       <span className={`inline-block w-[3px] h-[0.85em] bg-cyan-400 ml-1 align-middle transition-opacity duration-100 ${blink ? "opacity-100" : "opacity-0"}`} />
     </span>
@@ -359,7 +359,7 @@ export default function Home() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.65, delay: 0.1 }}
             >
-              <h1 className="text-4xl sm:text-5xl md:text-7xl font-display font-extrabold leading-[1.08] mb-6 text-white">
+              <h1 className="text-4xl sm:text-5xl md:text-7xl font-display font-extrabold leading-tight md:leading-[1.08] mb-6 text-white">
                 India's Leading<br />
                 <TypedText />
               </h1>
@@ -399,8 +399,12 @@ export default function Home() {
       </section>
 
       {/* ── 2. STATS ── */}
-      <section className="bg-primary py-14">
-        <div className="container mx-auto px-4">
+      <section className="bg-primary py-16">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="text-center mb-10">
+            <h2 className="text-2xl md:text-3xl font-display font-bold text-white mb-2">MyCorp by the Numbers</h2>
+            <p className="text-white/70 text-sm">Five years of delivering results across IT staffing, software, and healthcare.</p>
+          </div>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
             <StatCounter end={50} suffix="+" label="Happy Clients" />
             <StatCounter end={95} suffix="%" label="Retention Rate" />
