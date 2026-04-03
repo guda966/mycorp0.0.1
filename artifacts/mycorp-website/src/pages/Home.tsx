@@ -394,25 +394,12 @@ export default function Home() {
               </Link>
             </motion.div>
 
-            {/* Trust row */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.45 }}
-              className="flex flex-wrap items-center gap-x-5 gap-y-2"
-            >
-              {["ISO 27001 Certified", "HIPAA Compliant", "AAPC Certified", "SOC 2 Type II"].map((badge, i) => (
-                <span key={i} className="flex items-center gap-1.5 text-white/55 text-xs font-medium">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" /> {badge}
-                </span>
-              ))}
-            </motion.div>
           </div>
         </div>
       </section>
 
-      {/* ── 2. FLOATING STATS ── */}
-      <section className="bg-primary py-14 -mt-8 relative z-20 mx-4 md:mx-12 rounded-3xl shadow-2xl">
+      {/* ── 2. STATS ── */}
+      <section className="bg-primary py-14">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
             <StatCounter end={50} suffix="+" label="Happy Clients" />
