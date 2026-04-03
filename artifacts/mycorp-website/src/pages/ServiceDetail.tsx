@@ -40,8 +40,8 @@ function AnimatedStat({ value, label, gradient }: { value: string; label: string
   }, [inView, value]);
 
   return (
-    <div ref={ref} className="py-10 px-6 text-center">
-      <p className={`text-4xl md:text-5xl font-display font-bold bg-gradient-to-r ${gradient} bg-clip-text text-transparent tabular-nums`}>
+    <div ref={ref} className="py-10 px-6 text-center bg-white">
+      <p className={`text-4xl md:text-5xl font-display font-bold text-primary tabular-nums`}>
         {display}
       </p>
       <p className="text-muted-foreground text-sm mt-2 font-medium">{label}</p>
@@ -186,7 +186,7 @@ export default function ServiceDetail() {
       {/* ── ANIMATED STATS ── */}
       <section className="bg-white border-b border-border shadow-sm">
         <div className="container mx-auto px-4 md:px-6">
-          <div className="grid grid-cols-3 divide-x divide-border">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-px bg-border">
             {service.stats.map((stat, i) => (
               <AnimatedStat key={i} value={stat.value} label={stat.label} gradient={service.gradient} />
             ))}

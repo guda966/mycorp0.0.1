@@ -47,7 +47,15 @@ function TypedText() {
   }, []);
 
   return (
-    <span className="bg-gradient-to-r from-cyan-400 to-violet-400 bg-clip-text text-transparent pb-1 inline-block">
+    <span style={{
+      background: "linear-gradient(to right, #22d3ee, #a78bfa)",
+      WebkitBackgroundClip: "text",
+      WebkitTextFillColor: "transparent",
+      backgroundClip: "text",
+      color: "#22d3ee",
+      display: "inline-block",
+      paddingBottom: "4px",
+    }}>
       {displayed}
       <span className={`inline-block w-[3px] h-[0.85em] bg-cyan-400 ml-1 align-middle transition-opacity duration-100 ${blink ? "opacity-100" : "opacity-0"}`} />
     </span>

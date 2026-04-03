@@ -205,14 +205,14 @@ export default function Careers() {
       {/* ── STATS BAR ── */}
       <section className="bg-white border-b border-border">
         <div className="container mx-auto px-4 md:px-6">
-          <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-border">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-border">
             {stats.map((s, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="py-8 px-6 text-center"
+                className="py-8 px-4 text-center bg-white"
               >
                 <p className="text-3xl md:text-4xl font-display font-bold text-primary">{s.value}</p>
                 <p className="text-muted-foreground text-sm mt-1">{s.label}</p>

@@ -68,14 +68,14 @@ export default function Services() {
       {/* ── STATS BAR ── */}
       <section ref={statsRef} className="bg-primary text-white">
         <div className="container mx-auto px-4 md:px-6">
-          <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-white/20">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-white/20">
             {globalStats.map((stat, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 16 }}
                 animate={statsInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="py-8 px-6 text-center"
+                className="py-8 px-4 text-center bg-primary"
               >
                 <p className="text-3xl md:text-4xl font-display font-bold mb-1">{stat.value}</p>
                 <p className="text-white/70 text-sm">{stat.label}</p>
