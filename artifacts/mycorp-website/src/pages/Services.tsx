@@ -3,7 +3,7 @@ import { Link } from "wouter";
 import { motion, useInView } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { servicesData } from "@/data/servicesData";
-import { ArrowRight, CheckCircle2, Quote, Clock, Shield, Globe, Users } from "lucide-react";
+import { ArrowRight, CheckCircle2, Star, Clock, Shield, Globe, Users } from "lucide-react";
 
 const fadeUp = {
   initial: { opacity: 0, y: 24 },
@@ -172,23 +172,43 @@ export default function Services() {
         </div>
       </section>
 
-      {/* ── TESTIMONIAL ── */}
-      <section className="py-20 bg-white border-y border-border">
-        <div className="container mx-auto px-4 md:px-6 max-w-3xl text-center">
-          <motion.div {...fadeUp}>
-            <Quote className="w-10 h-10 text-primary/20 mx-auto mb-6" />
-            <blockquote className="text-2xl md:text-3xl font-display font-medium text-foreground leading-snug mb-8">
-              "{servicesData[0].testimonials[0].quote}"
-            </blockquote>
-            <div className="flex items-center justify-center gap-4">
-              <img src={servicesData[0].testimonials[0].avatar} alt={servicesData[0].testimonials[0].name} className="w-12 h-12 rounded-full object-cover ring-2 ring-border" />
-              <div className="text-left">
-                <p className="font-bold text-foreground">{servicesData[0].testimonials[0].name}</p>
-                <p className="text-muted-foreground text-sm">{servicesData[0].testimonials[0].role}, {servicesData[0].testimonials[0].company}</p>
-              </div>
-            </div>
+      {/* ── TESTIMONIALS ── */}
+      <section className="py-20 bg-[#0B1120] border-y border-border overflow-hidden">
+        <div className="container mx-auto px-4 md:px-6 mb-10">
+          <motion.div {...fadeUp} className="text-center">
+            <span className="inline-block px-3 py-1 rounded-full bg-white/10 border border-white/15 text-white/60 text-xs font-semibold tracking-widest uppercase mb-4">Client Stories</span>
+            <h2 className="text-3xl md:text-4xl font-display font-bold text-white mb-2">What Our Clients Say</h2>
           </motion.div>
         </div>
+        {(() => {
+          const all = servicesData.flatMap(s => s.testimonials);
+          const loop = [...all, ...all];
+          return (
+            <div className="relative w-full overflow-hidden pause-on-hover">
+              <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-[#0B1120] to-transparent z-10 pointer-events-none" />
+              <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-[#0B1120] to-transparent z-10 pointer-events-none" />
+              <div className="flex gap-5 animate-marquee w-max py-4">
+                {loop.map((t, i) => (
+                  <div key={i} className="shrink-0 w-80 bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 hover:border-white/20 transition-all duration-300">
+                    <div className="flex gap-0.5 mb-4">
+                      {Array.from({ length: 5 }).map((_, j) => (
+                        <Star key={j} className="w-3.5 h-3.5 text-amber-400 fill-amber-400" />
+                      ))}
+                    </div>
+                    <p className="text-white/80 text-sm leading-relaxed mb-5">"{t.quote}"</p>
+                    <div className="flex items-center gap-3 pt-4 border-t border-white/10">
+                      <img src={t.avatar} alt={t.name} className="w-10 h-10 rounded-full object-cover ring-2 ring-white/15" />
+                      <div className="flex-1 min-w-0">
+                        <p className="font-bold text-white text-sm truncate">{t.name}</p>
+                        <p className="text-slate-400 text-xs truncate">{t.role} · {t.company}</p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          );
+        })()}
       </section>
 
       {/* ── WHY MYCORP ── */}

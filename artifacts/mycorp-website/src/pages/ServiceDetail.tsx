@@ -3,7 +3,7 @@ import { useParams, Link } from "wouter";
 import { motion, useInView } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { servicesData } from "@/data/servicesData";
-import { ArrowRight, ArrowLeft, CheckCircle2, ChevronRight, ChevronDown, Quote, ChevronLeft, Building2 } from "lucide-react";
+import { ArrowRight, ArrowLeft, CheckCircle2, ChevronRight, ChevronDown, Star, Building2 } from "lucide-react";
 import NotFound from "@/pages/not-found";
 
 const fadeUp = {
@@ -69,72 +69,30 @@ function FaqItem({ q, a }: { q: string; a: string }) {
   );
 }
 
-function TestimonialCarousel({ testimonials, gradient }: { testimonials: typeof servicesData[0]["testimonials"]; gradient: string }) {
-  const [idx, setIdx] = useState(0);
-  const [dir, setDir] = useState(1);
-
-  useEffect(() => {
-    const t = setInterval(() => {
-      setDir(1);
-      setIdx((i) => (i + 1) % testimonials.length);
-    }, 5000);
-    return () => clearInterval(t);
-  }, [testimonials.length]);
-
-  const go = (next: number) => {
-    setDir(next > idx ? 1 : -1);
-    setIdx(next);
-  };
-
-  const cur = testimonials[idx];
-
+function TestimonialCards({ testimonials }: { testimonials: typeof servicesData[0]["testimonials"] }) {
+  const loop = [...testimonials, ...testimonials, ...testimonials];
   return (
-    <div className="relative">
-      {/* Card */}
-      <motion.div
-        key={idx}
-        initial={{ opacity: 0, x: dir * 40 }}
-        animate={{ opacity: 1, x: 0 }}
-        exit={{ opacity: 0, x: -dir * 40 }}
-        transition={{ duration: 0.4 }}
-        className="bg-white/10 backdrop-blur-sm border border-white/15 rounded-2xl p-8 md:p-10 max-w-3xl mx-auto"
-      >
-        <Quote className="w-8 h-8 text-white/25 mb-5" />
-        <blockquote className="text-xl md:text-2xl font-display font-medium text-white leading-snug mb-8">
-          "{cur.quote}"
-        </blockquote>
-        <div className="flex items-center gap-4">
-          <img src={cur.avatar} alt={cur.name} className="w-12 h-12 rounded-full object-cover ring-2 ring-white/30" />
-          <div>
-            <p className="font-bold text-white">{cur.name}</p>
-            <p className="text-white/60 text-sm">{cur.role}, {cur.company}</p>
+    <div className="relative w-full overflow-hidden pause-on-hover">
+      <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-[#0B1120] to-transparent z-10 pointer-events-none" />
+      <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-[#0B1120] to-transparent z-10 pointer-events-none" />
+      <div className="flex gap-5 animate-marquee w-max py-4">
+        {loop.map((t, i) => (
+          <div key={i} className="shrink-0 w-80 bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 hover:border-white/20 transition-all duration-300">
+            <div className="flex gap-0.5 mb-4">
+              {Array.from({ length: 5 }).map((_, j) => (
+                <Star key={j} className="w-3.5 h-3.5 text-amber-400 fill-amber-400" />
+              ))}
+            </div>
+            <p className="text-white/80 text-sm leading-relaxed mb-5">"{t.quote}"</p>
+            <div className="flex items-center gap-3 pt-4 border-t border-white/10">
+              <img src={t.avatar} alt={t.name} className="w-10 h-10 rounded-full object-cover ring-2 ring-white/15" />
+              <div className="flex-1 min-w-0">
+                <p className="font-bold text-white text-sm truncate">{t.name}</p>
+                <p className="text-slate-400 text-xs truncate">{t.role} · {t.company}</p>
+              </div>
+            </div>
           </div>
-        </div>
-      </motion.div>
-
-      {/* Controls */}
-      <div className="flex items-center justify-center gap-4 mt-8">
-        <button
-          onClick={() => go((idx - 1 + testimonials.length) % testimonials.length)}
-          className="w-9 h-9 rounded-full border border-white/20 flex items-center justify-center text-white/60 hover:text-white hover:border-white/50 transition-all"
-        >
-          <ChevronLeft className="w-4 h-4" />
-        </button>
-        <div className="flex gap-2">
-          {testimonials.map((_, i) => (
-            <button
-              key={i}
-              onClick={() => go(i)}
-              className={`transition-all duration-300 rounded-full ${i === idx ? "w-7 h-2.5 bg-white" : "w-2.5 h-2.5 bg-white/30 hover:bg-white/50"}`}
-            />
-          ))}
-        </div>
-        <button
-          onClick={() => go((idx + 1) % testimonials.length)}
-          className="w-9 h-9 rounded-full border border-white/20 flex items-center justify-center text-white/60 hover:text-white hover:border-white/50 transition-all"
-        >
-          <ChevronRight className="w-4 h-4" />
-        </button>
+        ))}
       </div>
     </div>
   );
@@ -331,12 +289,40 @@ export default function ServiceDetail() {
           <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-slate-50 to-transparent z-10 pointer-events-none" />
           <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-slate-50 to-transparent z-10 pointer-events-none" />
           <div className="flex gap-5 animate-marquee w-max">
-            {clientsLoop.map((client, i) => (
-              <div key={i} className="flex items-center gap-2.5 shrink-0 bg-white border border-border rounded-xl px-5 py-3 shadow-sm hover:shadow-md hover:border-primary/20 transition-all duration-200">
-                <div className={`w-2 h-2 rounded-full bg-gradient-to-br ${service.gradient}`} />
-                <span className="text-sm font-semibold text-slate-700 whitespace-nowrap">{client}</span>
-              </div>
-            ))}
+            {clientsLoop.map((client, i) => {
+              const domainMap: Record<string, string> = {
+                "Wipro": "wipro.com", "Infosys": "infosys.com", "TCS": "tcs.com",
+                "HCL Technologies": "hcltech.com", "Tech Mahindra": "techmahindra.com",
+                "Cognizant": "cognizant.com", "Mphasis": "mphasis.com", "LTIMindtree": "ltimindtree.com",
+                "Accenture": "accenture.com", "Capgemini": "capgemini.com", "IBM India": "ibm.com",
+                "Oracle India": "oracle.com", "Hexaware": "hexaware.com", "Persistent Systems": "persistent.com",
+                "Flipkart": "flipkart.com", "Myntra": "myntra.com", "Swiggy": "swiggy.com",
+                "Zomato": "zomato.com", "Ola": "olacabs.com", "Paytm": "paytm.com",
+                "PhonePe": "phonepe.com", "HDFC Bank": "hdfcbank.com", "ICICI Bank": "icicibank.com",
+                "Axis Bank": "axisbank.com", "Bajaj Finserv": "bajajfinserv.in", "Reliance Jio": "jio.com",
+                "Apollo Hospitals": "apollohospitals.com", "Max Healthcare": "maxhealthcare.in",
+                "Fortis Healthcare": "fortishealthcare.com", "Manipal Hospitals": "manipalhospitals.com",
+                "Narayana Health": "narayanahealth.org", "Aster DM Healthcare": "asterhospitals.in",
+                "KIMS Hospitals": "kimshospitals.com", "Yashoda Hospitals": "yashodahospitals.com",
+                "NIIT Technologies": "niit.com", "Mastech": "mastech.com",
+              };
+              const domain = domainMap[client];
+              return (
+                <div key={i} className="flex items-center gap-2.5 shrink-0 bg-white border border-border rounded-xl px-5 py-3 shadow-sm hover:shadow-md hover:border-primary/20 transition-all duration-200">
+                  {domain ? (
+                    <img
+                      src={`https://www.google.com/s2/favicons?domain=${domain}&sz=32`}
+                      alt={client}
+                      className="w-5 h-5 object-contain"
+                      onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
+                    />
+                  ) : (
+                    <div className={`w-2 h-2 rounded-full bg-gradient-to-br ${service.gradient}`} />
+                  )}
+                  <span className="text-sm font-semibold text-slate-700 whitespace-nowrap">{client}</span>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -356,7 +342,7 @@ export default function ServiceDetail() {
             </span>
             <h2 className="text-2xl md:text-3xl font-display font-bold text-white">What Our Clients Say</h2>
           </motion.div>
-          <TestimonialCarousel testimonials={service.testimonials} gradient={service.gradient} />
+          <TestimonialCards testimonials={service.testimonials} />
         </div>
       </section>
 

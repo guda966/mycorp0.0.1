@@ -247,83 +247,85 @@ const whyUs = [
 const testimonials = [
   {
     text: "MyCorp transformed our hiring process. We filled 30 critical IT roles in under 45 days — quality candidates, zero hassle.",
-    name: "Rahul Nair", role: "VP Engineering", company: "Healtheon India", rating: 5,
+    name: "Rahul Nair", role: "VP Engineering", company: "Wipro", domain: "wipro.com", rating: 5,
     avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=80&h=80",
   },
   {
     text: "Their healthcare billing team is exceptional. HIPAA-compliant, highly transparent, and genuinely invested in our revenue outcomes.",
-    name: "Dr. Kavitha Rao", role: "CFO", company: "Apex Multi-Specialty Clinic", rating: 5,
+    name: "Dr. Kavitha Rao", role: "CFO", company: "Apollo Hospitals", domain: "apollohospitals.com", rating: 5,
     avatar: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=80&h=80",
   },
   {
     text: "They delivered our enterprise portal in 5 months — on time, on budget, and the codebase handoff was completely seamless.",
-    name: "Aditya Sharma", role: "CTO", company: "RetailEdge India", rating: 5,
-    avatar: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=80&h=80",
-  },
-  {
-    text: "Best IT staffing partner we've worked with. Pre-vetted candidates, 48-hour turnaround, and zero compromise on quality.",
-    name: "Vikram Mehta", role: "Head of Technology", company: "FinServ Technologies", rating: 5,
+    name: "Aditya Sharma", role: "CTO", company: "Infosys", domain: "infosys.com", rating: 5,
     avatar: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=80&h=80",
   },
   {
+    text: "Best IT staffing partner we've worked with. Pre-vetted candidates, 48-hour turnaround, and zero compromise on quality.",
+    name: "Vikram Mehta", role: "Head of Technology", company: "TCS", domain: "tcs.com", rating: 5,
+    avatar: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=80&h=80",
+  },
+  {
     text: "Our offshore team in Hyderabad became an extension of our own squad. Seamless collaboration, outstanding results, zero friction.",
-    name: "Sneha Iyer", role: "Product Director", company: "CloudSoft India", rating: 5,
+    name: "Sneha Iyer", role: "Product Director", company: "HCL Technologies", domain: "hcltech.com", rating: 5,
     avatar: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&q=80&w=80&h=80",
   },
+  {
+    text: "MyCorp's RCM team increased our clean claim rate by 38% in just 3 months. Truly a game-changer for our revenue cycle.",
+    name: "Priya Reddy", role: "Revenue Cycle Head", company: "Max Healthcare", domain: "maxhealthcare.in", rating: 5,
+    avatar: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=80&h=80",
+  },
+  {
+    text: "Exceptional recruitment support. They understood our tech stack deeply and delivered candidates who hit the ground running.",
+    name: "Suresh Kumar", role: "Engineering Manager", company: "Tech Mahindra", domain: "techmahindra.com", rating: 5,
+    avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=80&h=80",
+  },
+  {
+    text: "We scaled our dev team from 5 to 40 in under 6 months with MyCorp's staffing support. Incredible speed and quality.",
+    name: "Ananya Singh", role: "VP Operations", company: "Cognizant", domain: "cognizant.com", rating: 5,
+    avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80&w=80&h=80",
+  },
 ];
+const testimonialsLoop = [...testimonials, ...testimonials];
 
-function TestimonialSlider({ items }: { items: typeof testimonials }) {
-  const [active, setActive] = useState(0);
-  useEffect(() => {
-    const t = setInterval(() => setActive(a => (a + 1) % items.length), 4500);
-    return () => clearInterval(t);
-  }, [items.length]);
-
-  const go = (dir: number) => setActive(a => (a + dir + items.length) % items.length);
-  const t = items[active];
-
+function TestimonialCards() {
   return (
-    <div className="flex flex-col items-center">
-      <div className="w-full max-w-2xl">
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={active}
-            initial={{ opacity: 0, y: 18 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -18 }}
-            transition={{ duration: 0.4, ease: "easeInOut" }}
+    <div className="relative w-full overflow-hidden pause-on-hover">
+      <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-[#0B1120] to-transparent z-10 pointer-events-none" />
+      <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-[#0B1120] to-transparent z-10 pointer-events-none" />
+      <div className="flex gap-5 animate-marquee w-max py-4">
+        {testimonialsLoop.map((t, i) => (
+          <div
+            key={i}
+            className="shrink-0 w-80 bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 hover:border-white/20 transition-all duration-300"
           >
-            <Card className="bg-white/8 border-white/12 text-white">
-              <CardContent className="p-8">
-                <div className="flex gap-1 mb-5">
-                  {Array.from({ length: t.rating }).map((_, j) => (
-                    <Star key={j} className="w-4 h-4 text-amber-400 fill-amber-400" />
-                  ))}
-                </div>
-                <Quote className="w-7 h-7 text-cyan-400/40 mb-3" />
-                <p className="text-white/90 leading-relaxed mb-7 text-base">"{t.text}"</p>
-                <div className="flex items-center gap-4 border-t border-white/10 pt-6">
-                  <img src={t.avatar} alt={t.name} className="w-12 h-12 rounded-full object-cover ring-2 ring-white/20" />
-                  <div>
-                    <p className="font-bold text-white text-sm">{t.name}</p>
-                    <p className="text-slate-400 text-xs mt-0.5">{t.role} · {t.company}</p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </motion.div>
-        </AnimatePresence>
-      </div>
-
-      {/* Controls */}
-      <div className="flex items-center gap-5 mt-8">
-        <button onClick={() => go(-1)} className="w-10 h-10 rounded-full border border-white/20 text-white/70 hover:border-white/60 hover:text-white transition-all hover:bg-white/5 flex items-center justify-center text-xl">‹</button>
-        <div className="flex gap-2">
-          {items.map((_, i) => (
-            <button key={i} onClick={() => setActive(i)} className={`h-2 rounded-full transition-all duration-300 ${i === active ? "w-8 bg-cyan-400" : "w-2 bg-white/30 hover:bg-white/50"}`} />
-          ))}
-        </div>
-        <button onClick={() => go(1)} className="w-10 h-10 rounded-full border border-white/20 text-white/70 hover:border-white/60 hover:text-white transition-all hover:bg-white/5 flex items-center justify-center text-xl">›</button>
+            {/* Stars */}
+            <div className="flex gap-0.5 mb-4">
+              {Array.from({ length: t.rating }).map((_, j) => (
+                <Star key={j} className="w-3.5 h-3.5 text-amber-400 fill-amber-400" />
+              ))}
+            </div>
+            {/* Quote */}
+            <p className="text-white/80 text-sm leading-relaxed mb-5">"{t.text}"</p>
+            {/* Author */}
+            <div className="flex items-center gap-3 pt-4 border-t border-white/10">
+              <img src={t.avatar} alt={t.name} className="w-10 h-10 rounded-full object-cover ring-2 ring-white/15" />
+              <div className="flex-1 min-w-0">
+                <p className="font-bold text-white text-sm truncate">{t.name}</p>
+                <p className="text-slate-400 text-xs truncate">{t.role}</p>
+              </div>
+              <div className="flex items-center gap-1.5 shrink-0 bg-white/10 rounded-lg px-2.5 py-1.5">
+                <img
+                  src={`https://www.google.com/s2/favicons?domain=${t.domain}&sz=32`}
+                  alt={t.company}
+                  className="w-4 h-4 object-contain"
+                  onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
+                />
+                <span className="text-white/70 text-xs font-medium">{t.company}</span>
+              </div>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   );
@@ -622,7 +624,7 @@ export default function Home() {
             <p className="text-slate-300">Don't just take our word for it.</p>
           </motion.div>
 
-          <TestimonialSlider items={testimonials} />
+          <TestimonialCards />
         </div>
       </section>
 

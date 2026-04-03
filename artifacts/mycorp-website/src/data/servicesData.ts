@@ -57,22 +57,22 @@ export const servicesData: ServiceData[] = [
     testimonials: [
       {
         quote: "MyCorp placed 3 senior cloud engineers in under 2 weeks. Every candidate was sharp, pre-vetted, and culture-fit. Best staffing experience we've ever had.",
-        name: "Vikram Mehta", role: "VP Engineering", company: "FinServ Technologies",
+        name: "Vikram Mehta", role: "VP Engineering", company: "Wipro",
         avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=100&h=100",
       },
       {
         quote: "Their offshore team in Hyderabad became an integral part of our dev squad. Seamless collaboration, outstanding talent, zero friction.",
-        name: "Deepa Krishnamurthy", role: "Head of Engineering", company: "CloudSoft India",
+        name: "Deepa Krishnamurthy", role: "Head of Engineering", company: "HCL Technologies",
         avatar: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=100&h=100",
       },
       {
         quote: "Zero conversion fees, 90-day guarantee, and 8 permanent hires later — we wouldn't use anyone else for IT staffing.",
-        name: "Arjun Kapoor", role: "CTO", company: "DataStream Analytics",
+        name: "Arjun Kapoor", role: "CTO", company: "Tech Mahindra",
         avatar: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=100&h=100",
       },
     ],
     industries: ["Financial Services", "Healthcare", "E-Commerce", "SaaS", "Manufacturing", "Government"],
-    clients: ["JPMorgan Chase", "Goldman Sachs", "Deloitte", "Cognizant", "AstraZeneca", "UnitedHealth Group", "Infosys", "Accenture", "KPMG", "Capgemini", "Verizon", "Oracle"],
+    clients: ["Wipro", "Infosys", "TCS", "HCL Technologies", "Tech Mahindra", "Cognizant", "Mphasis", "LTIMindtree", "Accenture", "Capgemini", "IBM India", "Oracle India"],
     faqs: [
       { q: "How quickly can you provide candidates?", a: "We deliver a qualified shortlist within 48 hours for most roles. Specialized or niche positions may take 3–5 business days." },
       { q: "What engagement models do you support?", a: "Contract, contract-to-hire, direct placement, and dedicated offshore teams. We match the model to your specific need and budget." },
@@ -114,22 +114,22 @@ export const servicesData: ServiceData[] = [
     testimonials: [
       {
         quote: "MyCorp's hiring support team embedded so seamlessly that candidates thought they were talking to our internal HR. They filled 40 roles in a single quarter.",
-        name: "Priya Nair", role: "Chief People Officer", company: "TechScale Group",
+        name: "Priya Nair", role: "Chief People Officer", company: "Infosys",
         avatar: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=100&h=100",
       },
       {
         quote: "We went from posting reqs and waiting weeks to having qualified candidates in our pipeline the same day. The RPO model completely changed our velocity.",
-        name: "Sanjay Reddy", role: "VP Talent Acquisition", company: "ScaleUp Technologies",
+        name: "Sanjay Reddy", role: "VP Talent Acquisition", company: "Cognizant",
         avatar: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=100&h=100",
       },
       {
         quote: "The RPO model scaled us from 10 hires per month to 60 in a single quarter — no drama, no overhead, no compromise on quality.",
-        name: "Sneha Iyer", role: "COO", company: "Nexgen Tech",
+        name: "Sneha Iyer", role: "COO", company: "LTIMindtree",
         avatar: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&q=80&w=100&h=100",
       },
     ],
     industries: ["Tech Startups", "Enterprise IT", "Consulting Firms", "Healthcare", "Financial Services", "Media & AdTech"],
-    clients: ["Salesforce", "Adobe", "PayPal", "Stripe", "HubSpot", "Okta", "Zendesk", "Workday", "ServiceNow", "Atlassian", "Figma", "Notion"],
+    clients: ["Infosys", "Wipro", "TCS", "HCL Technologies", "Cognizant", "Mphasis", "LTIMindtree", "Tech Mahindra", "Hexaware", "Persistent Systems", "NIIT Technologies", "Mastech"],
     faqs: [
       { q: "How is IT Hiring Support different from staffing?", a: "Staffing supplies talent; IT Hiring Support manages your recruitment function. We use your tools, your brand, and represent you — not ourselves — through the entire hiring process." },
       { q: "How quickly can we launch a hiring program?", a: "A full RPO program typically launches in 2–4 weeks. Project or selective engagements can go live in under a week with a focused scope." },
@@ -171,22 +171,22 @@ export const servicesData: ServiceData[] = [
     testimonials: [
       {
         quote: "MyCorp rebuilt our customer portal from the ground up in 5 months. Clean design, exceptional performance, and the codebase handoff was completely seamless.",
-        name: "Aditya Sharma", role: "CTO", company: "RetailEdge India",
+        name: "Aditya Sharma", role: "CTO", company: "Infosys",
         avatar: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=100&h=100",
       },
       {
         quote: "Clean code, zero missed sprints, and a handoff so thorough our team could own and maintain it from day one. Exceptional engineering discipline.",
-        name: "Suresh Babu", role: "Head of Product", company: "LogisticsPro",
+        name: "Suresh Babu", role: "Head of Product", company: "TCS",
         avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=100&h=100",
       },
       {
         quote: "They modernized our 15-year-old ERP in phased releases with zero downtime to our operations. The most professional delivery team we've ever worked with.",
-        name: "Pooja Rao", role: "CTO", company: "Premiere Retail",
+        name: "Pooja Rao", role: "CTO", company: "Wipro",
         avatar: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=100&h=100",
       },
     ],
     industries: ["Retail & E-Commerce", "Healthcare IT", "Logistics", "EdTech", "FinTech", "Insurance"],
-    clients: ["FedEx", "Walmart", "Target", "CVS Health", "American Express", "Bank of America", "State Farm", "Progressive", "Aetna", "Cigna", "Raytheon", "Honeywell"],
+    clients: ["Flipkart", "Myntra", "Swiggy", "Zomato", "Ola", "Paytm", "PhonePe", "HDFC Bank", "ICICI Bank", "Axis Bank", "Bajaj Finserv", "Reliance Jio"],
     faqs: [
       { q: "What size projects do you handle?", a: "Everything from a focused corporate website to a multi-year enterprise platform. We're equally comfortable with both — we just need a clear scope and defined timelines." },
       { q: "Fixed-price or time-and-material?", a: "Both. Fixed-price suits clearly scoped work; time-and-material is preferred for evolving requirements or ongoing partnerships where scope naturally flexes." },
@@ -228,22 +228,22 @@ export const servicesData: ServiceData[] = [
     testimonials: [
       {
         quote: "We recovered $2.3M in denied claims in our very first quarter with MyCorp. Their RCM team is thorough, transparent, and genuinely invested in our financial outcomes.",
-        name: "Dr. Suresh Reddy", role: "Practice Administrator", company: "Reddy Medical Group",
+        name: "Dr. Suresh Reddy", role: "Practice Administrator", company: "Apollo Hospitals",
         avatar: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&q=80&w=100&h=100",
       },
       {
         quote: "AR days dropped from 68 to 31 in our first 90 days. The team is thorough, responsive, and genuinely invested in our revenue — not just our invoices.",
-        name: "Dr. Vijay Kumar", role: "MD", company: "Family Care Clinic",
+        name: "Dr. Vijay Kumar", role: "MD", company: "Max Healthcare",
         avatar: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=100&h=100",
       },
       {
         quote: "HIPAA compliance was seamless and our billing error rate dropped to near zero. MyCorp is the gold standard for healthcare RCM.",
-        name: "Meena Krishnan", role: "Revenue Cycle Director", company: "Vijaya Health Systems",
+        name: "Meena Krishnan", role: "Revenue Cycle Director", company: "Fortis Healthcare",
         avatar: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=100&h=100",
       },
     ],
     industries: ["Hospitals & Health Systems", "Physician Groups", "Outpatient Clinics", "Dental Practices", "Behavioral Health", "Urgent Care Centers"],
-    clients: ["HCA Healthcare", "Tenet Health", "Ascension", "CommonSpirit Health", "Dignity Health", "Baptist Health", "Sutter Health", "Community Health", "LifePoint Health", "DaVita", "Fresenius Medical", "ModivCare"],
+    clients: ["Apollo Hospitals", "Max Healthcare", "Fortis Healthcare", "Manipal Hospitals", "Narayana Health", "Aster DM Healthcare", "Columbia Asia", "Care Hospitals", "Yashoda Hospitals", "KIMS Hospitals", "Rainbow Hospitals", "Continental Hospitals"],
     faqs: [
       { q: "Which EHR systems do you integrate with?", a: "All major platforms — Epic, Athena, eClinicalWorks, NextGen, Kareo, Practice Fusion, and many others. If you use it, we can integrate with it." },
       { q: "How are fees structured?", a: "Typically a percentage of net collections — our incentives are directly tied to your revenue performance. No recovery, no fee." },
