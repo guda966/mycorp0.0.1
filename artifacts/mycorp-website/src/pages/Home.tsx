@@ -359,7 +359,7 @@ export default function Home() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.65, delay: 0.1 }}
             >
-              <h1 className="text-5xl md:text-7xl font-display font-extrabold leading-[1.08] mb-6 text-white">
+              <h1 className="text-4xl sm:text-5xl md:text-7xl font-display font-extrabold leading-[1.08] mb-6 text-white">
                 India's Leading<br />
                 <TypedText />
               </h1>
@@ -370,7 +370,7 @@ export default function Home() {
               initial={{ opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.22 }}
-              className="text-lg md:text-xl text-white/90 mb-10 max-w-xl leading-relaxed"
+              className="text-base md:text-xl text-white/90 mb-10 max-w-xl leading-relaxed"
             >
               We deliver innovative IT staffing, software solutions, and healthcare revenue cycle management to help global enterprises scale efficiently.
             </motion.p>
@@ -382,13 +382,13 @@ export default function Home() {
               transition={{ duration: 0.6, delay: 0.32 }}
               className="flex flex-col sm:flex-row gap-4 mb-12"
             >
-              <a href="mailto:mycorpsolutionsteam@gmail.com?subject=Consultation%20Request">
-                <Button size="lg" className="rounded-full px-8 h-14 text-base shadow-xl shadow-primary/25 hover:shadow-primary/40 hover:-translate-y-0.5 transition-all">
+              <a href="mailto:mycorpsolutionsteam@gmail.com?subject=Consultation%20Request" className="w-full sm:w-auto">
+                <Button size="lg" className="w-full sm:w-auto rounded-full px-8 h-14 text-base shadow-xl shadow-primary/25 hover:shadow-primary/40 hover:-translate-y-0.5 transition-all">
                   Get a Free Consultation <ArrowRight className="ml-2 w-4 h-4" />
                 </Button>
               </a>
-              <Link href="/services">
-                <Button size="lg" variant="outline" className="rounded-full px-8 h-14 text-base bg-white/5 text-white border-white/20 hover:bg-white/15 hover:text-white">
+              <Link href="/services" className="w-full sm:w-auto">
+                <Button size="lg" variant="outline" className="w-full sm:w-auto rounded-full px-8 h-14 text-base bg-white/5 text-white border-white/20 hover:bg-white/15 hover:text-white">
                   Explore Services
                 </Button>
               </Link>
