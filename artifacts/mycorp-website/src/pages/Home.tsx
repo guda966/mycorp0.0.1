@@ -743,7 +743,7 @@ export default function Home() {
       </section>
 
       {/* ── 10. FINAL CTA ── */}
-      <section className="py-12 md:py-24 bg-gradient-to-br from-primary via-blue-700 to-violet-700 relative overflow-hidden">
+      <section className="py-12 md:py-24 relative overflow-hidden" style={{ background: "linear-gradient(135deg, #2563eb, #1d4ed8, #7c3aed)" }}>
         <div className="absolute inset-0 opacity-[0.07]" style={{ backgroundImage: "radial-gradient(circle, white 1px, transparent 1px)", backgroundSize: "30px 30px" }} />
         <div className="container relative z-10 mx-auto px-4 md:px-6 text-center">
           <motion.div {...fadeUp}>

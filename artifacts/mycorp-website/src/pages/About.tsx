@@ -406,7 +406,7 @@ export default function About() {
 
 
       {/* ── CSR / COMMUNITY ── */}
-      <section className="py-12 md:py-24 bg-gradient-to-br from-slate-900 to-[#0B1120] text-white">
+      <section className="py-12 md:py-24 text-white" style={{ background: "linear-gradient(135deg, #0f172a, #0B1120)" }}>
         <div className="container mx-auto px-4 md:px-6">
           <motion.div {...fadeUp} className="text-center mb-8 md:mb-16">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-green-500/20 border border-green-500/30 text-green-400 text-xs font-semibold mb-4">
@@ -435,7 +435,7 @@ export default function About() {
       </section>
 
       {/* ── CTA STRIP ── */}
-      <section className="py-12 md:py-20 bg-gradient-to-br from-primary to-blue-800 text-white">
+      <section className="py-12 md:py-20 text-white" style={{ background: "linear-gradient(135deg, #2563eb, #1e40af)" }}>
         <div className="container mx-auto px-4 md:px-6 text-center">
           <motion.div {...fadeUp}>
             <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">Ready to Partner with MyCorp?</h2>

@@ -317,7 +317,7 @@ export default function Contact() {
             </Card>
 
             {/* Mini inspiration card */}
-            <Card className="border-0 shadow-md bg-gradient-to-br from-blue-600 to-blue-800 text-white">
+            <Card className="border-0 shadow-md text-white" style={{ background: "linear-gradient(135deg, #2563eb, #1e40af)" }}>
               <CardContent className="p-6">
                 <p className="text-base font-display font-semibold leading-snug mb-3 italic">
                   "Your success is our purpose — not just our promise."
