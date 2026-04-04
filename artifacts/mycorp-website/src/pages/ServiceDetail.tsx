@@ -41,7 +41,8 @@ function AnimatedStat({ value, label, gradient }: { value: string; label: string
 
   return (
     <div ref={ref} className="py-10 px-6 text-center bg-white">
-      <p className={`text-4xl md:text-5xl font-display font-bold text-primary tabular-nums`}>
+      <p className={`text-4xl md:text-5xl font-display font-bold tabular-nums bg-gradient-to-r ${gradient} bg-clip-text`}
+        style={{ WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text", color: "#3b82f6" }}>
         {display}
       </p>
       <p className="text-muted-foreground text-sm mt-2 font-medium">{label}</p>
@@ -85,7 +86,9 @@ function TestimonialCards({ testimonials }: { testimonials: typeof servicesData[
             </div>
             <p className="text-white/80 text-sm leading-relaxed mb-5">"{t.quote}"</p>
             <div className="flex items-center gap-3 pt-4 border-t border-white/10">
-              <img src={t.avatar} alt={t.name} className="w-10 h-10 rounded-full object-cover ring-2 ring-white/15" />
+              <div className="w-10 h-10 rounded-full bg-primary/30 border border-primary/40 flex items-center justify-center shrink-0">
+                <span className="text-white font-bold text-sm">{t.name.charAt(0)}</span>
+              </div>
               <div className="flex-1 min-w-0">
                 <p className="font-bold text-white text-sm truncate">{t.name}</p>
                 <p className="text-slate-400 text-xs truncate">{t.role} · {t.company}</p>
@@ -144,7 +147,7 @@ export default function ServiceDetail() {
       {/* ── ANIMATED STATS ── */}
       <section className="bg-white border-b border-border shadow-sm">
         <div className="container mx-auto px-4 md:px-6">
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-px bg-border">
+          <div className={`grid grid-cols-2 gap-px bg-border ${service.stats.length === 4 ? "sm:grid-cols-4" : "sm:grid-cols-3"}`}>
             {service.stats.map((stat, i) => (
               <AnimatedStat key={i} value={stat.value} label={stat.label} gradient={service.gradient} />
             ))}
@@ -192,11 +195,85 @@ export default function ServiceDetail() {
         </div>
       </section>
 
+      {/* ── IMPEXUS PROGRAMS GRID (college-programs only) ── */}
+      {service.slug === "college-programs" && (
+        <section className="py-20 bg-white border-b border-border">
+          <div className="container mx-auto px-4 md:px-6">
+            <motion.div {...fadeUp} className="text-center mb-12">
+              <span className="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold tracking-widest uppercase mb-4">What We Offer</span>
+              <h2 className="text-3xl md:text-4xl font-display font-bold mb-3">Programs &amp; Initiatives</h2>
+              <p className="text-muted-foreground max-w-2xl mx-auto text-sm">From final year project mentoring to campus hackathons — MyCorp delivers a complete spectrum of college programs that build real skills and career readiness.</p>
+            </motion.div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+              {[
+                {
+                  tag: "Final Year Projects", color: "from-indigo-500 to-violet-700",
+                  title: "Project Mentoring",
+                  items: ["Topic selection & tech stack guidance", "End-to-end development support", "IEEE paper & synopsis writing", "Viva & presentation preparation"],
+                },
+                {
+                  tag: "Workshops", color: "from-blue-500 to-blue-700",
+                  title: "Technical Workshops",
+                  items: ["Full Stack Web Development", "AI/ML & Data Science", "Cloud Computing & DevOps", "Cybersecurity & Ethical Hacking"],
+                },
+                {
+                  tag: "Bootcamps", color: "from-violet-500 to-purple-700",
+                  title: "Intensive Bootcamps",
+                  items: ["Multi-day hands-on coding bootcamps", "Industry-standard tools & workflows", "Real project builds from day one", "Mobile, Web & Emerging Tech tracks"],
+                },
+                {
+                  tag: "Hackathons", color: "from-amber-500 to-orange-600",
+                  title: "Campus Hackathons",
+                  items: ["End-to-end hackathon organisation", "Real-world problem statements", "Working prototype development", "Mentorship & industry judging"],
+                },
+                {
+                  tag: "Placement Prep", color: "from-teal-500 to-cyan-600",
+                  title: "Career Readiness",
+                  items: ["Aptitude & logical reasoning", "Competitive coding & DSA", "Mock technical interviews & GD", "Resume building & LinkedIn coaching"],
+                },
+                {
+                  tag: "Industry Connect", color: "from-rose-500 to-pink-600",
+                  title: "Industry Exposure",
+                  items: ["Guest lectures by working engineers", "Live project demos & case studies", "Soft skills & professional etiquette", "Corporate hiring drives for graduates"],
+                },
+              ].map((prog, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.45, delay: i * 0.08 }}
+                  className="rounded-2xl border border-border bg-slate-50 hover:bg-white hover:shadow-lg hover:-translate-y-1 transition-all duration-300 p-6"
+                >
+                  <span className={`inline-block px-2.5 py-1 rounded-full text-white text-[10px] font-bold tracking-wide uppercase bg-gradient-to-r ${prog.color} mb-4`}>{prog.tag}</span>
+                  <h3 className="font-bold text-foreground text-base mb-3">{prog.title}</h3>
+                  <ul className="space-y-2">
+                    {prog.items.map((item, j) => (
+                      <li key={j} className="flex items-center gap-2 text-sm text-muted-foreground">
+                        <div className={`w-3.5 h-3.5 rounded-full bg-gradient-to-br ${prog.color} flex items-center justify-center shrink-0`}>
+                          <CheckCircle2 className="w-2 h-2 text-white" />
+                        </div>
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* ── HOW WE WORK ── */}
       <section className="py-20 bg-slate-50 border-y border-border">
         <div className="container mx-auto px-4 md:px-6">
           <motion.div {...fadeUp} className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-display font-bold mb-3">How We Work</h2>
+            <h2 className="text-3xl md:text-4xl font-display font-bold mb-3">
+              {service.slug === "college-programs" ? "How We Engage with Your College" : "How We Work"}
+            </h2>
+            {service.slug === "college-programs" && (
+              <p className="text-muted-foreground text-sm max-w-xl mx-auto">From the first conversation to post-program outcomes — here's how a typical college engagement runs.</p>
+            )}
           </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 relative">
             <div className="hidden lg:block absolute top-10 left-[12.5%] right-[12.5%] h-0.5 bg-gradient-to-r from-border via-primary/30 to-border z-0" />
@@ -225,7 +302,7 @@ export default function ServiceDetail() {
         <div className="container mx-auto px-4 md:px-6 mb-8">
           <motion.div {...fadeUp} className="text-center">
             <h2 className="text-2xl md:text-3xl font-display font-bold text-white mb-1">Industries We Serve</h2>
-            <p className="text-slate-400 text-sm">Sectors we've served across the US and India</p>
+            <p className="text-slate-300 text-sm">Sectors we've served across the US and India</p>
           </motion.div>
         </div>
         {/* Top row — left */}
@@ -265,9 +342,11 @@ export default function ServiceDetail() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.3, delay: i * 0.05 }}
-                className="flex items-center gap-2.5 p-3.5 rounded-xl border border-border bg-slate-50 hover:border-primary/30 hover:bg-white hover:shadow-sm transition-all duration-200"
+                className="flex items-center gap-2.5 p-3.5 rounded-xl border border-border bg-slate-50 hover:bg-white hover:shadow-sm transition-all duration-200"
               >
-                <CheckCircle2 className="w-4 h-4 text-primary shrink-0" />
+                <div className={`w-4 h-4 rounded-full bg-gradient-to-br ${service.gradient} flex items-center justify-center shrink-0`}>
+                  <CheckCircle2 className="w-2.5 h-2.5 text-white" />
+                </div>
                 <span className="text-slate-700 font-medium text-sm">{spec}</span>
               </motion.div>
             ))}

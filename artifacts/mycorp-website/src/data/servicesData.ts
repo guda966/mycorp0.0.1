@@ -1,4 +1,4 @@
-import { Users, Target, Code, Stethoscope, type LucideIcon } from "lucide-react";
+import { Users, Target, Code, Stethoscope, GraduationCap, type LucideIcon } from "lucide-react";
 
 export interface ServiceData {
   slug: string;
@@ -15,7 +15,7 @@ export interface ServiceData {
   specialties: string[];
   process: { step: string; title: string; desc: string }[];
   stats: { value: string; label: string }[];
-  testimonials: { quote: string; name: string; role: string; company: string; avatar: string }[];
+  testimonials: { quote: string; name: string; role: string; company: string; avatar?: string }[];
   industries: string[];
   clients: string[];
   faqs: { q: string; a: string }[];
@@ -58,17 +58,14 @@ export const servicesData: ServiceData[] = [
       {
         quote: "MyCorp placed 3 senior cloud engineers in under 2 weeks. Every candidate was sharp, pre-vetted, and culture-fit. Best staffing experience we've ever had.",
         name: "Vikram Mehta", role: "VP Engineering", company: "Wipro",
-        avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=100&h=100",
       },
       {
         quote: "Their offshore team in Hyderabad became an integral part of our dev squad. Seamless collaboration, outstanding talent, zero friction.",
         name: "Deepa Krishnamurthy", role: "Head of Engineering", company: "HCL Technologies",
-        avatar: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=100&h=100",
       },
       {
         quote: "Zero conversion fees, 90-day guarantee, and 8 permanent hires later — we wouldn't use anyone else for IT staffing.",
         name: "Arjun Kapoor", role: "CTO", company: "Tech Mahindra",
-        avatar: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=100&h=100",
       },
     ],
     industries: ["Financial Services", "Healthcare", "E-Commerce", "SaaS", "Manufacturing", "Government"],
@@ -83,7 +80,7 @@ export const servicesData: ServiceData[] = [
     slug: "it-hiring",
     icon: Target,
     color: "text-orange-600",
-    gradient: "from-orange-500 to-red-600",
+    gradient: "from-amber-500 to-orange-600",
     title: "IT Hiring Support",
     tagline: "Your embedded recruitment team — RPO, executive search, and everything in between.",
     heroImage: "https://images.pexels.com/photos/3183165/pexels-photo-3183165.jpeg?auto=compress&cs=tinysrgb&w=1400",
@@ -115,17 +112,14 @@ export const servicesData: ServiceData[] = [
       {
         quote: "MyCorp's hiring support team embedded so seamlessly that candidates thought they were talking to our internal HR. They filled 40 roles in a single quarter.",
         name: "Priya Nair", role: "Chief People Officer", company: "Infosys",
-        avatar: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=100&h=100",
       },
       {
         quote: "We went from posting reqs and waiting weeks to having qualified candidates in our pipeline the same day. The RPO model completely changed our velocity.",
         name: "Sanjay Reddy", role: "VP Talent Acquisition", company: "Cognizant",
-        avatar: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=100&h=100",
       },
       {
         quote: "The RPO model scaled us from 10 hires per month to 60 in a single quarter — no drama, no overhead, no compromise on quality.",
         name: "Sneha Iyer", role: "COO", company: "LTIMindtree",
-        avatar: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&q=80&w=100&h=100",
       },
     ],
     industries: ["Tech Startups", "Enterprise IT", "Consulting Firms", "Healthcare", "Financial Services", "Media & AdTech"],
@@ -172,17 +166,14 @@ export const servicesData: ServiceData[] = [
       {
         quote: "MyCorp rebuilt our customer portal from the ground up in 5 months. Clean design, exceptional performance, and the codebase handoff was completely seamless.",
         name: "Aditya Sharma", role: "CTO", company: "Infosys",
-        avatar: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=100&h=100",
       },
       {
         quote: "Clean code, zero missed sprints, and a handoff so thorough our team could own and maintain it from day one. Exceptional engineering discipline.",
         name: "Suresh Babu", role: "Head of Product", company: "TCS",
-        avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=100&h=100",
       },
       {
         quote: "They modernized our 15-year-old ERP in phased releases with zero downtime to our operations. The most professional delivery team we've ever worked with.",
         name: "Pooja Rao", role: "CTO", company: "Wipro",
-        avatar: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=100&h=100",
       },
     ],
     industries: ["Retail & E-Commerce", "Healthcare IT", "Logistics", "EdTech", "FinTech", "Insurance"],
@@ -200,8 +191,8 @@ export const servicesData: ServiceData[] = [
     gradient: "from-emerald-500 to-teal-700",
     title: "Healthcare Projects",
     tagline: "Healthcare IT, software, and revenue cycle — everything your practice needs under one roof.",
-    heroImage: "https://images.pexels.com/photos/7234218/pexels-photo-7234218.jpeg?auto=compress&cs=tinysrgb&w=1400",
-    secondaryImage: "https://images.pexels.com/photos/4386467/pexels-photo-4386467.jpeg?auto=compress&cs=tinysrgb&w=800",
+    heroImage: "https://images.pexels.com/photos/3938022/pexels-photo-3938022.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    secondaryImage: "https://images.pexels.com/photos/7089401/pexels-photo-7089401.jpeg?auto=compress&cs=tinysrgb&w=800",
     description: "End-to-end healthcare technology delivery — EHR integrations, patient portals, health data platforms, and full revenue cycle management including medical billing & coding.",
     longDescription: "MyCorp Solutions delivers comprehensive healthcare project services. From building healthcare applications and EHR integrations to managing complete revenue cycles — our HIPAA-certified team handles it all. Medical Billing & Coding sits at the heart of our RCM practice, backed by AAPC-certified specialists who cut denials and accelerate AR recovery.",
     benefits: [
@@ -229,17 +220,14 @@ export const servicesData: ServiceData[] = [
       {
         quote: "We recovered $2.3M in denied claims in our very first quarter with MyCorp. Their RCM team is thorough, transparent, and genuinely invested in our financial outcomes.",
         name: "Dr. Suresh Reddy", role: "Practice Administrator", company: "Apollo Hospitals",
-        avatar: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&q=80&w=100&h=100",
       },
       {
         quote: "AR days dropped from 68 to 31 in our first 90 days. The team is thorough, responsive, and genuinely invested in our revenue — not just our invoices.",
         name: "Dr. Vijay Kumar", role: "MD", company: "Max Healthcare",
-        avatar: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=100&h=100",
       },
       {
         quote: "HIPAA compliance was seamless and our billing error rate dropped to near zero. MyCorp is the gold standard for healthcare RCM.",
         name: "Meena Krishnan", role: "Revenue Cycle Director", company: "Fortis Healthcare",
-        avatar: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=100&h=100",
       },
     ],
     industries: ["Hospitals & Health Systems", "Physician Groups", "Outpatient Clinics", "Dental Practices", "Behavioral Health", "Urgent Care Centers"],
@@ -248,6 +236,63 @@ export const servicesData: ServiceData[] = [
       { q: "Which EHR systems do you integrate with?", a: "All major platforms — Epic, Athena, eClinicalWorks, NextGen, Kareo, Practice Fusion, and many others. If you use it, we can integrate with it." },
       { q: "How are fees structured?", a: "Typically a percentage of net collections — our incentives are directly tied to your revenue performance. No recovery, no fee." },
       { q: "Is patient data safe with your team?", a: "Yes. All staff are HIPAA-trained, our systems are fully compliant, and we sign a Business Associate Agreement (BAA) with every healthcare client before work begins." },
+    ],
+  },
+  {
+    slug: "college-programs",
+    icon: GraduationCap,
+    color: "text-indigo-600",
+    gradient: "from-indigo-500 to-violet-700",
+    title: "College Programs",
+    tagline: "Final year project mentoring, workshops, bootcamps & hackathons — all on your campus.",
+    heroImage: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=80&w=1400",
+    secondaryImage: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=800",
+    description: "MyCorp partners with engineering colleges to deliver final year project mentoring, technical workshops, bootcamps, and hackathons — turning campus learning into real industry readiness.",
+    longDescription: "Many students graduate with strong theoretical knowledge but struggle with real-world application. MyCorp bridges this gap by bringing industry professionals directly onto campus. From guiding students through their final year projects to running intensive bootcamps and innovation hackathons, we give students the hands-on experience, tools, and confidence they need to land their first tech role.",
+    benefits: [
+      { title: "Final Year Project Mentoring", desc: "End-to-end guidance for B.Tech, M.Tech, BCA & MCA students — topic selection, development, documentation, and viva preparation by working engineers." },
+      { title: "Workshops & Bootcamps", desc: "Intensive hands-on sessions on Full Stack, AI/ML, Cloud, DevOps, Cybersecurity, and more — delivered by industry professionals, not just academics." },
+      { title: "Hackathons & Innovation Challenges", desc: "Campus hackathons that push students to build working prototypes, solve real problems, and develop the creative thinking employers look for." },
+      { title: "Placement Preparation", desc: "Structured aptitude, coding, mock interview, and resume programs aligned to how top IT companies actually hire." },
+    ],
+    specialties: [
+      "Final Year Project Mentoring", "IEEE Paper & Synopsis Writing", "Viva Preparation", "AI & ML Projects",
+      "Full Stack Development Bootcamp", "Cloud & DevOps Workshops", "Campus Hackathons", "IoT & Embedded Systems",
+      "Aptitude & Reasoning Training", "Competitive Coding & DSA", "Mock Interviews & GD", "Resume & LinkedIn Coaching",
+    ],
+    process: [
+      { step: "01", title: "College Consultation", desc: "We meet with the Principal or T&P Officer, understand the student batch profile, identify skill gaps, and agree on program goals and timelines." },
+      { step: "02", title: "Custom Program Design", desc: "We design a tailored curriculum — whether it's a 1-day workshop, a multi-week bootcamp, a hackathon, or a full semester project mentoring track." },
+      { step: "03", title: "On-Campus Delivery", desc: "Industry engineers and trainers deliver sessions directly on campus — hands-on, interactive, and built around real tools and real projects." },
+      { step: "04", title: "Assessment & Outcomes", desc: "Students are assessed, certificates issued, and a detailed outcome report shared with the institution. Top performers get direct industry exposure." },
+    ],
+    stats: [
+      { value: "5,000+", label: "Students Trained" },
+      { value: "10+", label: "College Partners" },
+      { value: "50+", label: "Programs Delivered" },
+      { value: "10,000+", label: "Training Hours" },
+    ],
+    testimonials: [
+      {
+        quote: "MyCorp ran a 3-day Full Stack bootcamp for our final year students and our placement numbers jumped by 40% that year. Exceptional quality.",
+        name: "Dr. Ramesh Naidu", role: "Principal", company: "CVR College of Engineering",
+      },
+      {
+        quote: "MyCorp's mentors helped me build an AI-based final year project from scratch. Got an A grade and my paper was accepted at a national conference.",
+        name: "Ravi Teja", role: "B.Tech Final Year", company: "JNTU Hyderabad",
+      },
+      {
+        quote: "The campus hackathon MyCorp organised was the highlight of our academic year. Students built real prototypes in 24 hours — incredible energy.",
+        name: "Prof. Sunitha Rao", role: "T&P Officer", company: "Malla Reddy Engineering College",
+      },
+    ],
+    industries: ["Engineering Colleges", "Polytechnics", "MCA & BCA Institutes", "Deemed Universities", "Autonomous Colleges", "Skill Development Centers"],
+    clients: ["JNTU Hyderabad", "Osmania University", "CVR College", "Malla Reddy Engineering", "Gokaraju Rangaraju", "Vasavi College", "CBIT Hyderabad", "Sreenidhi Institute", "Anurag University", "Vignan University", "KL University", "NIT Warangal"],
+    faqs: [
+      { q: "What does final year project mentoring include?", a: "We cover everything — topic selection, tech stack guidance, development support, IEEE documentation, synopsis writing, and viva preparation. Students get direct access to working engineers throughout." },
+      { q: "What topics do your workshops and bootcamps cover?", a: "Full Stack Web Development, AI/ML, Cloud & DevOps, Cybersecurity, Mobile App Development, IoT, and more. Every session is hands-on and delivered by industry professionals." },
+      { q: "Can you organise a hackathon for our college?", a: "Yes. We design and run end-to-end campus hackathons — from problem statement design to judging. Students build working prototypes and winners get mentorship and industry exposure." },
+      { q: "Do you offer placement preparation programs?", a: "Absolutely. We run aptitude training, competitive coding, mock technical interviews, group discussions, and resume workshops — all aligned to how top IT companies actually hire." },
     ],
   },
 ];

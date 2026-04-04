@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Link } from "wouter";
 import {
-  ArrowRight, Code, Users, Stethoscope,
+  ArrowRight, Code, Users, Stethoscope, GraduationCap,
   Target, Globe2, Clock, Zap, ShieldCheck,
   Quote, CheckCircle2, Star, TrendingUp, Award, MapPin
 } from "lucide-react";
@@ -15,6 +15,7 @@ const TYPED_PHRASES = [
   "Offshore Dev Teams",
   "Healthcare RCM Experts",
   "Enterprise Software",
+  "Campus Programs",
   "Your Growth Partner",
 ];
 
@@ -79,6 +80,10 @@ const HERO_SLIDES = [
   {
     img: "https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&q=80&w=1600",
     label: "IT Hiring Support",
+  },
+  {
+    img: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&q=80&w=1600",
+    label: "College Programs",
   },
 ];
 
@@ -221,7 +226,7 @@ const services = [
   {
     icon: Target, title: "IT Hiring Support",
     desc: "Embedded RPO and executive search inside your ATS and brand.", slug: "it-hiring",
-    color: "from-orange-500 to-red-600", tag: "Recruitment Process",
+    color: "from-amber-500 to-orange-600", tag: "Recruitment Process",
   },
   {
     icon: Code, title: "IT Projects",
@@ -232,6 +237,11 @@ const services = [
     icon: Stethoscope, title: "Healthcare Projects",
     desc: "Healthcare IT, EHR integrations, and Medical Billing & Coding — full RCM under one roof.", slug: "healthcare-projects",
     color: "from-emerald-500 to-teal-700", tag: "Healthcare & RCM",
+  },
+  {
+    icon: GraduationCap, title: "College Programs",
+    desc: "Final year project mentoring, workshops, bootcamps & hackathons — delivered on your campus.", slug: "college-programs",
+    color: "from-indigo-500 to-violet-700", tag: "Campus Programs",
   },
 ];
 
@@ -248,42 +258,38 @@ const testimonials = [
   {
     text: "MyCorp transformed our hiring process. We filled 30 critical IT roles in under 45 days — quality candidates, zero hassle.",
     name: "Rahul Nair", role: "VP Engineering", company: "Wipro", domain: "wipro.com", rating: 5,
-    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=80&h=80",
   },
   {
     text: "Their healthcare billing team is exceptional. HIPAA-compliant, highly transparent, and genuinely invested in our revenue outcomes.",
     name: "Dr. Kavitha Rao", role: "CFO", company: "Apollo Hospitals", domain: "apollohospitals.com", rating: 5,
-    avatar: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=80&h=80",
   },
   {
     text: "They delivered our enterprise portal in 5 months — on time, on budget, and the codebase handoff was completely seamless.",
     name: "Aditya Sharma", role: "CTO", company: "Infosys", domain: "infosys.com", rating: 5,
-    avatar: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=80&h=80",
   },
   {
     text: "Best IT staffing partner we've worked with. Pre-vetted candidates, 48-hour turnaround, and zero compromise on quality.",
     name: "Vikram Mehta", role: "Head of Technology", company: "TCS", domain: "tcs.com", rating: 5,
-    avatar: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=80&h=80",
   },
   {
     text: "Our offshore team in Hyderabad became an extension of our own squad. Seamless collaboration, outstanding results, zero friction.",
     name: "Sneha Iyer", role: "Product Director", company: "HCL Technologies", domain: "hcltech.com", rating: 5,
-    avatar: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&q=80&w=80&h=80",
   },
   {
     text: "MyCorp's RCM team increased our clean claim rate by 38% in just 3 months. Truly a game-changer for our revenue cycle.",
     name: "Priya Reddy", role: "Revenue Cycle Head", company: "Max Healthcare", domain: "maxhealthcare.in", rating: 5,
-    avatar: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=80&h=80",
   },
   {
     text: "Exceptional recruitment support. They understood our tech stack deeply and delivered candidates who hit the ground running.",
     name: "Suresh Kumar", role: "Engineering Manager", company: "Tech Mahindra", domain: "techmahindra.com", rating: 5,
-    avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=80&h=80",
   },
   {
     text: "We scaled our dev team from 5 to 40 in under 6 months with MyCorp's staffing support. Incredible speed and quality.",
     name: "Ananya Singh", role: "VP Operations", company: "Cognizant", domain: "cognizant.com", rating: 5,
-    avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80&w=80&h=80",
+  },
+  {
+    text: "MyCorp ran a Full Stack bootcamp for our final year students and placement numbers jumped 40% that year. The quality of training was exceptional.",
+    name: "Dr. Ramesh Naidu", role: "Principal", company: "CVR College of Engineering", domain: "cvr.ac.in", rating: 5,
   },
 ];
 const testimonialsLoop = [...testimonials, ...testimonials];
@@ -309,7 +315,9 @@ function TestimonialCards() {
             <p className="text-white/80 text-sm leading-relaxed mb-5">"{t.text}"</p>
             {/* Author */}
             <div className="flex items-center gap-3 pt-4 border-t border-white/10">
-              <img src={t.avatar} alt={t.name} className="w-10 h-10 rounded-full object-cover ring-2 ring-white/15" />
+              <div className="w-10 h-10 rounded-full bg-primary/30 border border-primary/40 flex items-center justify-center shrink-0">
+                <span className="text-white font-bold text-sm">{t.name.charAt(0)}</span>
+              </div>
               <div className="flex-1 min-w-0">
                 <p className="font-bold text-white text-sm truncate">{t.name}</p>
                 <p className="text-slate-400 text-xs truncate">{t.role}</p>
@@ -382,7 +390,7 @@ export default function Home() {
               transition={{ duration: 0.6, delay: 0.22 }}
               className="text-base md:text-xl text-white/90 mb-10 max-w-xl leading-relaxed"
             >
-              We deliver innovative IT staffing, software solutions, and healthcare revenue cycle management to help global enterprises scale efficiently.
+              We deliver innovative IT staffing, software solutions, healthcare revenue cycle management, and campus programs to help enterprises and institutions grow with confidence.
             </motion.p>
 
             {/* CTAs */}
@@ -581,16 +589,16 @@ export default function Home() {
         <div className="container mx-auto px-4 md:px-6">
           <motion.div {...fadeUp} className="text-center mb-14">
             <span className="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold tracking-widest uppercase mb-4">Our Process</span>
-            <h2 className="text-3xl md:text-4xl font-display font-bold mb-3">Simple. Fast. Results-Driven.</h2>
-            <p className="text-muted-foreground text-sm max-w-xl mx-auto">From first call to delivery in four clear steps.</p>
+            <h2 className="text-3xl md:text-4xl font-display font-bold mb-3">How We Work</h2>
+            <p className="text-muted-foreground text-sm max-w-xl mx-auto">Whether you need talent, software, healthcare solutions, or campus programs — every engagement follows the same four principles.</p>
           </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-5 max-w-5xl mx-auto relative">
             <div className="hidden md:block absolute top-9 left-[12.5%] right-[12.5%] h-0.5 bg-gradient-to-r from-transparent via-primary/30 to-transparent z-0" />
             {[
-              { step: "01", title: "Requirement Intake", desc: "A focused 30-min call where we capture your exact needs, timeline, and success criteria." },
-              { step: "02", title: "Curated Shortlist", desc: "We deliver a hand-picked shortlist of the best-fit candidates or project proposals within 48 hours." },
-              { step: "03", title: "You Choose", desc: "Interview, evaluate, and select. We facilitate the process — you make the final decision." },
-              { step: "04", title: "Onboarding & Support", desc: "We stay engaged post-placement with account management, SLA monitoring, and proactive support." },
+              { step: "01", title: "Understand Your Needs", desc: "We start with a focused conversation — understanding your goals, challenges, and what success looks like for you." },
+              { step: "02", title: "Build the Right Solution", desc: "Our team designs a tailored plan — whether that's a talent shortlist, a project roadmap, an RCM setup, or a campus program." },
+              { step: "03", title: "Deliver with Precision", desc: "We execute with speed and quality — keeping you informed at every step and adapting as your needs evolve." },
+              { step: "04", title: "Support & Grow Together", desc: "We stay engaged long after delivery — with account management, outcome tracking, and a partnership built to last." },
             ].map((step, i) => (
               <motion.div
                 key={i}

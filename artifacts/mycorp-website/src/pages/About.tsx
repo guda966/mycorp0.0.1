@@ -202,7 +202,7 @@ export default function About() {
               ].map((stat, i) => (
                 <div key={i} className="text-center">
                   <AnimatedStat target={stat.target} suffix={stat.suffix} />
-                  <div className="text-slate-400 text-sm mt-1">{stat.label}</div>
+                  <div className="text-slate-300 text-sm mt-1">{stat.label}</div>
                 </div>
               ))}
             </motion.div>
@@ -265,29 +265,52 @@ export default function About() {
       </section>
 
       {/* ── MISSION / VISION / VALUES CARDS ── */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-slate-50">
         <div className="container mx-auto px-4 md:px-6">
           <motion.div {...fadeUp} className="text-center mb-14">
+            <span className="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold tracking-widest uppercase mb-4">Our Purpose</span>
             <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-4">What Drives Us</h2>
             <p className="text-muted-foreground max-w-xl mx-auto">The principles and purpose that guide every decision at MyCorp.</p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
-              { icon: Target, color: "bg-primary", borderColor: "border-primary", title: "Our Mission", desc: "To deliver innovative IT and healthcare solutions that empower businesses to scale, operate efficiently, and achieve sustainable growth across every market we serve." },
-              { icon: Eye, color: "bg-accent", borderColor: "border-accent", title: "Our Vision", desc: "To be the most trusted global partner for enterprise IT staffing, custom software development, and healthcare revenue cycle management by 2030." },
-              { icon: Heart, color: "bg-rose-500", borderColor: "border-rose-500", title: "Our Values", desc: "Integrity in all dealings. Innovation in our solutions. Excellence in delivery. True Partnership with clients. Agility in execution — every single day." },
+              {
+                icon: Target,
+                gradient: "from-blue-600 to-blue-800",
+                bg: "from-blue-50 to-blue-100/60",
+                accent: "text-blue-600",
+                border: "border-blue-200",
+                title: "Our Mission",
+                desc: "To deliver innovative IT and healthcare solutions that empower businesses to scale, operate efficiently, and achieve sustainable growth across every market we serve.",
+              },
+              {
+                icon: Eye,
+                gradient: "from-violet-600 to-purple-700",
+                bg: "from-violet-50 to-purple-100/60",
+                accent: "text-violet-600",
+                border: "border-violet-200",
+                title: "Our Vision",
+                desc: "To be the most trusted global partner for enterprise IT staffing, custom software development, and healthcare revenue cycle management by 2030.",
+              },
+              {
+                icon: Heart,
+                gradient: "from-rose-500 to-pink-600",
+                bg: "from-rose-50 to-pink-100/60",
+                accent: "text-rose-500",
+                border: "border-rose-200",
+                title: "Our Values",
+                desc: "Integrity in all dealings. Innovation in our solutions. Excellence in delivery. True Partnership with clients. Agility in execution — every single day.",
+              },
             ].map((item, i) => (
-              <motion.div key={i} {...fadeUp} transition={{ duration: 0.6, delay: i * 0.15 }}>
-                <Card className={`h-full border-t-4 ${item.borderColor} shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1`}>
-                  <CardContent className="p-10 text-center">
-                    <div className={`w-16 h-16 ${item.color} rounded-2xl flex items-center justify-center mx-auto mb-6 text-white shadow-lg`}>
-                      <item.icon className="w-8 h-8" />
-                    </div>
-                    <h3 className="text-2xl font-bold mb-4">{item.title}</h3>
-                    <p className="text-muted-foreground leading-relaxed">{item.desc}</p>
-                  </CardContent>
-                </Card>
+              <motion.div key={i} initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: i * 0.15 }}>
+                <div className={`h-full rounded-2xl border ${item.border} bg-gradient-to-br ${item.bg} p-8 hover:shadow-xl transition-all duration-300 hover:-translate-y-1`}>
+                  <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${item.gradient} flex items-center justify-center mb-6 shadow-lg`}>
+                    <item.icon className="w-7 h-7 text-white" />
+                  </div>
+                  <h3 className={`text-xl font-bold mb-3 ${item.accent}`}>{item.title}</h3>
+                  <p className="text-slate-600 leading-relaxed text-sm">{item.desc}</p>
+                </div>
               </motion.div>
             ))}
           </div>
@@ -305,126 +328,40 @@ export default function About() {
             <p className="text-slate-300 max-w-xl mx-auto">5 years of milestones that shaped who we are today.</p>
           </motion.div>
 
-          {/* Horizontal Timeline Track */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
-            className="relative mb-12 px-5"
-          >
-            {/* Track line background */}
-            <div className="absolute top-5 left-5 right-5 h-[2px] bg-white/10" />
-            {/* Animated progress fill — scaleX from left, GPU-accelerated */}
-            <motion.div
-              className="absolute top-5 left-5 right-5 h-[2px] bg-gradient-to-r from-primary via-blue-400 to-accent origin-left"
-              animate={{ scaleX: activeTimeline / (milestones.length - 1) }}
-              initial={{ scaleX: 0 }}
-              transition={{ duration: 0.65, ease: "easeInOut" }}
-            />
+          <div className="max-w-2xl mx-auto relative">
+            {/* Vertical line — always left-aligned at node center */}
+            <div className="absolute left-6 top-0 bottom-0 w-px bg-white/15" />
 
-            {/* Milestone nodes */}
-            <div className="relative flex justify-between items-start">
-              {milestones.map((m, i) => {
-                const Icon = m.icon;
-                const isActive = i === activeTimeline;
-                const isPast = i < activeTimeline;
-                return (
-                  <button
-                    key={i}
-                    onClick={() => { setActiveTimeline(i); setPaused(true); }}
-                    className="flex flex-col items-center gap-3 group focus:outline-none"
-                  >
-                    {/* Node dot */}
-                    <motion.div
-                      animate={isActive ? { scale: 1.28, boxShadow: "0 0 22px rgba(59,130,246,0.7)" } : { scale: 1, boxShadow: "none" }}
-                      transition={{ duration: 0.3 }}
-                      className={`relative w-10 h-10 rounded-full border-2 flex items-center justify-center z-10
-                        ${isActive
-                          ? "bg-primary border-primary"
-                          : isPast
-                            ? "bg-primary/40 border-primary/60"
-                            : "bg-white/5 border-white/20 group-hover:border-primary/60 group-hover:bg-primary/20"
-                        }`}
-                    >
-                      <Icon className={`w-4 h-4 transition-colors ${isActive ? "text-white" : isPast ? "text-primary/80" : "text-white/40 group-hover:text-white/70"}`} />
-                      {/* Ripple ring for active node */}
-                      {isActive && (
-                        <motion.span
-                          className="absolute inset-0 rounded-full border border-primary"
-                          animate={{ scale: [1, 1.7], opacity: [0.6, 0] }}
-                          transition={{ duration: 1.2, repeat: Infinity, ease: "easeOut" }}
-                        />
-                      )}
-                    </motion.div>
-                    {/* Year label */}
-                    <span className={`text-xs font-bold transition-colors ${isActive ? "text-white" : isPast ? "text-slate-400" : "text-slate-600 group-hover:text-slate-400"}`}>
-                      {m.year}
-                    </span>
-                  </button>
-                );
-              })}
-            </div>
-          </motion.div>
-
-          {/* Active milestone detail card */}
-          <motion.div
-            key={activeTimeline}
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4 }}
-            className="max-w-3xl mx-auto"
-          >
-            <div className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm overflow-hidden">
-              {/* Card header */}
-              <div className="flex items-start gap-5 p-8 border-b border-white/10">
-                <div className="w-14 h-14 rounded-2xl bg-primary/20 border border-primary/30 flex items-center justify-center shrink-0">
-                  {(() => { const Icon = milestones[activeTimeline].icon; return <Icon className="w-7 h-7 text-primary" />; })()}
-                </div>
-                <div>
-                  <div className="flex items-center gap-3 mb-1">
-                    <span className="text-4xl font-display font-black text-white">{milestones[activeTimeline].year}</span>
-                    <span className="px-2 py-0.5 rounded-full bg-accent/20 text-accent text-xs font-semibold">Milestone {activeTimeline + 1}/{milestones.length}</span>
+            {milestones.map((m, i) => {
+              const Icon = m.icon;
+              return (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: i * 0.1 }}
+                  className="relative flex items-start gap-5 mb-8"
+                >
+                  {/* Node — sits on the line */}
+                  <div className="relative z-10 shrink-0">
+                    <div className="w-12 h-12 rounded-full bg-primary border-4 border-[#0B1120] flex items-center justify-center shadow-lg shadow-primary/40">
+                      <Icon className="w-5 h-5 text-white" />
+                    </div>
                   </div>
-                  <h3 className="text-xl font-bold text-white">{milestones[activeTimeline].title}</h3>
-                </div>
-              </div>
-              {/* Card body */}
-              <div className="p-8">
-                <p className="text-slate-300 text-lg leading-relaxed">{milestones[activeTimeline].desc}</p>
 
-                {/* Nav controls */}
-                <div className="flex items-center justify-between mt-8 pt-6 border-t border-white/10">
-                  <button
-                    onClick={() => { setActiveTimeline(Math.max(0, activeTimeline - 1)); setPaused(true); }}
-                    disabled={activeTimeline === 0}
-                    className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium text-slate-400 hover:text-white disabled:opacity-20 transition-colors"
-                  >
-                    ← Previous
-                  </button>
-
-                  <button
-                    onClick={() => setPaused(!paused)}
-                    className={`px-5 py-2 rounded-full text-xs font-semibold transition-all border ${
-                      paused
-                        ? "border-accent/40 text-accent hover:bg-accent/10"
-                        : "border-white/20 text-slate-400 hover:text-white hover:border-white/40"
-                    }`}
-                  >
-                    {paused ? "▶ Auto-play" : "⏸ Pause"}
-                  </button>
-
-                  <button
-                    onClick={() => { setActiveTimeline(Math.min(milestones.length - 1, activeTimeline + 1)); setPaused(true); }}
-                    disabled={activeTimeline === milestones.length - 1}
-                    className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium text-slate-400 hover:text-white disabled:opacity-20 transition-colors"
-                  >
-                    Next →
-                  </button>
-                </div>
-              </div>
-            </div>
-          </motion.div>
+                  {/* Card */}
+                  <div className="flex-1 bg-white/5 border border-white/10 rounded-2xl p-5 hover:bg-white/8 hover:border-white/20 transition-all duration-300">
+                    <div className="flex items-center gap-3 mb-2">
+                      <span className="text-xl font-display font-black text-white">{m.year}</span>
+                      <span className="px-2.5 py-0.5 rounded-full bg-primary/20 text-primary text-xs font-semibold">{m.title}</span>
+                    </div>
+                    <p className="text-slate-300 text-sm leading-relaxed">{m.desc}</p>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </div>
         </div>
       </section>
 
@@ -485,7 +422,7 @@ export default function About() {
                     </div>
                     <div className="text-3xl font-bold text-white font-display mb-2">{item.value}</div>
                     <h3 className="font-bold text-white mb-3">{item.title}</h3>
-                    <p className="text-slate-400 text-sm leading-relaxed">{item.desc}</p>
+                    <p className="text-slate-300 text-sm leading-relaxed">{item.desc}</p>
                   </CardContent>
                 </Card>
               </motion.div>

@@ -15,7 +15,7 @@ export function Footer() {
               <MycorpLogo />
             </Link>
             <p className="text-slate-400 text-sm leading-relaxed max-w-xs">
-              Your trusted partner in IT staffing, software delivery, and healthcare RCM — headquartered in Hyderabad, India.
+              Your trusted partner in IT staffing, software delivery, healthcare RCM, and campus programs — headquartered in Hyderabad, India.
             </p>
           </div>
 
@@ -51,6 +51,7 @@ export function Footer() {
                 { label: "IT Hiring Support", slug: "it-hiring" },
                 { label: "IT Projects", slug: "it-projects" },
                 { label: "Healthcare Projects", slug: "healthcare-projects" },
+                { label: "College Programs", slug: "college-programs" },
               ].map((item) => (
                 <li key={item.slug}>
                   <Link

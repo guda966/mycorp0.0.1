@@ -31,6 +31,7 @@ const modelBadge: Record<string, string> = {
   "it-hiring": "RPO · Project · Executive Search",
   "it-projects": "Fixed Price · T&M",
   "healthcare-projects": "IT · RCM · Billing",
+  "college-programs": "Final Year Projects · Workshops · Hackathons",
 };
 
 export default function Services() {
@@ -50,12 +51,12 @@ export default function Services() {
               What We Do
             </span>
             <h1 className="text-4xl md:text-6xl font-display font-extrabold mb-5 max-w-3xl mx-auto leading-tight">
-              Four Service Lines.<br />
+              Five Service Lines.<br />
               <span className="text-cyan-400">One Trusted Partner.</span>
             </h1>
             {/* Pill tags instead of paragraph */}
             <div className="flex flex-wrap gap-3 justify-center mt-6">
-              {["IT Staffing", "Recruitment Outsourcing", "Software Delivery", "Healthcare Projects"].map((tag) => (
+              {["IT Staffing", "Recruitment Outsourcing", "Software Delivery", "Healthcare Projects", "College Programs"].map((tag) => (
                 <span key={tag} className="px-4 py-1.5 rounded-full bg-white/10 border border-white/20 text-white/80 text-sm font-medium">
                   {tag}
                 </span>
@@ -90,7 +91,7 @@ export default function Services() {
         <div className="container mx-auto px-4 md:px-6">
           <motion.div {...fadeUp} className="text-center mb-14">
             <h2 className="text-3xl md:text-4xl font-display font-bold mb-3">Our Services</h2>
-            <p className="text-muted-foreground max-w-lg mx-auto">Four service lines. One trusted partner.</p>
+            <p className="text-muted-foreground max-w-lg mx-auto">Five service lines. One trusted partner.</p>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-7 max-w-5xl mx-auto">
@@ -153,7 +154,7 @@ export default function Services() {
                               {s}
                             </span>
                           ))}
-                          <span className="text-xs px-2.5 py-1 bg-slate-100 text-slate-400 rounded-full border border-slate-200">
+                          <span className="text-xs px-2.5 py-1 bg-slate-100 text-slate-500 rounded-full border border-slate-200">
                             +{service.specialties.length - 3} more
                           </span>
                         </div>

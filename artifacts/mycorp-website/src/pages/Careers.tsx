@@ -68,21 +68,18 @@ const testimonials = [
     quote: "MyCorp gave me my first big break in IT recruitment. Within 18 months I was leading a team of 6. The growth here is real — they back their words with actions.",
     name: "Preethi Reddy",
     role: "Senior Recruitment Lead",
-    avatar: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=100&h=100",
     since: "With MyCorp since 2022",
   },
   {
     quote: "The projects are real, complex, and challenging. I've learned more in 2 years at MyCorp than I did in 4 years at my previous company. The team culture is phenomenal.",
     name: "Kiran Rao",
     role: "Full-Stack Developer",
-    avatar: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=100&h=100",
     since: "With MyCorp since 2021",
   },
   {
     quote: "I joined as a billing analyst and now lead the RCM team for three of our largest US healthcare clients. Nowhere else gives you that kind of trust and career runway.",
     name: "Swathi Nair",
     role: "Medical Billing Team Lead",
-    avatar: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&q=80&w=100&h=100",
     since: "With MyCorp since 2020",
   },
 ];
@@ -113,7 +110,9 @@ export default function Careers() {
       return;
     }
     setLoading(true);
-    await new Promise((r) => setTimeout(r, 900));
+    const subject = encodeURIComponent("Job Alert Subscription — MyCorp Careers");
+    const body = encodeURIComponent(`New job alert subscription request:\n\nEmail: ${email}\n\nPlease add this person to the careers notification list.`);
+    window.open(`mailto:mycorpsolutionsteam@gmail.com?subject=${subject}&body=${body}`, "_blank");
     setLoading(false);
     setSubscribed(true);
     toast({ title: "You're on the list!", description: "We'll notify you the moment a new role opens up." });
@@ -126,7 +125,11 @@ export default function Careers() {
       return;
     }
     setAppLoading(true);
-    await new Promise((r) => setTimeout(r, 1000));
+    const subject = encodeURIComponent(`CV Submission — ${appRole} — ${appName}`);
+    const body = encodeURIComponent(
+      `New CV / Speculative Application:\n\nName: ${appName}\nEmail: ${appEmail}\nRole / Domain: ${appRole}\n\nAbout:\n${appMessage || "Not provided"}`
+    );
+    window.open(`mailto:mycorpsolutionsteam@gmail.com?subject=${subject}&body=${body}`, "_blank");
     setAppLoading(false);
     toast({ title: "Application received!", description: "We'll review your profile and reach out if there's a fit." });
     setAppName(""); setAppEmail(""); setAppRole(""); setAppMessage("");
@@ -316,11 +319,13 @@ export default function Careers() {
                 <Quote className="w-6 h-6 text-violet-400/40 mb-4" />
                 <p className="text-white/80 text-sm leading-relaxed mb-6 italic">"{t.quote}"</p>
                 <div className="flex items-center gap-3 border-t border-white/10 pt-5">
-                  <img src={t.avatar} alt={t.name} className="w-10 h-10 rounded-full object-cover ring-2 ring-white/20" />
+                  <div className="w-10 h-10 rounded-full bg-violet-500/30 border border-violet-400/40 flex items-center justify-center shrink-0">
+                    <span className="text-white font-bold text-sm">{t.name.charAt(0)}</span>
+                  </div>
                   <div>
                     <p className="text-white font-bold text-sm">{t.name}</p>
-                    <p className="text-white/50 text-xs">{t.role}</p>
-                    <p className="text-violet-400/70 text-xs mt-0.5">{t.since}</p>
+                    <p className="text-white/70 text-xs">{t.role}</p>
+                    <p className="text-violet-400 text-xs mt-0.5">{t.since}</p>
                   </div>
                 </div>
               </motion.div>

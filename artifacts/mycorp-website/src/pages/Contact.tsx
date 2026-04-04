@@ -58,15 +58,13 @@ export default function Contact() {
   });
 
   const onSubmit = async (data: ContactFormValues) => {
-    await new Promise((res) => setTimeout(res, 800));
-
+    form.clearErrors();
     const subject = encodeURIComponent(`Inquiry from ${data.name} — ${data.service}`);
     const body = encodeURIComponent(
       `Name: ${data.name}\nCompany: ${data.company}\nEmail: ${data.email}\nPhone: ${data.phone || "Not provided"}\nService: ${data.service}\n\nMessage:\n${data.message}`
     );
-    window.location.href = `mailto:mycorpsolutionsteam@gmail.com?subject=${subject}&body=${body}`;
-
-    toast({ title: "Opening your email client…", description: "Your inquiry is pre-filled and ready to send." });
+    window.open(`mailto:mycorpsolutionsteam@gmail.com?subject=${subject}&body=${body}`, "_blank");
+    toast({ title: "Email client opened!", description: "Your inquiry is pre-filled — just hit send." });
     form.reset();
   };
 
@@ -212,6 +210,7 @@ export default function Contact() {
                         <SelectItem value="hiring">IT Hiring Support</SelectItem>
                         <SelectItem value="projects">IT Projects</SelectItem>
                         <SelectItem value="healthcare">Healthcare Projects</SelectItem>
+                        <SelectItem value="college">College Programs</SelectItem>
                         <SelectItem value="other">Other / General Inquiry</SelectItem>
                       </SelectContent>
                     </Select>
