@@ -31,7 +31,7 @@ const modelBadge: Record<string, string> = {
   "it-hiring": "RPO · Project · Executive Search",
   "it-projects": "Fixed Price · T&M",
   "healthcare-projects": "IT · RCM · Billing",
-  "college-programs": "Final Year Projects · Workshops · Hackathons",
+  "college-programs": "Projects · Workshops · Hackathons",
 };
 
 export default function Services() {
@@ -198,7 +198,9 @@ export default function Services() {
                     </div>
                     <p className="text-white/80 text-sm leading-relaxed mb-5">"{t.quote}"</p>
                     <div className="flex items-center gap-3 pt-4 border-t border-white/10">
-                      <img src={t.avatar} alt={t.name} className="w-10 h-10 rounded-full object-cover ring-2 ring-white/15" />
+                      <div className="w-10 h-10 rounded-full bg-primary/30 border border-primary/40 flex items-center justify-center shrink-0">
+                        <span className="text-white font-bold text-sm">{t.name.charAt(0)}</span>
+                      </div>
                       <div className="flex-1 min-w-0">
                         <p className="font-bold text-white text-sm truncate">{t.name}</p>
                         <p className="text-slate-400 text-xs truncate">{t.role} · {t.company}</p>
@@ -229,7 +231,7 @@ export default function Services() {
                     className="p-5 rounded-xl bg-white border border-border hover:border-primary/30 hover:shadow-md transition-all duration-300 group"
                   >
                     <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center mb-3 group-hover:bg-primary/20 transition-colors">
-                      <item.icon className="w-4.5 h-4.5 text-primary w-5 h-5" />
+                      <item.icon className="w-5 h-5 text-primary" />
                     </div>
                     <h3 className="font-bold text-foreground text-sm mb-1">{item.title}</h3>
                     <p className="text-muted-foreground text-xs leading-relaxed">{item.desc}</p>
@@ -237,13 +239,13 @@ export default function Services() {
                 ))}
               </div>
             </motion.div>
-            <motion.div {...fadeUp} className="relative">
+            <motion.div {...fadeUp} className="relative mt-8 lg:mt-0">
               <img
                 src="https://images.pexels.com/photos/3182812/pexels-photo-3182812.jpeg?auto=compress&cs=tinysrgb&w=800"
                 alt="MyCorp team collaboration"
                 className="rounded-2xl shadow-2xl w-full object-cover aspect-[4/3]"
               />
-              <div className="absolute -bottom-5 -left-5 bg-white rounded-xl shadow-lg p-4 border border-border">
+              <div className="absolute bottom-4 left-4 bg-white rounded-xl shadow-lg p-4 border border-border">
                 <p className="text-2xl font-display font-bold text-primary">50+</p>
                 <p className="text-muted-foreground text-xs mt-0.5">Enterprise Clients Served</p>
               </div>

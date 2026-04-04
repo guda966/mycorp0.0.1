@@ -441,12 +441,12 @@ export default function About() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a href="mailto:mycorpsolutionsteam@gmail.com?subject=Consultation%20Request">
-                <Button size="lg" className="rounded-full px-10 h-13 text-base bg-white text-primary hover:bg-blue-50 shadow-xl hover:scale-105 transition-transform">
+                <Button size="lg" className="rounded-full px-10 h-14 text-base bg-white text-primary hover:bg-blue-50 shadow-xl hover:scale-105 transition-transform">
                   Get a Free Consultation
                 </Button>
               </a>
               <Link href="/services">
-                <Button size="lg" variant="outline" className="rounded-full px-10 h-13 text-base border-white/30 text-white hover:bg-white/10">
+                <Button size="lg" variant="outline" className="rounded-full px-10 h-14 text-base border-white/30 text-white hover:bg-white/10">
                   Explore Our Services <ArrowRight className="ml-2 w-4 h-4" />
                 </Button>
               </Link>

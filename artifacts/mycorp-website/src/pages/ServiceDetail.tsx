@@ -138,8 +138,8 @@ export default function ServiceDetail() {
                 <Icon className="w-7 h-7 text-white" />
               </div>
             </div>
-            <h1 className="text-4xl md:text-6xl font-display font-bold text-white mb-4 max-w-3xl leading-tight">{service.title}</h1>
-            <p className="text-xl text-white/80 max-w-2xl leading-relaxed">{service.tagline}</p>
+            <h1 className="text-3xl md:text-6xl font-display font-bold text-white mb-4 max-w-3xl leading-tight">{service.title}</h1>
+            <p className="text-base md:text-xl text-white/80 max-w-2xl leading-relaxed">{service.tagline}</p>
           </motion.div>
         </div>
       </section>
@@ -180,14 +180,14 @@ export default function ServiceDetail() {
                 </Button>
               </a>
             </motion.div>
-            <motion.div {...fadeUp} className="relative">
+            <motion.div {...fadeUp} className="relative mt-8 lg:mt-0">
               <img
                 src={service.secondaryImage}
                 alt={`${service.title} at MyCorp`}
                 className="w-full rounded-2xl shadow-2xl object-cover aspect-[4/3]"
               />
-              <div className={`absolute -bottom-5 -right-5 bg-gradient-to-br ${service.gradient} rounded-xl p-5 shadow-lg`}>
-                <p className="text-white font-display font-bold text-2xl">{service.stats[0].value}</p>
+              <div className={`absolute bottom-4 right-4 bg-gradient-to-br ${service.gradient} rounded-xl p-4 shadow-lg`}>
+                <p className="text-white font-display font-bold text-xl">{service.stats[0].value}</p>
                 <p className="text-white/80 text-xs mt-0.5">{service.stats[0].label}</p>
               </div>
             </motion.div>
@@ -334,7 +334,7 @@ export default function ServiceDetail() {
             <h2 className="text-2xl md:text-3xl font-display font-bold mb-1">Specialties & Expertise</h2>
             <p className="text-muted-foreground text-sm">What we deliver within this service</p>
           </motion.div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3">
             {service.specialties.map((spec, i) => (
               <motion.div
                 key={i}

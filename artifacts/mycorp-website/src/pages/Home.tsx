@@ -482,7 +482,7 @@ export default function Home() {
                     <Card className="h-full border-border/50 shadow-sm hover:shadow-xl hover:border-primary/20 hover:-translate-y-1 transition-all duration-300 group bg-white cursor-pointer">
                       <CardContent className="p-7">
                         <div className="flex items-start justify-between mb-5">
-                          <div className={`w-13 h-13 w-12 h-12 rounded-2xl bg-gradient-to-br ${svc.color} flex items-center justify-center shadow-md group-hover:scale-110 transition-transform duration-300`}>
+                          <div className={`w-12 h-12 rounded-2xl bg-gradient-to-br ${svc.color} flex items-center justify-center shadow-md group-hover:scale-110 transition-transform duration-300`}>
                             <SIcon className="w-6 h-6 text-white" />
                           </div>
                           <span className="px-2.5 py-1 rounded-full bg-slate-100 text-slate-500 text-[10px] font-semibold tracking-wide uppercase">{svc.tag}</span>
@@ -568,7 +568,7 @@ export default function Home() {
                 className="rounded-3xl shadow-2xl object-cover w-full h-[480px]"
               />
               {/* Floating card */}
-              <div className="absolute -bottom-5 -left-5 bg-white rounded-2xl shadow-xl border border-border p-5">
+              <div className="absolute bottom-4 left-4 bg-white rounded-2xl shadow-xl border border-border p-4">
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-full bg-emerald-100 flex items-center justify-center">
                     <CheckCircle2 className="w-5 h-5 text-emerald-600" />
