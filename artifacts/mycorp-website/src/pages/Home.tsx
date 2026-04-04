@@ -459,9 +459,9 @@ export default function Home() {
       </section>
 
       {/* ── 4. SERVICES ── */}
-      <section className="py-24 bg-slate-50 relative border-b border-border">
+      <section className="py-12 md:py-24 bg-slate-50 relative border-b border-border">
         <div className="container mx-auto px-4 md:px-6">
-          <motion.div {...fadeUp} className="text-center max-w-3xl mx-auto mb-16">
+          <motion.div {...fadeUp} className="text-center max-w-3xl mx-auto mb-8 md:mb-16">
             <span className="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold tracking-widest uppercase mb-4">What We Do</span>
             <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-4">Comprehensive Solutions for Modern Business</h2>
             <p className="text-muted-foreground">End-to-end services tailored to bridge the gap between talent and technology.</p>
@@ -511,9 +511,9 @@ export default function Home() {
       </section>
 
       {/* ── 5. WHY MYCORP ── */}
-      <section className="py-24 bg-white border-b border-border">
+      <section className="py-12 md:py-24 bg-white border-b border-border">
         <div className="container mx-auto px-4 md:px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-16 items-center">
             <motion.div {...fadeUp}>
               <span className="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold tracking-widest uppercase mb-5">Why MyCorp</span>
               <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-5">
@@ -585,9 +585,9 @@ export default function Home() {
       </section>
 
       {/* ── 6. HOW WE WORK ── */}
-      <section className="py-20 bg-slate-50 border-b border-border">
+      <section className="py-12 md:py-20 bg-slate-50 border-b border-border">
         <div className="container mx-auto px-4 md:px-6">
-          <motion.div {...fadeUp} className="text-center mb-14">
+          <motion.div {...fadeUp} className="text-center mb-8 md:mb-14">
             <span className="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold tracking-widest uppercase mb-4">Our Process</span>
             <h2 className="text-3xl md:text-4xl font-display font-bold mb-3">How We Work</h2>
             <p className="text-muted-foreground text-sm max-w-xl mx-auto">Whether you need talent, software, healthcare solutions, or campus programs — every engagement follows the same four principles.</p>
@@ -620,13 +620,13 @@ export default function Home() {
       </section>
 
       {/* ── 7. TESTIMONIALS (dark) ── */}
-      <section className="py-24 bg-[#0B1120] text-white relative overflow-hidden">
+      <section className="py-12 md:py-24 bg-[#0B1120] text-white relative overflow-hidden">
         <div className="absolute inset-0 opacity-[0.05]" style={{ backgroundImage: "radial-gradient(circle, white 1px, transparent 1px)", backgroundSize: "32px 32px" }} />
         <div className="absolute top-0 left-0 w-96 h-96 bg-blue-600/15 rounded-full blur-3xl" />
         <div className="absolute bottom-0 right-0 w-96 h-96 bg-violet-600/15 rounded-full blur-3xl" />
 
         <div className="container relative z-10 mx-auto px-4 md:px-6">
-          <motion.div {...fadeUp} className="text-center mb-14">
+          <motion.div {...fadeUp} className="text-center mb-8 md:mb-14">
             <span className="inline-block px-3 py-1 rounded-full bg-white/10 border border-white/15 text-white/60 text-xs font-semibold tracking-widest uppercase mb-4">Client Stories</span>
             <h2 className="text-3xl md:text-4xl font-display font-bold mb-3">What Our Clients Say</h2>
             <p className="text-slate-300">Don't just take our word for it.</p>
@@ -637,7 +637,7 @@ export default function Home() {
       </section>
 
       {/* ── 8. GOOGLE REVIEWS ── */}
-      <section className="py-20 bg-white border-b border-border">
+      <section className="py-12 md:py-20 bg-white border-b border-border">
         <div className="container mx-auto px-4 md:px-6">
           <motion.div {...fadeUp} className="text-center mb-12">
             <div className="flex items-center justify-center gap-2 mb-4">
@@ -695,11 +695,11 @@ export default function Home() {
       </section>
 
       {/* ── 9. HYDERABAD PRESENCE ── */}
-      <section className="py-20 bg-slate-50 border-b border-border">
+      <section className="py-12 md:py-20 bg-slate-50 border-b border-border">
         <div className="container mx-auto px-4 md:px-6">
           <motion.div {...fadeUp} className="text-center mb-12">
             <span className="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold tracking-widest uppercase mb-4">Our Base</span>
-            <h2 className="text-3xl font-display font-bold mb-3">Headquartered in Hyderabad 🇮🇳</h2>
+            <h2 className="text-3xl font-display font-bold mb-3">Headquartered in Hyderabad, India</h2>
             <p className="text-muted-foreground text-sm max-w-lg mx-auto">HITEC City — India's technology capital — powering global IT services and healthcare solutions.</p>
           </motion.div>
           <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
@@ -740,7 +740,7 @@ export default function Home() {
       </section>
 
       {/* ── 10. FINAL CTA ── */}
-      <section className="py-24 bg-gradient-to-br from-primary via-blue-700 to-violet-700 relative overflow-hidden">
+      <section className="py-12 md:py-24 bg-gradient-to-br from-primary via-blue-700 to-violet-700 relative overflow-hidden">
         <div className="absolute inset-0 opacity-[0.07]" style={{ backgroundImage: "radial-gradient(circle, white 1px, transparent 1px)", backgroundSize: "30px 30px" }} />
         <div className="container relative z-10 mx-auto px-4 md:px-6 text-center">
           <motion.div {...fadeUp}>
@@ -755,12 +755,12 @@ export default function Home() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a href="mailto:mycorpsolutionsteam@gmail.com?subject=Consultation%20Request">
-                <Button size="lg" variant="secondary" className="rounded-full px-10 h-14 text-base font-semibold shadow-xl hover:-translate-y-0.5 transition-transform">
+                <Button size="lg" variant="secondary" className="rounded-full px-6 md:px-10 h-14 text-base font-semibold shadow-xl hover:-translate-y-0.5 transition-transform">
                   Get Free Consultation <ArrowRight className="ml-2 w-4 h-4" />
                 </Button>
               </a>
               <Link href="/services">
-                <Button size="lg" variant="outline" className="rounded-full px-10 h-14 text-base text-white border-white/30 bg-white/10 hover:bg-white/20 hover:text-white">
+                <Button size="lg" variant="outline" className="rounded-full px-6 md:px-10 h-14 text-base text-white border-white/30 bg-white/10 hover:bg-white/20 hover:text-white">
                   Explore Services
                 </Button>
               </Link>

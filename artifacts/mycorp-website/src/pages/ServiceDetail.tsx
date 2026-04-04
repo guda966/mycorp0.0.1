@@ -156,9 +156,9 @@ export default function ServiceDetail() {
       </section>
 
       {/* ── OVERVIEW + IMAGE ── */}
-      <section className="py-20 bg-white">
+      <section className="py-12 md:py-20 bg-white">
         <div className="container mx-auto px-4 md:px-6">
-          <div className="grid lg:grid-cols-2 gap-14 items-center">
+          <div className="grid lg:grid-cols-2 gap-8 md:gap-14 items-center">
             <motion.div {...fadeUp}>
               <h2 className="text-3xl md:text-4xl font-display font-bold mb-6">About This Service</h2>
               <div className="space-y-4 mb-8">
@@ -197,9 +197,9 @@ export default function ServiceDetail() {
 
       {/* ── IMPEXUS PROGRAMS GRID (college-programs only) ── */}
       {service.slug === "college-programs" && (
-        <section className="py-20 bg-white border-b border-border">
+        <section className="py-12 md:py-20 bg-white border-b border-border">
           <div className="container mx-auto px-4 md:px-6">
-            <motion.div {...fadeUp} className="text-center mb-12">
+            <motion.div {...fadeUp} className="text-center mb-6 md:mb-12">
               <span className="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold tracking-widest uppercase mb-4">What We Offer</span>
               <h2 className="text-3xl md:text-4xl font-display font-bold mb-3">Programs &amp; Initiatives</h2>
               <p className="text-muted-foreground max-w-2xl mx-auto text-sm">From final year project mentoring to campus hackathons — MyCorp delivers a complete spectrum of college programs that build real skills and career readiness.</p>
@@ -265,9 +265,9 @@ export default function ServiceDetail() {
       )}
 
       {/* ── HOW WE WORK ── */}
-      <section className="py-20 bg-slate-50 border-y border-border">
+      <section className="py-12 md:py-20 bg-slate-50 border-y border-border">
         <div className="container mx-auto px-4 md:px-6">
-          <motion.div {...fadeUp} className="text-center mb-12">
+          <motion.div {...fadeUp} className="text-center mb-6 md:mb-12">
             <h2 className="text-3xl md:text-4xl font-display font-bold mb-3">
               {service.slug === "college-programs" ? "How We Engage with Your College" : "How We Work"}
             </h2>
@@ -298,7 +298,7 @@ export default function ServiceDetail() {
       </section>
 
       {/* ── INDUSTRIES WE SERVE — scrolling marquee strip ── */}
-      <section className="py-14 bg-[#0B1120] overflow-hidden">
+      <section className="py-8 md:py-14 bg-[#0B1120] overflow-hidden">
         <div className="container mx-auto px-4 md:px-6 mb-8">
           <motion.div {...fadeUp} className="text-center">
             <h2 className="text-2xl md:text-3xl font-display font-bold text-white mb-1">Industries We Serve</h2>
@@ -328,7 +328,7 @@ export default function ServiceDetail() {
       </section>
 
       {/* ── SPECIALTIES ── */}
-      <section className="py-20 bg-white border-b border-border">
+      <section className="py-12 md:py-20 bg-white border-b border-border">
         <div className="container mx-auto px-4 md:px-6">
           <motion.div {...fadeUp} className="mb-8">
             <h2 className="text-2xl md:text-3xl font-display font-bold mb-1">Specialties & Expertise</h2>
@@ -355,7 +355,7 @@ export default function ServiceDetail() {
       </section>
 
       {/* ── CLIENTS — scrolling marquee ── */}
-      <section className="py-14 bg-slate-50 border-b border-border overflow-hidden">
+      <section className="py-8 md:py-14 bg-slate-50 border-b border-border overflow-hidden">
         <div className="container mx-auto px-4 md:px-6 mb-8">
           <motion.div {...fadeUp} className="flex items-center gap-3">
             <Building2 className="w-5 h-5 text-primary" />
@@ -407,7 +407,7 @@ export default function ServiceDetail() {
       </section>
 
       {/* ── TESTIMONIALS — dark rotating carousel ── */}
-      <section className="py-20 bg-[#0B1120] relative overflow-hidden">
+      <section className="py-12 md:py-20 bg-[#0B1120] relative overflow-hidden">
         {/* Subtle grid */}
         <div className="absolute inset-0 opacity-5" style={{ backgroundImage: "radial-gradient(circle, white 1px, transparent 1px)", backgroundSize: "36px 36px" }} />
         {/* Gradient orbs */}
@@ -415,7 +415,7 @@ export default function ServiceDetail() {
         <div className={`absolute bottom-0 right-1/4 w-80 h-80 rounded-full blur-3xl opacity-15 bg-gradient-to-br ${service.gradient}`} />
 
         <div className="container relative z-10 mx-auto px-4 md:px-6">
-          <motion.div {...fadeUp} className="text-center mb-12">
+          <motion.div {...fadeUp} className="text-center mb-6 md:mb-12">
             <span className="inline-block px-3 py-1 rounded-full bg-white/10 border border-white/15 text-white/70 text-xs font-semibold tracking-widest uppercase mb-4">
               Client Stories
             </span>
@@ -426,9 +426,9 @@ export default function ServiceDetail() {
       </section>
 
       {/* ── RELATED SERVICES ── */}
-      <section className="py-16 bg-white border-b border-border">
+      <section className="py-10 md:py-16 bg-white border-b border-border">
         <div className="container mx-auto px-4 md:px-6">
-          <motion.div {...fadeUp} className="text-center mb-10">
+          <motion.div {...fadeUp} className="text-center mb-6 md:mb-10">
             <h2 className="text-2xl md:text-3xl font-display font-bold mb-2">Explore Other Services</h2>
             <p className="text-muted-foreground text-sm">See how MyCorp can help across more areas of your business.</p>
           </motion.div>
@@ -461,7 +461,7 @@ export default function ServiceDetail() {
       </section>
 
       {/* ── BOTTOM CTA ── */}
-      <section className="py-16 bg-slate-50 border-b border-border">
+      <section className="py-10 md:py-16 bg-slate-50 border-b border-border">
         <div className="container mx-auto px-4 md:px-6 text-center">
           <motion.div {...fadeUp}>
             <h2 className="text-2xl md:text-3xl font-display font-bold mb-3">Ready to get started?</h2>
@@ -470,7 +470,7 @@ export default function ServiceDetail() {
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <a href="mailto:mycorpsolutionsteam@gmail.com?subject=Consultation%20Request">
-                <Button size="lg" className="rounded-full px-8 shadow-md">
+                <Button size="lg" className="rounded-full px-5 md:px-8 shadow-md">
                   Request a Consultation <ArrowRight className="ml-2 w-4 h-4" />
                 </Button>
               </a>
@@ -485,9 +485,9 @@ export default function ServiceDetail() {
       </section>
 
       {/* ── FAQ — end of page ── */}
-      <section className="py-20 bg-white border-b border-border">
+      <section className="py-12 md:py-20 bg-white border-b border-border">
         <div className="container mx-auto px-4 md:px-6 max-w-3xl">
-          <motion.div {...fadeUp} className="text-center mb-10">
+          <motion.div {...fadeUp} className="text-center mb-6 md:mb-10">
             <h2 className="text-3xl md:text-4xl font-display font-bold mb-3">Frequently Asked Questions</h2>
           </motion.div>
           <motion.div {...fadeUp} className="space-y-3">

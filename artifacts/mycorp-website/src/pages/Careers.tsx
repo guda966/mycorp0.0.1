@@ -226,9 +226,9 @@ export default function Careers() {
       </section>
 
       {/* ── LIFE AT MYCORP — PERKS ── */}
-      <section className="py-20 bg-slate-50 border-b border-border">
+      <section className="py-12 md:py-20 bg-slate-50 border-b border-border">
         <div className="container mx-auto px-4 md:px-6">
-          <motion.div {...fadeUp} className="text-center mb-14">
+          <motion.div {...fadeUp} className="text-center mb-8 md:mb-14">
             <span className="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold tracking-widest uppercase mb-4">Why Work Here</span>
             <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">Life at MyCorp</h2>
             <p className="text-muted-foreground max-w-xl mx-auto text-sm leading-relaxed">
@@ -260,9 +260,9 @@ export default function Careers() {
       </section>
 
       {/* ── OUR VALUES ── */}
-      <section className="py-20 bg-white border-b border-border">
+      <section className="py-12 md:py-20 bg-white border-b border-border">
         <div className="container mx-auto px-4 md:px-6">
-          <motion.div {...fadeUp} className="text-center mb-14">
+          <motion.div {...fadeUp} className="text-center mb-8 md:mb-14">
             <span className="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold tracking-widest uppercase mb-4">What We Believe</span>
             <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">Our Core Values</h2>
             <p className="text-muted-foreground max-w-xl mx-auto text-sm leading-relaxed">
@@ -295,13 +295,13 @@ export default function Careers() {
       </section>
 
       {/* ── TEAM TESTIMONIALS ── */}
-      <section className="py-20 bg-[#0B1120] relative overflow-hidden">
+      <section className="py-12 md:py-20 bg-[#0B1120] relative overflow-hidden">
         <div className="absolute inset-0 opacity-[0.05]" style={{ backgroundImage: "radial-gradient(circle, white 1px, transparent 1px)", backgroundSize: "28px 28px" }} />
         <div className="absolute top-0 left-1/4 w-72 h-72 bg-violet-600/20 rounded-full blur-3xl" />
         <div className="absolute bottom-0 right-1/4 w-72 h-72 bg-blue-600/15 rounded-full blur-3xl" />
 
         <div className="container relative z-10 mx-auto px-4 md:px-6">
-          <motion.div {...fadeUp} className="text-center mb-14">
+          <motion.div {...fadeUp} className="text-center mb-8 md:mb-14">
             <span className="inline-block px-3 py-1 rounded-full bg-white/10 border border-white/15 text-white/60 text-xs font-semibold tracking-widest uppercase mb-4">Our Team Speaks</span>
             <h2 className="text-3xl md:text-4xl font-display font-bold text-white mb-3">Why Our Team Loves It Here</h2>
           </motion.div>
@@ -335,9 +335,9 @@ export default function Careers() {
       </section>
 
       {/* ── WHAT WE LOOK FOR ── */}
-      <section className="py-20 bg-white border-b border-border">
+      <section className="py-12 md:py-20 bg-white border-b border-border">
         <div className="container mx-auto px-4 md:px-6">
-          <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-14 items-center">
+          <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-14 items-center">
             <motion.div {...fadeUp}>
               <span className="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold tracking-widest uppercase mb-5">The Right Fit</span>
               <h2 className="text-3xl md:text-4xl font-display font-bold mb-5">What We Look For</h2>
@@ -381,7 +381,7 @@ export default function Careers() {
       </section>
 
       {/* ── NO OPENINGS / STAY TUNED ── */}
-      <section id="open-positions" className="py-20 bg-slate-50 border-b border-border">
+      <section id="open-positions" className="py-12 md:py-20 bg-slate-50 border-b border-border">
         <div className="container mx-auto px-4 md:px-6">
           <motion.div {...fadeUp} className="max-w-xl mx-auto text-center">
             <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
@@ -419,7 +419,7 @@ export default function Careers() {
       </section>
 
       {/* ── SPECULATIVE APPLICATION ── */}
-      <section id="apply" className="py-20 bg-white">
+      <section id="apply" className="py-12 md:py-20 bg-white">
         <div className="container mx-auto px-4 md:px-6 max-w-2xl">
           <motion.div {...fadeUp} className="text-center mb-10">
             <span className="inline-flex items-center gap-2 bg-primary/10 text-primary text-xs font-semibold tracking-widest uppercase px-4 py-1.5 rounded-full mb-5">

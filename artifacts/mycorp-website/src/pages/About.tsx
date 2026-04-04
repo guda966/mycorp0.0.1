@@ -213,11 +213,11 @@ export default function About() {
       </section>
 
       {/* ── FOUNDER'S MESSAGE (top) ── */}
-      <section className="py-16 bg-white">
+      <section className="py-10 md:py-16 bg-white">
         <div className="container mx-auto px-4 md:px-6">
           <motion.div
             initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }}
-            className="max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-10 md:gap-16"
+            className="max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-8 md:gap-16"
           >
             {/* Portrait */}
             <div className="shrink-0 flex flex-col items-center gap-4">
@@ -265,9 +265,9 @@ export default function About() {
       </section>
 
       {/* ── MISSION / VISION / VALUES CARDS ── */}
-      <section className="py-20 bg-slate-50">
+      <section className="py-12 md:py-20 bg-slate-50">
         <div className="container mx-auto px-4 md:px-6">
-          <motion.div {...fadeUp} className="text-center mb-14">
+          <motion.div {...fadeUp} className="text-center mb-8 md:mb-14">
             <span className="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold tracking-widest uppercase mb-4">Our Purpose</span>
             <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-4">What Drives Us</h2>
             <p className="text-muted-foreground max-w-xl mx-auto">The principles and purpose that guide every decision at MyCorp.</p>
@@ -318,9 +318,9 @@ export default function About() {
       </section>
 
       {/* ── MILESTONE TIMELINE ── */}
-      <section className="py-24 bg-[#0B1120] overflow-hidden">
+      <section className="py-12 md:py-24 bg-[#0B1120] overflow-hidden">
         <div className="container mx-auto px-4 md:px-6">
-          <motion.div {...fadeUp} className="text-center mb-16">
+          <motion.div {...fadeUp} className="text-center mb-8 md:mb-16">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/20 text-accent text-xs font-semibold mb-4">
               <Calendar className="w-3 h-3" /> 2020 — 2025
             </div>
@@ -366,9 +366,9 @@ export default function About() {
       </section>
 
       {/* ── CORE VALUES GRID ── */}
-      <section className="py-24 bg-slate-50">
+      <section className="py-12 md:py-24 bg-slate-50">
         <div className="container mx-auto px-4 md:px-6">
-          <motion.div {...fadeUp} className="text-center mb-16">
+          <motion.div {...fadeUp} className="text-center mb-8 md:mb-16">
             <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">Our Core Values</h2>
             <p className="text-muted-foreground max-w-xl mx-auto">The six pillars that define our culture, guide our work, and build lasting client relationships.</p>
           </motion.div>
@@ -391,9 +391,9 @@ export default function About() {
       </section>
 
       {/* ── EMPLOYEE TESTIMONIALS ── */}
-      <section className="py-24 bg-[#0B1120] text-white overflow-hidden">
+      <section className="py-12 md:py-24 bg-[#0B1120] text-white overflow-hidden">
         <div className="container mx-auto px-4 md:px-6">
-          <motion.div {...fadeUp} className="text-center mb-14">
+          <motion.div {...fadeUp} className="text-center mb-8 md:mb-14">
             <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">What Our Team Says</h2>
             <p className="text-slate-300 max-w-xl mx-auto">Real voices from the people who make MyCorp exceptional every day.</p>
           </motion.div>
@@ -403,9 +403,9 @@ export default function About() {
 
 
       {/* ── CSR / COMMUNITY ── */}
-      <section className="py-24 bg-gradient-to-br from-slate-900 to-[#0B1120] text-white">
+      <section className="py-12 md:py-24 bg-gradient-to-br from-slate-900 to-[#0B1120] text-white">
         <div className="container mx-auto px-4 md:px-6">
-          <motion.div {...fadeUp} className="text-center mb-16">
+          <motion.div {...fadeUp} className="text-center mb-8 md:mb-16">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-green-500/20 border border-green-500/30 text-green-400 text-xs font-semibold mb-4">
               <Leaf className="w-3 h-3" /> Corporate Social Responsibility
             </div>
@@ -432,7 +432,7 @@ export default function About() {
       </section>
 
       {/* ── CTA STRIP ── */}
-      <section className="py-20 bg-gradient-to-br from-primary to-blue-800 text-white">
+      <section className="py-12 md:py-20 bg-gradient-to-br from-primary to-blue-800 text-white">
         <div className="container mx-auto px-4 md:px-6 text-center">
           <motion.div {...fadeUp}>
             <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">Ready to Partner with MyCorp?</h2>
@@ -441,12 +441,12 @@ export default function About() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a href="mailto:mycorpsolutionsteam@gmail.com?subject=Consultation%20Request">
-                <Button size="lg" className="rounded-full px-10 h-14 text-base bg-white text-primary hover:bg-blue-50 shadow-xl hover:scale-105 transition-transform">
+                <Button size="lg" className="rounded-full px-6 md:px-10 h-14 text-base bg-white text-primary hover:bg-blue-50 shadow-xl hover:scale-105 transition-transform">
                   Get a Free Consultation
                 </Button>
               </a>
               <Link href="/services">
-                <Button size="lg" variant="outline" className="rounded-full px-10 h-14 text-base border-white/30 text-white hover:bg-white/10">
+                <Button size="lg" variant="outline" className="rounded-full px-6 md:px-10 h-14 text-base border-white/30 text-white hover:bg-white/10">
                   Explore Our Services <ArrowRight className="ml-2 w-4 h-4" />
                 </Button>
               </Link>

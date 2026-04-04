@@ -87,9 +87,9 @@ export default function Services() {
       </section>
 
       {/* ── SERVICE CARDS ── */}
-      <section className="py-24 bg-slate-50">
+      <section className="py-12 md:py-24 bg-slate-50">
         <div className="container mx-auto px-4 md:px-6">
-          <motion.div {...fadeUp} className="text-center mb-14">
+          <motion.div {...fadeUp} className="text-center mb-8 md:mb-14">
             <h2 className="text-3xl md:text-4xl font-display font-bold mb-3">Our Services</h2>
             <p className="text-muted-foreground max-w-lg mx-auto">Five service lines. One trusted partner.</p>
           </motion.div>
@@ -174,7 +174,7 @@ export default function Services() {
       </section>
 
       {/* ── TESTIMONIALS ── */}
-      <section className="py-20 bg-[#0B1120] border-y border-border overflow-hidden">
+      <section className="py-12 md:py-20 bg-[#0B1120] border-y border-border overflow-hidden">
         <div className="container mx-auto px-4 md:px-6 mb-10">
           <motion.div {...fadeUp} className="text-center">
             <span className="inline-block px-3 py-1 rounded-full bg-white/10 border border-white/15 text-white/60 text-xs font-semibold tracking-widest uppercase mb-4">Client Stories</span>
@@ -215,9 +215,9 @@ export default function Services() {
       </section>
 
       {/* ── WHY MYCORP ── */}
-      <section className="py-20 bg-slate-50">
+      <section className="py-12 md:py-20 bg-slate-50">
         <div className="container mx-auto px-4 md:px-6">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
+          <div className="grid lg:grid-cols-2 gap-8 md:gap-16 items-center">
             <motion.div {...fadeUp}>
               <h2 className="text-3xl md:text-4xl font-display font-bold mb-8">Why MyCorp Solutions?</h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -255,7 +255,7 @@ export default function Services() {
       </section>
 
       {/* ── CTA ── */}
-      <section className="py-20 bg-[#0B1120] text-white">
+      <section className="py-12 md:py-20 bg-[#0B1120] text-white">
         <div className="container mx-auto px-4 md:px-6 text-center">
           <motion.div {...fadeUp}>
             <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">Not Sure Where to Start?</h2>
@@ -263,7 +263,7 @@ export default function Services() {
               Let's talk. We'll identify the right service mix and build a custom plan — at no cost.
             </p>
             <a href="mailto:mycorpsolutionsteam@gmail.com?subject=Consultation%20Request">
-              <Button size="lg" className="rounded-full px-10 shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all">
+              <Button size="lg" className="rounded-full px-6 md:px-10 shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all">
                 Schedule a Free Consultation <ArrowRight className="ml-2 w-4 h-4" />
               </Button>
             </a>
