@@ -361,7 +361,7 @@ export default function Careers() {
               </ul>
             </motion.div>
 
-            <motion.div {...fadeUp} className="bg-gradient-to-br from-[#0B1120] to-[#1a2540] rounded-2xl p-8 text-white">
+            <motion.div {...fadeUp} className="rounded-2xl p-8 text-white" style={{ background: "linear-gradient(135deg, #0B1120, #1a2540)" }}>
               <Building2 className="w-8 h-8 text-cyan-400 mb-5" />
               <h3 className="text-xl font-display font-bold mb-3">Based in Hyderabad</h3>
               <p className="text-slate-300 text-sm leading-relaxed mb-5">
