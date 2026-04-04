@@ -27,12 +27,12 @@ const milestones = [
 ];
 
 const values = [
-  { icon: ShieldCheck, title: "Integrity", color: "from-blue-500 to-blue-600", desc: "We operate with full transparency and ethical standards in every client engagement, contract, and delivery." },
-  { icon: Lightbulb, title: "Innovation", color: "from-amber-500 to-orange-500", desc: "We continuously evolve our processes, adopt emerging technologies, and challenge conventional thinking." },
-  { icon: Award, title: "Excellence", color: "from-purple-500 to-purple-600", desc: "We hold ourselves to the highest standards — from code quality to billing accuracy to talent matching." },
-  { icon: Handshake, title: "Partnership", color: "from-green-500 to-emerald-600", desc: "We embed ourselves as true partners in our clients' growth, not just vendors fulfilling a contract." },
-  { icon: Zap, title: "Agility", color: "from-cyan-500 to-teal-500", desc: "We adapt swiftly to market shifts, client needs, and technological changes without missing a beat." },
-  { icon: Globe2, title: "Global Mindset", color: "from-rose-500 to-pink-500", desc: "Our dual-shore model brings global scale with local accountability across every timezone." },
+  { icon: ShieldCheck, title: "Integrity", color: "from-blue-500 to-blue-600", bg: "#3b82f6", desc: "We operate with full transparency and ethical standards in every client engagement, contract, and delivery." },
+  { icon: Lightbulb, title: "Innovation", color: "from-amber-500 to-orange-500", bg: "#f59e0b", desc: "We continuously evolve our processes, adopt emerging technologies, and challenge conventional thinking." },
+  { icon: Award, title: "Excellence", color: "from-purple-500 to-purple-600", bg: "#a855f7", desc: "We hold ourselves to the highest standards — from code quality to billing accuracy to talent matching." },
+  { icon: Handshake, title: "Partnership", color: "from-green-500 to-emerald-600", bg: "#22c55e", desc: "We embed ourselves as true partners in our clients' growth, not just vendors fulfilling a contract." },
+  { icon: Zap, title: "Agility", color: "from-cyan-500 to-teal-500", bg: "#06b6d4", desc: "We adapt swiftly to market shifts, client needs, and technological changes without missing a beat." },
+  { icon: Globe2, title: "Global Mindset", color: "from-rose-500 to-pink-500", bg: "#f43f5e", desc: "Our dual-shore model brings global scale with local accountability across every timezone." },
 ];
 
 const founder = {
@@ -57,10 +57,10 @@ const culturePhotos = [
 ];
 
 const csrItems = [
-  { icon: GraduationCap, color: "from-blue-500 to-blue-600", title: "Tech Scholarships", value: "50+", desc: "Annual scholarships for students from underrepresented communities pursuing STEM careers in Hyderabad and beyond." },
-  { icon: TreePine, color: "from-green-500 to-emerald-600", title: "Carbon Neutral", value: "2026", desc: "Committed to achieving net-zero carbon emissions across all our operations by 2026." },
-  { icon: HandHeart, color: "from-rose-500 to-pink-600", title: "Community Hours", value: "1,000+", desc: "Annual volunteer hours contributed by our team to local communities in Hyderabad, Telangana." },
-  { icon: Leaf, color: "from-teal-500 to-cyan-600", title: "Green IT", value: "100%", desc: "All systems and workflows designed with energy efficiency and responsible digital practices at their core." },
+  { icon: GraduationCap, color: "from-blue-500 to-blue-600", bg: "#3b82f6", title: "Tech Scholarships", value: "50+", desc: "Annual scholarships for students from underrepresented communities pursuing STEM careers in Hyderabad and beyond." },
+  { icon: TreePine, color: "from-green-500 to-emerald-600", bg: "#22c55e", title: "Carbon Neutral", value: "2026", desc: "Committed to achieving net-zero carbon emissions across all our operations by 2026." },
+  { icon: HandHeart, color: "from-rose-500 to-pink-600", bg: "#f43f5e", title: "Community Hours", value: "1,000+", desc: "Annual volunteer hours contributed by our team to local communities in Hyderabad, Telangana." },
+  { icon: Leaf, color: "from-teal-500 to-cyan-600", bg: "#14b8a6", title: "Green IT", value: "100%", desc: "All systems and workflows designed with energy efficiency and responsible digital practices at their core." },
 ];
 
 function AnimatedStat({ target, suffix = "", duration = 2000 }: { target: number; suffix?: string; duration?: number }) {
@@ -167,9 +167,9 @@ export default function About() {
       {/* ── HERO ── */}
       <section ref={heroRef} className="relative min-h-[90vh] flex items-center bg-[#0B1120] overflow-hidden">
         <motion.div style={{ y: heroY }} className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-gradient-to-br from-primary/30 via-transparent to-accent/20" />
-          <div className="absolute top-0 left-0 w-96 h-96 bg-primary/20 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
-          <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-accent/10 rounded-full blur-3xl translate-x-1/4 translate-y-1/4" />
+          <div className="absolute inset-0 bg-gradient-to-br from-primary/15 via-transparent to-accent/10" />
+          <div className="absolute top-0 left-0 w-96 h-96 bg-primary/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
+          <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-accent/5 rounded-full blur-3xl translate-x-1/4 translate-y-1/4" />
           <div className="absolute inset-0 opacity-5" style={{ backgroundImage: "radial-gradient(circle, white 1px, transparent 1px)", backgroundSize: "40px 40px" }} />
         </motion.div>
 
@@ -182,7 +182,7 @@ export default function About() {
             </motion.div>
 
             <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.1 }}
-              className="text-4xl md:text-7xl font-display font-extrabold text-white leading-tight mb-4 md:mb-6">
+              className="text-4xl md:text-7xl font-display font-extrabold text-white leading-tight mb-3 md:mb-6">
               Built on Trust.{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-accent">Driven by Results.</span>
             </motion.h1>
@@ -278,6 +278,7 @@ export default function About() {
               {
                 icon: Target,
                 gradient: "from-blue-600 to-blue-800",
+                iconBg: "#2563eb",
                 bg: "from-blue-50 to-blue-100/60",
                 accent: "text-blue-600",
                 border: "border-blue-200",
@@ -287,6 +288,7 @@ export default function About() {
               {
                 icon: Eye,
                 gradient: "from-violet-600 to-purple-700",
+                iconBg: "#7c3aed",
                 bg: "from-violet-50 to-purple-100/60",
                 accent: "text-violet-600",
                 border: "border-violet-200",
@@ -296,6 +298,7 @@ export default function About() {
               {
                 icon: Heart,
                 gradient: "from-rose-500 to-pink-600",
+                iconBg: "#f43f5e",
                 bg: "from-rose-50 to-pink-100/60",
                 accent: "text-rose-500",
                 border: "border-rose-200",
@@ -305,7 +308,7 @@ export default function About() {
             ].map((item, i) => (
               <motion.div key={i} initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: i * 0.15 }}>
                 <div className={`h-full rounded-2xl border ${item.border} bg-gradient-to-br ${item.bg} p-8 hover:shadow-xl transition-all duration-300 hover:-translate-y-1`}>
-                  <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${item.gradient} flex items-center justify-center mb-6 shadow-lg`}>
+                  <div className="w-14 h-14 rounded-2xl flex items-center justify-center mb-6 shadow-lg" style={{ background: item.iconBg }}>
                     <item.icon className="w-7 h-7 text-white" />
                   </div>
                   <h3 className={`text-xl font-bold mb-3 ${item.accent}`}>{item.title}</h3>
@@ -377,7 +380,7 @@ export default function About() {
               <motion.div key={i} initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: i * 0.1 }}>
                 <Card className="group h-full border-border/50 hover:border-primary/20 hover:shadow-xl transition-all duration-300">
                   <CardContent className="p-8">
-                    <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${v.color} flex items-center justify-center mb-5 text-white group-hover:scale-110 transition-transform`}>
+                    <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-5 text-white group-hover:scale-110 transition-transform`} style={{ background: v.bg }}>
                       <v.icon className="w-6 h-6" />
                     </div>
                     <h3 className="text-lg font-bold mb-3">{v.title}</h3>
@@ -417,7 +420,7 @@ export default function About() {
               <motion.div key={i} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: i * 0.12 }}>
                 <Card className="bg-white/5 border-white/10 hover:bg-white/10 transition-colors h-full">
                   <CardContent className="p-8 text-center">
-                    <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${item.color} flex items-center justify-center mx-auto mb-5`}>
+                    <div className="w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-5" style={{ background: item.bg }}>
                       <item.icon className="w-7 h-7 text-white" />
                     </div>
                     <div className="text-3xl font-bold text-white font-display mb-2">{item.value}</div>

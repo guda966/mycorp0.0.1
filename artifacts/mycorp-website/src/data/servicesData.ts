@@ -4,6 +4,7 @@ export interface ServiceData {
   slug: string;
   icon: LucideIcon;
   color: string;
+  solidColor: string;
   gradient: string;
   title: string;
   tagline: string;
@@ -26,6 +27,7 @@ export const servicesData: ServiceData[] = [
     slug: "staffing-outsourcing",
     icon: Users,
     color: "text-blue-600",
+    solidColor: "#2563eb",
     gradient: "from-blue-600 to-blue-800",
     title: "Staffing & Outsourcing",
     tagline: "Scale your workforce on demand — contract, direct hire, and offshore teams.",
@@ -80,6 +82,7 @@ export const servicesData: ServiceData[] = [
     slug: "it-hiring",
     icon: Target,
     color: "text-orange-600",
+    solidColor: "#f59e0b",
     gradient: "from-amber-500 to-orange-600",
     title: "IT Hiring Support",
     tagline: "Your embedded recruitment team — RPO, executive search, and everything in between.",
@@ -134,6 +137,7 @@ export const servicesData: ServiceData[] = [
     slug: "it-projects",
     icon: Code,
     color: "text-violet-600",
+    solidColor: "#7c3aed",
     gradient: "from-violet-600 to-purple-800",
     title: "IT Projects",
     tagline: "Websites, software, and enterprise platforms — delivered on time, on budget.",
@@ -188,6 +192,7 @@ export const servicesData: ServiceData[] = [
     slug: "healthcare-projects",
     icon: Stethoscope,
     color: "text-emerald-600",
+    solidColor: "#10b981",
     gradient: "from-emerald-500 to-teal-700",
     title: "Healthcare Projects",
     tagline: "Healthcare IT, software, and revenue cycle — everything your practice needs under one roof.",
@@ -242,6 +247,7 @@ export const servicesData: ServiceData[] = [
     slug: "college-programs",
     icon: GraduationCap,
     color: "text-indigo-600",
+    solidColor: "#6366f1",
     gradient: "from-indigo-500 to-violet-700",
     title: "College Programs",
     tagline: "Final year project mentoring, workshops, bootcamps & hackathons — all on your campus.",

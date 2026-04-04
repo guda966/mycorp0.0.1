@@ -41,25 +41,25 @@ const values = [
     icon: Star,
     title: "Excellence in Everything",
     desc: "We don't settle for \"good enough.\" Every deliverable — a hire, a line of code, a claim submission — represents MyCorp's name.",
-    color: "from-amber-500 to-orange-500",
+    color: "from-amber-500 to-orange-500", bg: "#f59e0b",
   },
   {
     icon: Users,
     title: "People Before Process",
     desc: "Our team is our product. We invest in people — their skills, their wellbeing, their careers — before we invest in anything else.",
-    color: "from-blue-500 to-cyan-500",
+    color: "from-blue-500 to-cyan-500", bg: "#3b82f6",
   },
   {
     icon: Zap,
     title: "Ownership Culture",
     desc: "There are no spectators here. Everyone owns their domain and has the authority — and the expectation — to lead it.",
-    color: "from-violet-500 to-purple-600",
+    color: "from-violet-500 to-purple-600", bg: "#8b5cf6",
   },
   {
     icon: GraduationCap,
     title: "Relentless Learning",
     desc: "The IT world evolves daily. So do we. Curiosity and continuous improvement are not optional — they're who we are.",
-    color: "from-emerald-500 to-teal-600",
+    color: "from-emerald-500 to-teal-600", bg: "#10b981",
   },
 ];
 
@@ -282,7 +282,7 @@ export default function Careers() {
                   className="relative rounded-2xl border border-border p-6 overflow-hidden group hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
                 >
                   <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${val.color}`} />
-                  <div className={`w-11 h-11 rounded-xl bg-gradient-to-br ${val.color} flex items-center justify-center mb-5 shadow-md`}>
+                  <div className="w-11 h-11 rounded-xl flex items-center justify-center mb-5 shadow-md" style={{ background: val.bg }}>
                     <VIcon className="w-5 h-5 text-white" />
                   </div>
                   <h3 className="font-bold text-foreground mb-2">{val.title}</h3>

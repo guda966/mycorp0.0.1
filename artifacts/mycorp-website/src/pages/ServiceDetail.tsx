@@ -164,7 +164,7 @@ export default function ServiceDetail() {
               <div className="space-y-4 mb-8">
                 {service.benefits.map((benefit, i) => (
                   <div key={i} className="flex gap-3 items-start p-4 rounded-xl border border-border bg-slate-50 hover:border-primary/30 hover:bg-white transition-all duration-200">
-                    <div className={`mt-0.5 w-6 h-6 rounded-full bg-gradient-to-br ${service.gradient} flex items-center justify-center shrink-0 shadow-sm`}>
+                    <div className="mt-0.5 w-6 h-6 rounded-full flex items-center justify-center shrink-0 shadow-sm" style={{ background: service.solidColor }}>
                       <CheckCircle2 className="w-3.5 h-3.5 text-white" />
                     </div>
                     <div>
@@ -186,7 +186,7 @@ export default function ServiceDetail() {
                 alt={`${service.title} at MyCorp`}
                 className="w-full rounded-2xl shadow-2xl object-cover aspect-[4/3]"
               />
-              <div className={`absolute bottom-4 right-4 bg-gradient-to-br ${service.gradient} rounded-xl p-4 shadow-lg`}>
+              <div className="absolute bottom-4 right-4 rounded-xl p-4 shadow-lg" style={{ background: service.solidColor }}>
                 <p className="text-white font-display font-bold text-xl">{service.stats[0].value}</p>
                 <p className="text-white/80 text-xs mt-0.5">{service.stats[0].label}</p>
               </div>
@@ -286,7 +286,7 @@ export default function ServiceDetail() {
                 transition={{ duration: 0.45, delay: i * 0.12 }}
                 className="relative bg-white rounded-xl p-6 border border-border hover:shadow-lg hover:-translate-y-1 transition-all duration-300 z-10"
               >
-                <div className={`w-10 h-10 rounded-full bg-gradient-to-br ${service.gradient} flex items-center justify-center mb-4 text-white font-display font-bold text-sm shadow-md`}>
+                <div className="w-10 h-10 rounded-full flex items-center justify-center mb-4 text-white font-display font-bold text-sm shadow-md" style={{ background: service.solidColor }}>
                   {step.step}
                 </div>
                 <h3 className="text-base font-bold text-foreground mb-2">{step.title}</h3>
@@ -344,7 +344,7 @@ export default function ServiceDetail() {
                 transition={{ duration: 0.3, delay: i * 0.05 }}
                 className="flex items-center gap-2.5 p-3.5 rounded-xl border border-border bg-slate-50 hover:bg-white hover:shadow-sm transition-all duration-200"
               >
-                <div className={`w-4 h-4 rounded-full bg-gradient-to-br ${service.gradient} flex items-center justify-center shrink-0`}>
+                <div className="w-4 h-4 rounded-full flex items-center justify-center shrink-0" style={{ background: service.solidColor }}>
                   <CheckCircle2 className="w-2.5 h-2.5 text-white" />
                 </div>
                 <span className="text-slate-700 font-medium text-sm">{spec}</span>
@@ -444,7 +444,7 @@ export default function ServiceDetail() {
                   transition={{ duration: 0.45, delay: i * 0.1 }}
                 >
                   <Link href={`/services/${rel.slug}`} className="group flex items-center gap-4 p-5 rounded-xl border border-border bg-slate-50 hover:bg-white hover:shadow-md hover:-translate-y-1 transition-all duration-300">
-                    <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${rel.gradient} flex items-center justify-center shrink-0`}>
+                    <div className="w-12 h-12 rounded-xl flex items-center justify-center shrink-0" style={{ background: rel.solidColor }}>
                       <RelIcon className="w-6 h-6 text-white" />
                     </div>
                     <div className="flex-1 min-w-0">

@@ -121,7 +121,7 @@ export default function Services() {
                         <div className="absolute -right-6 -top-6 w-32 h-32 bg-white/10 rounded-full transition-transform duration-500 group-hover:scale-125 group-hover:-translate-x-2 group-hover:translate-y-2" />
                         <div className="absolute -right-2 -bottom-8 w-20 h-20 bg-white/5 rounded-full transition-transform duration-500 group-hover:scale-150 group-hover:-translate-x-3" />
                         <div className="flex items-start justify-between mb-4">
-                          <div className="w-14 h-14 bg-white/20 rounded-2xl flex items-center justify-center border border-white/30 transition-all duration-300 group-hover:scale-110 group-hover:rotate-6 group-hover:bg-white/30">
+                          <div className="w-14 h-14 rounded-2xl flex items-center justify-center border border-white/30 transition-all duration-300 group-hover:scale-110 group-hover:rotate-6 group-hover:bg-white/30" style={{ background: "rgba(255,255,255,0.2)" }}>
                             <Icon className="w-7 h-7 text-white" />
                           </div>
                           {/* Engagement model badge */}

@@ -221,27 +221,27 @@ const services = [
   {
     icon: Users, title: "Staffing & Outsourcing",
     desc: "Contract, direct hire, and offshore delivery teams — placed in 48 hours.", slug: "staffing-outsourcing",
-    color: "from-blue-600 to-blue-800", tag: "Staff Augmentation",
+    color: "from-blue-600 to-blue-800", bg: "#2563eb", tag: "Staff Augmentation",
   },
   {
     icon: Target, title: "IT Hiring Support",
     desc: "Embedded RPO and executive search inside your ATS and brand.", slug: "it-hiring",
-    color: "from-amber-500 to-orange-600", tag: "Recruitment Process",
+    color: "from-amber-500 to-orange-600", bg: "#f59e0b", tag: "Recruitment Process",
   },
   {
     icon: Code, title: "IT Projects",
     desc: "Websites, web apps, and enterprise platforms delivered on time.", slug: "it-projects",
-    color: "from-violet-600 to-purple-700", tag: "Software Delivery",
+    color: "from-violet-600 to-purple-700", bg: "#7c3aed", tag: "Software Delivery",
   },
   {
     icon: Stethoscope, title: "Healthcare Projects",
     desc: "Healthcare IT, EHR integrations, and Medical Billing & Coding — full RCM under one roof.", slug: "healthcare-projects",
-    color: "from-emerald-500 to-teal-700", tag: "Healthcare & RCM",
+    color: "from-emerald-500 to-teal-700", bg: "#10b981", tag: "Healthcare & RCM",
   },
   {
     icon: GraduationCap, title: "College Programs",
     desc: "Final year project mentoring, workshops, bootcamps & hackathons — delivered on your campus.", slug: "college-programs",
-    color: "from-indigo-500 to-violet-700", tag: "Campus Programs",
+    color: "from-indigo-500 to-violet-700", bg: "#6366f1", tag: "Campus Programs",
   },
 ];
 
@@ -482,7 +482,10 @@ export default function Home() {
                     <Card className="h-full border-border/50 shadow-sm hover:shadow-xl hover:border-primary/20 hover:-translate-y-1 transition-all duration-300 group bg-white cursor-pointer">
                       <CardContent className="p-7">
                         <div className="flex items-start justify-between mb-5">
-                          <div className={`w-12 h-12 rounded-2xl bg-gradient-to-br ${svc.color} flex items-center justify-center shadow-md group-hover:scale-110 transition-transform duration-300`}>
+                          <div
+                            className="w-12 h-12 rounded-2xl flex items-center justify-center shadow-md group-hover:scale-110 transition-transform duration-300"
+                            style={{ background: svc.bg }}
+                          >
                             <SIcon className="w-6 h-6 text-white" />
                           </div>
                           <span className="px-2.5 py-1 rounded-full bg-slate-100 text-slate-500 text-[10px] font-semibold tracking-wide uppercase">{svc.tag}</span>
