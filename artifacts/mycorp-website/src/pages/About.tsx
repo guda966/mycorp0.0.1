@@ -173,27 +173,27 @@ export default function About() {
           <div className="absolute inset-0 opacity-5" style={{ backgroundImage: "radial-gradient(circle, white 1px, transparent 1px)", backgroundSize: "40px 40px" }} />
         </motion.div>
 
-        <motion.div style={{ opacity: heroOpacity }} className="container relative z-10 mx-auto px-4 md:px-6 py-24">
+        <motion.div style={{ opacity: heroOpacity }} className="container relative z-10 mx-auto px-4 md:px-6 py-16 md:py-24">
           <div className="max-w-4xl">
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 text-sm font-medium text-white mb-8">
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 text-sm font-medium text-white mb-4 md:mb-8">
               <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
               Our Story Since 2020
             </motion.div>
 
             <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.1 }}
-              className="text-5xl md:text-7xl font-display font-extrabold text-white leading-tight mb-6">
+              className="text-4xl md:text-7xl font-display font-extrabold text-white leading-tight mb-4 md:mb-6">
               Built on Trust.{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-accent">Driven by Results.</span>
             </motion.h1>
 
             <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.2 }}
-              className="text-xl text-white/90 mb-10 max-w-3xl leading-relaxed">
+              className="text-base md:text-xl text-white/90 mb-8 md:mb-10 max-w-3xl leading-relaxed">
               Founded in 2020 in Hyderabad, HITEC City by G.V Krishna Reddy — MyCorp Solutions has grown rapidly into a trusted IT services partner delivering staffing, software, and healthcare solutions to enterprises across the US and India.
             </motion.p>
 
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.3 }}
-              className="flex flex-wrap gap-10">
+              className="flex flex-wrap gap-6 md:gap-10">
               {[
                 { target: 5, suffix: "+", label: "Years in Business" },
                 { target: 300, suffix: "+", label: "Team Members" },
@@ -209,7 +209,7 @@ export default function About() {
           </div>
         </motion.div>
 
-        <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-white dark:from-[#0B1120] to-transparent z-10" />
+        <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-[#0B1120] to-transparent z-10" />
       </section>
 
       {/* ── FOUNDER'S MESSAGE (top) ── */}
