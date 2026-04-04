@@ -13,7 +13,7 @@ const fadeUp = {
   transition: { duration: 0.55 },
 };
 
-function AnimatedStat({ value, label, gradient }: { value: string; label: string; gradient: string }) {
+function AnimatedStat({ value, label, solidColor }: { value: string; label: string; solidColor: string }) {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-50px" });
   const [display, setDisplay] = useState("—");
@@ -41,8 +41,7 @@ function AnimatedStat({ value, label, gradient }: { value: string; label: string
 
   return (
     <div ref={ref} className="py-10 px-6 text-center bg-white">
-      <p className={`text-4xl md:text-5xl font-display font-bold tabular-nums bg-gradient-to-r ${gradient} bg-clip-text`}
-        style={{ WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text", color: "#3b82f6" }}>
+      <p className="text-4xl md:text-5xl font-display font-bold tabular-nums" style={{ color: solidColor }}>
         {display}
       </p>
       <p className="text-muted-foreground text-sm mt-2 font-medium">{label}</p>
@@ -149,7 +148,7 @@ export default function ServiceDetail() {
         <div className="container mx-auto px-4 md:px-6">
           <div className={`grid grid-cols-2 gap-px bg-border ${service.stats.length === 4 ? "sm:grid-cols-4" : "sm:grid-cols-3"}`}>
             {service.stats.map((stat, i) => (
-              <AnimatedStat key={i} value={stat.value} label={stat.label} gradient={service.gradient} />
+              <AnimatedStat key={i} value={stat.value} label={stat.label} solidColor={service.solidColor} />
             ))}
           </div>
         </div>
@@ -207,32 +206,32 @@ export default function ServiceDetail() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
               {[
                 {
-                  tag: "Final Year Projects", color: "from-indigo-500 to-violet-700",
+                  tag: "Final Year Projects", color: "from-indigo-500 to-violet-700", bg: "#6366f1",
                   title: "Project Mentoring",
                   items: ["Topic selection & tech stack guidance", "End-to-end development support", "IEEE paper & synopsis writing", "Viva & presentation preparation"],
                 },
                 {
-                  tag: "Workshops", color: "from-blue-500 to-blue-700",
+                  tag: "Workshops", color: "from-blue-500 to-blue-700", bg: "#3b82f6",
                   title: "Technical Workshops",
                   items: ["Full Stack Web Development", "AI/ML & Data Science", "Cloud Computing & DevOps", "Cybersecurity & Ethical Hacking"],
                 },
                 {
-                  tag: "Bootcamps", color: "from-violet-500 to-purple-700",
+                  tag: "Bootcamps", color: "from-violet-500 to-purple-700", bg: "#8b5cf6",
                   title: "Intensive Bootcamps",
                   items: ["Multi-day hands-on coding bootcamps", "Industry-standard tools & workflows", "Real project builds from day one", "Mobile, Web & Emerging Tech tracks"],
                 },
                 {
-                  tag: "Hackathons", color: "from-amber-500 to-orange-600",
+                  tag: "Hackathons", color: "from-amber-500 to-orange-600", bg: "#f59e0b",
                   title: "Campus Hackathons",
                   items: ["End-to-end hackathon organisation", "Real-world problem statements", "Working prototype development", "Mentorship & industry judging"],
                 },
                 {
-                  tag: "Placement Prep", color: "from-teal-500 to-cyan-600",
+                  tag: "Placement Prep", color: "from-teal-500 to-cyan-600", bg: "#14b8a6",
                   title: "Career Readiness",
                   items: ["Aptitude & logical reasoning", "Competitive coding & DSA", "Mock technical interviews & GD", "Resume building & LinkedIn coaching"],
                 },
                 {
-                  tag: "Industry Connect", color: "from-rose-500 to-pink-600",
+                  tag: "Industry Connect", color: "from-rose-500 to-pink-600", bg: "#f43f5e",
                   title: "Industry Exposure",
                   items: ["Guest lectures by working engineers", "Live project demos & case studies", "Soft skills & professional etiquette", "Corporate hiring drives for graduates"],
                 },
@@ -245,12 +244,12 @@ export default function ServiceDetail() {
                   transition={{ duration: 0.45, delay: i * 0.08 }}
                   className="rounded-2xl border border-border bg-slate-50 hover:bg-white hover:shadow-lg hover:-translate-y-1 transition-all duration-300 p-6"
                 >
-                  <span className={`inline-block px-2.5 py-1 rounded-full text-white text-[10px] font-bold tracking-wide uppercase bg-gradient-to-r ${prog.color} mb-4`}>{prog.tag}</span>
+                  <span className="inline-block px-2.5 py-1 rounded-full text-white text-[10px] font-bold tracking-wide uppercase mb-4" style={{ background: prog.bg }}>{prog.tag}</span>
                   <h3 className="font-bold text-foreground text-base mb-3">{prog.title}</h3>
                   <ul className="space-y-2">
                     {prog.items.map((item, j) => (
                       <li key={j} className="flex items-center gap-2 text-sm text-muted-foreground">
-                        <div className={`w-3.5 h-3.5 rounded-full bg-gradient-to-br ${prog.color} flex items-center justify-center shrink-0`}>
+                        <div className="w-3.5 h-3.5 rounded-full flex items-center justify-center shrink-0" style={{ background: prog.bg }}>
                           <CheckCircle2 className="w-2 h-2 text-white" />
                         </div>
                         {item}
