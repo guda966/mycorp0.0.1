@@ -117,7 +117,7 @@ export default function Services() {
                       }}
                     >
                       {/* Gradient header */}
-                      <div className={`bg-gradient-to-br ${service.gradient} p-8 relative overflow-hidden`}>
+                      <div className="p-8 relative overflow-hidden" style={{ background: service.solidColor }}>
                         <div className="absolute -right-6 -top-6 w-32 h-32 bg-white/10 rounded-full transition-transform duration-500 group-hover:scale-125 group-hover:-translate-x-2 group-hover:translate-y-2" />
                         <div className="absolute -right-2 -bottom-8 w-20 h-20 bg-white/5 rounded-full transition-transform duration-500 group-hover:scale-150 group-hover:-translate-x-3" />
                         <div className="flex items-start justify-between mb-4">
